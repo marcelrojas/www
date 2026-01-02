@@ -1,0 +1,50 @@
+---
+import Anchor from '@components/Anchor.astro';
+import Button from '@components/Button.astro';
+---
+
+<aside id="sidebar-table-of-contents">
+  <nav class="table-of-contents">
+    <h3 class="table-of-contents__title">Tabla de contenidos</h3>
+    <ol class="table-of-contents__list">
+      <li>
+        <Anchor href="#qu-son-las-bibliotecas-javascript">¿Qué son las bibliotecas JavaScript?</Anchor>
+      </li>
+      <li>
+        <Anchor href="#las-bibliotecas-javascript-ms-populares">Las bibliotecas JavaScript más populares</Anchor>
+      </li>
+      <li>
+        <Anchor href="#qu-son-los-frameworks-de-javascript">¿Qué son los frameworks de JavaScript?</Anchor>
+      </li>
+      <li>
+        <Anchor href="#los-frameworks-de-javascript-ms-populares">Los frameworks de JavaScript más populares</Anchor>
+      </li>
+      <li>
+        <Anchor href="#algunas-herramientas-tiles-de-javascript-que-hay-que-conocer">Algunas herramientas útiles de JavaScript que hay que conocer</Anchor>
+      </li>
+      <li>
+        <Anchor href="#cmo-funcionan-las-bibliotecas-y-los-marcos-de-trabajo-de-javascript">Cómo funcionan las bibliotecas y los marcos de trabajo de JavaScript</Anchor>
+      </li>
+    </ol>
+    <Button class="yogurt-UnstyledButton-root button button--small yogurt-dm0dwn" type="button">Descargar el artículo en PDF</Button>
+  </nav>
+</aside>
+
+<style>
+  aside#sidebar-table-of-contents {
+    direction: ltr;
+    color: #161616;
+    vertical-align: baseline;
+    list-style: none;
+    width: 100%;
+    column-count: 2;
+    margin-bottom: 0;
+    margin-top: 32px;
+    & h3.table-of-contents__title {
+
+    }
+    & ol.table-of-contents__list {
+      
+    }
+  }
+</style>

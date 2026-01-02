@@ -1,0 +1,51 @@
+---
+import Head from '@components/structure/Head.astro';
+import SplashScreen from '@components/SplashScreen.astro';
+import Curtain from '@components/Curtain.astro';
+
+export interface TransitionAnimation {
+  name: string;
+  delay?: number | string;
+  duration?: number | string;
+  easing?: string;
+  fillMode?: string;
+  direction?: string;
+}
+
+export interface TransitionAnimationPair {
+  old: TransitionAnimation | TransitionAnimation[];
+  new: TransitionAnimation | TransitionAnimation[];
+}
+
+export interface TransitionDirectionalAnimations {
+  forwards: TransitionAnimationPair;
+  backwards: TransitionAnimationPair;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: string;
+}
+
+const { title, description, lang = 'en' } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang} dir="auto" transition:name="root" transition:animate="none">
+  <Head title={title} description={description} />
+  <body>
+
+    <SplashScreen />
+    <Curtain />
+
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+
+  </body>
+</html>
+
+<style is:global>
+  
+</style>

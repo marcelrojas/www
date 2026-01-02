@@ -1,0 +1,29 @@
+<span id="logo" aria-hidden="true">
+  <span>Marcel</span>
+  <span>Rojas</span>
+</span>
+
+<style is:global>
+  span#logo {
+    position: relative;
+    z-index: 50;
+    max-width: min-content;
+    font-family: var(--font-family-serif);
+    font-size: var(--font-size-28);
+    line-height: var(--font-leading-tightest);
+    letter-spacing: var(--font-tracking-common);
+    text-align: right;
+    text-transform: uppercase;
+    text-anchor: middle;
+    color: oklch(0.19 0 0 / 0.1);
+    animation: logo_view var(--duration-macro-x1) ease-in 0s 1 normal forwards
+  }
+  @keyframes logo_view {
+    from {
+      opacity: 0
+    }
+    to {
+      opacity: 1
+    }
+  }
+</style>

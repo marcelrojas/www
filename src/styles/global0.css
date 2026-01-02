@@ -1,0 +1,14 @@
+/* scroller */
+:is(.scroller-x, .scroller-y)::-webkit-scrollbar {
+  display: none
+}
+.scroller-x,
+.scroller-y {
+  scroll-padding: 0;
+  scrollbar-width: none;
+  scroll-snap-align: center
+}
+.scroller-y{
+  overflow: hidden scroll;
+  scroll-snap-type: y mandatory
+}

@@ -1,0 +1,144 @@
+<canvas id="grain-canvas"></canvas>
+
+<style is:inline>
+  canvas#grain-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none
+  }
+</style>
+
+<script is:inline>
+  class GrainEffect {
+    constructor(canvas) {
+      if (!canvas) {
+        console.error("GrainEffect: Canvas element not found.");
+          return;
+        }
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d');
+
+        // --- Configuration ---
+        this.patternSize = 64; // The size of the noise pattern. Smaller is faster.
+        this.patternAlpha = 20; // The opacity of the grain. 0-255.
+        
+        this.patternCanvas = document.createElement('canvas');
+        this.patternCtx = this.patternCanvas.getContext('2d');
+        this.patternData = null;
+        this.frameId = null; // To store the animation frame ID
+
+        this.init();
+      }
+
+      /**
+       * Initializes the effect, sets up the canvas and pattern, and starts the animation.
+       */
+      init() {
+        window.addEventListener('resize', this.resize.bind(this));
+        this.resize();
+        this.createPattern();
+        
+        // Bind the animate method to the class instance
+        this.animate = this.animate.bind(this);
+      }
+
+      /**
+       * Starts the animation loop.
+       */
+      start() {
+        if (!this.frameId) {
+          this.animate();
+        }
+      }
+
+      /**
+       * Stops the animation loop.
+       */
+      stop() {
+        if (this.frameId) {
+          window.cancelAnimationFrame(this.frameId);
+          this.frameId = null;
+        }
+      }
+
+      /**
+       * Resizes the main canvas to match the dimensions of its parent element.
+       */
+      resize() {
+        this.canvas.width = this.canvas.clientWidth * window.devicePixelRatio;
+        this.canvas.height = this.canvas.clientHeight * window.devicePixelRatio;
+      }
+
+      /**
+       * Creates the noise pattern on an off-screen canvas.
+       */
+      createPattern() {
+        this.patternCanvas.width = this.patternSize;
+        this.patternCanvas.height = this.patternSize;
+        this.patternData = this.patternCtx.createImageData(this.patternSize, this.patternSize);
+        const patternBuffer = new Uint32Array(this.patternData.data.buffer);
+        
+        for (let i = 0; i < this.patternSize * this.patternSize; i++) {
+          const value = Math.random() * 255;
+          // Set RGBA values for a grayscale noise
+          patternBuffer[i] =
+            (this.patternAlpha << 24) | // Alpha
+            (value << 16) | // Blue
+            (value << 8) | // Green
+            value; // Red
+        }
+        
+        this.patternCtx.putImageData(this.patternData, 0, 0);
+      }
+
+      /**
+       * The main animation loop, called on each frame.
+       */
+      animate() {
+        // Clear the canvas with a transparent color
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        // Create a random offset for the pattern to simulate movement
+        const x = Math.random() * this.patternSize;
+        const y = Math.random() * this.patternSize;
+        
+        // Temporarily save the context state
+        this.ctx.save();
+        
+        // Translate the context to the random offset
+        this.ctx.translate(x, y);
+
+        // Draw the pattern
+        this.ctx.fillStyle = this.ctx.createPattern(this.patternCanvas, 'repeat');
+        this.ctx.fillRect(-x, -y, this.canvas.width + x, this.canvas.height + y);
+        
+        // Restore the context to its original state
+        this.ctx.restore();
+
+        // Request the next animation frame
+        this.frameId = window.requestAnimationFrame(this.animate);
+    }
+  }
+  
+  // --- Initialization ---
+  // Use IntersectionObserver to run the effect only when the canvas is visible.
+  const canvasElement = document.getElementById('grain-canvas');
+  if (canvasElement) {
+    const grainEffect = new GrainEffect(canvasElement);
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          grainEffect.start();
+        } else {
+          grainEffect.stop();
+        }
+      });
+    });
+
+    observer.observe(canvasElement);
+  }
+</script>

@@ -1,0 +1,984 @@
+@charset "UTF-8";
+@layer variables, base, utilities, components, forms, themes, pages, states, animations, print;
+/*/
+ * scroll-padding-top: var(--)
+ *
+/*/
+@layer base {
+  ::-webkit-scrollbar { }
+  *, *:is(::before, ::after, ::backdrop) {
+    box-sizing: border-box;
+    border: 0;
+    background-clip: padding-box;
+    vertical-align: baseline
+  }
+  header { user-select: none }
+  header, section, footer, div { display: block; unicode-bidi: isolate }
+  html { scrollbar-width: none; scrollbar-gutter: stable both-edges; scroll-behavior: smooth; scroll-snap-type: y mandatory; font-size: var(--font-size-base); background-color: var(--color-background); -webkit-tap-highlight-color: transparent }
+  body {
+    display: block;
+    position: relative;
+    overflow-wrap: break-word;
+    & ::-webkit-scrollbar { display: none }
+    &.isloading {
+      cursor: wait;
+      pointer-events: none;
+      user-select: none;
+      filter: blur(2px) grayscale(80%);
+      opacity: .6
+    }
+  }
+  main { display: block; position: relative; unicode-bidi: isolate; background-color: var(--color-background) }
+  nav, footer { user-select: none }
+  footer { overflow: hidden }
+
+  :where(h1, h2, h3, h4, h5, h6, p, ul, ol):last-child {
+    margin-block-end: 0
+  }
+  p + p { margin-top: 2lh }
+
+  ul { list-style: none; list-style-type: disc; list-style-position: outside }
+  ul ul { list-style-type: circle }
+  ol { list-style-type: decimal; list-style-position: outside }
+  ol ol { list-style-type: upper-latin }
+  li { list-style: none }
+
+  :open {
+
+  }
+  :not(:open) {
+
+  }
+  [open] {
+
+  }
+
+  :popover-open {
+
+  }
+
+  dialog {
+    transition-behavior: allow-discrete
+  }
+  dialog[open]::backdrop {
+    display: block;
+    opacity: 1;
+    @starting-style {
+      display: none;
+      opacity: 0
+      /* This represents dialog[open] and not its ::backdrop! */
+    }
+  }
+
+  /* Demo of '::picke-icon' */
+  ::picker-icon {
+    color: var();
+    background-color: var();
+    fill: var();
+    transition-behavior: allow-discrete
+  }
+  :not(:open)::picker-icon {
+
+  }
+  :open::picker-icon {
+    /* make sure the icon is a plus character before the transition starts */
+    @starting-style {
+
+    }
+  }
+  select, ::picker(select) {
+    appearance: base-select
+  }
+
+  select {
+    /* Required to "reset" the element's appearance for customization */
+    &, &::picker(select) {
+      appearance: base-select
+    }
+    &::picker(select) {
+      transition: display allow-discrete 1s, opacity 1s, overlay 1s allow-discrete
+    }
+    &:not(:open)::picker(select) {
+      opacity: 0
+    }
+    &:open::picker(select) {
+      opacity: 1;
+      starting-style {
+        opacity: 0
+      }
+    }
+    & option {
+
+      &::before {
+        content: '►c';
+        color: var(--color-accent)
+      }
+      &:checked {
+        content: '✔';
+        color: var(--color-accent)
+      }
+      &::checkmark {
+        content: '⮕'
+      }
+    }
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    * { transition: all 0s ease 0s }
+  }
+  @media (forced-colors: active) {
+    * { forced-color-adjust: auto }
+  }
+  @media (scripting: enabled) {
+    .scripting { display: none }
+  }
+  @media (scripting: none) {
+    .scripting { display: block; color: var(--color-warning) }
+  }
+  @font-face {
+    font-family: 'InterVariable';
+    font-style: normal;
+    font-weight: 100 900;
+    font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
+    font-synthesis: none;
+    font-display: swap;
+    src: local('Inter'), url('/fonts/InterVariable.woff2') format('woff2') tech('variations'), url('/fonts/InterVariable.woff2') format('woff2-variations')
+  }
+  @font-face {
+    font-family: 'InterVariable';
+    font-style: italic;
+    font-weight: 100 900;
+    font-feature-settings: 'liga' 1, 'calt' 1;
+    font-synthesis: none;
+    font-display: swap;
+    src: local('InterVariable-Italic'), url('/fonts/InterVariable-Italic.woff2') format('woff2') tech('variations'), url('/fonts/InterVariable-Italic.woff2') format('woff2-variations')
+  }
+  @font-face {
+    font-family: 'TrajanPro';
+    font-style: normal;
+    font-weight: 400;
+    font-synthesis: none;
+    font-display: swap;
+    src: local('TrajanPro'), url('/fonts/TrajanPro-Regular.ttf') format('truetype')
+  }
+  @font-face {
+    font-family: 'GeistMono';
+    font-style: normal;
+    font-weight: 45 920;
+    font-synthesis: none;
+    font-display: swap;
+    src: local('GeistMono'), url('/fonts/GeistMono.woff2') format('woff2') tech('variations'), url('/fonts/GeistMono.woff2') format('woff2-variations')
+  }
+  @font-face {
+    font-family: 'GeistMono';
+    font-style: italic;
+    font-weight: 45 920;
+    font-synthesis: none;
+    font-display: swap;
+    src: local('GeistMono-Italic'), url('/fonts/GeistMono-Italic.woff2') format('woff2') tech('variations'), url('/fonts/GeistMono-Italic.woff2') format('woff2-variations')
+  }
+  @font-feature-values InterVariable {
+    @character-variant {
+        cv01: 1; cv02: 2; cv03: 3; cv04: 4; cv05: 5; cv06: 6; cv07: 7; cv08: 8;
+        cv09: 9; cv10: 10; cv11: 11; cv12: 12; cv13: 13;
+        alt-1:            1; /* Alternate one */
+        alt-3:            9; /* Flat-top three */
+        open-4:           2; /* Open four */
+        open-6:           3; /* Open six */
+        open-9:           4; /* Open nine */
+        lc-l-with-tail:   5; /* Lower-case L with tail */
+        simplified-u:     6; /* Simplified u */
+        alt-double-s:     7; /* Alternate German double s */
+        uc-i-with-serif:  8; /* Upper-case i with serif */
+        uc-g-with-spur:  10; /* Capital G with spur */
+        single-story-a:  11; /* Single-story a */
+        compact-lc-f:    12; /* Compact f */
+        compact-lc-t:    13; /* Compact t */
+    }
+    @styleset {
+        ss01: 1; ss02: 2; ss03: 3; ss04: 4; ss05: 5; ss06: 6; ss07: 7; ss08: 8;
+        open-digits: 1;                /* Open digits */
+        disambiguation: 2;             /* Disambiguation (with zero) */
+        disambiguation-except-zero: 4; /* Disambiguation (no zero) */
+        round-quotes-and-commas: 3;    /* Round quotes &amp; commas */
+        square-punctuation: 7;         /* Square punctuation */
+        square-quotes: 8;              /* Square quotes */
+        circled-characters: 5;         /* Circled characters */
+        squared-characters: 6;         /* Squared characters */
+    }
+  }
+  @font-feature-values InterDisplay {
+    @character-variant {
+        cv01: 1; cv02: 2; cv03: 3; cv04: 4; cv05: 5; cv06: 6; cv07: 7; cv08: 8;
+        cv09: 9; cv10: 10; cv11: 11; cv12: 12; cv13: 13;
+        alt-1:            1; /* Alternate one */
+        alt-3:            9; /* Flat-top three */
+        open-4:           2; /* Open four */
+        open-6:           3; /* Open six */
+        open-9:           4; /* Open nine */
+        lc-l-with-tail:   5; /* Lower-case L with tail */
+        simplified-u:     6; /* Simplified u */
+        alt-double-s:     7; /* Alternate German double s */
+        uc-i-with-serif:  8; /* Upper-case i with serif */
+        uc-g-with-spur:  10; /* Capital G with spur */
+        single-story-a:  11; /* Single-story a */
+        compact-lc-f:    12; /* Compact f */
+        compact-lc-t:    13; /* Compact t */
+    }
+    @styleset {
+        ss01: 1; ss02: 2; ss03: 3; ss04: 4; ss05: 5; ss06: 6; ss07: 7; ss08: 8;
+        open-digits: 1;                /* Open digits */
+        disambiguation: 2;             /* Disambiguation (with zero) */
+        disambiguation-except-zero: 4; /* Disambiguation (no zero) */
+        round-quotes-and-commas: 3;    /* Round quotes &amp; commas */
+        square-punctuation: 7;         /* Square punctuation */
+        square-quotes: 8;              /* Square quotes */
+        circled-characters: 5;         /* Circled characters */
+        squared-characters: 6;         /* Squared characters */
+    }
+  }
+}
+:focus, :focus-visible, :focus-within { outline: unset }
+:link {}
+:visited {
+  color: var(--accent-visited)
+}
+:any-link {
+  -webkit-tap-highlight-color: oklch(84.522% 0.0001 271.152 / 0.4);
+  cursor: pointer;
+  pointer-events: auto;
+  text-decoration-line: unset;
+  text-underline-offset: 1px;
+  filter: unset;
+  opacity: unset
+}
+:local-link { background-color: var(--background-primary) }
+a {
+  overflow: hidden;
+  cursor: not-allowed;
+  pointer-events: none;
+  letter-spacing: inherit;
+  text-decoration-color: currentcolor;
+  text-decoration-thickness: .1em;
+  text-decoration-skip: none;
+  text-decoration-skip-ink: all;
+  color: var(--color-internet-blue);
+  filter: grayscale(40%);
+  opacity: .7
+}
+a:is([target="_blank"], [rel="external"]) { cursor: alias }
+a[rel="tag"] { }
+:target { animation: focusTarget }
+:target-within { }
+::selection {
+  background-color: oklch(69.926% 0.00008 271.152);
+  color: oklch(100% 0.00011 271.152);
+  text-shadow: none
+}
+::marker { color: currentcolor }
+::backdrop { position: fixed; inset: 0 0 0 0 }
+:fullscreen { }
+:modal { }
+:is(audio, video):muted {
+  outline: 5px solid oklch(62.793% 0.25768 29.223)
+}
+:is(audio, video):paused {
+  border: 5px solid oklch(79.268% 0.17097 70.665)
+}
+:is(audio, video):playing {
+  border: 5px solid oklch(51.976% 0.17685 142.511)
+}
+:is(audio, video):seeking {
+  outline: 5px solid oklch(62.793% 0.25768 29.223)
+}
+:is(audio, video):stalled {
+  outline: 5px solid oklch(62.793% 0.25768 29.223)
+}
+:is(audio, video):volume-locked {
+  border: 5px solid oklch(51.976% 0.17685 142.511)
+}
+:is(audio, video):buffering {
+  outline: 5px solid oklch(62.793% 0.25768 29.223)
+}
+:picture-in-picture {
+  box-shadow: 0 0 0 5px oklch(0% 0 0)
+}
+[inert] > * { opacity: .5 }
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul,
+li,
+abbr,
+blockquote,
+button,
+dd,
+dl,
+dt,
+menu,
+fieldset,
+figure,
+form,
+hgroup,
+input,
+legend,
+pre {
+  margin: unset;
+  padding: unset
+}
+:host,
+html,
+body,
+div,
+table,
+ul,
+ol,
+form,
+input,
+select,
+textarea,
+p,
+span,
+svg,
+img {
+  box-sizing: content-box;
+  font-kerning: auto;
+  hyphens: none;
+  word-wrap: normal;
+  outline: 0;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased
+}
+strong,
+b {
+  font-weight: var(--font-weight-bold)
+}
+a {
+  color: var(--color-accent)
+}
+a:hover {
+  color: var(--color-accent-hover)
+}
+textarea {
+  width: 100%;
+  font-size: 16px
+}
+input {
+  font-size: 16px
+}
+table {
+  width: 100%
+}
+hgroup {
+
+}
+br {
+
+}
+hr {
+
+}
+p, span {
+  text-indent: unset
+}
+article ul::marker {
+  content: '\203B'
+}
+dl {
+
+}
+dt {
+
+}
+dd {
+
+}
+menu {
+
+}
+blockquote {
+  font: 600 16px/1.25 'Inter';
+  hanging-punctuation: first
+}
+cite {
+
+}
+blockquote cite::before {
+  content: '\2014\2002'
+}
+blockquote,
+q {
+
+}
+:is(blockquote, q)::before {
+  content: open-quote
+}
+:is(blockquote, q)::after {
+  content: close-quote
+}
+:lang(en) > q {
+  quotes: "\201C" "\201D" "\2018" "\2019"
+}
+:lang(fr) > q {
+  quotes: "« " " »"
+}
+:lang(de) > q {
+  quotes: "»" "«" "\2039" "\203A"
+}
+mark {
+  background-color: oklch(51.626% 0.19092 27.628);
+  color: oklch(100% 0.00011 271.152)
+}
+mark::before,
+mark::after {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(100%);
+  clip: rect(1px,1px,1px,1px);
+  white-space: nowrap
+}
+mark::before {
+  content: " [highlight start] "
+}
+mark::after {
+  content: " [highlight end] "
+}
+
+strong,
+b {
+  font-weight: 700;
+  color: oklch(24.776% 0.00003 271.152)
+}
+i,
+em,
+cite,
+dfn {
+  color: var(--color-label)
+}
+del,
+s {
+  text-decoration: line-through solid;
+  text-decoration-thickness: .1em
+}
+:is(del,s)::before,
+:is(del,s)::after {
+  clip-path: inset(100%);
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px
+}
+:is(del,s)::before {
+  content: ' [start of stricken text] '
+}
+:is(del,s)::after {
+  content: ' [end of stricken text] '
+}
+ins {
+  text-decoration: unset
+}
+small {
+
+}
+sub,
+sup {
+  font-size: 75%;
+  vertical-align: baseline
+}
+sub {
+  bottom: -.25em
+}
+sup {
+  top: -.5em
+}
+data {
+
+}
+bdi {
+  unicode-bidi: isolate
+}
+bdo {
+  unicode-bidi: bidi-override
+}
+rp {
+
+}
+rt {
+
+}
+ruby {
+  text-transform: full-width;
+  text-transform: full-size-kana
+}
+u {
+  letter-spacing: inherit;
+  text-decoration: wavy underline currentcolor .1em;
+  text-decoration-skip: none;
+  text-decoration-skip-ink: all
+}
+wbr {
+
+}
+table {
+  width: 100%;
+  text-indent: 0;
+  word-wrap: normal;
+  table-layout: fixed;
+  border-collapse: collapse;
+  empty-cells: show
+}
+caption {
+  padding: var(--spacing-05);
+  caption-side: top;
+  text-align: start
+}
+table thead {
+
+}
+table thead tr {
+  border-bottom: solid oklch(0% 0 0)
+}
+table thead tr th {
+  padding: 10px;
+  font: var(--font-);
+  text-align: left;
+  vertical-align: bottom
+}
+table tbody {
+
+}
+table tbody tr {
+  border-top: solid oklch(42.024% 0.00005 271.152)
+}
+table tbody tr td {
+  padding: 10px;
+  font: var(--font-);
+  text-align: left;
+  vertical-align: top
+}
+tfoot {
+  font-weight: 600
+}
+th,
+tr,
+td {
+  border-width: 1px
+}
+th[scope="row"] {/* header for the row it is in */
+
+}
+th[scope="col"] {/* header for the column it is in */
+
+}
+th[scope="rowgroup"] {/* header that sit over the top of multiple rows */
+
+}
+th[scope="colgroup"] {/* header that sit over the top of multiple columns */
+
+}
+abbr[title] {
+  text-decoration: underline dashed initial;
+  text-decoration-thickness: .1em;
+  text-decoration-skip-ink: auto;
+  text-underline-offset: 1px;
+  cursor: help
+}
+details {
+
+}
+details details {
+  margin-inline: 10px
+}
+summary {
+  cursor: pointer;
+  user-select: none
+}
+details summary::marker {
+  content: '▼'
+}
+details[open] summary::marker {
+  content: '▲'
+}
+code, kbd, pre, samp {
+  font-feature-settings: 'tnum', 'ss02'
+}
+code {
+  width: fit-content
+}
+:is(h1, h2, h3, h4, h5, h6, p, li) code {
+
+}
+pre code {
+  padding: 8px 14px;
+  display: block;
+  overflow-x: scroll
+}
+pre {
+  clear: both;
+  tab-size: 4;
+  hyphens: none;
+  speak: literal-punctuation
+}
+pre:has(code) {
+  background-color: oklch(9.7015 0.00011 271.152);
+  border: 1px solid oklch(9.2758 0.00592 264.656)
+}
+kbd {
+  padding: 1px 4px;
+  border: 1px solid oklch(8.9143 0.0001 271.152);
+  border-radius: 5px;
+  background-color: oklch(1 0.00011 271.152);
+  color: oklch(5.5553 0.00006 271.152);
+  box-shadow: 0 2px 0 0 hsl(0 0% 86%)
+}
+samp > kbd {
+  font-weight: 600
+}
+var {
+  font-feature-settings: 'tnum', 'ss02'
+}
+dialog {
+  touch-action: none;
+  user-select: none
+}
+figure {
+
+}
+figcaption {
+  font: var(--font-caption-emphasized)
+}
+area {
+
+}
+map {
+
+}
+track {
+
+}
+
+picture, video, source, img {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  object-fit: cover;
+  object-position: center;
+  content-visibility: auto;
+  image-rendering: auto
+}
+audio {
+
+}
+object {
+
+}
+iframe, portal {
+  border: none
+}
+form {
+
+}
+fieldset {
+
+}
+label {
+
+}
+input {
+  appearance: none
+}
+input:indeterminate {
+  background: oklch(86.645% 0.29481 142.511)
+}
+textarea,
+input:is([type="email"], [type="number"], [type="password"], [type="search"], [type="tel"], [type="text"], [type="url"]) {
+  color: oklch(78.892% 0.00009 271.152);
+  caret-color: AccentColor;
+  resize: none
+}
+textarea,
+input:is([type="email"], [type="number"], [type="password"], [type="search"], [type="tel"], [type="text"], [type="url"]):enabled {
+
+}
+textarea,
+input:is([type="email"], [type="number"], [type="password"], [type="search"], [type="tel"], [type="text"], [type="url"]):disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: scale(-.08);
+  filter: grayscale(80%);
+  opacity: .8
+}
+textarea,
+input:is([type="email"], [type="number"], [type="password"], [type="search"], [type="tel"], [type="text"], [type="url"]):required {
+
+}
+textarea,
+input:is([type="email"], [type="number"], [type="password"], [type="search"], [type="tel"], [type="text"], [type="url"]):optional {
+  content: 'Optional'
+}
+textarea,
+input:is([type="email"], [type="number"], [type="password"], [type="search"], [type="tel"], [type="text"], [type="url"]):is(:valid,:user-invalid) {
+
+}
+textarea,
+input:is([type="email"], [type="number"], [type="password"], [type="search"], [type="tel"], [type="text"], [type="url"]):invalid {
+
+}
+textarea,
+input:is([type="email"], [type="number"], [type="password"], [type="search"], [type="tel"], [type="text"], [type="url"]):active {
+
+}
+input:is([type="email"], [type="number"], [type="password"], [type="search"], [type="tel"], [type="text"], [type="url"]):focus {
+  border: 1px solid oklch(77.526% 0.08058 171.087);
+  color: oklch(48.193% 0.00005 271.152);
+  outline: var(--)
+}
+textarea,
+input:is([type="email"], [type="number"], [type="password"], [type="search"], [type="tel"], [type="text"], [type="url"]):autofill {
+
+}
+input:is([type="datetime-local"], [type="date"], [type="week"], [type="month"], [type="time"]) {
+
+}
+input[type="number"] {
+
+}
+input[type="color"] {
+
+}
+input:in-range {
+
+}
+input:out-of-range {
+
+}
+input[type="file"]::file-selector-button {
+  padding: .2em .4em;
+  border: 2px solid oklch(56.761% 0.20219 283.089);
+  border-radius: 12px;
+  background-color: oklch(73.588% 0.14122 285.603);
+  transition: 1s
+}
+textarea,
+input:is([type="email"], [type="number"], [type="password"], [type="search"], [type="tel"], [type="text"], [type="url"]):read-only {
+
+}
+textarea,
+input:is([type="email"], [type="number"], [type="password"], [type="search"], [type="tel"], [type="text"], [type="url"]):read-write {
+
+}
+input:default {
+
+}
+input:indeterminate {
+
+}
+textarea,
+input:is([type="email"], [type="number"], [type="password"], [type="search"], [type="tel"], [type="text"], [type="url"]):placeholder-shown {
+
+}
+input:empty {
+
+}
+input:checked {
+
+}
+:is([type="radio"], [type="checkbox"]) input[checked] {
+
+}
+:is([type="radio"], [type="checkbox"]) input[checked]:default {
+
+}
+
+legend {
+
+}
+
+aside {
+
+}
+address {
+  font-style: normal
+}
+code {
+  padding: 2px 5px;
+  background-color: rgb(var(--gray-light));
+  border-radius: 2px
+}
+pre {
+  padding: 1.5em;
+  border-radius: 8px
+}
+pre > code {
+  all: unset
+}
+blockquote {
+  border-left: 4px solid var(--accent);
+  padding: 0 0 0 20px;
+  margin: 0px;
+  font-size: 1.333em
+}
+hr {
+  border: none;
+  border-top: 1px solid rgb(var(--gray-light))
+}
+.sr-only {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
+  clip: rect(1px 1px 1px 1px);
+  /* modern browsers, clip-path works inwards from each corner */
+  clip-path: inset(50%);
+  /* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
+  white-space: nowrap
+}
+/* themes */
+@scope (.theme_black) {
+  :scope {
+    background-color: oklch(23.929% 0.00003 271.152);
+    background-color: oklch(44.679% 0.20542 328.352);
+    color: oklch(94.669% 0.03098 75.171)
+  }
+  a {
+    color: oklch(78.328% 0.10783 326.506)
+  }
+}
+
+/* Show hover only on supported devices */
+@media (hover:hover) and (pointer:fine) {
+  #globalheader > nav:nth-child(1) ul.language-selector li a:hover {
+    color: hsl(0 0% 62%)
+  }
+  #globalheader > nav:nth-child(2) ul li a:hover {
+    color: hsl(0 0% 62%)
+  }
+}
+
+/* Motion */
+@keyframes focusTarget {
+  from {
+    background-color: var(--color-orange);
+    color:hsl(0 0% 100%)
+  }
+  to {
+
+  }
+}
+
+@keyframes dotAnim {
+  from {
+    opacity: 1
+  }
+  to {
+    opacity: 0
+  }
+}
+
+@keyframes showDialog {
+  from {
+    transform: translateY(100%)
+  }
+  to {
+    transform: translateY(0%)
+  }
+}
+
+@keyframes boing {
+  16% {
+    transform: scale(1.03)
+  }
+  49% {
+    transform: scale(0.98)
+  }
+  100% {
+    transform: scale(1)
+  }
+}
+
+@layer components {
+  /* --- 1. Estilos del Emisor --- */
+  .glow-emitter {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+    background-color: #050505;
+  }
+
+  /* --- 2. Estilos del Receptor (El truco principal) --- */
+  .glow-receiver {
+    /* Variables CSS para personalización */
+    --glow-border-width: 2px;
+    --glow-color: rgba(0, 255, 150, 0.6);
+    --glow-size: 400px;
+    --card-radius: 8px;
+    --card-bg: #1a1a1a;
+
+    position: relative;
+    border-radius: var(--card-radius);
+
+    /* El 'padding' define el espacio para el borde brillante */
+    padding: var(--glow-border-width);
+
+    /* Para que el contenido interno no se desborde */
+    overflow: hidden;
+
+    /* El fondo del RECEPTOR es el propio 'glow'.
+      Usamos las variables CSS que el script actualizará.
+    */
+    background: radial-gradient(
+      var(--glow-size) circle at
+      var(--mouse-x) var(--mouse-y),
+      var(--glow-color),
+      transparent 70%
+    );
+
+    /* Ocultamos el glow por defecto */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  /* Cuando el mouse entra en el EMISOR, muestra el glow en los RECEPTORES */
+  .glow-emitter:hover .glow-receiver {
+    opacity: 1;
+  }
+
+  /* --- 3. Estilos del Contenido Interno --- */
+  .glow-content {
+    /* Este es el contenido real de tu tarjeta.
+      Cubre el fondo (el 'glow') del padre,
+      dejando visible solo el 'padding' de 2px.
+    */
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: calc(var(--card-radius) - var(--glow-border-width));
+    color: white;
+    position: relative; /* Asegura que esté sobre el fondo */
+    z-index: 1;
+  }
+}
+
+@layer print {
+  @media print {
+    body {
+      background-color: oklch(100% 0.00011 271.152);
+      color: oklch(0% 0.00003 271.152)
+    }
+    a {
+      color: oklch(24.776% 0.00003 271.152)
+    }
+  }
+}

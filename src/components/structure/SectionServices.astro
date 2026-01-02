@@ -1,0 +1,101 @@
+---
+import Anchor from '@components/Anchor.astro';
+---
+
+<section id="section-services" role="feed" aria-busy="false" aria-label="Overview of services offered">
+  <div class="content">
+
+    <h2 class="headline">Flexible, transparent pricing built around your needs</h2>
+    <p class="subhead">I offer competitive pricing for my services. Please contact me for a detailed quote.</p>
+
+    <div class="cards">
+
+      <article class="card">
+        <h3 class="headline">Strategy</h3>
+        <div class="content">
+          <ul>
+            <li>Visual Research</li>
+            <li>Competitive Analysis</li>
+            <li>Wireframes</li>
+            <li>Content Mapping</li>
+            <li>User Flow</li>
+            <li>Concepts</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3 class="headline">Design</h3>
+        <div class="content">
+          <ul>
+            <li>Web Design</li>
+            <li>UI/UX Design</li>
+            <li>Design System</li>
+            <li>Motion Design</li>
+            <li>Prototyping</li>
+            <li>Accessible Design</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3 class="headline">Development</h3>
+        <div class="content">
+          <ul>
+            <li>Web Development</li>
+            <li>Web Animation</li>
+            <li>CMS Integration</li>
+            <li>Accessible Development</li>
+            <li>Technical SEO</li>
+            <li>Frontend Support</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="footer">
+      <Anchor variant="platted" size="medium" wide="fit" label="text-only" href="">Get in touch →</Anchor>
+    </div>
+  </div>
+
+</section>
+
+<style is:global>
+  section#section-services {
+
+    & div.content {
+      max-width: 1200px;
+      & h2.headline {
+        font-size: 2rem
+      }
+      & p.subhead {
+        font-size: 1.25rem;
+        margin-top: 8px
+      }
+      & div.cards {
+        padding-top: 96px;
+        padding-bottom: 96px;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        contain: style;
+        & article.card {
+          width: 23.875em;
+          position: relative;
+          aspect-ratio: 382/528;
+          & h3.headline {
+            font-size: 1.5rem;
+            margin-bottom: 16px
+          }
+        }
+      }
+    }
+    & div.footer {
+      padding-bottom: 64px;
+      place-content: center;
+      display: flex
+    }
+  }
+</style>

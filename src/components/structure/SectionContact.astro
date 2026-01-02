@@ -1,0 +1,56 @@
+---
+import Anchor from '@components/Anchor.astro';
+---
+
+<section id="section-contact">
+  <div class="content">
+    <h2 class="headline">Contact Me</h2>
+    <p class="subhead">Applications are now open for any of my services, don't lose<br />more opportunities and join with the button bellow!</p>
+    <Anchor href="https://marcelrojas.tally.com/to/?tally-source=marcelrojas.com">Join in the loop →</Anchor>
+  </div>
+</section>
+
+<style is:global>
+  section#section-contact {
+    align-items: center;
+    background-color: oklch(0.95 0.02 250);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+    width: 100%;
+    & div.content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      & h2.headline {
+        font-size: var(--font-size-32);
+        font-weight: var(--font-weight-bold);
+        line-height: 120%;
+        color: oklch(0.17 0 0 / 0.9)
+      }
+      & p.subhead {
+        font-size: var(--font-size-18);
+        font-weight: var(--font-weight-medium);
+        line-height: 140%;
+        color: oklch(0.17 0 0 / 0.7)
+      }
+      & a {
+        margin-top: 10px;
+        padding: 12px 24px;
+        font-size: var(--font-size-16);
+        font-weight: var(--font-weight-medium);
+        background-color: var(--color-accent);
+        color: var(--color-button-text);
+        border-radius: 30px;
+        transition: background-color 0.2s ease-in-out;
+        &:hover {
+          background-color: var(--color-accent-hover)
+        }
+      }
+    }
+  }
+</style>

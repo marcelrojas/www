@@ -1,0 +1,33 @@
+---
+import Logo from '@components/Logo.astro';
+import Clock from '@components/decorators/Clock.svelte';
+import NavBar from '@components/structure/NavBar.astro';
+---
+
+<header id="header">
+  <div class="content">
+    <Logo />
+    <Clock client:load />
+    <NavBar />
+  </div>
+</header>
+
+<style is:global>
+  @layer components {
+    header#header {
+      position: relative;
+      z-index: 40;
+      padding-left: max(var(--spacing-sal) + 22px);
+      padding-right: max(var(--spacing-sar) + 22px);
+      & div.content {
+        position: relative;
+        overflow: clip;
+        display: flex;
+        flex-flow: column;
+        padding-top: max(var(--spacing-sat) + var(--spacing-09));
+        padding-bottom: var(--spacing-08);
+        align-items: center
+      }
+    }
+  }
+</style>

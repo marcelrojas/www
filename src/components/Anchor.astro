@@ -1,0 +1,189 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'a'> {
+  variant?: '' | 'platted' | 'platterless';
+  size?: 'small' | 'medium' | 'large';
+  wide?: 'fill' | 'fit';
+  label?: 'icon-only' | 'text-only' | 'text-and-icon';
+  isActive?: boolean; // Permite forzar el estado activo si es necesario
+}
+
+const {
+  href,
+  variant = 'text-only',
+  size = 'medium',
+  wide = 'auto',
+  label,
+  isActive: forceActive,
+  class: className,
+  ...props
+} = Astro.props;
+
+// 2. Lógica de URL y Estado Activo
+const { pathname } = Astro.url;
+const currentPath = pathname.replace(/\/$/, ''); // Normaliza la ruta actual (quita slash final)
+const targetHref = href?.toString().replace(/\/$/, ''); // Normaliza el href
+
+// Detecta si es la página actual o una sub-página
+const isActive = forceActive ?? (
+  targetHref === currentPath ||
+  (targetHref !== '' && targetHref !== '/' && currentPath.startsWith(targetHref + '/'))
+);
+
+// 3. Lógica de Enlaces Externos (Seguridad)
+const isExternal = href?.toString().startsWith('http');
+// Si es externo, fuerza _blank y noopener. Si no, usa lo que venga en props o nada.
+const target = isExternal ? '_blank' : props.target;
+const rel = isExternal ? 'noopener noreferrer' : props.rel;
+
+// 4. Clases dinámicas (BEM style o Utility classes)
+const classes = [
+  'anchor',
+  `variant-${variant}`,
+  `size-${size}`,
+  `wide-${wide}`,
+  `label-${label ?? 'text-only'}`,
+  isActive ? 'is-active' : '', // Clase automática para CSS
+  className
+];
+---
+
+<a href={href} class:list={classes} target={target} rel={rel} aria-current={isActive ? 'page' : undefined} data-astro-prefetch={isExternal ? 'false' : 'viewport'} {...props}>
+  <slot />
+</a>
+
+<style is:global>
+  @layer components {
+    :is(a, a[role="button"]).anchor {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-family-sans);
+      font-weight: var(--font-weight-regular);
+      text-align: center;
+      backface-visibility: hidden;
+      -webkit-font-smoothing: subpixel-antialiased;
+      touch-action: manipulation;
+      will-change: color, background-color, border-radius, transform;
+      transition: color 105ms ease-out, background-color 105ms ease-out, border-radius 105ms ease-out, transform 105ms ease-out;
+      &[aria-current="page"] {
+        color: var(--label-primary-active);
+        background-color: var(--anchor-bg-active);
+        cursor: default;
+        pointer-events: none
+      }
+      @media (hover: hover) {
+        &:hover {
+          transform: scale(1.03)
+        }
+      }
+      &:active {
+        transform: scale(1.03)
+      }
+      &:focus-visible {
+        outline: 2px solid var(--ring)
+      }
+      /* Variants */
+      &.variant-platted {
+        border: 1px solid var(--fill-border);
+        background: var(--fill-tertiary);
+        backdrop-filter: blur(20px);
+        @media (hover: hover) {
+          &:hover {
+            --anchor-hover: okchl(1 1 1 / 0.08);
+            background-color: var(--anchor-hover)
+          }
+        }
+      }
+      &.variant-platterless {
+        
+        @media (hover: hover) {
+          &:hover {
+            --anchor-hover: okchl(1 1 1 / 0.08);
+            background-color: var(--anchor-hover)
+          }
+        }
+      }
+      /* Actions */
+      &.action-default {
+        color: var(--label-primary-controls);
+        fill: var(--label-primary-controls)
+      }
+      &.action-neutral {
+        color: var(--label-);
+        fill: var(--label-)
+      }
+      /* Sizes */
+      &.size-small {
+        font-size: var(--font-size-12);
+        &.label-text-and-icon {
+          padding: 5px 12px;
+          gap: 3px
+        }
+        &.label-text-only {
+          padding-block: 5px;
+          padding-inline: 12px
+        }
+        &.label-icon-only {
+          padding: 0px;
+          border-radius: 50%
+        }
+        & svg {
+          width: 8px;
+          height: 8px
+        }
+      }
+      &.size-medium {
+        font-size: var(--font-size-14);
+        &.label-text-and-icon {
+          padding: 10px 14px;
+          gap: 5px
+        }
+        &.label-text-only {
+          padding: 10px 14px
+        }
+        &.label-icon-only {
+          padding: 10px;
+          border-radius: 50%
+        }
+        & svg {
+          width: 16px;
+          height: 16px
+        }
+      }
+      &.size-large {
+        font-size: var(--font-size-16);
+        &.label-text-and-icon {
+          padding-block: 18px;
+          padding-inline: 32px;
+          gap: 6px
+        }
+        &.label-text-only {
+          padding-block: 18px;
+          padding-inline: 32px
+        }
+        &.label-icon-only {
+          padding: 16px
+        }
+        & svg {
+          width: 32px;
+          height: 32px
+        }
+      }
+      /* Widths */
+      &.wide-fit {
+        width: fit-content
+      }
+      &.wide-fill {
+        width: 100%
+      }
+      &[role="button"] {
+        border-radius: 32px;
+        &[aria-pressed="true"] {
+          
+        }
+      }
+    }
+  }
+</style>

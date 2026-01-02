@@ -1,0 +1,124 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Head from '@components/structure/Head.astro';
+import SplashScreen from '@components/SplashScreen.astro';
+import Header from '@components/structure/Header.astro';
+import Curtain from '@components/Curtain.astro';
+import Footer from '@components/structure/Footer.astro';
+import FormattedDate from '@components/FormattedDate.astro';
+import { Image } from 'astro:assets';
+
+export interface TransitionAnimation {
+  name: string;
+  delay?: number | string;
+  duration?: number | string;
+  easing?: string;
+  fillMode?: string;
+  direction?: string;
+}
+
+export interface TransitionAnimationPair {
+  old: TransitionAnimation | TransitionAnimation[];
+  new: TransitionAnimation | TransitionAnimation[];
+}
+
+export interface TransitionDirectionalAnimations {
+  forwards: TransitionAnimationPair;
+  backwards: TransitionAnimationPair;
+}
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, description, lang = 'en', pubDate, updatedDate, heroImage } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang} dir="auto" transition:name="root" transition:animate="none">
+  <Head title={title} description={description} />
+  <body>
+    <a href="#main" tabindex="0" class="skip-to-content">Skip to main content</a>
+
+    <SplashScreen />
+    <Header />
+    <Curtain />
+
+    <main id="main" tabindex="-1">
+      <article id="blogpost">
+        <picture class="hero-media">
+          {heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
+        </picture>
+        <div class="prose">
+          <header>
+            <div class="date">
+              <FormattedDate date={pubDate} />
+              {
+                updatedDate && (
+                  <span class="last-updated">
+                    Last updated on <FormattedDate date={updatedDate} />
+                  </span>
+                )
+              }
+            </div>
+            <h1>{title}</h1>
+            <hr />
+          </header>
+          <slot />
+        </div>
+      </article>
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  @layer layout {
+    main#blogpost {
+      width: calc(100% - 2em);
+      max-width: 100%
+    }
+    .hero-media {
+      width: 100%;
+      & img {
+        display: block
+      }
+    }
+    .prose {
+      width: 720px;
+      max-width: calc(100% - 2em);
+      margin: auto;
+      padding: 1em
+    }
+    .header {
+      margin-bottom: 1em;
+      padding: 1em 0;
+      text-align: center;
+      line-height: 1
+    }
+    .date {
+      margin-bottom: 0.5em
+    }
+    .last-updated {
+      font-style: italic
+    }
+    p {
+      margin-bottom: 1em
+    }
+    .prose p {
+      margin-bottom: 2em
+    }
+  }
+  section {
+    page-break-after: always;
+    break-after: page
+  }
+  @page {
+    size: landscape;
+    margin: 2cm
+  }
+  @media print {
+    button {
+      display: none
+    }
+  }
+</style>

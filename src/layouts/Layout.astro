@@ -1,0 +1,87 @@
+---
+import Head from '@components/structure/Head.astro';
+import SplashScreen from '@components/SplashScreen.astro';
+import Header from '@components/structure/Header.astro';
+import Curtain from '@components/Curtain.astro';
+import Footer from '@components/structure/Footer.astro';
+
+export interface TransitionAnimation {
+  name: string;
+  delay?: number | string;
+  duration?: number | string;
+  easing?: string;
+  fillMode?: string;
+  direction?: string;
+}
+
+export interface TransitionAnimationPair {
+  old: TransitionAnimation | TransitionAnimation[];
+  new: TransitionAnimation | TransitionAnimation[];
+}
+
+export interface TransitionDirectionalAnimations {
+  forwards: TransitionAnimationPair;
+  backwards: TransitionAnimationPair;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: string;
+}
+
+const { title, description, lang = 'en' } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang} dir="auto" transition:name="root" transition:animate="none">
+  <Head title={title} description={description} />
+  <body>
+    <a href="#main" tabindex="0" class="skip-to-content">Skip to main content</a>
+
+    <SplashScreen />
+    <Header />
+    <Curtain />
+
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  a.skip-to-content {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    &:focus:not(:focus-visible) {
+      background-color: rgba(0, 0, 0, 0);
+      outline: none;
+      -webkit-box-decoration-break: slice;
+      box-decoration-break: slice;
+    }
+    &:focus {
+      top: .5em;
+      left: .25em;
+      overflow: visible;
+      clip: initial;
+      height: auto;
+      width: auto;
+      margin: 0;
+      box-shadow: 0 0 0 3px #0b0c0c, 0 0 .4em 0em #1f1f22;
+      padding: .5em .5em;
+    }
+    &:focus-visible {
+      background-color: #fff;
+      outline: 3px solid #0b0c0c;
+      outline-offset: 1px;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+  }
+</style>

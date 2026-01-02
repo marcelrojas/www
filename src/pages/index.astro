@@ -1,0 +1,176 @@
+---
+import Layout from '@layouts/Layout.astro';
+import PageHeader from '@components/structure/PageHeader.astro';
+import SectionNewsletter from '@components/structure/SectionNewsletter.astro';
+import Anchor from '@components/Anchor.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../types/consts';
+
+const {
+  title = 'A design partner focusing on crisp and catchy websites, interfaces, and experiences',
+} = Astro.props;
+---
+
+<Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <PageHeader title={title} />
+
+  <section class="aboutpage-section collection-module">
+    
+    <article class="module">
+      <audio class="hero-audio" loop="" src="/beats.mp3"></audio>
+      <h1 class="module-title">Curriculum</h1>
+      <p class="module-description">
+        <span>Building better business with an individual approach to each client with a wide range of services.</span>
+        <span>I'm available for freelance work and collaborations. Whether you have a project in mind or just want to say hello, feel free to reach out!</span>  
+      </p>
+      <Anchor wide="fit" class="product-badge hero-button audio_trigger" href="https://cal.com/marcelrojas">Book a discovery chat session</Anchor>
+    </article>
+
+    <article class="module">
+      <h1 class="module-title">Title</h1>
+      <p class="module-description">Description.</p>
+      <Anchor class="module-badge" href="/shop/">$299</Anchor>
+    </article>
+
+    <article class="module">
+
+      <div class="hard-skill-module">
+        <h2>I'm a designer</h2>
+        <p class="module-description">I'm a Human Interface Designer at<br /><a href="/">Pearl Automation</a>. See more on <a href="">Dribbble</a>.</p>
+      </div>
+
+      <div class="hard-skill-module">
+        <h2>I'm a developer</h2>
+        <p class="module-description">.</p>
+      </div>
+
+      <div class="hard-skill-module">
+        <h2>I'm a marketer</h2>
+        <p class="module-description">.</p>
+      </div>
+
+      <div class="hard-skill-module">
+        <h2>I'm an electronic engineer</h2>
+        <p class="module-description">.</p>
+      </div>
+
+      <div class="hard-skill-module">
+        <h2>I'm an administrator</h2>
+        <p class="module-description">.</p>
+      </div>
+
+      <div class="hard-skill-module">
+        <h2>I'm an author</h2>
+        <p class="module-description">I write fictional stories. Check out my<br /><a href="">author website</a> or <a href="">writings on Amazon</a>.</p>
+      </div>
+
+    </article>
+
+    <article class="module">
+      <h1 class="module-title">Curriculum</h1>
+      <p class="module-description">Location Venezuela<br />Languages Spanish, English<br />Skillset Development, Design and Strategy</p>
+      <Anchor role="button" wide="fit" class="module-badge" href="/curriculum">Open</Anchor>
+    </article>
+
+  </section>
+
+  <SectionNewsletter />
+</Layout>
+
+<style>
+  #module-hero {
+    & .content {
+      & .title {
+        padding-bottom: 22px;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 32px;
+        letter-spacing: var(--tracking-common)
+      }
+      & .button {
+        margin-top: 15px;
+        height: 40px;
+        background-color: var(--color-yellow-digital);
+        padding-inline: 1.25rem;
+        font-size: 16px
+      }
+    }
+  }
+
+  .hero-audio {
+    display: none
+  }
+
+  .collection-module {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    &:not(:last-child) > .module {
+      border-right: 1px solid var(--color-border-default)
+    }
+    &:is(:first-child, :last-child) > .module {
+      width: 100%
+    }
+    &:not(:first-child):not(:last-child) > .module {
+      width: 50%
+    }
+    & .module {
+      min-height: var(--min-height);
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: var(--padding-top);
+      text-align: center;
+      border-bottom: 1px solid var(--color-border-default);
+      & .module-title {
+        font-size: 32px;
+        font-weight: var(--font-weight-semibold);
+        line-height: 40px
+      }
+      & .module-description {
+        padding-bottom: 18px;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 24px;
+        color: var(--color-grey1)
+      }
+      & .module-badge {
+        margin-bottom: 1.75rem;
+        display: inline-flex;
+        height: 32px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 32px;
+        background-color: var(--color-yellow-digital);
+        padding-inline: 1.25rem; /* px-5 */
+        font-size: 14px
+      }
+    }
+  }
+
+  /* Mobile Screen */
+  @media screen and (width <= 768px) {
+    .module {
+      --padding-top: 46px;
+      --min-height: 376px;
+      & .module-badge {
+        margin-bottom: 2rem
+      }
+    }
+  }
+
+  /* Desktop Screen */
+  @media screen and (width <= 1024px) {
+    .module-title {
+      line-height: 50px
+    }
+    .module-description {
+      padding-bottom: 18px;
+      font-size: 16px
+    }
+    .module-badge {
+      margin-bottom: 46px;
+      height: 40px;
+      font-size: 16px
+    }
+  }
+</style>

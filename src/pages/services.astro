@@ -1,0 +1,21 @@
+---
+import Layout from '@layouts/Layout.astro';
+import PageHeader from '@components/structure/PageHeader.astro';
+import SectionServices from '@components/structure/SectionServices.astro';
+import SectionPricing from '@components/structure/SectionPricing.astro';
+import SectionContact from '@components/structure/SectionContact.astro';
+import SectionFAQ from '@components/structure/SectionFAQ.astro';
+
+const {
+  title = "Services",
+  description = "Explore the services I offer to help you succeed.",
+} = Astro.props;
+---
+
+<Layout title={title} description={description}>
+  <PageHeader title={title} />
+  <SectionServices />
+  <SectionPricing />
+  <SectionContact />
+  <SectionFAQ />
+</Layout>

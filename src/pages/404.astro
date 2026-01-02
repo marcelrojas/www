@@ -1,0 +1,15 @@
+---
+import ErrorPage from '@layouts/ErrorPage.astro';
+import Anchor from '@components/Anchor.astro';
+
+const {
+  title = '404 - Not Found',
+  description = 'An error occurred. The page you’re looking for can’t be found.',
+} = Astro.props;
+---
+
+<ErrorPage title={title} description={description}>
+  <h1 id="celestial-body">404</h1>
+  <p>Error handling the page you’re looking for can’t be found.</p>
+  <p class="action-message">Head <Anchor class="anchor-platter" href="/">home</Anchor> or enjoy the view?</p>
+</ErrorPage>

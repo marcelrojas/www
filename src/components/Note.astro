@@ -1,0 +1,22 @@
+---
+
+---
+
+<aside role="note">
+  <slot />
+</aside>
+
+<style is:global>
+  aside[role="note"] {
+    position: relative;
+    padding: var(--spacing-06);
+    background-color: oklch(0.95 0.1 240 / 0.3);
+    border-left: 4px solid oklch(0.19 0 0);
+    border-radius: 8px;
+    & p {
+      font-size: var(--font-size-16);
+      line-height: var(--font-leading-normal);
+      color: oklch(0.19 0 0)
+    }
+  }
+</style>

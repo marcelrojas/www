@@ -1,0 +1,108 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import FormattedDate from '@components/FormattedDate.astro';
+
+const posts = (await getCollection('showcase')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<section id="fam-gallery" role="feed" aria-busy="false" aria-label="Gallery of project showcases">
+  <div class="content stage" role="marquee">
+    {
+      posts.map(post => (
+        <article class="item" aria-hidden="true" tabindex="-1">
+          <div class="background">
+            <figure class="media album-art" aria-hidden="true">
+              {post.data.heroImage && (
+                <Image width={720} height={360} src={post.data.heroImage} loading="eager" decoding="async" fetchpriority="auto" alt={post.data.description} />
+              )}
+            </figure>
+          </div>
+          <a class="overlay" href={`/showcase/${post.id}`}>
+            <span class="headline">{post.data.title}</span>
+            <FormattedDate date={post.data.pubDate} />
+            <span class="cta">Open</span>
+          </a>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style is:global>
+  section#fam-gallery {
+    position: relative;
+    padding-top: var(--spacing-11);
+    padding-bottom: var(--spacing-11);
+    & > div.content.stage {
+      display: flex;
+      flex-direction: column;
+      max-width: 980px;
+      padding-inline-start: max(var(--spacing-sal) + 22px);
+      padding-inline-end: max(var(--spacing-sar) + 22px);
+      margin-left: auto;
+      margin-right: auto;
+      perspective: 1200px; /* Critical for 3D depth */
+      overflow: hidden;
+      & > article.item {
+        display: flex;
+        position: relative;
+        aspect-ratio: 2/1;
+        overflow: hidden;
+        border-radius: 32px;
+        border: 2px solid var(--background-primary);
+        background-color: var(--background-primary);
+        will-change: opacity, transform;
+        user-select: none;
+        & > div.background {
+          position: absolute;
+          inset: 0;
+          z-index: 0;
+          & > figure.media.album-art {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            & > img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              object-position: center
+            }
+          }
+        }
+        & > a.overlay {
+          position: absolute;
+          left: var(--spacing-03);
+          right: var(--spacing-03);
+          bottom: var(--spacing-03);
+          z-index: 1;
+          padding: var(--spacing-04);
+          border-radius: 28px;
+          display: flex;
+          flex-direction: column;
+          background-color: oklch(0 0 0 / 0.5);
+          opacity: 0;
+          backdrop-filter: blur(0px);
+          transition: opacity .3s ease-in-out;
+          @media (hover: hover) {
+            article.item:hover & {
+              opacity: 1;
+              backdrop-filter: blur(4px)
+            }
+          }
+          & > span.headline {
+            font-size: var(--font-size-20);
+            font-weight: var(--font-weight-bold);
+            line-height: 120%;
+            color: var(--label-primary)
+          }
+          & > span.cta {
+            
+          }
+        }
+      }
+    }
+  }
+</style>

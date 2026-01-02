@@ -1,0 +1,222 @@
+---
+/**
+ * Props para el componente Button.
+ * Este componente es polimórfico y puede renderizarse como <button> o <input>.
+ */
+interface Props {
+  /** El elemento HTML a renderizar. */
+  as?: 'button'| 'input';
+  /** El tipo de botón (para `<button>` o `<input>`). */
+  type?: 'button' | 'submit' | 'reset';
+  /** La variante visual del botón. */
+  variant?: 'bordered' | 'tonal' | 'borderless';
+  /** El color del botón. */
+  action?: 'default' | 'neutral' | 'danger';
+  /** El tamaño del botón. */
+  size?: 'small' | 'medium' | 'large' | 'full';
+  /** El ancho del botón.*/
+  wide?: 'fit' | 'fill';
+  /** Si el botón debe estar deshabilitado. */
+  disabled?: boolean;
+  /** El texto principal del botón. Para `<input>`, este será el atributo `value`. */
+  text?: string;
+  /** Clases CSS adicionales para personalizar. */
+  class?: string;
+  /** Atributos adicionales como `onclick`, `id`, `data-*`, etc. */
+  [key: string]: any;
+}
+
+// 1. Desestructurar props con valores por defecto.
+const {
+  as = 'button',
+  type = 'button',
+  variant = 'tonal',
+  action = 'default',
+  size = 'medium',
+  wide = 'fit',
+  disabled = false,
+  text,
+  class: userClass,
+  ...rest
+} = Astro.props;
+
+// 2. Lógica para determinar el tag y los atributos.
+const Tag = as === 'input' ? 'input' : 'button';
+
+const attrs: Record<string, any> = {
+  ...rest,
+  // Atributos de accesibilidad y funcionales.
+  type: type,
+  value: as === 'input' ? text : undefined,
+  disabled: disabled,
+  'aria-disabled': disabled ? 'true' : undefined,
+  tabindex: disabled ? -1 : undefined,
+};
+
+// 3. Comprobar si se están usando los slots para los iconos.
+const hasIcon = Astro.slots.has('iconLeft') || Astro.slots.has('iconRight') || Astro.slots.has('symbol');
+
+// 4. Construir la lista de clases dinámicamente.
+const classList = [
+  'button',
+  `variant-${variant}`,
+  `action-${action}`,
+  `size-${size}`,
+  `wide-${wide}`,
+  userClass,
+  hasIcon && 'has-icon',
+].filter(Boolean).join(' ');
+---
+
+<Tag class={classList} {...attrs}>
+  <slot name="iconLeft" />
+  {Tag !== 'input' && (
+    <slot name="text">{text}</slot>
+  )}
+  <slot name="iconRight" />
+</Tag>
+
+<style is:global>
+  :is(button, input:is([type="button"], [type="submit"], [type="reset"])).button {
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 32px;
+    font-family: var(--font-family-sans);
+    font-weight: var(--font-weight-semibold);
+    text-transform: none;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    touch-action: manipulation;
+    transition: background-color 200ms ease-in-out, color 200ms ease-in-out, opacity 200ms ease-in-out, filter 200ms ease-in-out;
+    will-change: background-color, color, opacity, filter;
+
+    &:is(:enabled, [aria-disabled="false"]) { cursor: pointer; pointer-events: auto }
+    &:is(:disabled, [aria-disabled="true"]) { cursor: not-allowed; pointer-events: none; filter: grayscale(70%) }
+
+    &:active {
+      mask-type: alpha;
+      mask-composite: intersect;
+      mask-image: radial-gradient(#fff 50%, #0000 70%)
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-focus);
+      outline-offset: 3px
+    }
+
+    &:has(.text:not(:empty)) + &:has(.symbol:not(:empty)) {
+      
+    }
+
+    & :is(.symbol, .text):empty {
+      display: none
+    }
+
+    &.size-small { gap: 3px; padding-inline: 10px; padding-block: 4px; font-size: var(--font-size-14); line-height: 18px; letter-spacing: -0.08px; &.wide-full { width: 100% } }
+    &.size-medium { gap: 4px; padding-inline: 14px; padding-block: 7px; font-size: var(--font-size-15); line-height: 20px; letter-spacing: -0.23px; &.wide-full { width: 100% } }
+    &.size-large { gap: 4px; padding-inline: 20px; padding-block: 14px; font-size: var(--font-size-17); line-height: 22px; letter-spacing: -0.43px; &.wide-full { width: 100% } }
+
+    &.variant-bordered {
+      &.action-default {
+        background-color: var(--color-primary);
+        color: var(--color-onprimary);
+        fill: var(--color-onprimary);
+        @media (hover: hover) {
+          &:hover:not(:disabled, [aria-disabled="true"]) {
+            background-color: var(--color-primary-hover)
+          }
+        }
+      }
+      &.action-neutral {
+        background-color: var(--color-white);
+        color: var(--color-black);
+        fill: var(--color-black);
+        @media (hover: hover) {
+          &:hover:not(:disabled, [aria-disabled="true"]) {
+            background-color: var(--color-primary-hover)
+          }
+        }
+      }
+      &.action-danger {
+        background-color: var(--color-danger);
+        color: var(--color-white);
+        fill: var(--color-white);
+        @media (hover: hover) {
+          &:hover:not(:disabled, [aria-disabled="true"]) {
+            background-color: var(--color-primary-hover)
+          }
+        }
+      }
+    }
+    &.variant-tonal {
+      backdrop-filter: blur(40px);
+      &.action-default {
+        background-color: var(--color-fill-tertiary);
+        color: var(--color-internet-blue);
+        fill: var(--color-internet-blue);
+        @media (hover: hover) {
+          &:hover:not(:disabled, [aria-disabled="true"]) {
+            background-color: var(--color-primary-hover)
+          }
+        }
+      }
+      &.action-neutral {
+        background-color: var(--color-fill-tertiary);
+        color: var(--color-label-primary);
+        fill: var(--color-label-primary);
+        @media (hover: hover) {
+          &:hover:not(:disabled, [aria-disabled="true"]) {
+            background-color: var(--color-primary-hover)
+          }
+        }
+      }
+      &.action-danger {
+        background-color: var(--color-fill-danger);
+        color: var(--color-label-danger);
+        fill: var(--color-label-danger);
+        @media (hover: hover) {
+          &:hover:not(:disabled, [aria-disabled="true"]) {
+            background-color: var(--color-primary-hover)
+          }
+        }
+      }
+    }
+    &.variant-borderless {
+      background-color: transparent;
+      &.action-default {
+        color: var(--color-primary);
+        fill: var(--color-primary);
+        @media (hover: hover) {
+          &:hover:not(:disabled, [aria-disabled="true"]) {
+            background-color: var(--color-primary-hover)
+          }
+        }
+      }
+      &.action-neutral {
+        color: var(--color-primary);
+        fill: var(--color-primary);
+        @media (hover: hover) {
+          &:hover:not(:disabled, [aria-disabled="true"]) {
+            background-color: var(--color-primary-hover)
+          }
+        }
+      }
+      &.action-danger {
+        color: var(--color-danger);
+        fill: var(--color-danger);
+        @media (hover: hover) {
+          &:hover:not(:disabled, [aria-disabled="true"]) {
+            background-color: var(--color-primary-hover)
+          }
+        }
+      }
+    }
+  }
+</style>

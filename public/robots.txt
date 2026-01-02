@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Bloqueo de páginas de error para evitar que se indexen como contenido
+Disallow: /404
+Disallow: /es/404
+
+# Solo se declara el Sitemap del dominio canónico (definido en astro.config)
+Sitemap: https://marcelrojas.com/sitemap-index.xml

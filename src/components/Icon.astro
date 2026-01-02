@@ -1,0 +1,42 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'span'> {
+  /** El nombre del archivo en src/assets/icons/ (sin extensión) */
+  name: string;
+}
+
+const { name, class: className, ...props } = Astro.props;
+
+// Importa todos los SVGs de la carpeta como strings (query: '?raw')
+const iconFiles = import.meta.glob('/src/assets/icons/*.svg', {
+  eager: true,
+  query: '?raw',
+  import: 'default',
+});
+
+// Rruta completa para buscar en el objeto
+const filepath = `/src/assets/icons/${name}.svg`;
+const svgContent = iconFiles[filepath];
+
+// Manejo de error si el icono no existe (útil para depuración)
+if (!svgContent) {
+  console.warn(`Icono "${name}" no encontrado en la ruta: ${filepath}`);
+}
+---
+
+<span class="icon-container" aria-hidden="true" set:html={svgContent} {...props} />
+
+<style is:global>
+  @layer components {
+    span.icon-container {
+      display: contents;
+      & > svg {
+        display: inline-block;
+        vertical-align: middle;
+        object-fit: cover;
+        fill: currentColor
+      }
+    }
+  }
+</style>

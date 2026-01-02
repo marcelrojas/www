@@ -1,0 +1,53 @@
+---
+const anchors = [
+  { href: "/", text: "About" },
+  { href: "/services", text: "Services" },
+  { href: "/showcase", text: "Showcase" },
+  { href: "/blog", text: "Blog" },
+  { href: "/resources", text: "Resources" },
+];
+---
+
+<nav id="haptic-nav" class="navbar" aria-label="Main">
+  <ul>
+    {anchors.map(link => (
+      <li>
+        <a href={link.href}>{link.text}</a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style is:global>
+  @layer components {
+    nav.navbar {
+      position: relative;
+      height: min-content;
+      will-change: opacity, visibility, allow-discrete;
+      transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, allow-discrete 0.3s ease-in-out;
+      & > ul {
+        position: relative;
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        gap: 16px;
+        & > li {
+          position: relative;
+          width: fit-content;
+          & > a {
+            font-family: var(--font-family-sans);
+            font-size: var(--font-size-14);
+            font-weight: var(--font-weight-medium);
+            color: var(--label-primary);
+            transition: color var(--duration-macro-x2) ease-in-out;
+            @media (hover: hover) {
+              &:hover {
+                color: var(--accent-primary)
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+</style>

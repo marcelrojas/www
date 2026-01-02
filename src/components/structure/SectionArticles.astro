@@ -1,0 +1,113 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import FormattedDate from '@components/FormattedDate.astro';
+import Icon from '@components/Icon.astro';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<section id="section-articles" role="feed" aria-busy="false" aria-label="List of blog articles">
+  <div class="content">
+    {
+      posts.map(post => (
+        <article class="tile">
+          <figure class="media" aria-hidden="true">
+            {post.data.heroImage && (
+              <Image width={720} height={360} src={post.data.heroImage} loading="eager" decoding="async" fetchpriority="auto" alt={post.data.description} />
+            )}
+          </figure>
+          <section class="copy">
+            <FormattedDate date={post.data.pubDate} />
+            <h2 class="headline">
+              <a href={`/blog/${post.id}`}>{post.data.title}</a>
+            </h2>
+            <p class="description">{post.data.description}</p>
+            <Icon name="arrow-right" />
+          </section>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style is:global>
+  section#section-articles {
+    position: relative;
+    padding-top: var(--spacing-11);
+    padding-bottom: var(--spacing-11);
+    & > div.content {
+      display: grid;
+      max-width: 980px;
+      padding-inline-start: max(var(--spacing-sal) + 22px);
+      padding-inline-end: max(var(--spacing-sar) + 22px);
+      margin-left: auto;
+      margin-right: auto;
+      @media screen and (max-width: 672px) {
+        grid-template-columns: 5fr 5fr;
+        grid-template-areas: "a a" "b b" "c c" "d d" "e e";
+        gap: 24px
+      }
+      @media screen and (min-width: 672px) {
+        grid-template-columns: 5fr 5fr;
+        grid-template-areas: "a a" "b c" "d e";
+        gap: 36px
+      }
+      & > article.tile {
+        display: flex;
+        position: relative;
+        aspect-ratio: 2/1;
+        overflow: hidden;
+        background-color: var(--color-surface-primary);
+        border-radius: 30px;
+        user-select: none;
+        & > figure.media {
+          position: relative;
+          z-index: 0;
+          width: 100%;
+          overflow: hidden;
+          filter: grayscale(1);
+          will-change: filter;
+          transition: filter 800ms ease;
+          @media (hover: hover) {
+            .tile:hover & {
+              filter: grayscale(0)
+            }
+          }
+        }
+        & > section.copy {
+          position: absolute;
+          bottom: 0;
+          z-index: 0;
+          width: 100%;
+          padding: 0 36px 36px;
+          & h2.headline {
+            max-width: 300px;
+            line-clamp: 3;
+            box-orient: vertical;
+            color: var(--label-primary)
+          }
+          & p.description {
+            margin-top: var(--spacing-02);
+            margin-bottom: var(--spacing-04);
+            max-width: 300px;
+            font-family: var(--font-family-sans);
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--font-size-20);
+            line-height: var(--line-height-24);
+            line-clamp: 3;
+            box-orient: vertical;
+            color: var(--label-secondary)
+          }
+        }
+      }
+      & > :first-child { grid-area: a }
+      & > :nth-child(2) { grid-area: b }
+      & > :nth-child(3) { grid-area: c }
+      & > :nth-child(4) { grid-area: d }
+      & > :nth-child(5) { grid-area: e }
+    }
+  }
+</style>

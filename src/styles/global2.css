@@ -1,0 +1,529 @@
+main {
+  
+}
+article {
+  
+}
+header {
+  
+}
+hgroup {
+  
+}
+nav {
+  
+}
+br {
+  
+}
+hr {
+  
+}
+:is(h2,h3,h4,h5,h6):has(+*) {
+  margin-bottom: 14px
+}
+:is(h2,h3,h4,h5):has(+h3,+h4,+h5,+h6) {
+  margin-bottom: 8px
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-feature-settings: 'ss07','ss08';
+  color: hsl(0,0%,12%)
+}
+p {
+  text-indent: unset;
+  color: hsl(0,0%,12%)
+}
+span {
+  
+}
+time {
+  color: hsl(0,0%,44%)
+}
+ul {
+  list-style: none
+}
+article ul::marker {
+  content: '\203B'
+}
+ul {
+  list-style-type: disc;
+  list-style-position: outside
+}
+ul ul {
+  list-style-type: circle
+}
+ol {
+  list-style-type: decimal;
+  list-style-position: outside
+}
+ol ol {
+  list-style-type: upper-latin
+}
+li {
+  list-style: none
+}
+dl {
+  
+}
+dt {
+  
+}
+dd {
+  
+}
+menu {
+  
+}
+blockquote {
+  font: 600 16px/1.25 'Inter';
+  hanging-punctuation: first
+}
+cite {
+  
+}
+blockquote cite::before {
+  content: '\2014\2002'
+}
+blockquote,
+q {
+  
+}
+:is(blockquote,q)::before {
+  content: open-quote
+}
+:is(blockquote,q)::after {
+  content: close-quote
+}
+:lang("nl","de") {
+  color: green
+}
+mark {
+  background-color: hsl(1,72%,43%);
+  color: hsl(0,0%,100%)
+}
+mark::before,
+mark::after {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(100%);
+  clip: rect(1px,1px,1px,1px);
+  white-space: nowrap
+}
+mark::before {
+  content: " [highlight start] "
+}
+mark::after {
+  content: " [highlight end] "
+}
+
+strong,
+b {
+  font-weight: 700;
+  color: hsl(0,0%,13%)
+}
+i,
+em,
+cite,
+dfn {
+  color: var(--color-label)
+}
+del,
+s {
+  text-decoration: line-through solid;
+  text-decoration-thickness: .1em
+}
+:is(del,s)::before,
+:is(del,s)::after {
+  clip-path: inset(100%);
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px
+}
+:is(del,s)::before {
+  content: ' [start of stricken text] '
+}
+:is(del,s)::after {
+  content: ' [end of stricken text] '
+}
+ins {
+  text-decoration: unset
+}
+small {
+  
+}
+sub,
+sup {
+  font-size: 75%;
+  vertical-align: baseline
+}
+sub {
+  bottom: -.25em
+}
+sup {
+  top: -.5em
+}
+data {
+  
+}
+bdi {
+  unicode-bidi: isolate
+}
+bdo {
+  unicode-bidi: bidi-override
+}
+rp {
+  
+}
+rt {
+  
+}
+ruby {
+  /*text-transform:full-width;
+  text-transform:full-size-kana;*/
+}
+u {
+  letter-spacing: inherit;
+  text-decoration: wavy underline currentcolor .1em;
+  text-decoration-skip: none;
+  text-decoration-skip-ink: all
+}
+wbr {
+  
+}
+table {
+  width: 100%;
+  text-indent: 0;
+  word-wrap: normal;
+  table-layout: fixed;
+  border-collapse: collapse;
+  empty-cells: show
+}
+caption {
+  padding: ;
+  caption-side: top;
+  text-align: start
+}
+table thead {
+  
+}
+table thead tr {
+  border-bottom: solid hsl(0,0%,0%)
+}
+table thead tr th {
+  padding: 10px;
+  font: var(--font-);
+  text-align: left;
+  vertical-align: bottom
+}
+table tbody {
+  
+}
+table tbody tr {
+  border-top: solid hsl(0,0%,30%)
+}
+table tbody tr td {
+  padding: 10px;
+  font: var(--font-);
+  text-align: left;
+  vertical-align: top
+}
+tfoot {
+  font-weight: 600
+}
+th,
+tr,
+td {
+  border-width: 1px
+}
+th[scope="row"] { /* header for the row it is in */
+  
+}
+th[scope="col"] { /* header for the column it is in */
+  
+}
+th[scope="rowgroup"] { /* header that sit over the top of multiple rows */
+  
+}
+th[scope="colgroup"] { /* header that sit over the top of multiple columns */
+  
+}
+abbr[title] {
+  text-decoration: underline dashed initial;
+  text-decoration-thickness: .1em;
+  text-decoration-skip-ink: auto;
+  text-underline-offset: 1px;
+  cursor: help
+}
+details {
+  
+}
+details details {
+  margin-inline: 10px
+}
+summary {
+  cursor: pointer;
+  user-select: none
+}
+details summary::marker {
+  content: '▼'
+}
+details[open] summary::marker {
+  content: '▲'
+}
+code,
+kbd,
+pre,
+samp{
+  font-feature-settings: 'tnum','ss02'
+}
+code {
+  width: fit-content
+}
+:is(h1,h2,h3,h4,h5,h6,p,li) code {
+  
+}
+pre code {
+  padding: 8px 14px;
+  display: block;
+  overflow-x: scroll
+}
+pre {
+  clear: both;
+  tab-size: 4;
+  hyphens: none;
+  speak: literal-punctuation
+}
+pre:has(code) {
+  background-color: hsl(0,0%,96%);
+  border: 1px solid hsl(220,13%,91%)
+}
+kbd {
+  padding: 1px 4px;
+  border: 1px solid hsl(0,0%,86%);
+  border-radius: 5px;
+  background-color: hsl(0,0%,100%);
+  color: hsl(0,0%,45%);
+  box-shadow: 0 2px 0 0 hsl(0,0%,86%)
+}
+samp > kbd {
+  font-weight: 600
+}
+var {
+  font-feature-settings: 'tnum','ss02'
+}
+dialog {
+  touch-action: none;
+  user-select: none
+}
+figure {
+  
+}
+figcaption {
+  font: var(--font-caption-emphasized)
+}
+area {
+  
+}
+map {
+  
+}
+track {
+  
+}
+svg {
+  
+}
+img {
+  display: block;
+  content-visibility: auto;
+  image-rendering: auto
+}
+source {
+  
+}
+picture {
+  
+}
+video {
+  width: 100%
+}
+audio {
+  
+}
+object {
+  
+}
+iframe,portal {
+  border: none
+}
+form {
+  
+}
+fieldset {
+  
+}
+label {
+  
+}
+input {
+  appearance: none
+}
+input:indeterminate {
+  background: lime
+}
+textarea,
+input:is([type=email],[type=number],[type=password],[type=search],[type=tel],[type=text],[type=url]) {
+  color: hsl(0,0%,73%);
+  caret-color: AccentColor;
+  resize: none
+}
+textarea,
+input:is([type=email],[type=number],[type=password],[type=search],[type=tel],[type=text],[type=url]):enabled {
+  
+}
+textarea,
+input:is([type=email],[type=number],[type=password],[type=search],[type=tel],[type=text],[type=url]):disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: scale(-.08);
+  filter: grayscale(80%);
+  opacity: .8
+}
+textarea,
+input:is([type=email],[type=number],[type=password],[type=search],[type=tel],[type=text],[type=url]):required {
+  
+}
+textarea,
+input:is([type=email],[type=number],[type=password],[type=search],[type=tel],[type=text],[type=url]):optional {
+  content:'Optional'
+}
+textarea,
+input:is([type=email],[type=number],[type=password],[type=search],[type=tel],[type=text],[type=url]):is(:valid,:user-invalid) {
+  
+}
+textarea,
+input:is([type=email],[type=number],[type=password],[type=search],[type=tel],[type=text],[type=url]):invalid {
+  
+}
+textarea,
+input:is([type=email],[type=number],[type=password],[type=search],[type=tel],[type=text],[type=url]):active {
+  
+}
+input:is([type=email],[type=number],[type=password],[type=search],[type=tel],[type=text],[type=url]):focus {
+  border: 1px solid hsl(160,39%,64%);
+  color: hsl(0,0%,37%);
+  outline: 
+}
+textarea,
+input:is([type=email],[type=number],[type=password],[type=search],[type=tel],[type=text],[type=url]):autofill {
+  
+}
+input:is([type=datetime-local],[type=date],[type=week],[type=month],[type=time]) {
+  
+}
+input[type=number] {
+  
+}
+input[type=color] {
+  
+}
+input:in-range {
+  
+}
+input:out-of-range {
+  
+}
+input[type="file"]::file-selector-button {
+  padding: .2em .4em;
+  border: 2px solid #6c5ce7;
+  border-radius: 12px;
+  background-color: #a29bfe;
+  transition: 1s
+}
+textarea,
+input:is([type=email],[type=number],[type=password],[type=search],[type=tel],[type=text],[type=url]):read-only {
+  
+}
+textarea,
+input:is([type=email],[type=number],[type=password],[type=search],[type=tel],[type=text],[type=url]):read-write {
+  
+}
+input:default {
+  
+}
+input:indeterminate {
+  
+}
+textarea,
+input:is([type=email],[type=number],[type=password],[type=search],[type=tel],[type=text],[type=url]):placeholder-shown{
+  
+}
+input:empty {
+  
+}
+input:checked {
+  
+}
+:is([type=radio],[type=checkbox]) input[checked] {
+  
+}
+:is([type=radio],[type=checkbox]) input[checked]:default {
+  
+}
+
+legend {
+  
+}
+
+button {
+  cursor: pointer
+}
+button:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  filter: grayscale(70%);
+  opacity: .92
+}
+button:enabled {
+  
+}
+
+aside {
+  
+}
+aside[role=marquee] {
+  width: 100%;
+  display: flex;
+  column-gap: 18px;
+  overflow: hidden
+}
+aside[role=marquee] span {
+  width: fit-content;
+  will-change: transform
+}
+
+/* reel */
+.reel{
+  display:grid;
+  gap:1rem;
+  grid-auto-flow:column;
+  grid-auto-columns:50%;
+  overflow-x:scroll;
+  scroll-snap-type:x mandatory;
+  scroll-padding:1rem
+}
+.reel>*{
+  scroll-snap-align:start
+}
+.is-active{
+  
+}

@@ -1,0 +1,22 @@
+---
+import Layout from '@layouts/Layout.astro';
+import PageHeader from '@components/structure/PageHeader.astro';
+import FAMGallery from '@components/structure/FAMGallery.astro';
+
+const {
+  title = 'Showcase',
+  description = 'Explore my showcase of projects and achievements.',
+} = Astro.props;
+---
+
+<Layout title={title} description={description}>
+  <PageHeader title={title} />
+  <FAMGallery />
+</Layout>
+
+<style>
+  .fam-gallery {
+    background-color: oklch(67.074% 0.19862 337.481);
+    background-color: oklch(30.604% 0.11201 257.745)
+  }
+</style>

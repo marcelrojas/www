@@ -1,0 +1,25 @@
+{
+  "$schema":"https://json.schemastore.org/web-manifest-combined.json",
+  "name":"Marcel Rojas: Designer Engineer, Web Developer, and Marketer",
+  "short_name":"Marcel Rojas",
+  "icons":[
+    {"src":"/favicon.svg","type":"image/svg+xml","sizes":"any"},
+    {"src":"/icon-192.png","type":"image/png","sizes":"192x192"}
+  ],
+  "id":"/?source=pwa",
+  "start_url":"/",
+  "background_color":"black",
+  "scope":"/",
+  "display":"minimal-ui",
+  "theme_color":"black",
+  "shortcuts":[
+    {"name":"About","short_name":"About","url":"/"},
+    {"name":"Services","short_name":"Services","url":"/services"},
+    {"name":"Work","short_name":"Showcase","url":"/showcase"},
+    {"name":"Blog","short_name":"Blog","url":"/blog"},
+    {"name":"Shop","short_name":"Shop","url":"/shop"},
+    {"name":"About this site","short_name":"Colophon","url":"/colophon"},
+    {"name":"Impressum","short_name":"Impressum","url":"/impressum"},
+    {"name":"Privacy Policy","short_name":"Privacy Policy","url":"/privacy-policy"}
+  ]
+}

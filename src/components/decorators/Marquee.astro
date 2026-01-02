@@ -1,0 +1,73 @@
+---
+export interface Props {
+  phrases: string[];
+}
+
+const { phrases } = Astro.props;
+---
+
+<aside role="marquee">
+  <div class="content-wrapper">
+    <div class="phrases-container">
+      {phrases.map((phrase) => (
+        <span>{phrase}</span>
+      ))}
+    </div>
+    <div class="phrases-container">
+      {phrases.map((phrase) => (
+        <span>{phrase}</span>
+      ))}
+    </div>
+  </div>
+</aside>
+
+<style>
+  aside[role=marquee] {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    column-gap: 18px;
+    overflow-x: hidden;
+    padding-block: 0.625rem;
+    mask: radial-gradient(50% 50% at 50% 50%, #000000 0%, rgba(0, 0, 0, .57658) 80.78723254504504%, rgba(0, 0, 0, 0) 100%) add;
+    transform: none;
+    & .content-wrapper {
+      display: flex;
+      flex-direction: row;
+      gap: 42px;
+      mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 12.5%, rgb(0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 100%);
+    }
+    & .phrases-container {
+      flex: 0 0 auto;
+      z-index: 1;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 42px;
+      animation: scroll 14.8734375s linear 0s infinite;
+      animation-play-state: running;
+      animation-delay: 0s;
+      animation-direction: normal;
+      & span {
+        width: fit-content;
+        will-change: transform;
+        font-family: var(--font-family-mono);
+        font-size: var(--font-size-14);
+        font-weight: var(--font-weight-regular);
+        letter-spacing: 1.4px;
+        text-transform: uppercase;
+        white-space: nowrap;
+        color: var(--color-text-primary);
+      }
+    }
+  }
+  @keyframes scroll {
+    from {
+      transform: translateX(0%)
+    }
+    to {
+      transform: translateX(-50%)
+    }
+  }
+</style>

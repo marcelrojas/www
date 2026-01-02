@@ -1,0 +1,59 @@
+---
+import { SITE_TITLE } from '@types/consts';
+
+// Datos base
+const siteUrl = "https://marcelrojas.com";
+const personName = "Marcel Rojas";
+const twitterHandle = "whyismarcel"; // Tomado de tu Head.astro
+
+// Definición del Schema
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${siteUrl}/#identity`,
+      "name": personName,
+      "url": siteUrl,
+      "jobTitle": "Full Stack Web Developer & Designer",
+      "description": "Desarrollador web Full Stack y diseñador orientado a la arquitectura JAMstack. Aspirante a ingeniero de software.",
+      "image": {
+        "@type": "ImageObject",
+        "url": `${siteUrl}/images/profile.jpg`, // Asegrúrate de tener una foto tuya aquí o cambia la ruta
+        "width": 1080,
+        "height": 1080
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Barcelona",
+        "addressRegion": "Anzoátegui",
+        "addressCountry": "VE"
+      },
+      "sameAs": [
+        `https://x.com/${twitterHandle}`,
+        "https://github.com/marcelrojas", // Asumo este user por tus keywords
+        "https://www.linkedin.com/in/marcelrojas/",
+        "https://contra.com/marcelrojas",
+        "https://www.behance.net/marcelrojas",
+        "https://dribbble.com/marcelrojas"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      "url": siteUrl,
+      "name": SITE_TITLE,
+      "description": "Portafolio y sitio personal de Marcel Rojas",
+      "publisher": {
+        "@id": `${siteUrl}/#identity`
+      },
+      "inLanguage": "es-VE",
+      "copyrightHolder": {
+        "@id": `${siteUrl}/#identity`
+      }
+    }
+  ]
+});
+---
+
+<script type="application/ld+json" set:html={schema} />

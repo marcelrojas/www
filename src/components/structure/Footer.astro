@@ -1,0 +1,181 @@
+---
+import Grain from '@components/decorators/Grain.astro';
+import Anchor from '@components/Anchor.astro';
+import Icon from '@components/Icon.astro';
+import { COPYRIGHT_NAME, COPYRIGHT_YEAR, SOCIAL_X, SOCIAL_INSTAGRAM, SOCIAL_PINTEREST, SOCIAL_YOUTUBE, SOCIAL_GITHUB } from '@types/consts';
+
+const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
+/* Y29udGFjdEBtYXJjZWxyb2phcy5jb20= */
+---
+
+<footer id="footer" role="contentinfo" aria-label="Global footer" tabindex="-1">
+  <Grain />
+  <div class="content">
+    <aside aria-label="Contact me">
+      <div id="clipboard-cliper" class="copy-email" data-encemail={encEmail}>
+        <span class="label">Tab to copy my e-mail</span>
+      </div>
+    </aside>
+    <p>Thanks for stopping by! If you have any questions, want to collaborate, or just want to say hi, feel free to reach out through any of the social platforms below. Looking forward to connecting with you!</p>
+    <address class="social-handles">
+      <ul>
+        <li>
+          <Anchor variant="platted" label="icon-only" size="medium" wide="fill" href={SOCIAL_X} target="_blank" rel="noopener noreferrer" aria-label={`Visit my X profile`} class="social-link">
+            <Icon name="x" />
+          </Anchor>
+        </li>
+        <li>
+          <Anchor variant="platted" label="icon-only" size="medium" wide="fill" href={SOCIAL_INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label={`Visit my Instagram profile`} class="social-link">
+            <Icon name="instagram" />
+          </Anchor>
+        </li>
+        <li>
+          <Anchor variant="platted" label="icon-only" size="medium" wide="fill" href={SOCIAL_YOUTUBE} target="_blank" rel="noopener noreferrer" aria-label={`Visit my YouTube profile`} class="social-link">
+            <Icon name="youtube" />
+          </Anchor>
+        </li>
+        <li>
+          <Anchor variant="platted" label="icon-only" size="medium" wide="fill" href={SOCIAL_GITHUB} target="_blank" rel="noopener noreferrer" aria-label={`Visit my GitHub profile`} class="social-link">
+            <Icon name="github" />
+          </Anchor>
+        </li>
+        <li>
+          <Anchor variant="platted" label="icon-only" size="medium" wide="fill" href={SOCIAL_PINTEREST} target="_blank" rel="noopener noreferrer" aria-label={`Visit my Pinterest profile`} class="social-link">
+            <Icon name="pinterest" />
+          </Anchor>
+        </li>
+      </ul>
+    </address>
+    <div class="legal">
+      <nav aria-label="Legal">
+        <ul>
+          <li>
+            <a href="/colophon">Colophon</a>
+          </li>
+          <li>
+            <a href="/impressum">Impressum</a>
+          </li>
+          <li>
+            <a href="/privacy-policy">Privacy Policy</a>
+          </li>
+        </ul>
+      </nav>
+      <small class="copyright">&copy; {COPYRIGHT_YEAR} {COPYRIGHT_NAME}. All rights reserved.</small>
+    </div>
+  </div>
+</footer>
+
+<style is:global>
+  footer#footer {
+    position: relative;
+    z-index: 0;
+    contain: layout paint;
+    content-visibility: auto;
+    will-change: visibility, opacity;
+    transition: visibility 300ms ease-in-out, opacity 300ms ease-in-out;
+    & > div.content {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      height: 100%;
+      padding-inline-start: max(var(--spacing-sal) + 22px);
+      padding-inline-end: max(var(--spacing-sar) + 22px);
+      padding-block-start: max(var(--spacing-sat) + var(--spacing-07));
+      padding-block-end: max(var(--spacing-sab) + var(--spacing-07));
+      @media screen and (width <= 480px) {
+        
+      }
+      @media screen and (width <= 734px) {
+        
+      }
+      @media screen and (width <= 1068px) {
+        
+      }
+      & aside {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 8px;
+        margin-block: auto;
+        border-radius: 30px;
+        background-color: var(--accent);
+        & div.copy-email {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 8px;
+          gap: 16px;
+          cursor: pointer;
+          & span.label {
+            font-family: var(--font-family-sans);
+            font-size: var(--font-size-14);
+            color: var(--color-label-tertiary)
+          }
+        }
+      }
+      & p {
+        position: relative;
+        max-width: 28rem;
+        margin-inline: auto;
+        font-family: var(--font-family-sans);
+        font-size: var(--font-size-14);
+        text-align: center;
+        &:first-of-type {
+          margin-block-start: 0
+        }
+        &:last-of-type {
+          margin-block-end: 32px
+        }
+        & + p {
+          margin-block-start: 8px
+        }
+      }
+      & address.social-handles {
+        position: relative;
+        max-width: 448px;
+        display: flex;
+        align-self: center;
+        & ul {
+          display: flex;
+          flex-direction: row;
+          gap: 16px
+        }
+      }
+      & > div.legal {
+        position: relative;
+        display: flex;
+        @media screen and (width <= 734px) {
+          gap: var(--spacing-04);
+          flex-direction: column;
+          align-items: end
+        }
+        @media screen and (width >= 734px) {
+          flex-direction: row;
+          align-items: baseline;
+          justify-content: space-between
+        }
+        & > nav {
+          position: relative;
+          display: block;
+          & > ul {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            gap: var(--spacing-04)
+          }
+        }
+      }
+      & > small.copyright {
+        position: relative;
+        display: block;
+        font-family: var(--font-family-serif);
+        font-size: var(--font-size-14);
+        text-transform: uppercase
+      }
+    }
+  }
+</style>
+
+<script src="@scripts/encEmail.js"></script>

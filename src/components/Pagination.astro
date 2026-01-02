@@ -1,0 +1,29 @@
+---
+import Anchor from '@components/Anchor.astro';
+
+interface Props {
+  nextPage?: string;
+  disabled?: boolean;
+}
+
+const { nextPage, disabled } = Astro.props;
+---
+
+<div class="pagination catalog-counter">
+  <span class="catalog-list_total-count">Showing {currentNumber} of {totalNumber} results</span>
+  <progress max={totalNumber} class="list_progress" value={currentNumber}></progress>
+  {nextPage && (
+    <Anchor class="pagination_link pagination_link--next" href={nextPage} aria-label="Show more articles" disabled={disabled}>
+      Show more &darr;
+    </Anchor>
+  )}
+</div>
+<style>
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+</style>

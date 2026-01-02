@@ -1,0 +1,97 @@
+---
+import Anchor from '@components/Anchor.astro';
+---
+
+<section id="section-pricing">
+  <h2 class="headline">Packages & Pricing</h2>
+
+  <div class="cards">
+
+    <article class="card">
+      <h1 class="headline">You next?</h1>
+      <Anchor wide="fill" href="https://lemonsqueezy.com/" rel="noopener" style="background-color: oklch(56.347% 0.24089 260.834); border-radius: 30px;">Order - $150</Anchor>
+    </article>
+
+    <article class="card">
+      <h1 class="headline">For a Squad?</h1>
+      <Anchor wide="fill" href="mailto:contact@marcelrojas.com?subject=Hey, I want to order for my entire team!" target="_blank" rel="noopener" style="background-color: oklch(92.494% 0.00011 271.152); border-radius: 30px;">Get quote</Anchor>
+    </article>
+
+  </div>
+
+  <div class="footer">
+    <div class="payment-info">
+      <span>Payments secured by - <Anchor href="https://contra.com/marcelrojas" target="_blank" rel="noopener">DM on Contra</Anchor>.</span>
+    </div>
+  </div>
+
+</section>
+
+<style is:global>
+  section#section-pricing {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 20px;
+    height: min-content;
+    justify-content: center;
+    overflow: hidden;
+    padding: 30px;
+    position: relative;
+    width: 100%;
+    will-change: transform;
+    & h2.headline {
+      align-items: flex-start;
+      display: flex;
+      flex: none;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      gap: 20px;
+      justify-content: flex-start;
+      position: relative;
+    }
+    & div.cards {
+      align-items: center;
+      display: flex;
+      flex: none;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      gap: 10px;
+      height: min-content;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      & article.card {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background-color: oklch(96.416% 0.00011 271.152);
+        border-radius: 24px;
+        flex: 1 0 0px;
+        height: 230px;
+        position: relative;
+        & h1.headline {
+          font-size: 1.5rem;
+          margin-bottom: 1rem;
+        }
+        & a {
+          font-size: 16px;
+          height: 50px
+        }
+      }
+    }
+    & > div.footer {
+      flex-flow: column;
+      flex: none;
+      align-items: flex-start;
+      gap: 4px;
+      justify-content: center;
+      position: relative;
+      width: 100%
+    }
+  }
+</style>

@@ -1,0 +1,31 @@
+# === Reglas Globales (Seguridad Base) ===
+/*
+  # Fuerza HTTPS estricto (HSTS) durante 1 año, incluyendo subdominios
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  
+  # Evita que el sitio sea incrustado en iframes de otros sitios (previene Clickjacking)
+  X-Frame-Options: SAMEORIGIN
+  
+  # Evita que el navegador "adivine" el tipo de contenido (MIME sniffing)
+  X-Content-Type-Options: nosniff
+  
+  # Controla cuánta información de referencia se envía al hacer clic en enlaces
+  Referrer-Policy: strict-origin-when-cross-origin
+  
+  # Bloqueo del acceso a funciones del navegador que no se usan (cámara, micro, geolocalización)
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# === Caché de Recursos Estáticos (Rendimiento) ===
+# Las fuentes y las imágenes no cambian a menudo, así que se cachean por 1 mes (o 1 año)
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*
+  Cache-Control: public, max-age=2592000, immutable
+
+/favicon.*
+  Cache-Control: public, max-age=2592000, immutable
+
+# Si Astro genera una carpeta _astro o assets con hashes en el nombre, las puedo cachear agresivamente
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable

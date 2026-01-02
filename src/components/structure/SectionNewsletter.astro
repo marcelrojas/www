@@ -1,0 +1,27 @@
+---
+import NewsletterForm from '@components/NewsletterForm.astro';
+---
+
+<section class="section-newsletter">
+  <h2 class="headline">Join my newsletter</h2>
+  <p class="description">Enter your e-mail to get notified about essays and other updates shared infrequently.</p>
+  <NewsletterForm />
+</section>
+
+<style>
+  section.section-newsletter {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    & h2.headline {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+    & p.description {
+      font-size: 16px;
+      margin-bottom: 24px;
+      color: var(--text-secondary);
+    }
+  }
+</style>

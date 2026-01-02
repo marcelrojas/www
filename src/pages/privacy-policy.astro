@@ -1,0 +1,13 @@
+---
+import Layout from '@layouts/Layout.astro';
+import PageHeader from '@components/structure/PageHeader.astro';
+
+const {
+  title = 'Privacy Policy',
+  description = 'This is the privacy policy page.',
+} = Astro.props;
+---
+
+<Layout title={title} description={description}>
+  <PageHeader title={title} />
+</Layout>

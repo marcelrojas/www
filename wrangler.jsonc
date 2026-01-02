@@ -1,0 +1,22 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "www",
+  "compatibility_date": "2025-11-15",
+  "workers_dev": true,
+  "send_metrics": false,
+  "assets": {
+    "directory": "./dist/",
+  //  "binding": "ASSETS"
+  },
+  //"routes": [
+  //  {
+  //    "pattern": "marcelrojas.com",
+  //    "zone_name": "marcelrojas.com",
+  //    "custom_domain": true
+  //  }
+  //],
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ]
+}
