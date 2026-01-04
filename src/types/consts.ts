@@ -28,6 +28,8 @@ export const SOCIAL_BANDCAMP_COLECTION = 'https://bandcamp.com/marcelrojas/';
 export const SOCIAL_BANDCAMP_ARTIST = 'https://marcelrojas.bandcamp.com/';
 export const SOCIAL_DISCOGS = 'https://www.discogs.com/user/whyismarcel';
 export const SOCIAL_GOODREADS = 'https://www.goodreads.com/user/show/161191105-marcel-rojas';
+export const SOCIAL_KOFi = 'https://ko-fi.com/marcelrojas';
+export const SOCIAL_AMAZON_AFFILIATE = 'https://amazon.com/marcelrojas';
 
 
 

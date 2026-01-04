@@ -7,7 +7,7 @@ import vesper from './src/data/vesper.json';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://marcelrojas.com',
+  site: 'https://marcelrojas.net',
 
   trailingSlash: 'never',
 
