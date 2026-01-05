@@ -1,32 +1,35 @@
 ```sh
-github@marcelrojas:~$fastfetch
-|   github@marcelrojas
-|   ------------------
-|
-|
-|
-|
-|
-|
-|   # Reach me out using...
-|   ❯ mail -s "Hello from..." contact@marcelrojas.com
-|   ❯ xdg-open "https://marcelrojas.com"
-|
+github@marcelrojas:~$prophetch
+                  |   github@marcelrojas
+        .         |   ------------------
+      _/ \_       |   
+     (  @  )      |   
+      \___/       |   
+       | |        |   
+      /___\       |   
+                  |   
+                  |   # Reach me out using...
+                  |   ❯ mail -s "Hello from..." contact@marcelrojas.net
+                  |   ❯ xdg-open "https://marcelrojas.net"
 ```
 
-[Preview](https://marcelrojas.marcelrojas.workers.dev)
-
-[Software Toolkit](https://marcelrojas.com/soft-toolkit) | [Software Stack](https://marcelrojas.com/soft-stack)
+[Preview](https://www.marcelrojas.workers.dev)
 
 ## Project Structure
 
 ```text
 ├── public/
 ├── src/
+│   ├── assets/
 │   ├── components/
 │   ├── content/
+│   ├── data/
 │   ├── layouts/
-│   └── pages/
+│   ├── libs/
+│   ├── pages/
+│   ├── scripts/
+│   ├── styles/
+│   └── types/
 ├── astro.config.mjs
 ├── README.md // what you are seeing
 ├── package.json

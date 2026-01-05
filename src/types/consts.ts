@@ -1,6 +1,5 @@
 export const SITE_TITLE = 'Marcel Rojas';
 export const SITE_DESCRIPTION = 'I’m a self-taught front-end developer and designer from Venezuela, who likes building simple, practical products. I focus on what works, stay consistent, and stick to the plan.';
-export const SITE_URL = 'https://marcelrojas.com';
 export const SITE_LOCALE = 'en-US';
 export const SITE_AUTHOR = 'Marcel Rojas';
 export const SITE_KEYWORDS = ['Marcel Rojas', 'Marcel', 'Rojas', 'marcelrojas', 'marcel rojas', 'front-end developer', 'designer', 'Venezuela'];
@@ -29,12 +28,18 @@ export const SOCIAL_BANDCAMP_ARTIST = 'https://marcelrojas.bandcamp.com/';
 export const SOCIAL_DISCOGS = 'https://www.discogs.com/user/whyismarcel';
 export const SOCIAL_GOODREADS = 'https://www.goodreads.com/user/show/161191105-marcel-rojas';
 export const SOCIAL_KOFi = 'https://ko-fi.com/marcelrojas';
-export const SOCIAL_AMAZON_AFFILIATE = 'https://amazon.com/marcelrojas';
 
-
+export const REFERRAL_WARP = 'https://app.warp.dev/referral/9NPP8M';
+export const REFERRAL_CAL = 'https://refer.cal.com/marcelrojas';
+export const REFERRAL_FIVERR = 'https://www.fiverr.com/pe/YR1NmPq';
+export const REFERRAL_TALLY = 'https://tally.cello.so/agmjIvCHioz';
+export const REFERRAL_TYPEFORM = 'https://typeform.cello.so/xpN7nEkElze';
+export const REFERRAL_RAYCAST = 'https://www.raycast.com/marcelrojas/invite';
+export const REFERRAL_AIRTM = 'https://app.airtm-2.com/ivt/marcelrojas';
+export const REFERRAL_AMAZON_AFFILIATE = 'https://amazon.com/marcelrojas';
 
 export const EMAIL = '';
-export const PHONE_NUMBER = '';
+export const PHONE_NUMBER = '+58412';
 
 export const COPYRIGHT_NAME = 'Marcel Rojas';
 export const COPYRIGHT_YEAR = new Date().getFullYear();
