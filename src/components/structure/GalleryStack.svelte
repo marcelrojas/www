@@ -53,6 +53,7 @@
     display: flex;
     flex-direction: column;
     place-items: center;
+    touch-action: none;
     & > div.item {
       position: absolute;
       width: 100%;
@@ -70,6 +71,7 @@
 
       cursor: pointer;
       overflow: hidden;
+      
     }
   }
 

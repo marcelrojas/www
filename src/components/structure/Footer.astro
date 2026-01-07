@@ -2,10 +2,9 @@
 import Grain from '@components/decorators/Grain.astro';
 import Anchor from '@components/Anchor.astro';
 import Icon from '@components/Icon.astro';
-import { COPYRIGHT_NAME, COPYRIGHT_YEAR, SOCIAL_X, SOCIAL_INSTAGRAM, SOCIAL_PINTEREST, SOCIAL_YOUTUBE, SOCIAL_GITHUB } from '@types/consts';
+import { COPYRIGHT_NAME, COPYRIGHT_YEAR, SOCIAL_X, SOCIAL_INSTAGRAM, SOCIAL_PINTEREST, SOCIAL_YOUTUBE, SOCIAL_GITHUB, SOCIAL_LINKEDIN } from '@types/consts';
 
 const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
-/* Y29udGFjdEBtYXJjZWxyb2phcy5jb20= */
 ---
 
 <footer id="footer" role="contentinfo" aria-label="Global footer" tabindex="-1">
@@ -37,6 +36,11 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
         <li>
           <Anchor variant="platted" label="icon-only" size="medium" wide="fill" href={SOCIAL_GITHUB} target="_blank" rel="noopener noreferrer" aria-label={`Visit my GitHub profile`} class="social-link">
             <Icon name="github" />
+          </Anchor>
+        </li>
+        <li>
+          <Anchor variant="platted" label="icon-only" size="medium" wide="fill" href={SOCIAL_LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label={`Visit my LinkedIn profile`} class="social-link">
+            <Icon name="linkedin" />
           </Anchor>
         </li>
         <li>
@@ -127,9 +131,6 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
         }
         &:last-of-type {
           margin-block-end: 32px
-        }
-        & + p {
-          margin-block-start: 8px
         }
       }
       & address.social-handles {

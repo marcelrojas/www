@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "www",
-  "compatibility_date": "2025-11-15",
+  "compatibility_date": "2026-01-01",
   "workers_dev": true,
   "send_metrics": false,
   "assets": {
@@ -10,8 +10,8 @@
   },
   //"routes": [
   //  {
-  //    "pattern": "marcelrojas.com",
-  //    "zone_name": "marcelrojas.com",
+  //    "pattern": "marcelrojas.net",
+  //    "zone_name": "marcelrojas.net",
   //    "custom_domain": true
   //  }
   //],
