@@ -51,7 +51,15 @@ const ogImageURL = new URL(imageSrc, Astro.site);
   <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href={new URL('rss.xml', Astro.site)} />
   <link rel="privacy-policy" href="/privacy-policy" />
 
-  <!--  -->
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-42TF8GHE8N"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-42TF8GHE8N');
+  </script>
+
+  <!-- WebApp Icons -->
   <meta name="application-name" content={SITE_TITLE} />
   <meta name="apple-mobile-web-app-title" content={SITE_TITLE} />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
