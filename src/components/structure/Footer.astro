@@ -77,24 +77,28 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
     content-visibility: auto;
     will-change: visibility, opacity;
     transition: visibility 300ms ease-in-out, opacity 300ms ease-in-out;
+
     & > div.content {
       display: flex;
       flex-direction: column;
       position: relative;
       height: 100%;
-      padding-inline-start: max(var(--spacing-sal) + 22px);
-      padding-inline-end: max(var(--spacing-sar) + 22px);
-      padding-block-start: max(var(--spacing-sat) + var(--spacing-07));
-      padding-block-end: max(var(--spacing-sab) + var(--spacing-07));
+      padding-inline-start: calc(var(--spacing-sal) + 22px);
+      padding-inline-end: calc(var(--spacing-sar) + 22px);
+      padding-block-start: calc(var(--spacing-sat) + var(--spacing-07));
+      padding-block-end: calc(var(--spacing-sab) + var(--spacing-07));
+
       @media screen and (width <= 480px) {
         
       }
+
       @media screen and (width <= 734px) {
         
       }
       @media screen and (width <= 1068px) {
         
       }
+
       & aside {
         position: relative;
         display: flex;
@@ -104,6 +108,7 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
         margin-block: auto;
         border-radius: 30px;
         background-color: var(--accent);
+
         & div.copy-email {
           position: relative;
           display: flex;
@@ -112,6 +117,7 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
           padding: 8px;
           gap: 16px;
           cursor: pointer;
+
           & span.label {
             font-family: var(--font-family-sans);
             font-size: var(--font-size-14);
@@ -119,6 +125,7 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
           }
         }
       }
+
       & p {
         position: relative;
         max-width: 28rem;
@@ -126,40 +133,49 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
         font-family: var(--font-family-sans);
         font-size: var(--font-size-14);
         text-align: center;
+
         &:first-of-type {
           margin-block-start: 0
         }
+
         &:last-of-type {
           margin-block-end: 32px
         }
       }
+
       & address.social-handles {
         position: relative;
         max-width: 448px;
         display: flex;
         align-self: center;
+
         & ul {
           display: flex;
           flex-direction: row;
           gap: 16px
         }
       }
+
       & > div.legal {
         position: relative;
         display: flex;
+
         @media screen and (width <= 734px) {
           gap: var(--spacing-04);
           flex-direction: column;
           align-items: end
         }
+
         @media screen and (width >= 734px) {
           flex-direction: row;
           align-items: baseline;
           justify-content: space-between
         }
+
         & > nav {
           position: relative;
           display: block;
+
           & > ul {
             position: relative;
             display: flex;
@@ -168,6 +184,7 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
           }
         }
       }
+
       & > small.copyright {
         position: relative;
         display: block;

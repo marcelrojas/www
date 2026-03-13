@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import Head from '@components/structure/Head.astro';
+import SkipLinks from '@components/structure/SkipLinks.astro';
 import SplashScreen from '@components/SplashScreen.astro';
 import Header from '@components/structure/Header.astro';
 import Curtain from '@components/Curtain.astro';
@@ -36,8 +37,7 @@ const { title, description, lang = 'en', pubDate, updatedDate, heroImage } = Ast
 <html lang={lang} dir="auto" transition:name="root" transition:animate="none">
   <Head title={title} description={description} />
   <body>
-    <a href="#main" tabindex="0" class="skip-to-content">Skip to main content</a>
-
+    <SkipLinks />
     <SplashScreen />
     <Header />
     <Curtain />

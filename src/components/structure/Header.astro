@@ -7,7 +7,7 @@ import NavBar from '@components/structure/NavBar.astro';
 <header id="header">
   <div class="content">
     <Logo />
-    <Clock client:load />
+    <Clock client:only="svelte" />
     <NavBar />
   </div>
 </header>
@@ -17,8 +17,9 @@ import NavBar from '@components/structure/NavBar.astro';
     header#header {
       position: relative;
       z-index: 40;
-      padding-left: max(var(--spacing-sal) + 22px);
-      padding-right: max(var(--spacing-sar) + 22px);
+      padding-left: calc(var(--spacing-sal) + 22px);
+      padding-right: calc(var(--spacing-sar) + 22px);
+
       & div.content {
         position: relative;
         overflow: clip;
