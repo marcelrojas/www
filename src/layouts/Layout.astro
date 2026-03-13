@@ -1,5 +1,6 @@
 ---
 import Head from '@components/structure/Head.astro';
+import SkipLinks from '@components/structure/SkipLinks.astro';
 import SplashScreen from '@components/SplashScreen.astro';
 import Header from '@components/structure/Header.astro';
 import Curtain from '@components/Curtain.astro';
@@ -37,8 +38,7 @@ const { title, description, lang = 'en' } = Astro.props;
 <html lang={lang} dir="auto" transition:name="root" transition:animate="none">
   <Head title={title} description={description} />
   <body>
-    <a href="#main" tabindex="0" class="skip-to-content">Skip to main content</a>
-
+    <SkipLinks />
     <SplashScreen />
     <Header />
     <Curtain />
@@ -50,38 +50,3 @@ const { title, description, lang = 'en' } = Astro.props;
     <Footer />
   </body>
 </html>
-
-<style is:global>
-  a.skip-to-content {
-    position: absolute;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    width: 1px;
-    margin: -1px;
-    &:focus:not(:focus-visible) {
-      background-color: rgba(0, 0, 0, 0);
-      outline: none;
-      -webkit-box-decoration-break: slice;
-      box-decoration-break: slice;
-    }
-    &:focus {
-      top: .5em;
-      left: .25em;
-      overflow: visible;
-      clip: initial;
-      height: auto;
-      width: auto;
-      margin: 0;
-      box-shadow: 0 0 0 3px #0b0c0c, 0 0 .4em 0em #1f1f22;
-      padding: .5em .5em;
-    }
-    &:focus-visible {
-      background-color: #fff;
-      outline: 3px solid #0b0c0c;
-      outline-offset: 1px;
-      -webkit-box-decoration-break: clone;
-      box-decoration-break: clone;
-    }
-  }
-</style>
