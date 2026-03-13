@@ -31,8 +31,8 @@
   ],
   "shortcuts": [
     { "name": "Services", "short_name": "Services", "url": "/services" },
-    { "name": "Work", "short_name": "Showcase", "url": "/showcase" },
+    { "name": "Showcase", "short_name": "Showcase", "url": "/showcase" },
     { "name": "Blog", "short_name": "Blog", "url": "/blog" },
-    { "name": "Resources", "short_name": "Shop", "url": "/resources" }
+    { "name": "Resources", "short_name": "Resources", "url": "/resources" }
   ]
 }
