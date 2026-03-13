@@ -37,7 +37,7 @@
 <time id="clock" aria-live="polite" aria-atomic="true">{time}</time>
 
 <style>
-  :global(@layer components) {
+  @layer components {
     #clock {
       position: relative;
       font-family: var(--font-family-mono);
