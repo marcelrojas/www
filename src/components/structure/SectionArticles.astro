@@ -41,8 +41,8 @@ const posts = (await getCollection('blog')).sort(
     & > div.content {
       display: grid;
       max-width: 980px;
-      padding-inline-start: max(var(--spacing-sal) + 22px);
-      padding-inline-end: max(var(--spacing-sar) + 22px);
+      padding-inline-start: calc(var(--spacing-sal) + 22px);
+      padding-inline-end: calc(var(--spacing-sar) + 22px);
       margin-left: auto;
       margin-right: auto;
       @media screen and (max-width: 672px) {
