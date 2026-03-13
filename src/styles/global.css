@@ -12,7 +12,6 @@
     vertical-align: baseline
   }
   header { user-select: none }
-  header, section, footer, div { display: block; unicode-bidi: isolate }
   html { scrollbar-width: none; scrollbar-gutter: stable both-edges; scroll-behavior: smooth; scroll-snap-type: y mandatory; font-size: var(--font-size-base); background-color: var(--color-background); -webkit-tap-highlight-color: transparent }
   body {
     display: block;
