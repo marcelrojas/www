@@ -8,13 +8,13 @@
     "directory": "./dist/",
   //  "binding": "ASSETS"
   },
-  //"routes": [
+  "routes": [
   //  {
   //    "pattern": "marcelrojas.net",
   //    "zone_name": "marcelrojas.net",
   //    "custom_domain": true
   //  }
-  //],
+  ],
   "compatibility_flags": [
     "nodejs_compat",
     "global_fetch_strictly_public"

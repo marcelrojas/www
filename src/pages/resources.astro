@@ -4,7 +4,7 @@ import PageHeader from '@components/structure/PageHeader.astro';
 
 const {
   title = 'Resources',
-  description = 'Explore the latest products in my shop.',
+  description = 'Learn how to improve your skills and become who you want to be.',
 } = Astro.props;
 ---
 
@@ -13,6 +13,7 @@ const {
 
   <section>
     <p>Explore my resources for guides, tutorials, and tools to help you succeed.</p>
+
     <ul>
       <li><a href="/resources/guide1">Guide 1</a></li>
       <li><a href="/resources/tutorial1">Tutorial 1</a></li>
@@ -22,22 +23,86 @@ const {
 
   <section class="product-showcase">
     <h2>Featured products</h2>
+
     <div class="product-grid">
-      <a class="card" href="/shop/">
+
+      <a class="card">
         <h3 class="title">Title</h3>
         <p class="description">Description</p>
-        <span class="badge">Now $99</span>
+        <a class="badge" href="/">Now $99</a>
       </a>
-      <a class="card" href="/shop/">
+
+      <a class="card">
         <h3 class="title">Title</h3>
         <p class="description">Description</p>
-        <span class="badge">$299</span>
+        <a class="badge" href="/">$299</a>
       </a>
-      <a class="card" href="/shop/composer">
+
+      <article class="card">
         <h3 class="title">Composer</h3>
-        <p class="description">Description</p>
-      </a>
+        <p class="description">CLI text <i>Composer</i>.</p>
+        <a class="badge" href="/composer">FOSS!</a>
+      </article>
+
     </div>
+
   </section>
 
 </Layout>
+
+<style>
+  .collection-module {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &:not(:last-child) > .module {
+      border-right: 1px solid var(--color-border-default)
+    }
+
+    &:is(:first-child, :last-child) > .module {
+      width: 100%
+    }
+
+    &:not(:first-child):not(:last-child) > .module {
+      width: 50%
+    }
+
+    & .module {
+      min-height: var(--min-height);
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: var(--padding-top);
+      text-align: center;
+      border-bottom: 1px solid var(--color-border-default);
+
+      & .title {
+        font-size: 32px;
+        font-weight: var(--font-weight-semibold);
+        line-height: 40px
+      }
+
+      & .description {
+        padding-bottom: 18px;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 24px;
+        color: var(--color-grey1)
+      }
+
+      & .badge {
+        margin-bottom: 1.75rem;
+        display: inline-flex;
+        height: 32px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 32px;
+        background-color: var(--color-yellow-digital);
+        padding-inline: 1.25rem; /* px-5 */
+        font-size: 14px
+      }
+
+    }
+  }
+</style>

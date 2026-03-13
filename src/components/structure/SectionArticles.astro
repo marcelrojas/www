@@ -14,19 +14,12 @@ const posts = (await getCollection('blog')).sort(
     {
       posts.map(post => (
         <article class="tile">
-          <figure class="media" aria-hidden="true">
-            {post.data.heroImage && (
-              <Image width={720} height={360} src={post.data.heroImage} loading="eager" decoding="async" fetchpriority="auto" alt={post.data.description} />
-            )}
-          </figure>
-          <section class="copy">
-            <FormattedDate date={post.data.pubDate} />
-            <h2 class="headline">
-              <a href={`/blog/${post.id}`}>{post.data.title}</a>
-            </h2>
-            <p class="description">{post.data.description}</p>
-            <Icon name="arrow-right" />
-          </section>
+          <h1 class="headline">
+            <a href={`/blog/${post.id}`}>{post.data.title}</a>
+          </h1>
+          <p class="description">{post.data.description}</p>
+          <FormattedDate date={post.data.pubDate} />
+          <Icon name="arrow-right" />
         </article>
       ))
     }
@@ -38,6 +31,7 @@ const posts = (await getCollection('blog')).sort(
     position: relative;
     padding-top: var(--spacing-11);
     padding-bottom: var(--spacing-11);
+
     & > div.content {
       display: grid;
       max-width: 980px;
@@ -45,16 +39,19 @@ const posts = (await getCollection('blog')).sort(
       padding-inline-end: calc(var(--spacing-sar) + 22px);
       margin-left: auto;
       margin-right: auto;
+
       @media screen and (max-width: 672px) {
         grid-template-columns: 5fr 5fr;
         grid-template-areas: "a a" "b b" "c c" "d d" "e e";
         gap: 24px
       }
+
       @media screen and (min-width: 672px) {
         grid-template-columns: 5fr 5fr;
         grid-template-areas: "a a" "b c" "d e";
         gap: 36px
       }
+
       & > article.tile {
         display: flex;
         position: relative;
@@ -63,46 +60,29 @@ const posts = (await getCollection('blog')).sort(
         background-color: var(--color-surface-primary);
         border-radius: 30px;
         user-select: none;
-        & > figure.media {
-          position: relative;
-          z-index: 0;
-          width: 100%;
-          overflow: hidden;
-          filter: grayscale(1);
-          will-change: filter;
-          transition: filter 800ms ease;
-          @media (hover: hover) {
-            .tile:hover & {
-              filter: grayscale(0)
-            }
-          }
+
+        & h1.headline {
+          max-width: 300px;
+          line-clamp: 3;
+          box-orient: vertical;
+          color: var(--label-primary)
         }
-        & > section.copy {
-          position: absolute;
-          bottom: 0;
-          z-index: 0;
-          width: 100%;
-          padding: 0 36px 36px;
-          & h2.headline {
-            max-width: 300px;
-            line-clamp: 3;
-            box-orient: vertical;
-            color: var(--label-primary)
-          }
-          & p.description {
-            margin-top: var(--spacing-02);
-            margin-bottom: var(--spacing-04);
-            max-width: 300px;
-            font-family: var(--font-family-sans);
-            font-weight: var(--font-weight-semibold);
-            font-size: var(--font-size-20);
-            line-height: var(--line-height-24);
-            line-clamp: 3;
-            box-orient: vertical;
-            color: var(--label-secondary)
-          }
+
+        & p.description {
+          margin-top: var(--spacing-02);
+          margin-bottom: var(--spacing-04);
+          max-width: 300px;
+          font-family: var(--font-family-sans);
+          font-weight: var(--font-weight-semibold);
+          font-size: var(--font-size-20);
+          line-height: var(--line-height-24);
+          line-clamp: 3;
+          box-orient: vertical;
+          color: var(--label-secondary)
         }
+
       }
+
       & > :first-child { grid-area: a }
       & > :nth-child(2) { grid-area: b }
       & > :nth-child(3) { grid-area: c }
