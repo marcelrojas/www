@@ -140,10 +140,10 @@
     --global-scrollbar-buffer: 15px;
     --header-height: 64px;
 
-    --spacing-sat: env(safe-area-inset-top);
-    --spacing-sar: env(safe-area-inset-right);
-    --spacing-sab: env(safe-area-inset-bottom);
-    --spacing-sal: env(safe-area-inset-left);
+    --spacing-sat: env(safe-area-inset-top, 0px);
+    --spacing-sar: env(safe-area-inset-right, 0px);
+    --spacing-sab: env(safe-area-inset-bottom, 0px);
+    --spacing-sal: env(safe-area-inset-left, 0px);
     --spacing-01: 2px;
     --spacing-02: 4px;
     --spacing-03: 8px;

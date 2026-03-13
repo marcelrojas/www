@@ -34,11 +34,11 @@
   });
 </script>
 
-<span id="clock">{time}</span>
+<time id="clock" aria-live="polite" aria-atomic="true">{time}</time>
 
-<style is:global>
-  @layer components {
-    span#clock {
+<style>
+  :global(@layer components) {
+    #clock {
       position: relative;
       font-family: var(--font-family-mono);
       font-feature-settings: "zero", "tnum";
