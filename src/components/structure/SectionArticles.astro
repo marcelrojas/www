@@ -48,8 +48,6 @@ const posts = (await getCollection('blog')).sort(
 
         position: relative;
         overflow: hidden;
-        background-color: var(--color-surface-primary);
-        border-radius: 30px;
         user-select: none;
 
         & > a {
@@ -59,12 +57,13 @@ const posts = (await getCollection('blog')).sort(
           & > h2 {
             max-width: 300px;
             margin: 0 0 8px 0;
+            fond-family: var(--font-family-sans);
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--font-size-18);
+            line-height: 1;
             line-clamp: 3;
             box-orient: vertical;
-            color: var(--label-primary);
-            fond-family: var(--font-family-sans);
-            font-size: var(--font-size-18);
-            font-weight: var(--font-weight-semibold)
+            color: var(--label-primary)
           }
 
           & > p.description {
