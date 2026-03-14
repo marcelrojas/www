@@ -28,11 +28,11 @@ import NavBar from '@components/structure/NavBar.astro';
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-areas: "a" "b" "c c";
-        grid-row-gap: 10px;
+        row-gap: 10px;
 
-        & > :first-child { grid-area: a }
-        & > :nth-child(2) { grid-area: b }
-        & > :nth-child(3) { grid-area: c }
+        & > :first-child { grid-area: a; place-self: start }
+        & > :nth-child(2) { grid-area: b; place-self: start end }
+        & > :nth-child(3) { grid-area: c; place-self: stretch }
       }
     }
   }
