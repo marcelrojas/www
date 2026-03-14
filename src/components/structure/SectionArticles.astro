@@ -47,7 +47,6 @@ const posts = (await getCollection('blog')).sort(
       & > article.post-item {
 
         position: relative;
-        aspect-ratio: 2/1;
         overflow: hidden;
         background-color: var(--color-surface-primary);
         border-radius: 30px;
@@ -59,9 +58,12 @@ const posts = (await getCollection('blog')).sort(
 
           & > h2 {
             max-width: 300px;
+            margin: 0 0 8px 0;
             line-clamp: 3;
             box-orient: vertical;
-            color: var(--label-primary)
+            color: var(--label-primary);
+            font-size: var(--font-size-18);
+            font-weight: var(--font-weight-semibold)
           }
 
           & > p.description {
@@ -70,7 +72,7 @@ const posts = (await getCollection('blog')).sort(
             max-width: 300px;
             font-family: var(--font-family-sans);
             font-weight: var(--font-weight-semibold);
-            font-size: var(--font-size-20);
+            font-size: var(--font-size-16);
             line-height: var(--line-height-24);
             line-clamp: 3;
             box-orient: vertical;
