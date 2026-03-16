@@ -50,7 +50,6 @@
     display: block;
     position: relative;
     overflow-wrap: break-word;
-    word-break: break-word; /* Merged from global1.css */
 
     & ::-webkit-scrollbar {
       display: none;
