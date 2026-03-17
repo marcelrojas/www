@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import PageHeader from '@components/structure/PageHeader.astro';
+import Anchor from '@components/Anchor.astro';
 
 const {
   title = 'Resources',
@@ -11,7 +12,7 @@ const {
 <Layout title={title} description={description}>
   <PageHeader title={title} />
 
-  <section>
+  <section class="tags">
     <p>Explore my resources for guides, tutorials, and tools to help you succeed.</p>
 
     <ul>
@@ -24,24 +25,30 @@ const {
   <section class="product-showcase">
     <h2>Featured products</h2>
 
-    <div class="product-grid">
+    <div class="collection--module">
 
-      <a class="card">
-        <h3 class="title">Title</h3>
+      <article class="module--">
+        <h1 class="title">Title</h1>
         <p class="description">Description</p>
         <a class="badge" href="/">Now $99</a>
-      </a>
+      </article>
 
-      <a class="card">
-        <h3 class="title">Title</h3>
+      <article class="module--">
+        <h1 class="title">Title</h1>
         <p class="description">Description</p>
         <a class="badge" href="/">$299</a>
-      </a>
+      </article>
 
-      <article class="card">
-        <h3 class="title">Composer</h3>
+      <article class="module--">
+        <h1 class="title">Composer</h1>
         <p class="description">CLI text <i>Composer</i>.</p>
-        <a class="badge" href="/composer">FOSS!</a>
+        <a class="badge" href="/composer/">FOSS!</a>
+      </article>
+
+      <article class="module--">
+        <h1 class="title">Title</h1>
+        <p class="description">Description.</p>
+        <Anchor class="badge" href="/">$299</Anchor>
       </article>
 
     </div>
@@ -51,24 +58,24 @@ const {
 </Layout>
 
 <style>
-  .collection-module {
+  .collection--module {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 
-    &:not(:last-child) > .module {
-      border-right: 1px solid var(--color-border-default)
+    &:not(:last-child) > article.[class*="module--"] {
+      border-right: 1px solid var(--color-border-default);
     }
 
-    &:is(:first-child, :last-child) > .module {
-      width: 100%
+    &:is(:first-child, :last-child) > article.[class*="module--"] {
+      width: 100%;
     }
 
-    &:not(:first-child):not(:last-child) > .module {
-      width: 50%
+    &:not(:first-child):not(:last-child) > article.[class*="module--"] {
+      width: 50%;
     }
 
-    & .module {
+    & > article.[class*="module--"] {
       min-height: var(--min-height);
       display: block;
       margin-left: auto;
@@ -77,21 +84,21 @@ const {
       text-align: center;
       border-bottom: 1px solid var(--color-border-default);
 
-      & .title {
+      & > h1.title {
         font-size: 32px;
         font-weight: var(--font-weight-semibold);
-        line-height: 40px
+        line-height: 40px;
       }
 
-      & .description {
+      & > .description {
         padding-bottom: 18px;
         font-size: 14px;
         font-weight: 500;
         line-height: 24px;
-        color: var(--color-grey1)
+        color: var(--color-grey1);
       }
 
-      & .badge {
+      & > .badge {
         margin-bottom: 1.75rem;
         display: inline-flex;
         height: 32px;
@@ -100,9 +107,10 @@ const {
         border-radius: 32px;
         background-color: var(--color-yellow-digital);
         padding-inline: 1.25rem; /* px-5 */
-        font-size: 14px
+        font-size: 14px;
       }
 
     }
+
   }
 </style>
