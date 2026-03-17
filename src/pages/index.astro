@@ -14,14 +14,13 @@ const {
 
   <section class="collection--module">
     
-    <article class="module module--hero">
+    <article class="module--hero">
       <audio loop="" src="/audio/beats.aac"></audio>
-      <h1 class="title">Curriculum</h1>
       <p class="description">Building better business with an individual approach to each client with a wide range of services.<br />I'm available for freelance work and collaborations. Whether you have a project in mind or just want to say hello, feel free to reach out!</p>
       <Anchor wide="fit" class="badge audio_trigger" href="https://contra.com/marcelrojas">Explore my services</Anchor>
     </article>
 
-    <article class="module module--cv">
+    <article class="module--cv">
       <h1 class="title">Curriculum</h1>
       <p class="description">Location Venezuela<br />Languages Spanish, English<br />Skillset Development, Design and Strategy</p>
       <Anchor role="button" wide="fit" class="badge" href="/curriculum">Open</Anchor>
@@ -39,33 +38,29 @@ const {
 
     .module--hero {
 
-      & .content {
+      & audio {
+        display: none;
+      }
 
-        & audio {
-          display: none;
-        }
+      & .title {
+        padding-bottom: 22px;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 32px;
+        letter-spacing: var(--tracking-common);
+      }
 
-        & .title {
-          padding-bottom: 22px;
-          font-size: 24px;
-          font-weight: 400;
-          line-height: 32px;
-          letter-spacing: var(--tracking-common);
-        }
-
-        & .button {
-          margin-top: 15px;
-          height: 40px;
-          background-color: var(--color-yellow-digital);
-          padding-inline: 1.25rem;
-          font-size: 16px;
-        }
-
+      & .button {
+        margin-top: 15px;
+        height: 40px;
+        background-color: var(--color-yellow-digital);
+        padding-inline: 1.25rem;
+        font-size: 16px;
       }
 
     }
 
-    & article.module {
+    & > article.[class*="module--"] {
       min-height: var(--min-height);
       display: block;
       margin-left: auto;
@@ -74,13 +69,13 @@ const {
       text-align: center;
       border-bottom: 1px solid var(--color-border-default);
 
-      & h1.title {
+      & > h1.title {
         font-size: 32px;
         font-weight: var(--font-weight-semibold);
         line-height: 40px;
       }
 
-      & .description {
+      & > .description {
         padding-bottom: 18px;
         font-size: 14px;
         font-weight: 500;
@@ -88,7 +83,7 @@ const {
         color: var(--color-grey1);
       }
 
-      & .badge {
+      & > .badge {
         margin-bottom: 1.75rem;
         display: inline-flex;
         height: 32px;
@@ -107,11 +102,11 @@ const {
   /* Mobile Screen */
   @media screen and (width <= 768px) {
 
-    .module {
+    article.[class*="module--"] {
       --padding-top: 46px;
       --min-height: 376px;
 
-      & .module-badge {
+      & > .badge {
         margin-bottom: 2rem;
       }
 
@@ -122,16 +117,16 @@ const {
   /* Desktop Screen */
   @media screen and (width <= 1024px) {
 
-    .module-title {
+    h1.title {
       line-height: 50px;
     }
 
-    .module-description {
+    .description {
       padding-bottom: 18px;
       font-size: 16px;
     }
 
-    .module-badge {
+    .badge {
       margin-bottom: 46px;
       height: 40px;
       font-size: 16px;
