@@ -2,6 +2,7 @@
 import Layout from '@layouts/Layout.astro';
 import PageHeader from '@components/structure/PageHeader.astro';
 import Anchor from '@components/Anchor.astro';
+import Button from '@components/Button.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../types/consts';
 
 const {
@@ -23,7 +24,7 @@ const {
     <article class="module--cv">
       <h1 class="title">Curriculum</h1>
       <p class="description">Location Venezuela<br />Languages Spanish, English<br />Skillset Development, Design and Strategy</p>
-      <Anchor role="button" wide="fit" class="badge" href="/curriculum">Open</Anchor>
+      <Button role="button" wide="fit" class="badge">Open</Button>
     </article>
 
   </section>

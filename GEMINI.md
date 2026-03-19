@@ -8,7 +8,7 @@
 ## Architecture & Stack
 - **Core Framework:** Astro with Svelte integrations.
 - **Language:** TypeScript. Enforce strict type checking and avoid `any`.
-- **Styling:** Tailwind CSS. 
+- **Styling:** CSS. 
 - **Deployment Target:** Cloudflare Workers and Cloudflare Pages. Ensure all backend logic is optimized for edge runtimes.
 
 ## Component-Specific Style Guides

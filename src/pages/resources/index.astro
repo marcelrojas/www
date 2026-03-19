@@ -5,8 +5,6 @@ import PageHeader from '@components/structure/PageHeader.astro';
 import SectionArticles from '@components/structure/SectionArticles.astro';
 import SectionFeatured from '@components/structure/SectionFeatured.astro';
 
-// description = 'Thoughts on code, design, and passion for everything. Latest posts and updates.'
-
 const {
   title = 'Resources',
   description = 'Learn how to improve your skills and become who you want to be.',
@@ -17,19 +15,19 @@ const {
 
   <PageHeader title={title} />
 
-  <section class="tags">
+  <section class="content-tags">
     <p>Explore my resources for guides, tutorials, and tools to help you succeed.</p>
 
     <ul>
-      <li><a href="/resources/guides">Guides</a></li>
-      <li><a href="/resources/tutorials">Tutorials</a></li>
-      <li><a href="/resources/tools">Tools</a></li>
-      <li><a href="/resources/weblog">Weblog</a></li>
+      <li><a href="/resources/#guides">Guides</a></li>
+      <li><a href="/resources/#tutorials">Tutorials</a></li>
+      <li><a href="/resources/#tools">Tools</a></li>
+      <li><a href="/resources/#weblog">Weblog</a></li>
     </ul>
   </section>
 
   <section class="product-showcase">
-    <h2>Featured products</h2>
+    <h2 id="">Featured products</h2>
 
     <div class="collection--module">
 
@@ -68,56 +66,60 @@ const {
 </Layout>
 
 <style is:global>
-  .collection--module {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  section.product-showcase {
 
-    &:not(:last-child) > article.[class*="module--"] {
-      border-right: 1px solid var(--color-border-default);
-    }
+    & > .collection--module {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
 
-    &:is(:first-child, :last-child) > article.[class*="module--"] {
-      width: 100%;
-    }
-
-    &:not(:first-child):not(:last-child) > article.[class*="module--"] {
-      width: 50%;
-    }
-
-    & > article.[class*="module--"] {
-      min-height: var(--min-height);
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      padding-top: var(--padding-top);
-      text-align: center;
-      border-bottom: 1px solid var(--color-border-default);
-
-      & > h1.title {
-        font-size: 32px;
-        font-weight: var(--font-weight-semibold);
-        line-height: 40px;
+      &:not(:last-child) > article.[class*="module--"] {
+        border-right: 1px solid var(--color-border-default);
       }
 
-      & > p.description {
-        padding-bottom: 18px;
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 24px;
-        color: var(--color-grey1);
+      &:is(:first-child, :last-child) > article.[class*="module--"] {
+        width: 100%;
       }
 
-      & > .badge {
-        margin-bottom: 1.75rem;
-        display: inline-flex;
-        height: 32px;
-        align-items: center;
-        justify-content: center;
-        border-radius: 32px;
-        background-color: var(--color-yellow-digital);
-        padding-inline: 1.25rem; /* px-5 */
-        font-size: 14px;
+      &:not(:first-child):not(:last-child) > article.[class*="module--"] {
+        width: 50%;
+      }
+
+      & > article.[class*="module--"] {
+        min-height: var(--min-height);
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: var(--padding-top);
+        text-align: center;
+        border-bottom: 1px solid var(--color-border-default);
+
+        & > h1.title {
+          font-size: 32px;
+          font-weight: var(--font-weight-semibold);
+          line-height: 40px;
+        }
+
+        & > p.description {
+          padding-bottom: 18px;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 24px;
+          color: var(--color-grey1);
+        }
+
+        & > .badge {
+          margin-bottom: 1.75rem;
+          display: inline-flex;
+          height: 32px;
+          align-items: center;
+          justify-content: center;
+          border-radius: 32px;
+          background-color: var(--color-yellow-digital);
+          padding-inline: 1.25rem; /* px-5 */
+          font-size: 14px;
+        }
+
       }
 
     }
