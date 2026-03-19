@@ -1,7 +1,11 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import PageHeader from '@components/structure/PageHeader.astro';
 import Anchor from '@components/Anchor.astro';
+import PageHeader from '@components/structure/PageHeader.astro';
+import SectionArticles from '@components/structure/SectionArticles.astro';
+import SectionFeatured from '@components/structure/SectionFeatured.astro';
+
+// description = 'Thoughts on code, design, and passion for everything. Latest posts and updates.'
 
 const {
   title = 'Resources',
@@ -10,15 +14,17 @@ const {
 ---
 
 <Layout title={title} description={description}>
+
   <PageHeader title={title} />
 
   <section class="tags">
     <p>Explore my resources for guides, tutorials, and tools to help you succeed.</p>
 
     <ul>
-      <li><a href="/resources/guide1">Guide 1</a></li>
-      <li><a href="/resources/tutorial1">Tutorial 1</a></li>
-      <li><a href="/resources/tool1">Tool 1</a></li>
+      <li><a href="/resources/guides">Guides</a></li>
+      <li><a href="/resources/tutorials">Tutorials</a></li>
+      <li><a href="/resources/tools">Tools</a></li>
+      <li><a href="/resources/weblog">Weblog</a></li>
     </ul>
   </section>
 
@@ -55,9 +61,13 @@ const {
 
   </section>
 
+  <SectionArticles />
+
+  <SectionFeatured />
+
 </Layout>
 
-<style>
+<style is:global>
   .collection--module {
     display: flex;
     flex-wrap: wrap;

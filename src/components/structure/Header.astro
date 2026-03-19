@@ -14,6 +14,7 @@ import NavBar from '@components/structure/NavBar.astro';
 
 <style is:global>
   @layer components {
+
     header#header {
       position: relative;
       z-index: 40;
@@ -34,6 +35,8 @@ import NavBar from '@components/structure/NavBar.astro';
         & > :nth-child(2) { grid-area: b; place-self: start end }
         & > :nth-child(3) { grid-area: c; place-self: stretch }
       }
+
     }
+
   }
 </style>
