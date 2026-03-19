@@ -15,6 +15,7 @@
 
 <style is:inline>
   @layer components {
+
     #splash-screen {
       display: flex;
       position: fixed;
@@ -31,16 +32,19 @@
       overscroll-behavior: contain;
       will-change: allow-discrete, opacity, visibility;
       transition: allow-discrete 0.7s ease-out, opacity 0.7s ease-out, visibility 0.7s ease-out;
+
       @starting-style {
         display: flex;
         opacity: 1;
-        visibility: visible
+        visibility: visible;
       }
+
       &.hidden {
         display: none;
         opacity: 0;
-        visibility: hidden
+        visibility: hidden;
       }
+
       & svg {
         width: 48px;
         height: 48px;
@@ -48,20 +52,27 @@
         margin-left: auto;
         margin-right: 20px;
         margin-bottom: 20px;
-        animation: spinner-rotate 1.2s steps(8, end) infinite
+        animation: spinner-rotate 1.2s steps(8, end) infinite;
       }
+
       & rect {
-        fill: var(--color-label-primary)
+        fill: var(--color-label-primary);
       }
+
     }
+
     @keyframes spinner-rotate {
+
       from {
-        transform: rotate(0deg)
+        transform: rotate(0deg);
       }
+
       to {
-        transform: rotate(360deg)
+        transform: rotate(360deg);
       }
+
     }
+
   }
 </style>
 

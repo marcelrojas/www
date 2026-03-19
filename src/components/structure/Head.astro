@@ -57,7 +57,14 @@ const ogImageURL = new URL(imageSrc, Astro.site);
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+
     gtag('config', 'G-42TF8GHE8N');
+
+    document.addEventListener('astro:page-load', () => {
+      gtag('config', 'G-42TF8GHE8N', {
+        page_path: window.location.pathname,
+      });
+    });
   </script>
 
   <!-- WebApp Icons -->
