@@ -15,13 +15,13 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
   <div class="content">
 
     <aside aria-label="Contact me">
-      <span class="label">Contact:</span>
+      <span class="label">Contact</span>
       <p>Reach out for freelancer work or just to say hi ·[⌢o⌢]·</p>
       <Button id="clipboard-cliper" class="copy-email" data-encemail={encEmail}>Tab to copy my e-mail</Button>
     </aside>
 
     <address class="social-handles">
-      <span>Socials:</span>
+      <span>Socials</span>
       <ul>
         <li>
           <Anchor variant="platted" label="icon-only" size="medium" wide="fill" href={SOCIAL_X} target="_blank" rel="noopener noreferrer" aria-label={`Visit my X profile`} class="social-link">
@@ -136,8 +136,9 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
         display: flex;
         gap: var(--spacing-06);
         flex-direction: column;
-        align-items: end;
+        align-self: end;
         align-items: baseline;
+
 
         & > nav {
           position: relative;
