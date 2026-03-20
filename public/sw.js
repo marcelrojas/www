@@ -37,7 +37,6 @@ self.addEventListener('fetch', (event) => {
 
     event.respondWith(
         caches.match(event.request).then((cachedResponse) => {
-            // Retorna de caché si existe, si no, hace la petición a la red
             return cachedResponse || fetch(event.request).then((response) => {
                 return caches.open(CACHE_NAME).then((cache) => {
                     cache.put(event.request, response.clone());
