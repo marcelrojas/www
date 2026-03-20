@@ -27,15 +27,13 @@ import NavBar from '@components/structure/NavBar.astro';
         position: relative;
         overflow: clip;
         padding-top: calc(var(--spacing-sat) + var(--spacing-06));
-        padding-bottom: var(--spacing-08);
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-areas: "a b" "c c";
-        row-gap: 10px;
 
-        & > :first-child { grid-area: a; place-self: start }
-        & > :nth-child(2) { grid-area: b; place-self: start end }
-        & > :nth-child(3) { grid-area: c; place-self: stretch }
+        & > :first-child { grid-area: a; place-self: start; }
+        & > :nth-child(2) { grid-area: b; place-self: start end; }
+        & > :nth-child(3) { grid-area: c; place-self: start; }
       }
 
     }
