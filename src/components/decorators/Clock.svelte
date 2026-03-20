@@ -16,20 +16,17 @@
 
   const formatter = new Intl.DateTimeFormat('en-US', options);
   
-  // 1. Variable reactiva
   let time = 'Loading time...';
 
-  // 2. onMount, equivalent to useEffect[] on React
   onMount(() => {
     const updateClock = () => {
       const now = new Date();
       time = formatter.format(now).toUpperCase();
     };
 
-    updateClock(); // Ejecutar al inicio
+    updateClock();
     const timerId = setInterval(updateClock, 1000);
 
-    // 3. Limpieza: se ejecuta cuando el componente se destruye
     return () => clearInterval(timerId);
   });
 </script>
@@ -46,7 +43,7 @@
       font-weight: var(--font-weight-regular);
       letter-spacing: var(--font-tracking-normal);
       line-height: var(--font-leading-normal);
-      color: oklch(0.56 0 0)
+      color: oklch(0.56 0 0);
     }
   }
 </style>
