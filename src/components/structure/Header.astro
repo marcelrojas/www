@@ -6,7 +6,9 @@ import NavBar from '@components/structure/NavBar.astro';
 
 <header id="header">
   <div class="content">
-    <Clock client:only="svelte" />
+    <div>
+      <Clock client:only="svelte" />
+    </div>
     <Logo />
     <NavBar />
   </div>

@@ -1,22 +1,27 @@
 ---
 import Grain from '@components/decorators/Grain.astro';
 import Anchor from '@components/Anchor.astro';
+import Button from '@components/Button.astro';
 import Icon from '@components/Icon.astro';
-import { COPYRIGHT_NAME, COPYRIGHT_YEAR, SOCIAL_X, SOCIAL_INSTAGRAM, SOCIAL_PINTEREST, SOCIAL_YOUTUBE, SOCIAL_GITHUB, SOCIAL_LINKEDIN } from '@types/consts';
+import { COPYRIGHT_NAME, COPYRIGHT_YEAR, SOCIAL_X, SOCIAL_INSTAGRAM, SOCIAL_YOUTUBE, SOCIAL_GITHUB, SOCIAL_LINKEDIN } from '@types/consts';
 
 const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
 ---
 
 <footer id="footer" aria-label="Global footer" tabindex="-1">
+
   <Grain />
+
   <div class="content">
+
     <aside aria-label="Contact me">
-      <div id="clipboard-cliper" class="copy-email" data-encemail={encEmail}>
-        <span class="label">Tab to copy my e-mail</span>
-      </div>
+      <span class="label">Contact:</span>
+      <p>Reach out for freelancer work or just to say hi :)</p>
+      <Button id="clipboard-cliper" class="copy-email" data-encemail={encEmail}>Tab to copy my e-mail</Button>
     </aside>
-    <p>Thanks for stopping by! If you have any questions, want to collaborate, or just want to say hi, feel free to reach out through any of the social platforms below. Looking forward to connecting with you!</p>
+
     <address class="social-handles">
+      <span>Socials:</span>
       <ul>
         <li>
           <Anchor variant="platted" label="icon-only" size="medium" wide="fill" href={SOCIAL_X} target="_blank" rel="noopener noreferrer" aria-label={`Visit my X profile`} class="social-link">
@@ -43,14 +48,11 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
             <Icon name="linkedin" />
           </Anchor>
         </li>
-        <li>
-          <Anchor variant="platted" label="icon-only" size="medium" wide="fill" href={SOCIAL_PINTEREST} target="_blank" rel="noopener noreferrer" aria-label={`Visit my Pinterest profile`} class="social-link">
-            <Icon name="pinterest" />
-          </Anchor>
-        </li>
       </ul>
     </address>
+
     <div class="legal">
+
       <nav aria-label="Legal">
         <ul>
           <li>
@@ -64,9 +66,13 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
           </li>
         </ul>
       </nav>
+
       <small class="copyright">&copy; {COPYRIGHT_YEAR} {COPYRIGHT_NAME}. All rights reserved.</small>
+
     </div>
+
   </div>
+
 </footer>
 
 <style is:global>
@@ -75,8 +81,6 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
     z-index: 0;
     contain: layout paint;
     content-visibility: auto;
-    will-change: visibility, opacity;
-    transition: visibility 300ms ease-in-out, opacity 300ms ease-in-out;
 
     & > div.content {
       display: flex;
@@ -95,6 +99,7 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
       @media screen and (width <= 734px) {
         
       }
+
       @media screen and (width <= 1068px) {
         
       }
@@ -123,7 +128,9 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
             font-size: var(--font-size-14);
             color: var(--color-label-tertiary)
           }
+
         }
+
       }
 
       & p {
@@ -141,6 +148,7 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
         &:last-of-type {
           margin-block-end: 32px
         }
+
       }
 
       & address.social-handles {
@@ -154,6 +162,7 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
           flex-direction: row;
           gap: 16px
         }
+
       }
 
       & > div.legal {
@@ -182,7 +191,9 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
             flex-direction: row;
             gap: var(--spacing-04)
           }
+
         }
+
       }
 
       & > small.copyright {
@@ -192,7 +203,9 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
         font-size: var(--font-size-14);
         text-transform: uppercase
       }
+
     }
+
   }
 </style>
 

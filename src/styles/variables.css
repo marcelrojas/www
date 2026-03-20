@@ -267,8 +267,8 @@
 
   @media screen and (prefers-color-scheme: light) {
     :root {
-      --accent: var(--color-yellow_digital);
-      --accent-hover: var(--color-);
+      --accent: oklch(0.65 0.22 45);
+      --accent-hover: oklch(0.55 0.22 45);
       --success: var(--color-lima);
       --info: var(--color-);
       --danger: var(--color-);
@@ -276,14 +276,15 @@
       --danger-onbackground: oklch(0.5 0.19 27);
       --warning: var(--color-);
 
-      --focus: oklch(0.56294 0.19341 256.173);
-      --focus-alt: oklch(0 0 0);
+      --separator-opaque: oklch(0.85 0 0);
+      --separator-translucent: oklch(0 0 0 / 0.1);
 
-      --ring-offset: oklch(0.56294 0.19341 256.173);
+      --focus: var(--accent);
+      --focus-alt: oklch(0 0 0);
+      --ring-offset: var(--background-primary);
+
       --skeleton: var(--);
 
-      --text-primary: var(--color-gray-10); /* for primary text on background */
-      --text-secondary: var(--color-gray-09); /* for secondary text on background */
       --text-onsuface-primary: var(--color-); /* for primary text on surface */
       --text-onsuface-secondary: var(--color-); /* for secondary text on surface */
 
@@ -305,9 +306,12 @@
       --fill-destructive: oklch(65.306% 0.23292 25.95 / 0.14);
       --fill-border: oklch(56.885% 0.01376 285.893 / 0.2);
 
-      --background-primary: oklch(0.99 0 0); /* main background */
-      --background-secondary: var(--color-); /* secondary background, cards, sheets */
-      --background-tertiary: var(--color-); /* tertiary background */
+      --background-primary: oklch(0.99 0 0); /* Main background */
+      --background-secondary: oklch(0.95 0 0); /* Gris muy claro para paneles */
+      --background-tertiary: oklch(0.90 0 0);
+
+      --text-primary: oklch(0.15 0 0); /* Casi negro, alto contraste */
+      --text-secondary: oklch(0.45 0 0); /* Gris técnico medio */
 
       --background-elevated: oklch(97.015% 0 0); /* code */
       --background-elevated-secondary: oklch(925.197% 0.00003 271.152 / 0.1); /* modals, popovers */
@@ -319,12 +323,6 @@
       --foregroud-ultrathin: oklch(0.80466 0 0 / 0.44); /* full-screen views that require a dark color scheme */
 
       --overlay: var(--color-foregroud-regular);
-
-      --separator-opaque: oklch(82.715% 0.00285 285.849);
-      --separator-translucent: oklch(0% 0 0 / 0.12);
-
-      --tag: oklch(69.304% 0.1968 24.755);
-      --ring: oklch(69.304% 0.1968 24.755);
 
       --button-primary-background: oklch(20.019% 0.00002 271.152);
       --button-primary-hover-background: oklch(69.304% 0.1968 24.755);
@@ -342,18 +340,28 @@
 
   @media screen and (prefers-color-scheme: dark) {
     :root {
-      --background-primary: oklch(16.376% 0.00002 271.152);
-      --background-secondary: oklch(0 0 0);
-      --background-tertiary: oklch(0 0 0);
+      --background-primary: oklch(0.12 0 0); /* Negro asfalto/pantalla CRT */
+      --background-secondary: oklch(0.18 0 0); /* Paneles elevados */
+      --background-tertiary: oklch(0.22 0 0);
 
-      --separator-opaque: oklch(33.754% 0.0035 286.055);
-      --separator-translucent: oklch(0% 0 0 / 0.17);
+      --text-primary: oklch(0.98 0 0); /* Blanco puro */
+      --text-secondary: oklch(0.70 0 0); /* Gris claro */
+
+      /* Naranja/Ámbar clásico vibrante sobre fondo oscuro */
+      --accent: oklch(0.70 0.22 45);
+      --accent-hover: oklch(0.80 0.22 45);
+
+      --separator-opaque: oklch(0.25 0 0);
+      --separator-translucent: oklch(1 1 1 / 0.1);
+
+      --focus: var(--accent);
+      --ring-offset: var(--background-primary);
     }
   }
 
   @media (prefers-reduced-transparency) {
     :root {
-      
+      --separator-translucent: var(--separator-opaque);
     }
   }
 }
