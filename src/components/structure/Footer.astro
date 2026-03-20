@@ -92,45 +92,11 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
       padding-block-start: calc(var(--spacing-sat) + var(--spacing-07));
       padding-block-end: calc(var(--spacing-sab) + var(--spacing-07));
 
-      @media screen and (width <= 480px) {
-        
-      }
-
-      @media screen and (width <= 734px) {
-        
-      }
-
-      @media screen and (width <= 1068px) {
-        
-      }
-
       & aside {
         position: relative;
         display: flex;
-        justify-content: center;
-        align-items: center;
         padding: 8px;
         margin-block: auto;
-        border-radius: 30px;
-        background-color: var(--accent);
-
-        & div.copy-email {
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 8px;
-          gap: 16px;
-          cursor: pointer;
-
-          & span.label {
-            font-family: var(--font-family-sans);
-            font-size: var(--font-size-14);
-            color: var(--color-label-tertiary)
-          }
-
-        }
-
       }
 
       & p {
@@ -142,11 +108,11 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
         text-align: center;
 
         &:first-of-type {
-          margin-block-start: 0
+          margin-block-start: 0;
         }
 
         &:last-of-type {
-          margin-block-end: 32px
+          margin-block-end: 32px;
         }
 
       }
@@ -160,7 +126,7 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
         & ul {
           display: flex;
           flex-direction: row;
-          gap: 16px
+          gap: 16px;
         }
 
       }
@@ -172,13 +138,12 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
         @media screen and (width <= 734px) {
           gap: var(--spacing-04);
           flex-direction: column;
-          align-items: end
+          align-items: end;
         }
 
         @media screen and (width >= 734px) {
           flex-direction: row;
           align-items: baseline;
-          justify-content: space-between
         }
 
         & > nav {
@@ -189,7 +154,8 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
             position: relative;
             display: flex;
             flex-direction: row;
-            gap: var(--spacing-04)
+            gap: var(--spacing-04);
+            text-transform: uppercase;
           }
 
         }
@@ -201,7 +167,7 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
         display: block;
         font-family: var(--font-family-serif);
         font-size: var(--font-size-14);
-        text-transform: uppercase
+        text-transform: uppercase;
       }
 
     }
