@@ -36,28 +36,11 @@ const {
   .collection--module {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
 
     .module--hero {
 
       & audio {
         display: none;
-      }
-
-      & h1.title {
-        padding-bottom: 22px;
-        font-size: 24px;
-        font-weight: 400;
-        line-height: 32px;
-        letter-spacing: var(--tracking-common);
-      }
-
-      & .button {
-        margin-top: 15px;
-        height: 40px;
-        background-color: var(--color-yellow-digital);
-        padding-inline: 1.25rem;
-        font-size: 16px;
       }
 
     }
@@ -68,7 +51,7 @@ const {
       margin-left: auto;
       margin-right: auto;
       padding-top: var(--padding-top);
-      text-align: center;
+      background-color: var(--background-secondary);
       border-bottom: 1px solid var(--color-border-default);
 
       & > h1.title {
@@ -82,7 +65,7 @@ const {
         font-size: 14px;
         font-weight: 500;
         line-height: 24px;
-        color: var(--color-grey1);
+        color: var(--text-secondary);
       }
 
       & > .badge {
@@ -92,7 +75,7 @@ const {
         align-items: center;
         justify-content: center;
         border-radius: 32px;
-        background-color: var(--color-yellow-digital);
+        background-color: var(--accent);
         padding-inline: 1.25rem; /* px-5 */
         font-size: 14px;
       }
