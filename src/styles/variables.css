@@ -77,8 +77,9 @@
    * Alias token and component-specific token.
   */
 
+    --font-family-fallback: system-ui, sans-serif, arial;
     --font-family-sans: 'InterVariable', 'Inter', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --font-family-display: '';
+    --font-family-display: 'InterDisplay';
     --font-family-serif: 'TrajanPro', ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
     --font-family-mono: 'GeistMono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 

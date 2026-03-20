@@ -4,20 +4,26 @@ import PageHeader from '@components/structure/PageHeader.astro';
 import ArticleFooter from '@components/structure/ArticleFooter.astro';
 
 const {
-  title = 'Colophon',
+  title = 'Colophon screen',
   description = 'Information about the technologies and tools used to build this site.',
 } = Astro.props;
 ---
 
 <Layout title={title} description={description}>
   <PageHeader title={title} />
-  <p>This site is built with Astro, a modern static site generator.</p>
-  <p>It uses Tailwind CSS for styling and is hosted on Vercel.</p>
+
+  <p>This site is built with Astro with Svelte integration, a modern static site generator.</p>
+
+  <p>It uses pure CSS for styling and is hosted on Cloudflare with Workers/Pages.</p>
+
   <p>For more information, visit the <a href="https://astro.build">Astro website</a>.</p>
+
   <ArticleFooter>
     <p>made with a lot of passion and love</p>
+
     <div class="signature">
       <span>Love,</span>
+
       <svg aria-hidden="true" aria-labelledby="signature-of-marcel-r" fill="none" height="49" role="img" stroke="currentColor" stroke-linecap="round" stroke-width="1.25" viewBox="0 0 136 43" width="153" xmlns="http://www.w3.org/2000/svg">
         <title id="signature-of-marcel-r">Signature of Marcel Rojas</title>
         <path d="M61.0629 1.31743C57.2716 9.28815 49.0352 26.7073 46.4201 32.6182C48.763 27.4686 46.9574 23.4832 37.6881 24.2444C29.0139 24.9568 7.10384 32.8421 1.14819 35.3497C7.55163 34.0959 65.2722 18.1545 126.62 14.8856" pathLength="1"></path>
@@ -27,5 +33,6 @@ const {
         <path d="M92.6771 8.25825L95.7221 5.75061" pathLength="1"></path>
       </svg>
     </div>
+
   </ArticleFooter>
 </Layout>

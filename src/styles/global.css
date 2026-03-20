@@ -24,7 +24,7 @@
     -webkit-tap-highlight-color: transparent;
 
     block-size: auto;
-    font-family: system-ui, sans-serif, arial;
+    font-family: var(--font-family-fallback);
     font-feature-settings: 'case', 'ss01', 'ss03';
     font-optical-sizing: auto;
     font-variation-settings: normal;
