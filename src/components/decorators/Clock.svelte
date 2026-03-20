@@ -44,7 +44,7 @@
       font-weight: var(--font-weight-regular);
       letter-spacing: var(--font-tracking-normal);
       line-height: var(--font-leading-normal);
-      color: oklch(0.56 0 0);
+      color: var(--background-tertiary);
     }
 
   }
