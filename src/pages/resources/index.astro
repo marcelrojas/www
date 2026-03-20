@@ -6,14 +6,15 @@ import SectionArticles from '@components/structure/SectionArticles.astro';
 import SectionFeatured from '@components/structure/SectionFeatured.astro';
 
 const {
-  title = 'Resources screen',
+  title = 'Resources',
+  screen_title = 'Resources screen',
   description = 'Learn how to improve your skills and become who you want to be.',
 } = Astro.props;
 ---
 
 <Layout title={title} description={description}>
 
-  <PageHeader title={title} />
+  <PageHeader title={screen_title} />
 
   <section class="content-tags">
     <p>Explore my resources for guides, tutorials, and tools to help you succeed.</p>

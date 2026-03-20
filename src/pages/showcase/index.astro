@@ -4,13 +4,14 @@ import PageHeader from '@components/structure/PageHeader.astro';
 import FAMGallery from '@components/structure/FAMGallery.astro';
 
 const {
-  title = 'Showcase screen',
+  title = 'Showcase',
+  screen_title = 'Showcase screen',
   description = 'Explore my showcase of projects and achievements.',
 } = Astro.props;
 ---
 
 <Layout title={title} description={description}>
-  <PageHeader title={title} />
+  <PageHeader title={screen_title} />
   <FAMGallery />
 </Layout>
 

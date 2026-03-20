@@ -4,13 +4,14 @@ import PageHeader from '@components/structure/PageHeader.astro';
 import ArticleFooter from '@components/structure/ArticleFooter.astro';
 
 const {
-  title = 'Colophon screen',
+  title = 'Colophon',
+  screen_title = 'Colophon screen',
   description = 'Information about the technologies and tools used to build this site.',
 } = Astro.props;
 ---
 
 <Layout title={title} description={description}>
-  <PageHeader title={title} />
+  <PageHeader title={screen_title} />
 
   <p>This site is built with Astro with Svelte integration, a modern static site generator.</p>
 

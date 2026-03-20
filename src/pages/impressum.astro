@@ -3,11 +3,12 @@ import Layout from '@layouts/Layout.astro';
 import PageHeader from '@components/structure/PageHeader.astro';
 
 const {
-  title = 'Impressum screen',
+  title = 'Impressum',
+  screen_title = 'Impressum screen',
   description = 'Impressum page for Marcel Rojas website.',
 } = Astro.props;
 ---
 
 <Layout title={title} description={description}>
-  <PageHeader title={title} />
+  <PageHeader title={screen_title} />
 </Layout>
