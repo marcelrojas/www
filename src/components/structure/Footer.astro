@@ -96,7 +96,6 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
         position: relative;
         display: flex;
         padding: 8px;
-        margin-block: auto;
       }
 
       & p {
@@ -104,6 +103,7 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
         max-width: 28rem;
         margin-inline: auto;
         font-family: var(--font-family-sans);
+        font-weight: var(--font-weight-regular);
         font-size: var(--font-size-14);
         text-align: center;
 
@@ -134,17 +134,10 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
       & > div.legal {
         position: relative;
         display: flex;
-
-        @media screen and (width <= 734px) {
-          gap: var(--spacing-04);
-          flex-direction: column;
-          align-items: end;
-        }
-
-        @media screen and (width >= 734px) {
-          flex-direction: row;
-          align-items: baseline;
-        }
+        gap: var(--spacing-06);
+        flex-direction: column;
+        align-items: end;
+        align-items: baseline;
 
         & > nav {
           position: relative;
@@ -155,6 +148,9 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
             display: flex;
             flex-direction: row;
             gap: var(--spacing-04);
+            font-family: var(--font-family-sans);
+            font-weight: var(--font-weight-regular);
+            font-size: var(--font-size-12);
             text-transform: uppercase;
           }
 
@@ -166,6 +162,7 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
         position: relative;
         display: block;
         font-family: var(--font-family-serif);
+        font-weight: var(--font-weight-medium);
         font-size: var(--font-size-14);
         text-transform: uppercase;
       }

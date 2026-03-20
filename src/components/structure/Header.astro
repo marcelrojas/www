@@ -31,9 +31,9 @@ import NavBar from '@components/structure/NavBar.astro';
         grid-template-columns: 1fr 1fr;
         grid-template-areas: "a b" "c c";
 
-        & > :first-child { grid-area: a; place-self: start; }
+        & > :first-child { grid-area: a; }
         & > :nth-child(2) { grid-area: b; place-self: start end; }
-        & > :nth-child(3) { grid-area: c; place-self: start; }
+        & > :nth-child(3) { grid-area: c; }
       }
 
     }
