@@ -2,7 +2,6 @@
 import type { CollectionEntry } from 'astro:content';
 import Head from '@components/structure/Head.astro';
 import SkipLinks from '@components/structure/SkipLinks.astro';
-import LoadScreen from '@components/LoadScreen.astro';
 import Header from '@components/structure/Header.astro';
 import Curtain from '@components/Curtain.astro';
 import Footer from '@components/structure/Footer.astro';
@@ -38,7 +37,6 @@ const { title, description, lang = 'en', pubDate, updatedDate, heroImage } = Ast
   <Head title={title} description={description} />
   <body>
     <SkipLinks />
-    <LoadScreen />
     <Header />
     <Curtain />
 
