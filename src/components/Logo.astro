@@ -20,7 +20,24 @@
     animation: logo_view var(--duration-macro-x1) ease-in 0s 1 normal forwards;
 
     @starting-style {
-      display: flex;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+  }
+
+  #logo.animate-logo {
+    animation: logo_view var(--duration-macro-x1) ease-in 0s 1 normal forwards;
+  }
+
+  @keyframes logo_view {
+
+    from {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    to {
       opacity: 1;
       visibility: visible;
     }
