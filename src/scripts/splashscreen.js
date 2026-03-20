@@ -1,5 +1,5 @@
 function initSplashScreen() {
-  const splashScreen = document.getElementById('splash-screen');
+  const splashScreen = document.getElementById('logo');
   if (!splashScreen) return;
 
   if (!sessionStorage.getItem('splashScreenShown')) {

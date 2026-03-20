@@ -35,6 +35,7 @@
 
 <style>
   @layer components {
+
     #clock {
       position: relative;
       font-family: var(--font-family-mono);
@@ -45,5 +46,6 @@
       line-height: var(--font-leading-normal);
       color: oklch(0.56 0 0);
     }
+
   }
 </style>

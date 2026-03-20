@@ -21,7 +21,7 @@ const { phrases } = Astro.props;
   </div>
 </aside>
 
-<style>
+<style is:global>
   aside[role=marquee] {
     position: relative;
     width: 100%;
@@ -32,12 +32,14 @@ const { phrases } = Astro.props;
     padding-block: 0.625rem;
     mask: radial-gradient(50% 50% at 50% 50%, #000000 0%, rgba(0, 0, 0, .57658) 80.78723254504504%, rgba(0, 0, 0, 0) 100%) add;
     transform: none;
+
     & .content-wrapper {
       display: flex;
       flex-direction: row;
       gap: 42px;
       mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 12.5%, rgb(0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 100%);
     }
+
     & .phrases-container {
       flex: 0 0 auto;
       z-index: 1;
@@ -49,6 +51,7 @@ const { phrases } = Astro.props;
       animation-play-state: running;
       animation-delay: 0s;
       animation-direction: normal;
+
       & span {
         width: fit-content;
         will-change: transform;
@@ -60,14 +63,20 @@ const { phrases } = Astro.props;
         white-space: nowrap;
         color: var(--color-text-primary);
       }
+
     }
+
   }
+
   @keyframes scroll {
+
     from {
-      transform: translateX(0%)
+      transform: translateX(0%);
     }
+
     to {
-      transform: translateX(-50%)
+      transform: translateX(-50%);
     }
+
   }
 </style>
