@@ -1,9 +1,7 @@
 @charset "UTF-8";
+
 @layer variables, base, utilities, components, forms, themes, pages, states, animations, print;
-/*/
-* scroll-padding-top: var(--)
-*
-/*/
+
 @layer base {
   *, *:is(::before, ::after, ::backdrop) {
     box-sizing: border-box;
@@ -17,16 +15,14 @@
   }
 
   html {
-    /* --- From global.css --- */
     scrollbar-width: none;
     scrollbar-gutter: stable both-edges;
     scroll-behavior: smooth;
     scroll-snap-type: y mandatory;
     font-size: var(--font-size-base);
-    background-color: var(--color-background);
+    background-color: var(--background-primary);
     -webkit-tap-highlight-color: transparent;
 
-    /* --- Merged from global1.css --- */
     block-size: auto;
     font-family: system-ui, sans-serif, arial;
     font-feature-settings: 'case', 'ss01', 'ss03';
@@ -43,7 +39,7 @@
     touch-action: manipulation;
     scrollbar-color: auto;
     quotes: '"' '"' "'" "'";
-    accent-color: hsl(39, 100%, 49%);
+    accent-color: var(--accent);
   }
 
   body {
@@ -59,16 +55,16 @@
       cursor: wait;
       pointer-events: none;
       user-select: none;
-      filter: blur(2px) grayscale(80%);
+      filter: grayscale(80%);
       opacity: .6;
     }
+
   }
 
   main {
     display: block;
     position: relative;
     unicode-bidi: isolate;
-    background-color: var(--color-background);
   }
 
   nav, footer {
@@ -80,7 +76,27 @@
   }
 
   :where(h1, h2, h3, h4, h5, h6, p, ul, ol):last-child {
-    margin-block-end: 0;
+    margin-block-end: unset;
+  }
+
+  :is(h2, h3, h4, h5, h6):has(+ *) {
+    margin-bottom: 1lh;
+  }
+
+  :is(h2, h3, h4, h5):has(+ h3, + h4, + h5, + h6) {
+    margin-bottom: 1lh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-feature-settings: 'ss07', 'ss08';
+  }
+
+  p, span {
+    text-indent: unset;
+  }
+
+  p {
+    color: hsl(0, 0%, 12%);
   }
 
   p + p {
@@ -252,26 +268,6 @@
     src: local('GeistMono-Italic'), url('/fonts/GeistMono-Italic.woff2') format('woff2') tech('variations'), url('/fonts/GeistMono-Italic.woff2') format('woff2-variations');
   }
 
-  /* --- Merged from global1.css --- */
-  @font-face {
-    font-family: 'Pretendard';
-    font-weight: 45 920;
-    font-synthesis: none;
-    font-style: normal;
-    font-display: swap;
-    src: local('Pretendard'), url('/PretendardVariable.woff2') format('woff2-variations');
-  }
-
-  @font-face {
-    font-family: 'Newsreader';
-    font-weight: 100 900;
-    font-synthesis: none;
-    font-style: italic;
-    font-display: swap;
-    src: local('Newsreader'), url('/Newsreader.woff2') format('woff2-variations');
-    unicode-range: U+000-5FF;
-  }
-
   @font-feature-values InterVariable {
     @character-variant {
       cv01: 1; cv02: 2; cv03: 3; cv04: 4; cv05: 5; cv06: 6; cv07: 7; cv08: 8;
@@ -333,6 +329,7 @@
       squared-characters: 6;
     }
   }
+
 }
 
 :focus, :focus-visible, :focus-within {
@@ -508,26 +505,7 @@ hr {
 }
 
 /* --- Merged from global1.css --- */
-:is(h2, h3, h4, h5, h6):has(+ *) {
-  margin-bottom: 14px;
-}
 
-:is(h2, h3, h4, h5):has(+ h3, + h4, + h5, + h6) {
-  margin-bottom: 8px;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-feature-settings: 'ss07', 'ss08';
-  color: hsl(0, 0%, 12%); /* Overwrites or complements base if unlayered */
-}
-
-p, span {
-  text-indent: unset;
-}
-
-p {
-  color: hsl(0, 0%, 12%);
-}
 
 span {
 
