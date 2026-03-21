@@ -15,36 +15,36 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
   <div class="content">
 
     <aside aria-label="Contact me">
-      <span class="label">Contact</span>
+      <span aria-hidden="true">Contact</span>
       <p>Reach out for freelancer work or just to say hi ·[⌢o⌢]·</p>
       <Button id="clipboard-cliper" class="copy-email" data-encemail={encEmail}>Tab to copy my e-mail</Button>
     </aside>
 
     <address class="social-handles">
-      <span>Socials</span>
+      <span aria-hidden="true">Socials</span>
       <ul>
         <li>
-          <Anchor variant="platted" label="icon-only" size="medium" wide="fill" href={SOCIAL_X} target="_blank" rel="noopener noreferrer" aria-label={`Visit my X profile`} class="social-link">
+          <Anchor variant="platted" label="text-and-icon" size="medium" wide="fit" href={SOCIAL_X} target="_blank" rel="noopener noreferrer" aria-label={`Visit my X profile`}>
             <Icon name="x" />
           </Anchor>
         </li>
         <li>
-          <Anchor variant="platted" label="icon-only" size="medium" wide="fill" href={SOCIAL_INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label={`Visit my Instagram profile`} class="social-link">
+          <Anchor variant="platted" label="text-and-icon" size="medium" wide="fit" href={SOCIAL_INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label={`Visit my Instagram profile`}>
             <Icon name="instagram" />
           </Anchor>
         </li>
         <li>
-          <Anchor variant="platted" label="icon-only" size="medium" wide="fill" href={SOCIAL_YOUTUBE} target="_blank" rel="noopener noreferrer" aria-label={`Visit my YouTube profile`} class="social-link">
+          <Anchor variant="platted" label="text-and-icon" size="medium" wide="fit" href={SOCIAL_YOUTUBE} target="_blank" rel="noopener noreferrer" aria-label={`Visit my YouTube profile`}>
             <Icon name="youtube" />
           </Anchor>
         </li>
         <li>
-          <Anchor variant="platted" label="icon-only" size="medium" wide="fill" href={SOCIAL_GITHUB} target="_blank" rel="noopener noreferrer" aria-label={`Visit my GitHub profile`} class="social-link">
+          <Anchor variant="platted" label="text-and-icon" size="medium" wide="fit" href={SOCIAL_GITHUB} target="_blank" rel="noopener noreferrer" aria-label={`Visit my GitHub profile`}>
             <Icon name="github" />
           </Anchor>
         </li>
         <li>
-          <Anchor variant="platted" label="icon-only" size="medium" wide="fill" href={SOCIAL_LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label={`Visit my LinkedIn profile`} class="social-link">
+          <Anchor variant="platted" label="icon-only" size="medium" wide="fill" href={SOCIAL_LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label={`Visit my LinkedIn profile`}>
             <Icon name="linkedin" />
           </Anchor>
         </li>
@@ -162,7 +162,7 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
       & > small.copyright {
         position: relative;
         display: block;
-        font-family: var(--font-family-serif);
+        font-family: var(--font-family-sans);
         font-weight: var(--font-weight-medium);
         font-size: var(--font-size-14);
         text-transform: uppercase;

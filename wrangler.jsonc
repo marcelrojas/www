@@ -16,7 +16,6 @@
   "routes": [
     {
       "pattern": "marcelrojas.net",
-      "zone_name": "marcelrojas.net",
       "custom_domain": true
     }
   ],
