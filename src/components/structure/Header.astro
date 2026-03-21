@@ -1,6 +1,5 @@
 ---
 import Clock from '@components/decorators/Clock.svelte';
-import Logo from '@components/Logo.astro';
 import NavBar from '@components/structure/NavBar.astro';
 ---
 
@@ -9,7 +8,9 @@ import NavBar from '@components/structure/NavBar.astro';
     <div>
       <Clock client:only="svelte" />
     </div>
-    <Logo />
+    <div id="dinamic-content">
+
+    </div>
     <NavBar />
   </div>
 </header>
@@ -19,7 +20,7 @@ import NavBar from '@components/structure/NavBar.astro';
 
     header#header {
       position: relative;
-      z-index: 40;
+      z-index: var(--z-header);
       padding-left: calc(var(--spacing-sal) + 22px);
       padding-right: calc(var(--spacing-sar) + 22px);
 

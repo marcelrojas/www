@@ -8,10 +8,10 @@ import Anchor from '@components/Anchor.astro';
     <h2 class="headline">Flexible, transparent pricing built around your needs</h2>
     <p class="subhead">I offer competitive pricing for my services. Please contact me for a detailed quote.</p>
 
-    <div class="cards">
+    <div class="collection--panel">
 
-      <article class="card">
-        <h3 class="headline">Strategy</h3>
+      <article class="panel">
+        <h1>Strategy</h1>
         <div class="content">
           <ul>
             <li>Visual Research</li>
@@ -24,8 +24,8 @@ import Anchor from '@components/Anchor.astro';
         </div>
       </article>
 
-      <article class="card">
-        <h3 class="headline">Design</h3>
+      <article class="panel">
+        <h1>Design</h1>
         <div class="content">
           <ul>
             <li>Web Design</li>
@@ -38,8 +38,8 @@ import Anchor from '@components/Anchor.astro';
         </div>
       </article>
 
-      <article class="card">
-        <h3 class="headline">Development</h3>
+      <article class="panel">
+        <h1>Development</h1>
         <div class="content">
           <ul>
             <li>Web Development</li>
@@ -66,14 +66,17 @@ import Anchor from '@components/Anchor.astro';
 
     & div.content {
       max-width: 1200px;
+
       & h2.headline {
-        font-size: 2rem
+        font-size: 2rem;
       }
+
       & p.subhead {
         font-size: 1.25rem;
-        margin-top: 8px
+        margin-top: 8px;
       }
-      & div.cards {
+
+      & div.collection--panel {
         padding-top: 96px;
         padding-bottom: 96px;
         position: relative;
@@ -81,21 +84,28 @@ import Anchor from '@components/Anchor.astro';
         align-items: center;
         display: flex;
         contain: style;
-        & article.card {
+
+        & article.panel {
           width: 23.875em;
           position: relative;
           aspect-ratio: 382/528;
-          & h3.headline {
+
+          & h3 {
             font-size: 1.5rem;
-            margin-bottom: 16px
+            margin-bottom: 16px;
           }
+
         }
+
       }
+
     }
+
     & div.footer {
       padding-bottom: 64px;
       place-content: center;
-      display: flex
+      display: flex;
     }
+
   }
 </style>

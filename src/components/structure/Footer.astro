@@ -44,7 +44,7 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
           </Anchor>
         </li>
         <li>
-          <Anchor variant="platted" label="icon-only" size="medium" wide="fill" href={SOCIAL_LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label={`Visit my LinkedIn profile`}>
+          <Anchor variant="platted" label="text-and-icon" size="medium" wide="fill" href={SOCIAL_LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label={`Visit my LinkedIn profile`}>
             <Icon name="linkedin" />
           </Anchor>
         </li>
@@ -78,7 +78,7 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
 <style is:global>
   footer#footer {
     position: relative;
-    z-index: 0;
+    z-index: var(--z-footer);
     contain: layout paint;
     content-visibility: auto;
 

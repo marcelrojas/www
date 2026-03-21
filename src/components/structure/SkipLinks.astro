@@ -1,10 +1,10 @@
-<nav id="skip-to-content" aria-label="Skip links">
-  <a href="#main" class="skip-to-content">Skip to main content</a>
-  <a href="#footer" class="skip-to-content">Skip to footer</a>
+<nav id="skip-to" aria-label="Skip links">
+  <a href="#main">Skip to main content</a>
+  <a href="#footer">Skip to footer</a>
 </nav>
 
 <style is:global>
-  nav#skip-to-content {
+  nav#skip-to {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -18,7 +18,7 @@
 
     &:focus:not(:focus-visible) {
       background-color: transparent;
-      outline: none
+      outline: none;
     }
 
     &:focus, &:focus-visible {
@@ -44,7 +44,8 @@
       border-radius: 4px;
       outline: 3px solid #0b0c0c;
       outline-offset: 2px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
+
   }
 </style>
