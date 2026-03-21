@@ -4,17 +4,23 @@
   "compatibility_date": "2026-01-01",
   "workers_dev": true,
   "send_metrics": false,
+
   "assets": {
-    "directory": "./dist/",
-  //  "binding": "ASSETS"
+    "directory": "./dist/"
   },
+
+  "observability": {
+    "enabled": true
+  },
+
   "routes": [
-  //  {
-  //    "pattern": "marcelrojas.net",
-  //    "zone_name": "marcelrojas.net",
-  //    "custom_domain": true
-  //  }
+    {
+      "pattern": "marcelrojas.net",
+      "zone_name": "marcelrojas.net",
+      "custom_domain": true
+    }
   ],
+
   "compatibility_flags": [
     "nodejs_compat",
     "global_fetch_strictly_public"
