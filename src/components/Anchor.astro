@@ -49,7 +49,24 @@ const classes = [
 ];
 ---
 
-<a href={href} class:list={classes} target={target} rel={rel} aria-current={isActive ? 'page' : undefined} data-astro-prefetch={isExternal ? 'false' : 'viewport'} {...props}>
+<a
+  href={href}
+  class:list={classes}
+  target={target}
+  rel={rel}
+  aria-current={isActive ? 'page' : undefined}
+  data-astro-prefetch={isExternal ? 'false' : 'viewport'}
+  {...props}
+>
+  <slot />
+</a>
+
+<a
+  href={href}
+  class={className}
+  aria-current={isActive ? 'page' : undefined}
+  {...props}
+>
   <slot />
 </a>
 
@@ -66,8 +83,18 @@ const classes = [
       backface-visibility: hidden;
       -webkit-font-smoothing: subpixel-antialiased;
       touch-action: manipulation;
-      will-change: color, background-color, border-radius, transform;
-      transition: color 105ms ease-out, background-color 105ms ease-out, border-radius 105ms ease-out, transform 105ms ease-out;
+      will-change: color;
+      transition: color 0.15s linear;
+
+      @media (hover: hover) {
+        &:hover:not([aria-current="page"]) {
+          color: var(--accent-hover);
+        }
+
+        &:hover {
+          transform: scale(1.03);
+        }
+      }
 
       &[aria-current="page"] {
         color: var(--accent);
@@ -75,10 +102,10 @@ const classes = [
         pointer-events: none;
       }
 
-      @media (hover: hover) {
-        &:hover {
-          transform: scale(1.03);
-        }
+      &[aria-current="page"] {
+        color: var(--accent);
+        pointer-events: none;
+        cursor: default;
       }
 
       &:active {
@@ -97,22 +124,17 @@ const classes = [
 
         @media (hover: hover) {
           &:hover {
-            --anchor-hover: okchl(1 1 1 / 0.08);
-            background-color: var(--anchor-hover);
+
           }
         }
-
       }
 
       &.variant-platterless {
-        
         @media (hover: hover) {
           &:hover {
-            --anchor-hover: okchl(1 1 1 / 0.08);
-            background-color: var(--anchor-hover);
+
           }
         }
-
       }
 
       /* Actions */
@@ -149,7 +171,6 @@ const classes = [
           width: 8px;
           height: 8px;
         }
-
       }
 
       &.size-medium {
@@ -173,7 +194,6 @@ const classes = [
           width: 16px;
           height: 16px;
         }
-
       }
 
       &.size-large {
@@ -198,7 +218,6 @@ const classes = [
           width: 32px;
           height: 32px;
         }
-
       }
 
       /* Widths */
@@ -216,10 +235,7 @@ const classes = [
         &[aria-pressed="true"] {
           
         }
-
       }
-
     }
-
   }
 </style>
