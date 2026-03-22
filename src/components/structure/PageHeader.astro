@@ -28,9 +28,12 @@ const { screen_title } = Astro.props;
     }
 
     & > h1 {
-      font-weight: var(--font-weight-semibold);
+      font-size: var();
+      font-weight: var(--font-weight-regular);
       line-height: 1.05;
+      line-clamp: 1;
       letter-spacing: -.015em;
+      text-transform: lowercase;
       color: var(--color-text-primary);
 
       @media screen and (width <= 480px) {
@@ -42,8 +45,6 @@ const { screen_title } = Astro.props;
       @media screen and (width <= 1068px) {
         --fontSize: 64px;
       }
-
     }
-
   }
 </style>
