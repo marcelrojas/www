@@ -2,22 +2,24 @@
 interface Props {
   as?: 'button'| 'input';
   type?: 'button' | 'submit' | 'reset';
-  action?: 'action' | 'neutral' | 'danger';
+  action?: 'default' | 'neutral' | 'danger'; // Ajustado a 'default' para hacer match con tu CSS
   size?: 'small' | 'medium' | 'large' | 'full';
   wide?: 'fit' | 'fill';
   disabled?: boolean;
   class?: string;
+  text?: string; // ¡Corregido! Faltaba declarar esta prop
   [key: string]: any;
 }
 
 const {
-  as,
-  type,
-  action,
-  size,
-  wide,
-  disabled,
+  as = 'button',
+  type = 'button',
+  action = 'default',
+  size = 'medium',
+  wide = 'fit',
+  disabled = false,
   class: userClass,
+  text, // Extraemos la prop para que el HTML no de error
   ...rest
 } = Astro.props;
 
@@ -49,127 +51,114 @@ const classList = [
 </Tag>
 
 <style is:global>
-  :is(button, input:is([type="button"], [type="submit"], [type="reset"])).button {
-    justify-content: center;
-    align-items: center;
-    display: inline-flex;
-    overflow: hidden;
-    position: relative;
-    z-index: 0;
-    width: fit-content;
-    height: fit-content;
-    font-family: var(--font-family-sans);
-    font-weight: var(--font-weight-medium);
-    text-transform: none;
-    text-align: center;
-    text-decoration: none;
-    user-select: none;
-    touch-action: manipulation;
-    will-change: background-color, color, opacity;
+  @layer components {
+    :is(button, input:is([type="button"], [type="submit"], [type="reset"])).button {
+      justify-content: center;
+      align-items: center;
+      display: inline-flex;
+      overflow: hidden;
+      position: relative;
+      z-index: 0;
+      width: fit-content;
+      height: fit-content;
+      font-family: var(--font-family-sans);
+      font-weight: var(--font-weight-medium);
+      text-transform: uppercase;
+      text-align: center;
+      text-decoration: none;
+      user-select: none;
+      touch-action: manipulation;
+      transition: background-color 0.15s linear, color 0.15s linear, transform 0.1s linear;
+      will-change: background-color, color, opacity, transform;
 
-    &:is(:enabled, [aria-disabled="false"]) {
-      cursor: pointer;
-      pointer-events: auto;
-    }
-
-    &:is(:disabled, [aria-disabled="true"]) {
-      cursor: not-allowed;
-      pointer-events: none;
-      filter: grayscale(70%);
-    }
-
-    &:active {
-      mask-type: alpha;
-      mask-composite: intersect;
-      mask-image: radial-gradient(#fff 50%, #0000 70%);
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--color-focus);
-      outline-offset: 3px;
-    }
-
-    &:has(.text:not(:empty)) + &:has(.symbol:not(:empty)) {
-      
-    }
-
-    & :is(.symbol, .text):empty {
-      display: none;
-    }
-
-    &.size-small {
-      gap: 3px;
-      padding-inline: 10px;
-      padding-block: 4px;
-      font-size: var(--font-size-14);
-      line-height: 18px;
-      letter-spacing: -0.08px;
-
-      &.wide-full {
-        width: 100%;
+      &:is(:enabled, [aria-disabled="false"]) {
+        cursor: pointer;
+        pointer-events: auto;
       }
-    }
 
-    &.size-medium {
-      gap: 4px;
-      padding-inline: 14px;
-      padding-block: 7px;
-      font-size: var(--font-size-15);
-      line-height: 20px;
-      letter-spacing: -0.23px;
-
-      &.wide-full {
-        width: 100%;
+      &:is(:disabled, [aria-disabled="true"]) {
+        cursor: not-allowed;
+        pointer-events: none;
+        opacity: 0.5;
       }
-    }
 
-    &.size-large {
-      gap: 4px;
-      padding-inline: 20px;
-      padding-block: 14px;
-      font-size: var(--font-size-17);
-      line-height: 22px;
-      letter-spacing: -0.43px;
+      &:active:not(:disabled) {
 
-      &.wide-full {
-        width: 100%;
       }
-    }
 
-    &.variant-bordered {
+      &:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 3px;
+      }
+
+      & :is(.symbol, .text):empty {
+        display: none;
+      }
+
+      &.size-small {
+        gap: 3px;
+        padding-inline: 10px;
+        padding-block: 4px;
+        font-size: var(--font-size-12);
+        letter-spacing: var(--font-tracking-wide);
+        &.wide-full { width: 100%; }
+      }
+
+      &.size-medium {
+        gap: 4px;
+        padding-inline: 14px;
+        padding-block: 7px;
+        font-size: var(--font-size-14);
+        letter-spacing: var(--font-tracking-wide);
+        &.wide-full { width: 100%; }
+      }
+
+      &.size-large {
+        gap: 4px;
+        padding-inline: 20px;
+        padding-block: 14px;
+        font-size: var(--font-size-16);
+        letter-spacing: var(--font-tracking-wider);
+        &.wide-full { width: 100%; }
+      }
 
       &.action-default {
-        background-color: var(--color-primary);
-        color: var(--color-onprimary);
-        fill: var(--color-onprimary);
+        background-color: var(--accent);
+        color: var(--background-primary);
+        fill: var(--background-primary);
+        border: 1px solid var(--accent);
 
         @media (hover: hover) {
           &:hover:not(:disabled, [aria-disabled="true"]) {
-            background-color: var(--color-primary-hover);
+            background-color: var(--accent-hover);
+            border-color: var(--accent-hover);
           }
         }
       }
 
       &.action-neutral {
-        background-color: var(--color-white);
-        color: var(--color-black);
-        fill: var(--color-black);
+        background-color: transparent;
+        color: var(--text-primary);
+        fill: var(--text-primary);
 
         @media (hover: hover) {
           &:hover:not(:disabled, [aria-disabled="true"]) {
-            background-color: var(--color-primary-hover);
+            background-color: var(--text-primary);
+            color: var(--background-primary);
           }
         }
       }
 
       &.action-danger {
-        background-color: var(--color-danger);
-        color: var(--color-white);
-        fill: var(--color-white);
+        background-color: transparent;
+        color: oklch(0.6 0.2 25);
+        fill: oklch(0.6 0.2 25);
+        border: 1px solid oklch(0.6 0.2 25);
 
         @media (hover: hover) {
           &:hover:not(:disabled, [aria-disabled="true"]) {
-            background-color: var(--color-primary-hover);
+            background-color: oklch(0.6 0.2 25);
+            color: var(--background-primary);
           }
         }
       }

@@ -79,16 +79,6 @@ const classes = [
         &:hover:not([aria-current="page"]) {
           color: var(--accent-hover);
         }
-
-        &:hover {
-          transform: scale(1.03);
-        }
-      }
-
-      &[aria-current="page"] {
-        color: var(--accent);
-        cursor: default;
-        pointer-events: none;
       }
 
       &[aria-current="page"] {
@@ -98,7 +88,7 @@ const classes = [
       }
 
       &:active {
-        transform: scale(1.03);
+
       }
 
       &:focus-visible {
