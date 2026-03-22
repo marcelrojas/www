@@ -21,7 +21,6 @@ const posts = (await getCollection('weblog')).sort(
             <p class="description">{post.data.description}</p>
             <div class="metadata">
               <FormattedDate date={post.data.pubDate} />
-              <span class="separator">•</span>
               <span class="category">{post.data.category}</span>
             </div>
           </a>
@@ -61,12 +60,12 @@ const posts = (await getCollection('weblog')).sort(
             max-width: 300px;
             margin: 0 0 8px 0;
             fond-family: var(--font-family-sans);
-            font-weight: var(--font-weight-semibold);
+            font-weight: var(--font-weight-medium);
             font-size: var(--font-size-18);
             line-height: 1;
             line-clamp: 3;
             box-orient: vertical;
-            color: var(--label-primary)
+            color: var(--label-primary);
           }
 
           & > p.description {
@@ -74,12 +73,12 @@ const posts = (await getCollection('weblog')).sort(
             margin-bottom: var(--spacing-04);
             max-width: 300px;
             font-family: var(--font-family-sans);
-            font-weight: var(--font-weight-semibold);
+            font-weight: var(--font-weight-medium);
             font-size: var(--font-size-16);
             line-height: var(--line-height-24);
             line-clamp: 3;
             box-orient: vertical;
-            color: var(--label-secondary)
+            color: var(--label-secondary);
           }
 
           & > .metadata {
@@ -88,21 +87,20 @@ const posts = (await getCollection('weblog')).sort(
             gap: 12px;
             font-size: 0.9rem;
 
-            & > .separator {
-              color: #ccc
+            & > span.category {
+              border-width: 0 0 0 1px;
+              border-style: solid;
+              border-color: var(--fill-border);
             }
-
           }
-
         }
-
       }
 
-      & > :first-child { grid-area: a }
-      & > :nth-child(2) { grid-area: b }
-      & > :nth-child(3) { grid-area: c }
-      & > :nth-child(4) { grid-area: d }
-      & > :nth-child(5) { grid-area: e }
+      & > :first-child { grid-area: a; }
+      & > :nth-child(2) { grid-area: b; }
+      & > :nth-child(3) { grid-area: c; }
+      & > :nth-child(4) { grid-area: d; }
+      & > :nth-child(5) { grid-area: e; }
     }
   }
 </style>

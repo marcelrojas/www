@@ -4,6 +4,7 @@ import PageHeader from '@components/structure/PageHeader.astro';
 import Anchor from '@components/Anchor.astro';
 import Button from '@components/Button.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../types/consts';
+import { COPYRIGHT_NAME, COPYRIGHT_YEAR, SOCIAL_LINKEDIN } from '@types/consts';
 
 const {
   title = 'About',
@@ -16,16 +17,23 @@ const {
 
   <section class="collection--module">
     
-    <article class="module--hero">
-      <audio loop="" src="/audio/beats.aac"></audio>
-      <p class="description">Building better business with an individual approach to each client with a wide range of services.<br />I'm available for freelance work and collaborations. Whether you have a project in mind or just want to say hello, feel free to reach out!</p>
+    <article class="module--work">
+      <p class="description">Building better business with an individual approach to each client with a wide range of services.</p>
       <Anchor wide="fit" class="badge audio_trigger" href="https://contra.com/marcelrojas">Explore my services</Anchor>
     </article>
 
     <article class="module--cv">
+      <audio loop="" src="/audio/beats.aac"></audio>
       <h1 class="title">Curriculum</h1>
       <p class="description">Location Venezuela<br />Languages Spanish, English<br />Skillset Development, Design and Strategy</p>
-      <Button role="button" wide="fit" class="badge">Open</Button>
+      <ul>
+        <li>
+          <Button role="button" wide="fit" class="badge audio_trigger">Review résumé</Button>
+        </li>
+        <li>
+          <a href={SOCIAL_LINKEDIN} target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
+        </li>
+      </ul>
     </article>
 
   </section>
@@ -37,26 +45,17 @@ const {
     display: flex;
     flex-wrap: wrap;
 
-    .module--hero {
-
-      & audio {
-        display: none;
-      }
-
+    & audio {
+      display: none;
     }
 
     & > article.[class*="module--"] {
-      min-height: var(--min-height);
       display: block;
-      margin-left: auto;
-      margin-right: auto;
-      padding-top: var(--padding-top);
       background-color: var(--background-secondary);
-      border-bottom: 1px solid var(--color-border-default);
 
       & > h1.title {
         font-size: 32px;
-        font-weight: var(--font-weight-semibold);
+        font-weight: var(--font-weight-medium);
         line-height: 40px;
       }
 
@@ -76,30 +75,22 @@ const {
         justify-content: center;
         border-radius: 32px;
         background-color: var(--accent);
-        padding-inline: 1.25rem; /* px-5 */
+        padding-inline: 1.25rem;
         font-size: 14px;
       }
-
     }
-
   }
 
-  /* Mobile Screen */
   @media screen and (width <= 768px) {
 
     article.[class*="module--"] {
-      --padding-top: 46px;
-      --min-height: 376px;
 
       & > .badge {
         margin-bottom: 2rem;
       }
-
     }
-
   }
 
-  /* Desktop Screen */
   @media screen and (width <= 1024px) {
 
     h1.title {
@@ -116,6 +107,5 @@ const {
       height: 40px;
       font-size: 16px;
     }
-
   }
 </style>

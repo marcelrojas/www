@@ -2,25 +2,21 @@
 interface Props {
   as?: 'button'| 'input';
   type?: 'button' | 'submit' | 'reset';
-  variant?: 'bordered' | 'tonal' | 'borderless';
-  action?: 'default' | 'neutral' | 'danger';
+  action?: 'action' | 'neutral' | 'danger';
   size?: 'small' | 'medium' | 'large' | 'full';
   wide?: 'fit' | 'fill';
   disabled?: boolean;
-  text?: string;
   class?: string;
   [key: string]: any;
 }
 
 const {
-  as = 'button',
-  type = 'button',
-  variant = 'tonal',
-  action = 'default',
-  size = 'medium',
-  wide = 'fit',
-  disabled = false,
-  text,
+  as,
+  type,
+  action,
+  size,
+  wide,
+  disabled,
   class: userClass,
   ...rest
 } = Astro.props;
@@ -36,16 +32,12 @@ const attrs: Record<string, any> = {
   tabindex: disabled ? -1 : undefined,
 };
 
-const hasIcon = Astro.slots.has('iconLeft') || Astro.slots.has('iconRight') || Astro.slots.has('symbol');
-
 const classList = [
   'button',
-  `variant-${variant}`,
   `action-${action}`,
   `size-${size}`,
   `wide-${wide}`,
   userClass,
-  hasIcon && 'has-icon',
 ].filter(Boolean).join(' ');
 ---
 
@@ -53,11 +45,7 @@ const classList = [
   class={classList}
   {...attrs}
 >
-  <slot name="iconLeft" />
-  {Tag !== 'input' && (
-    <slot name="text">{text}</slot>
-  )}
-  <slot name="iconRight" />
+  <slot name="text">{text}</slot>
 </Tag>
 
 <style is:global>
@@ -70,16 +58,14 @@ const classList = [
     z-index: 0;
     width: fit-content;
     height: fit-content;
-    border-radius: 32px;
     font-family: var(--font-family-sans);
-    font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-medium);
     text-transform: none;
     text-align: center;
     text-decoration: none;
     user-select: none;
     touch-action: manipulation;
-    transition: background-color 200ms ease-in-out, color 200ms ease-in-out, opacity 200ms ease-in-out, filter 200ms ease-in-out;
-    will-change: background-color, color, opacity, filter;
+    will-change: background-color, color, opacity;
 
     &:is(:enabled, [aria-disabled="false"]) {
       cursor: pointer;
@@ -122,7 +108,6 @@ const classList = [
       &.wide-full {
         width: 100%;
       }
-
     }
 
     &.size-medium {
@@ -136,7 +121,6 @@ const classList = [
       &.wide-full {
         width: 100%;
       }
-
     }
 
     &.size-large {
@@ -150,7 +134,6 @@ const classList = [
       &.wide-full {
         width: 100%;
       }
-
     }
 
     &.variant-bordered {
@@ -165,7 +148,6 @@ const classList = [
             background-color: var(--color-primary-hover);
           }
         }
-
       }
 
       &.action-neutral {
@@ -178,90 +160,12 @@ const classList = [
             background-color: var(--color-primary-hover);
           }
         }
-
       }
 
       &.action-danger {
         background-color: var(--color-danger);
         color: var(--color-white);
         fill: var(--color-white);
-
-        @media (hover: hover) {
-          &:hover:not(:disabled, [aria-disabled="true"]) {
-            background-color: var(--color-primary-hover);
-          }
-        }
-      }
-    }
-
-    &.variant-tonal {
-      backdrop-filter: blur(40px);
-
-      &.action-default {
-        background-color: var(--color-fill-tertiary);
-        color: var(--color-internet-blue);
-        fill: var(--color-internet-blue);
-
-        @media (hover: hover) {
-          &:hover:not(:disabled, [aria-disabled="true"]) {
-            background-color: var(--color-primary-hover);
-          }
-        }
-      }
-
-      &.action-neutral {
-        background-color: var(--color-fill-tertiary);
-        color: var(--color-label-primary);
-        fill: var(--color-label-primary);
-
-        @media (hover: hover) {
-          &:hover:not(:disabled, [aria-disabled="true"]) {
-            background-color: var(--color-primary-hover);
-          }
-        }
-      }
-
-      &.action-danger {
-        background-color: var(--color-fill-danger);
-        color: var(--color-label-danger);
-        fill: var(--color-label-danger);
-
-        @media (hover: hover) {
-          &:hover:not(:disabled, [aria-disabled="true"]) {
-            background-color: var(--color-primary-hover);
-          }
-        }
-      }
-    }
-
-    &.variant-borderless {
-      background-color: transparent;
-
-      &.action-default {
-        color: var(--color-primary);
-        fill: var(--color-primary);
-
-        @media (hover: hover) {
-          &:hover:not(:disabled, [aria-disabled="true"]) {
-            background-color: var(--color-primary-hover);
-          }
-        }
-      }
-
-      &.action-neutral {
-        color: var(--color-primary);
-        fill: var(--color-primary);
-
-        @media (hover: hover) {
-          &:hover:not(:disabled, [aria-disabled="true"]) {
-            background-color: var(--color-primary-hover);
-          }
-        }
-      }
-
-      &.action-danger {
-        color: var(--color-danger);
-        fill: var(--color-danger);
 
         @media (hover: hover) {
           &:hover:not(:disabled, [aria-disabled="true"]) {

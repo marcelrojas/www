@@ -31,20 +31,10 @@ const { screen_title } = Astro.props;
       font-size: var();
       font-weight: var(--font-weight-regular);
       line-height: 1.05;
-      line-clamp: 1;
+      line-clamp: 2;
       letter-spacing: -.015em;
       text-transform: lowercase;
       color: var(--color-text-primary);
-
-      @media screen and (width <= 480px) {
-        --fontSize: 36px;
-      }
-      @media screen and (width <= 734px) {
-        --fontSize: 44px;
-      }
-      @media screen and (width <= 1068px) {
-        --fontSize: 64px;
-      }
     }
   }
 </style>
