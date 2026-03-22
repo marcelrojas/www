@@ -21,7 +21,6 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
     </aside>
 
     <address class="social-handles">
-      <span class="section-tag" aria-hidden="true">Socials</span>
       <ul>
         <li>
           <Anchor variant="platted" label="icon-only" size="medium" wide="fit" href={SOCIAL_X} target="_blank" rel="noopener noreferrer" aria-label={`Visit my X profile`}>
@@ -81,6 +80,9 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
     z-index: var(--z-footer);
     contain: layout paint;
     content-visibility: auto;
+    border-width: 2px 1px;
+    border-style: solid;
+    border-color: var(--fill-border);
 
     & > div.content {
       display: flex;
@@ -92,29 +94,25 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
       padding-block-start: calc(var(--spacing-sat) + var(--spacing-07));
       padding-block-end: calc(var(--spacing-sab) + var(--spacing-07));
 
-      & aside {
+      span.section-tag {
+        font-family: var(--font-family-sans);
+        font-weight: var(--font-weight-regular);
+        font-size: var(--font-size-12);
+        text-transform: uppercase;
+      }
+
+      & > aside {
         position: relative;
         display: flex;
         padding: 8px;
       }
 
-      & p {
-        position: relative;
-        max-width: 28rem;
-        margin-inline: auto;
-        font-family: var(--font-family-sans);
-        font-weight: var(--font-weight-regular);
-        font-size: var(--font-size-14);
-        text-align: center;
+      &:first-of-type {
+        margin-block-start: 0;
+      }
 
-        &:first-of-type {
-          margin-block-start: 0;
-        }
-
-        &:last-of-type {
-          margin-block-end: 32px;
-        }
-
+      &:last-of-type {
+        margin-block-end: 32px;
       }
 
       & address.social-handles {

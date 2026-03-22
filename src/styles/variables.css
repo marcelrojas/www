@@ -252,10 +252,10 @@
       --label-secondary: var(--color-); /* for descriptive label like footnotes and subtitles */
       --label-tertiary: oklch(35.926% 0.01374 285.653 / 0.3); /* for inactive elements, and only when label doesn’t need high legibility */
 
-      --fill-primary: oklch(57.268% 0.00007 271.152 / 0.2);
-      --fill-secondary: var(--color-);
-      --fill-tertiary: oklch(56.885% 0.01376 285.893 / 0.12);
-      --fill-border: oklch(56.885% 0.01376 285.893 / 0.2);
+      --fill-primary: ;
+      --fill-secondary: ;
+      --fill-tertiary: ;
+      --fill-border: ;
 
       --button-primary-background: transparent;
       --button-primary-hover-background: oklch(69.304% 0.1968 24.755);
