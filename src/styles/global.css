@@ -1562,27 +1562,6 @@ hr {
 
   }
 
-  /* layouts */
-  .layout.type_bento {
-
-  }
-
-  .layout.type_masonry {
-
-  }
-
-  .layout.distro_list {
-    display: grid;
-    grid-column-start: span 2;
-    grid-template-columns: var(--grid-template-columns);
-    column-gap: 2rem;
-    row-gap: 2.25rem;
-  }
-
-  .layout.distro_ {
-
-  }
-
   .slottedstack {
     display: grid;
   }
@@ -1630,7 +1609,6 @@ hr {
 
   }
 
-  /* filterbar */
   #filterbar {
   width: var(--width);
   margin-left: auto;
@@ -1675,52 +1653,6 @@ hr {
 
   }
 
-  /* sidenote */
-  .sidenote {
-    padding: 16px;
-    border-radius: 10px;
-  }
-
-  .sidenote.note {
-    background-color: hsl(0, 0%, 96%);
-  }
-
-  .sidenote.note dl dt {
-    color: hsl(0, 0%, 41%);
-  }
-
-  .sidenote.note dl dd {
-    color: hsl(0, 0%, 13%);
-  }
-
-  .sidenote.info {
-    background-color: hsl(0, 0%, 0%);
-  }
-
-  .sidenote.warning {
-    background-color: hsl(0, 0%, 0%);
-    border-color: hsl(0, 0%, 0%);
-  }
-
-  .sidenote dl {
-    font-family: 'Inter';
-    font-size: 14px;
-    font-style: normal;
-  }
-
-  .sidenote dl dt {
-    font-weight: 600;
-    line-height: 1.5;
-    letter-spacing: -.021em;
-  }
-
-  .sidenote dl dd {
-    font-weight: 400;
-    line-height: 1.4;
-    break-inside: avoid;
-  }
-
-  /* banner */
   .banner {
     padding: 24px 0 24px 24px;
     border-radius: 10px;

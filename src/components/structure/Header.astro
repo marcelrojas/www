@@ -5,12 +5,14 @@ import NavBar from '@components/structure/NavBar.astro';
 
 <header id="header">
   <div class="content">
-    <div>
+    <div class="gmt">
       <Clock client:only="svelte" />
     </div>
+
     <div id="dinamic-content">
 
     </div>
+
     <NavBar />
   </div>
 </header>
@@ -24,16 +26,20 @@ import NavBar from '@components/structure/NavBar.astro';
       padding-left: calc(var(--spacing-sal) + 22px);
       padding-right: calc(var(--spacing-sar) + 22px);
 
-      & div.content {
+      & > div.content {
         position: relative;
         overflow: clip;
         padding-top: calc(var(--spacing-sat) + var(--spacing-06));
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-template-areas: "a b" "c c";
+        grid-template-areas: "a a" "b b" "c c";
+
+        & > div.gmt {
+          padding-block-end: var(--spacing-02);
+        }
 
         & > :first-child { grid-area: a; }
-        & > :nth-child(2) { grid-area: b; place-self: start end; }
+        & > :nth-child(2) { grid-area: b; }
         & > :nth-child(3) { grid-area: c; }
       }
 
