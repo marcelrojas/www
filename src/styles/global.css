@@ -210,12 +210,15 @@
   @media screen and (prefers-reduced-motion: reduce) {
     * { transition: all 0s ease 0s; }
   }
+
   @media (forced-colors: active) {
     * { forced-color-adjust: auto; }
   }
+
   @media (scripting: enabled) {
     .scripting { display: none; }
   }
+
   @media (scripting: none) {
     .scripting { display: block; color: var(--color-warning); }
   }
@@ -239,15 +242,6 @@
     font-synthesis: none;
     font-display: swap;
     src: local('InterVariable-Italic'), url('/fonts/InterVariable-Italic.woff2') format('woff2') tech('variations'), url('/fonts/InterVariable-Italic.woff2') format('woff2-variations');
-  }
-
-  @font-face {
-    font-family: 'TrajanPro';
-    font-style: normal;
-    font-weight: 400;
-    font-synthesis: none;
-    font-display: swap;
-    src: local('TrajanPro'), url('/fonts/TrajanPro-Regular.ttf') format('truetype');
   }
 
   @font-face {

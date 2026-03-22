@@ -6,7 +6,6 @@ const ASSETS_TO_CACHE = [
     '/manifest.webmanifest',
     '/favicon.svg',
     '/fonts/InterVariable.woff2',
-    '/fonts/TrajanPro-Regular.ttf',
     '/fonts/GeistMono.woff2'
 ];
 
