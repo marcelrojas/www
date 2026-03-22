@@ -6,6 +6,9 @@ import Button from '@components/Button.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../types/consts';
 import { COPYRIGHT_NAME, COPYRIGHT_YEAR, SOCIAL_LINKEDIN } from '@types/consts';
 
+import Icon from '@components/Icon.astro';
+import { SOCIAL_X, SOCIAL_INSTAGRAM, SOCIAL_YOUTUBE, SOCIAL_GITHUB } from '@types/consts';
+
 const {
   title = 'About',
   screen_title = 'About screen',
@@ -36,6 +39,30 @@ const {
       </ul>
     </article>
 
+    <aside>
+      <ul>
+        <li>
+          <Anchor variant="platted" label="icon-only" size="medium" wide="fit" href={SOCIAL_X} target="_blank" rel="noopener noreferrer" aria-label={`Visit my X profile`}>
+            <Icon name="x" />
+          </Anchor>
+        </li>
+        <li>
+          <Anchor variant="platted" label="icon-only" size="medium" wide="fit" href={SOCIAL_INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label={`Visit my Instagram profile`}>
+            <Icon name="instagram" />
+          </Anchor>
+        </li>
+        <li>
+          <Anchor variant="platted" label="icon-only" size="medium" wide="fit" href={SOCIAL_YOUTUBE} target="_blank" rel="noopener noreferrer" aria-label={`Visit my YouTube profile`}>
+            <Icon name="youtube" />
+          </Anchor>
+        </li>
+        <li>
+          <Anchor variant="platted" label="icon-only" size="medium" wide="fit" href={SOCIAL_GITHUB} target="_blank" rel="noopener noreferrer" aria-label={`Visit my GitHub profile`}>
+            <Icon name="github" />
+          </Anchor>
+        </li>
+      </ul>
+    </aside>
   </section>
 
 </Layout>
