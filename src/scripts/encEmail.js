@@ -1,12 +1,12 @@
 function setupClipboardFlower() {
-  const clipboardFlowerElement = document.getElementById('ClipboardFlower');
+  const clipboardFlowerElement = document.getElementById('clipboard-clipper');
   if (!clipboardFlowerElement) {
     return;
   }
 
   const encEmail = clipboardFlowerElement.dataset.encemail;
   if (!encEmail) {
-    console.error('data-encemail attribute not found on ClipboardFlower element.');
+    console.error('data-encemail attribute not found on clipboard-clipper element.');
     return;
   }
 
@@ -17,13 +17,13 @@ function setupClipboardFlower() {
   clipboardFlowerElement.addEventListener('click', () => {
     navigator.clipboard.writeText(decodedEmail).then(() => {
       if (label) {
-        label.textContent = 'Email copied to clipboard!';
+        label.textContent = 'E-mail copied to clipboard!';
         setTimeout(() => {
           label.textContent = originalLabelText;
         }, 2000);
       }
     }).catch(err => {
-      console.error('Failed to copy email: ', err);
+      console.error('Failed to copy e-mail: ', err);
       window.location.href = `mailto:${decodedEmail}`;
     });
   });

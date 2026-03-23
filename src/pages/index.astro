@@ -4,14 +4,13 @@ import PageHeader from '@components/structure/PageHeader.astro';
 import Anchor from '@components/Anchor.astro';
 import Button from '@components/Button.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../types/consts';
-import { COPYRIGHT_NAME, COPYRIGHT_YEAR, SOCIAL_LINKEDIN } from '@types/consts';
+import { SOCIAL_LINKEDIN, SOCIAL_X, SOCIAL_INSTAGRAM, SOCIAL_YOUTUBE, SOCIAL_GITHUB } from '@types/consts';
 
 import Icon from '@components/Icon.astro';
-import { SOCIAL_X, SOCIAL_INSTAGRAM, SOCIAL_YOUTUBE, SOCIAL_GITHUB } from '@types/consts';
 
 const {
   title = 'About',
-  screen_title = 'About screen',
+  screen_title = 'Marcel Rojas&apos about screen',
 } = Astro.props;
 ---
 
@@ -19,19 +18,17 @@ const {
   <PageHeader screen_title={screen_title} />
 
   <section class="collection--module">
-    
-    <article class="module--work">
-      <p class="description">Building better business with an individual approach to each client with a wide range of services.</p>
-      <Anchor wide="fit" class="badge audio_trigger" href="https://contra.com/marcelrojas">Explore my services</Anchor>
-    </article>
 
-    <article class="module--cv">
+    <article class="module--work">
       <audio loop="" src="/audio/beats.aac"></audio>
       <h1 class="title">Curriculum</h1>
-      <p class="description">Location Venezuela<br />Languages Spanish, English<br />Skillset Development, Design and Strategy</p>
+      <p class="description">Building better business with an individual approach to each client with a wide range of services.</p>
       <ul>
         <li>
           <Button role="button" wide="fit" class="badge audio_trigger">Review résumé</Button>
+        </li>
+        <li>
+          <a href="https://contra.com/marcelrojas" target="_blank" rel="noopener noreferrer" class="badge audio_trigger">Explore my services</a>
         </li>
         <li>
           <a href={SOCIAL_LINKEDIN} target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>

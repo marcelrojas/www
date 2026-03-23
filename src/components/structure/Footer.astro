@@ -1,9 +1,9 @@
 ---
 import Grain from '@components/decorators/Grain.astro';
 import Anchor from '@components/Anchor.astro';
-import Button from '@components/Button.astro';
+import { COPYRIGHT_NAME, COPYRIGHT_YEAR } from '@types/consts';
 
-const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
+const { encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20=' } = Astro.props;
 ---
 
 <footer id="footer" aria-label="Global footer" tabindex="-1">
@@ -13,13 +13,12 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
   <div class="content">
 
     <aside aria-label="Contact me">
-      <span class="section-tag" aria-hidden="true">Contact</span>
+      <span class="section-tag" aria-hidden="true">Tab to copy my e-mail</span>
       <p>Reach out for freelancer work or just to say hi ·[⌢o⌢]·</p>
-      <Button id="clipboard-cliper" class="copy-email" data-encemail={encEmail}>Tab to copy my e-mail</Button>
+      <button id="clipboard-clipper" class="copy-email" data-encemail={encEmail}>Tab to copy my e-mail</button>
     </aside>
 
     <div class="legal">
-
       <nav aria-label="Legal">
         <ul>
           <li>
@@ -35,7 +34,6 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
       </nav>
 
       <small class="copyright">&copy; {COPYRIGHT_YEAR} {COPYRIGHT_NAME}. All rights reserved.</small>
-
     </div>
 
   </div>
@@ -48,29 +46,29 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
     z-index: var(--z-footer);
     contain: layout paint;
     content-visibility: auto;
-    border-width: 2px 1px;
-    border-style: solid;
-    border-color: var(--fill-border);
 
     & > div.content {
       display: flex;
-      flex-direction: column;
       position: relative;
       height: 100%;
-      padding-inline-start: calc(var(--spacing-sal) + var(--spacing-03));
-      padding-inline-end: calc(var(--spacing-sar) + var(--spacing-06));
-      padding-block-start: calc(var(--spacing-sat) + var(--spacing-03));
-      padding-block-end: calc(var(--spacing-sab) + var(--spacing-02));
 
-      span.section-tag {
-        font-family: var(--font-family-sans);
-        font-weight: var(--font-weight-regular);
-        font-size: var(--font-size-12);
-        text-transform: uppercase;
+      @media screen and (width <= 768px) {
+        flex-direction: row;
+      }
+
+      @media screen and (width >= 768px) {
+        flex-direction: column;
       }
 
       & > aside {
         position: relative;
+
+        & > span.section-tag {
+          font-family: var(--font-family-sans);
+          font-weight: var(--font-weight-regular);
+          font-size: var(--font-size-12);
+          text-transform: uppercase;
+        }
       }
 
       & > div.legal {
@@ -80,6 +78,13 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
         flex-direction: column;
         align-self: end;
         align-items: baseline;
+        padding-inline-start: calc(var(--spacing-sal) + var(--spacing-03));
+        padding-inline-end: calc(var(--spacing-sar) + var(--spacing-06));
+        padding-block-start: calc(var(--spacing-sat) + var(--spacing-03));
+        padding-block-end: calc(var(--spacing-sab) + var(--spacing-02));
+        border-width: 2px 1px;
+        border-style: solid;
+        border-color: var(--fill-border);
 
         & > nav {
           position: relative;
@@ -96,7 +101,6 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
             font-size: var(--font-size-12);
             text-transform: uppercase;
           }
-
         }
 
         & > small.copyright {
@@ -106,11 +110,8 @@ const {encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20='} = Astro.props;
           font-weight: var(--font-weight-medium);
           font-size: var(--font-size-14);
         }
-
       }
-
     }
-
   }
 </style>
 

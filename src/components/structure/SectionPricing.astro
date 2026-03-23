@@ -41,6 +41,7 @@ import Anchor from '@components/Anchor.astro';
     position: relative;
     width: 100%;
     will-change: transform;
+
     & h2.headline {
       align-items: flex-start;
       display: flex;
@@ -51,6 +52,7 @@ import Anchor from '@components/Anchor.astro';
       justify-content: flex-start;
       position: relative;
     }
+
     & div.cards {
       align-items: center;
       display: flex;
@@ -63,6 +65,7 @@ import Anchor from '@components/Anchor.astro';
       overflow: hidden;
       position: relative;
       width: 100%;
+
       & article.card {
         padding: 1.5rem;
         display: flex;
@@ -70,20 +73,22 @@ import Anchor from '@components/Anchor.astro';
         align-items: center;
         text-align: center;
         background-color: oklch(96.416% 0.00011 271.152);
-        border-radius: 24px;
         flex: 1 0 0px;
         height: 230px;
         position: relative;
+
         & h1.headline {
           font-size: 1.5rem;
           margin-bottom: 1rem;
         }
+
         & a {
           font-size: 16px;
-          height: 50px
+          height: 50px;
         }
       }
     }
+
     & > div.footer {
       flex-flow: column;
       flex: none;
@@ -91,7 +96,7 @@ import Anchor from '@components/Anchor.astro';
       gap: 4px;
       justify-content: center;
       position: relative;
-      width: 100%
+      width: 100%;
     }
   }
 </style>

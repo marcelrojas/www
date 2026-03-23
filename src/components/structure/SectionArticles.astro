@@ -41,20 +41,24 @@ const posts = (await getCollection('weblog')).sort(
       flex-direction: column;
       gap: 48px;
       max-width: 980px;
-      padding-inline-start: calc(var(--spacing-sal) + 22px);
-      padding-inline-end: calc(var(--spacing-sar) + 22px);
+      padding-inline-start: calc(var(--spacing-sal) + var(--spacing-06));
+      padding-inline-end: calc(var(--spacing-sar) + var(--spacing-06));
       margin-left: auto;
       margin-right: auto;
 
       & > article.post-item {
-
         position: relative;
         overflow: hidden;
         user-select: none;
+        background-color: var(--background-secondary);
 
         & > a {
           color: inherit;
           display: block;
+
+          &:visited {
+            color: var(--accent-visited);
+          }
 
           & > h2 {
             max-width: 300px;

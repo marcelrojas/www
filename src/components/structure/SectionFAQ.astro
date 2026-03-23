@@ -101,30 +101,34 @@ import FAQItem from '@components/FAQItem.astro';
 <style is:global>
   section#section-faq {
     padding-block: var(--spacing-13);
+
     & > div.content {
       max-width: 980px;
       padding-inline-start: calc(var(--spacing-sal) + 22px);
       padding-inline-end: calc(var(--spacing-sar) + 22px);
       margin-left: auto;
       margin-right: auto;
+
       & > h2.headline {
         font-size: var(--font-size-32);
         font-weight: var(--font-weight-bold);
         line-height: 120%;
         color: oklch(0.17 0 0 / 0.9);
-        text-align: center
+        text-align: center;
       }
+
       & > p.subhead {
         font-size: var(--font-size-18);
         font-weight: var(--font-weight-medium);
         line-height: 140%;
         color: oklch(0.17 0 0 / 0.7);
-        text-align: center
+        text-align: center;
       }
+
       & > ul {
         display: flex;
         flex-direction: column;
-        gap: var(--spacing-04)
+        gap: var(--spacing-04);
       }
     }
   }
