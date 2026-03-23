@@ -1,29 +1,32 @@
 ---
 import Grain from '@components/decorators/Grain.astro';
 import Anchor from '@components/Anchor.astro';
+import ChamferButton from '@components/ChamferButton.astro';
 import { COPYRIGHT_NAME, COPYRIGHT_YEAR } from '@types/consts';
 
 const { encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20=' } = Astro.props;
 ---
 
-<button id="footer-toggle" class="footer-toggle" aria-label="Toggle footer">Further information</button>
+<ChamferButton id="footer-toggle" class="footer-toggle" aria-label="Toggle footer">Further information</ChamferButton>
 
 <footer id="footer" aria-label="Global footer" tabindex="-1">
 
   <div class="content">
 
     <aside aria-label="Contact me">
-      <span class="section-tag" aria-hidden="true">Tab to copy my e-mail</span>
-      <p>Reach out for freelancer work or just to say hi ·[⌢o⌢]·</p>
-      <button id="clipboard-clipper" class="copy-email" data-encemail={encEmail}>Tab to copy my e-mail</button>
+      <div class="">
+
+      </div>
+
+      <ChamferButton id="clipboard-clipper" class="copy-email" data-encemail={encEmail}>Tab to copy my e-mail</ChamferButton>
     </aside>
 
     <div class="legal">
       <Grain />
 
-      <nav aria-label="Legal">
-        <small class="copyright">&copy; {COPYRIGHT_YEAR} {COPYRIGHT_NAME}. All rights reserved.</small>
+      <small class="copyright">&copy; {COPYRIGHT_YEAR} {COPYRIGHT_NAME}. All rights reserved.</small>
 
+      <nav aria-label="Legal">
         <ul>
           <li>
             <a href="/colophon">Colophon</a>

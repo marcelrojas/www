@@ -63,15 +63,13 @@
   main {
     display: block;
     position: relative;
+    inset: 0;
     unicode-bidi: isolate;
   }
 
   nav, footer {
-    user-select: none;
-  }
-
-  footer {
     overflow: hidden;
+    user-select: none;
   }
 
   :where(h1, h2, h3, h4, h5, h6, p, ul, ol):last-child {

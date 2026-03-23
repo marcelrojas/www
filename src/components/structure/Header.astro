@@ -23,12 +23,11 @@ import NavBar from '@components/structure/NavBar.astro';
     header#header {
       position: relative;
       z-index: var(--z-header);
-      padding-left: calc(var(--spacing-sal) + 22px);
-      padding-right: calc(var(--spacing-sar) + 22px);
+      padding-left: calc(var(--spacing-sal) + var(--spacing-06));
+      padding-right: calc(var(--spacing-sar) + var(--spacing-06));
 
       & > div.content {
         position: relative;
-        overflow: clip;
         padding-top: calc(var(--spacing-sat) + var(--spacing-06));
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -43,8 +42,6 @@ import NavBar from '@components/structure/NavBar.astro';
         & > :nth-child(2) { grid-area: b; }
         & > :nth-child(3) { grid-area: c; }
       }
-
     }
-
   }
 </style>
