@@ -46,110 +46,112 @@ const { encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20=' } = Astro.props;
 </footer>
 
 <style is:global>
-  button.footer-toggle {
-    position: fixed;
-    bottom: 0;
-    left: 30%;
-    z-index: 90;
-    background: var(--background-primary);
-    color: var(--text-secondary);
-    font-family: var(--font-family-sans);
-    font-size: var(--font-size-12);
-    letter-spacing: var(--font-tracking-widest);
-    text-align: left;
-    padding: 4px 16px;
-    display: flex;
-    align-items: left;
-    gap: 8px;
-
-    &:hover {
-      color: var(--accent);
-    }
-  }
-
-  footer#footer {
-    position: fixed;
-    inset: 0;
-    z-index: var(--z-footer);
-    contain: layout paint;
-    content-visibility: auto;
-    visibility: hidden;
-    background-color: var(--background-primary);
-
-    /* Opened manually */
-    body.footer-open & {
-      visibility: visible;
-      pointer-events: auto;
-    }
-
-    /* Standby */
-    body.is-standby & {
-      visibility: visible;
-      pointer-events: auto;
-    }
-
-    & > div.content {
+  @layer components {
+    .footer-toggle {
+      position: fixed;
+      bottom: 0;
+      left: 30%;
+      z-index: 90;
+      background: var(--background-primary);
+      color: var(--text-secondary);
+      font-family: var(--font-family-sans);
+      font-size: var(--font-size-12);
+      letter-spacing: var(--font-tracking-widest);
+      text-align: left;
+      padding: 4px 16px;
       display: flex;
-      position: relative;
-      height: 100%;
+      align-items: left;
+      gap: 8px;
 
-      @media screen and (width <= 768px) {
-        flex-direction: column;
+      &:hover {
+        color: var(--accent);
+      }
+    }
+
+    footer#footer {
+      position: fixed;
+      inset: 0;
+      z-index: var(--z-footer);
+      contain: layout paint;
+      content-visibility: auto;
+      visibility: hidden;
+      background-color: var(--background-primary);
+
+      /* Opened manually */
+      body.footer-open & {
+        visibility: visible;
+        pointer-events: auto;
       }
 
-      @media screen and (width > 768px) {
-        flex-direction: row;
+      /* Standby */
+      body.is-standby & {
+        visibility: visible;
+        pointer-events: auto;
       }
 
-      & > aside {
-        position: relative;
-
-        & > span.section-tag {
-          font-family: var(--font-family-sans);
-          font-weight: var(--font-weight-regular);
-          font-size: var(--font-size-12);
-          text-transform: uppercase;
-        }
-      }
-
-      & > div.legal {
-        position: relative;
+      & > div.content {
         display: flex;
-        gap: var(--spacing-06);
-        flex-direction: column;
-        align-self: start;
-        align-items: baseline;
-        padding-inline-start: calc(var(--spacing-sal) + var(--spacing-03));
-        padding-inline-end: calc(var(--spacing-sar) + var(--spacing-06));
-        padding-block-start: calc(var(--spacing-sat) + var(--spacing-03));
-        padding-block-end: calc(var(--spacing-sab) + var(--spacing-02));
-        margin-block-end: calc(var(--spacing-sab) + var(--spacing-07));
-        border-width: 2px 1px;
-        border-style: solid;
-        border-color: var(--fill-border);
+        position: relative;
+        height: 100%;
 
-        & > small.copyright {
-          position: relative;
-          display: block;
-          font-family: var(--font-family-sans);
-          font-weight: var(--font-weight-medium);
-          font-size: var(--font-size-14);
+        @media screen and (width <= 768px) {
+          flex-direction: column;
         }
 
-        & > nav {
-          position: relative;
-          display: block;
-          align-self: start;
+        @media screen and (width > 768px) {
+          flex-direction: row;
+        }
 
-          & > ul {
-            position: relative;
-            display: flex;
-            flex-direction: row;
-            gap: var(--spacing-04);
+        & > aside {
+          position: relative;
+
+          & > span.section-tag {
             font-family: var(--font-family-sans);
             font-weight: var(--font-weight-regular);
             font-size: var(--font-size-12);
             text-transform: uppercase;
+          }
+        }
+
+        & > div.legal {
+          position: relative;
+          display: flex;
+          gap: var(--spacing-06);
+          flex-direction: column;
+          align-self: start;
+          align-items: baseline;
+          padding-inline-start: calc(var(--spacing-sal) + var(--spacing-03));
+          padding-inline-end: calc(var(--spacing-sar) + var(--spacing-06));
+          padding-block-start: calc(var(--spacing-sat) + var(--spacing-03));
+          padding-block-end: calc(var(--spacing-sab) + var(--spacing-02));
+          margin-block-end: calc(var(--spacing-sab) + var(--spacing-07));
+          border-width: 2px 1px;
+          border-style: solid;
+          border-color: var(--fill-border);
+
+          & > small.copyright {
+            position: relative;
+            display: block;
+            font-family: var(--font-family-sans);
+            font-weight: var(--font-weight-medium);
+            font-size: var(--font-size-14);
+          }
+
+          & > nav {
+            position: relative;
+            display: block;
+            align-self: start;
+
+            & > ul {
+              position: relative;
+              display: flex;
+              flex-direction: row;
+              gap: var(--spacing-04);
+              font-family: var(--font-family-sans);
+              font-weight: var(--font-weight-regular);
+              font-size: var(--font-size-12);
+              text-transform: uppercase;
+            }
           }
         }
       }
