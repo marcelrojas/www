@@ -69,10 +69,13 @@ const { encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20=' } = Astro.props;
   }
 
   footer#footer {
-    position: relative;
+    position: fixed;
+    inset: 0;
     z-index: var(--z-footer);
     contain: layout paint;
     content-visibility: auto;
+    visibility: hidden;
+    background-color: var(--background-primary);
 
     & > div.content {
       display: flex;
@@ -140,6 +143,22 @@ const { encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20=' } = Astro.props;
       }
     }
   }
+
+  /* Estado 1: Abierto Manualmente */
+  body.footer-open #app-footer {
+    visibility: visible;
+    pointer-events: auto;
+  }
+  body.footer-open .footer-content { transform: translateY(0); }
+  body.footer-open main { filter: blur(4px); transition: filter 0.4s; }
+
+  /* Estado 2: Modo Inactivo / Standby */
+  body.is-standby #app-footer {
+    visibility: visible;
+    pointer-events: auto;
+  }
+  body.is-standby .footer-content { transform: translateY(0); }
+  body.is-standby main { opacity: 0.3; filter: grayscale(100%) blur(4px); transition: all 0.5s; }
 </style>
 
 <script src="@scripts/standby.js"></script>
