@@ -5,7 +5,7 @@
 @layer base {
   *, *:is(::before, ::after, ::backdrop) {
     box-sizing: border-box;
-    border: 0;
+    border: unset;
     background-clip: padding-box;
     vertical-align: baseline;
   }
