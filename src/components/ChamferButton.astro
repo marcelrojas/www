@@ -5,10 +5,10 @@ interface Props {
   class?: string;
 }
 
-const { id, isActive = false, class: className } = Astro.props;
+const { id, isActive = false, class: className, ...rest } = Astro.props;
 ---
 
-<div class:list={["chamfer-button-container", className]}>
+<div class:list={["chamfer-button-container", className]} {...rest}>
   <span class="label" id={id}>
     <slot />
   </span>
@@ -38,16 +38,16 @@ const { id, isActive = false, class: className } = Astro.props;
       gap: 4px;
       width: fit-content;
 
-      & .label {
+      & > span.label {
         font-family: var(--font-family-sans);
         font-weight: var(--font-weight-medium);
-        font-size: 24px;
+        font-size: var(--font-size-12);
         color: var(--btn-text-color);
         text-transform: uppercase;
         letter-spacing: 1px;
       }
 
-      & .shape {
+      & > button.shape {
         width: var(--btn-shape-width);
         height: var(--btn-shape-height);
         background-color: var(--btn-color-idle);
@@ -59,7 +59,7 @@ const { id, isActive = false, class: className } = Astro.props;
         }
 
         &:active {
-          transform: scale(0.98);
+
         }
 
         &:focus-visible {
