@@ -18,25 +18,42 @@ github@marcelrojas:~$prophetch
 ## Project Structure
 
 ```text
-├── public/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── content/
-│   ├── data/
-│   ├── layouts/
-│   ├── libs/
-│   ├── pages/
-│   ├── scripts/
-│   ├── styles/
-│   └── types/
-├── astro.config.mjs
-├── README.md // what you are seeing
-├── package.json
-├── tsconfig.json
-├── vercel.json // from previous host
-└── wrangler.jsonc // current host
-```
+marcelrojas/www
+├── .github/                  # GitHub configuration (FUNDING)
+├── public/                   # Static assets (Served directly from the `/` root)
+│   ├── fonts/                # Local fonts (GeistMono, Inter, TrajanPro)
+│   ├── media/                # Images and videos (Style guides, webp, avif)
+│   ├── .assetsignore         # Asset exclusion rules
+│   ├── _headers              # Security & caching headers for Cloudflare Pages
+│   ├── favicon.svg           # PWA icons and Favicons
+│   ├── manifest.webmanifest  # PWA manifest
+│   ├── opensearch.xml        # Browser search configuration
+│   ├── robots.txt            # SEO indexing rules
+│   ├── script.js             # Native global scripts
+│   └── sw.js                 # Service Worker (Caching & PWA)
+├── src/                      # Astro application source code
+│   ├── assets/               # Vite-processed assets (Optimized images, SVG icons)
+│   ├── components/           # UI Components (Astro & Svelte)
+│   │   ├── decorators/       # Purely visual components (Grain, Halftone, Clock)
+│   │   └── structure/        # Structural components (Header, Footer, Head, NavBar)
+│   ├── content/              # Content collections (Markdown / MDX)
+│   │   ├── showcase/         # Portfolio and work entries
+│   │   └── weblog/           # Blog articles
+│   ├── data/                 # Pure JSON for static data
+│   ├── layouts/              # Master page templates (Main Layout, BlogPost, Error)
+│   ├── lib/                  # Isolated JS/TS utilities and functions
+│   ├── pages/                # File-based routing (Static pages, RSS, 404)
+│   ├── scripts/              # Client-side logic (JSON-LD, Standby, etc.)
+│   ├── styles/               # CSS Design System
+│   │   ├── global.css        # Resets and global utilities
+│   │   └── variables.css     # Atomic design tokens (Design System)
+│   └── types/                # TypeScript definitions and global interfaces
+├── astro.config.mjs          # Main Astro framework configuration
+├── package.json              # Project dependencies and npm/pnpm scripts
+├── pnpm-lock.yaml            # Package version lockfile
+├── svelte.config.js          # Svelte compiler integration
+├── tsconfig.json             # Strict TypeScript configuration
+└── wrangler.jsonc            # Deployment configuration for Cloudflare Workers/Assets
 
 ## Commands
 
@@ -56,4 +73,4 @@ All commands are run from the root of the project, from a terminal:
 
 ## Credit
 
-From me, [Marcel Rojas](https://github.com/marcelrojas/www/).
+From me, [Marcel Rojas](https://github.com/marcelrojas/www).
