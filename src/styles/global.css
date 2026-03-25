@@ -200,11 +200,11 @@
     & option {
       &::before {
         content: '►c';
-        color: var(--color-accent);
+        color: var(--accent);
       }
       &:checked {
         content: '✔';
-        color: var(--color-accent);
+        color: var(--accent);
       }
       &::checkmark {
         content: '⮕';

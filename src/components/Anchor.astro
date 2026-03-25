@@ -2,10 +2,10 @@
 import type { HTMLAttributes } from 'astro/types';
 
 interface Props extends HTMLAttributes<'a'> {
-  variant?: 'gui-platterless' | 'gui-platted' | 'tui';
+  variant?: 'gui1' | 'gui2' | 'gui3' | 'tui';
+  action?: 'neutral' | 'cta';
   size?: 'small' | 'medium' | 'large';
-  wide?: 'fill' | 'fit';
-  label?: 'icon-only' | 'text-only' | 'text-and-icon';
+  label?: 'text-only' | 'icon-only' | 'text-and-icon';
   isActive?: boolean;
 }
 
@@ -13,9 +13,9 @@ const {
   href,
   class: className,
   variant,
+  action = 'neutral',
   size,
-  wide,
-  label,
+  label = 'text-only',
   isActive: forceActive,
   ...props
 } = Astro.props;
@@ -41,8 +41,8 @@ const rel = isExternal ? 'noopener noreferrer' : props.rel;
 const classes = [
   'anchor',
   `variant-${variant}`,
+  `action-${action}`,
   `size-${size}`,
-  `wide-${wide}`,
   `label-${label ?? 'text-only'}`,
   isActive ? 'is-active' : ''
 ];
@@ -66,6 +66,8 @@ const classes = [
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      width: fit-content;
+      height: fit-content;
       font-family: var(--font-family-sans);
       font-weight: var(--font-weight-regular);
       text-align: center;
@@ -96,10 +98,8 @@ const classes = [
       }
 
       /* Variants */
-      &.variant-gui-platted {
-        border: 1px solid var(--fill-border);
+      &.variant-gui1 {
         background: var(--fill-tertiary);
-        backdrop-filter: blur(20px);
 
         @media (hover: hover) {
           &:hover {
@@ -108,7 +108,17 @@ const classes = [
         }
       }
 
-      &.variant-gui-platterless {
+      &.variant-gui2 {
+
+        @media (hover: hover) {
+          &:hover {
+
+          }
+        }
+      }
+
+      &.variant-gui3 {
+
         @media (hover: hover) {
           &:hover {
 
@@ -198,13 +208,13 @@ const classes = [
           height: 32px;
         }
       }
+    }
 
-      &[role="button"] {
-        border-radius: 32px;
+    &[role="button"] {
+      border-radius: 32px;
 
-        &[aria-pressed="true"] {
-          
-        }
+      &[aria-pressed="true"] {
+
       }
     }
   }
