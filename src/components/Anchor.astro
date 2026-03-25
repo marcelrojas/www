@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from 'astro/types';
 
 interface Props extends HTMLAttributes<'a'> {
-  variant?: 'plain' | 'platted' | 'platterless';
+  variant?: 'gui-platterless' | 'gui-platted' | 'tui';
   size?: 'small' | 'medium' | 'large';
   wide?: 'fill' | 'fit';
   label?: 'icon-only' | 'text-only' | 'text-and-icon';
@@ -96,7 +96,7 @@ const classes = [
       }
 
       /* Variants */
-      &.variant-platted {
+      &.variant-gui-platted {
         border: 1px solid var(--fill-border);
         background: var(--fill-tertiary);
         backdrop-filter: blur(20px);
@@ -108,7 +108,7 @@ const classes = [
         }
       }
 
-      &.variant-platterless {
+      &.variant-gui-platterless {
         @media (hover: hover) {
           &:hover {
 
@@ -117,14 +117,14 @@ const classes = [
       }
 
       /* Actions */
-      &.action-default {
-        color: var(--label-primary-controls);
-        fill: var(--label-primary-controls);
-      }
-
       &.action-neutral {
         color: var(--label-);
         fill: var(--label-);
+      }
+
+      &.action-cta {
+        color: var(--label-primary-controls);
+        fill: var(--label-primary-controls);
       }
 
       /* Sizes */
@@ -197,15 +197,6 @@ const classes = [
           width: 32px;
           height: 32px;
         }
-      }
-
-      /* Widths */
-      &.wide-fit {
-        width: fit-content;
-      }
-
-      &.wide-fill {
-        width: 100%;
       }
 
       &[role="button"] {

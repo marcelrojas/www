@@ -1,4 +1,6 @@
 ---
+import Anchor from '@components/Anchor.astro';
+
 const anchors = [
   { href: "/", text: "About" },
   { href: "/services", text: "Services" },
@@ -11,7 +13,7 @@ const anchors = [
   <ul>
     {anchors.map(link => (
       <li>
-        <a href={link.href}>{link.text}</a>
+        <Anchor href={link.href}>{link.text}</Anchor>
       </li>
     ))}
   </ul>
@@ -39,10 +41,8 @@ const anchors = [
             font-weight: var(--font-weight-medium);
             text-transform: lowercase;
             color: var(--label-primary);
-            transition: color var(--duration-macro-x2) ease-in-out;
 
             @media (hover: hover) {
-
               &:hover {
                 color: var(--label-primary-active);
               }
