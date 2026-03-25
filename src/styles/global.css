@@ -18,7 +18,6 @@
     scrollbar-width: none;
     scrollbar-gutter: stable both-edges;
     scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
     font-size: var(--font-size-base);
     background-color: var(--background-primary);
     -webkit-tap-highlight-color: transparent;
@@ -29,7 +28,7 @@
     font-optical-sizing: auto;
     font-variation-settings: normal;
     font-variant-ligatures: contextual;
-    -font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     text-size-adjust: 100%;
     text-justify: auto;
