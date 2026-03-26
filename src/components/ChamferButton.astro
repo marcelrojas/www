@@ -26,8 +26,8 @@ const labelId = `${id}-label`;
 <style is:global>
   @layer components {
     div.chamfer-button-container {
-      --btn-shape-width: var(--chamfer-btn-width, 140px);
-      --btn-shape-height: var(--chamfer-btn-height, 32px);
+      --btn-shape-width: var(--chamfer-btn-width, 120px);
+      --btn-shape-height: var(--chamfer-btn-height, 24px);
       --btn-color-idle: var(--chamfer-btn-idle, #8f857d);
       --btn-color-active: var(--chamfer-btn-active, #e3e3dc);
       --btn-color-hover: var(--chamfer-btn-hover, #d1d1ca);
@@ -53,7 +53,6 @@ const labelId = `${id}-label`;
         height: var(--btn-shape-height);
         background-color: var(--btn-color-idle);
         clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
-        transition: background-color 0.2s ease, transform 0.1s ease;
 
         &:hover {
           background-color: var(--btn-color-hover);
