@@ -1,12 +1,12 @@
 ---
 import Icon from '@components/Icon.astro';
+import Anchor from '@components/Anchor.astro';
 import featured from '@data/featured.json';
 ---
 
 <section id="section-featured" role="feed" aria-busy="false" aria-label="List of articles and publications">
   <div class="content">
-
-    <h2>As featured in</h2>
+    <h3>As featured in</h3>
 
     <ol>
       {
@@ -21,7 +21,6 @@ import featured from '@data/featured.json';
         ))
       }
     </ol>
-
   </div>
 </section>
 
@@ -38,7 +37,7 @@ import featured from '@data/featured.json';
       margin-left: auto;
       margin-right: auto;
 
-      & > h2 {
+      & > h3 {
         margin-bottom: var(--spacing-10);
         margin-left: var(--spacing-04);
         font-family: var(--font-family-sans);

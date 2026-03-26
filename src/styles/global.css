@@ -327,6 +327,25 @@
     }
   }
 
+  .markdown-body :where(h2, h3, h4, h5, h6) a {
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+
+    &:where(h2, h3, h4, h5, h6) a::before {
+      content: "#";
+      position: absolute;
+
+      left: -1.2em;
+      color: var(--accent, #a1a1aa);
+      opacity: 0;
+      transition: opacity 0.2s ease-in-out;
+
+      & a:hover::before {
+        opacity: 1;
+      }
+    }
+  }
 }
 
 :focus, :focus-visible, :focus-within {

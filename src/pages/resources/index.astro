@@ -4,7 +4,6 @@ import Anchor from '@components/Anchor.astro';
 import PageHeader from '@components/structure/PageHeader.astro';
 import TableOfContents from '@components/TableOfContents.astro';
 import SectionWeblog from '@components/structure/SectionWeblog.astro';
-import SectionFeatured from '@components/structure/SectionFeatured.astro';
 
 const {
   title = 'Resources',
@@ -25,13 +24,10 @@ const {
 
     <ol class="table-of-contents__list">
       <li>
-        <Anchor href="/resources/#guides">Guides</Anchor>
+        <Anchor href="/resources/#tutorials-and-guides">Tutorials and Guides</Anchor>
       </li>
       <li>
-        <Anchor href="/resources/#tutorials">Tutorials</Anchor>
-      </li>
-      <li>
-        <Anchor href="/resources/#tools">Tools</Anchor>
+        <Anchor href="/resources/#tools-and-products">Tools and Products</Anchor>
       </li>
       <li>
         <Anchor href="/resources/#weblog">Weblog</Anchor>
@@ -69,13 +65,9 @@ const {
       </article>
 
     </div>
-
   </section>
 
   <SectionWeblog />
-
-  <SectionFeatured />
-
 </Layout>
 
 <style is:global>
