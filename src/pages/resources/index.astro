@@ -2,6 +2,7 @@
 import Layout from '@layouts/Layout.astro';
 import Anchor from '@components/Anchor.astro';
 import PageHeader from '@components/structure/PageHeader.astro';
+import TableOfContents from '@components/TableOfContents.astro';
 import SectionWeblog from '@components/structure/SectionWeblog.astro';
 import SectionFeatured from '@components/structure/SectionFeatured.astro';
 
@@ -16,16 +17,27 @@ const {
 
   <PageHeader screen_title={screen_title} />
 
-  <section class="content-tags">
-    <p>Explore my resources for guides, tutorials, and tools to help you succeed.</p>
+  <TableOfContents headings={headings} variant="page" srOnlyTitle={true} />
 
-    <ul>
-      <li><a href="/resources/#guides">Guides</a></li>
-      <li><a href="/resources/#tutorials">Tutorials</a></li>
-      <li><a href="/resources/#tools">Tools</a></li>
-      <li><a href="/resources/#weblog">Weblog</a></li>
-    </ul>
-  </section>
+  <aside class="content-sections">
+    <h3 class="table-of-contents__title">Tabla de contenidos</h3>
+    <p class="table-of-contents__subtitle">Explore my resources for guides, tutorials, and tools to help you succeed.</p>
+
+    <ol class="table-of-contents__list">
+      <li>
+        <Anchor href="/resources/#guides">Guides</Anchor>
+      </li>
+      <li>
+        <Anchor href="/resources/#tutorials">Tutorials</Anchor>
+      </li>
+      <li>
+        <Anchor href="/resources/#tools">Tools</Anchor>
+      </li>
+      <li>
+        <Anchor href="/resources/#weblog">Weblog</Anchor>
+      </li>
+    </ol>
+  </aside>
 
   <section class="product-showcase">
     <h2 id="">Featured products</h2>
