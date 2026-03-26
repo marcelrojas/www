@@ -8,32 +8,13 @@ import SectionWeblog from '@components/structure/SectionWeblog.astro';
 const {
   title = 'Resources',
   screen_title = 'Resources screen',
-  description = 'Learn how to improve your skills and become who you want to be.',
+  description = 'Learn how to improve your skills and become who you want to be. Explore my resources for guides, tutorials, and tools to help you succeed.',
 } = Astro.props;
 ---
 
 <Layout title={title} description={description}>
 
   <PageHeader screen_title={screen_title} />
-
-  <TableOfContents headings={headings} variant="page" srOnlyTitle={true} />
-
-  <aside class="content-sections">
-    <h3 class="table-of-contents__title">Tabla de contenidos</h3>
-    <p class="table-of-contents__subtitle">Explore my resources for guides, tutorials, and tools to help you succeed.</p>
-
-    <ol class="table-of-contents__list">
-      <li>
-        <Anchor href="/resources/#tutorials-and-guides">Tutorials and Guides</Anchor>
-      </li>
-      <li>
-        <Anchor href="/resources/#tools-and-products">Tools and Products</Anchor>
-      </li>
-      <li>
-        <Anchor href="/resources/#weblog">Weblog</Anchor>
-      </li>
-    </ol>
-  </aside>
 
   <section class="product-showcase">
     <h2 id="">Featured products</h2>
@@ -124,10 +105,7 @@ const {
           padding-inline: 1.25rem; /* px-5 */
           font-size: 14px;
         }
-
       }
-
     }
-
   }
 </style>
