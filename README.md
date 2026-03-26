@@ -13,6 +13,7 @@ github@marcelrojas:~$prophetch
                   |   ❯ xdg-open "https://marcelrojas.net"
 ```
 
+[Alt](https://www.marcelrojas.net)
 [Preview](https://www.marcelrojas.workers.dev)
 
 ## Project Structure
@@ -54,11 +55,13 @@ marcelrojas/www
 ├── svelte.config.js          # Svelte compiler integration
 ├── tsconfig.json             # Strict TypeScript configuration
 └── wrangler.jsonc            # Deployment configuration for Cloudflare Workers/Assets
+```
 
 ## Commands
 
 All commands are run from the root of the project, from a terminal:
 
+```text
 | Command                        | Action                                           |
 | :----------------------------- | :----------------------------------------------- |
 | `npm install`                  | Installs dependencies                            |
@@ -70,6 +73,7 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm run build`               | Build command                                    |
 | `npx wrangler deploy`          | Deploy command                                   |
 | `npx wrangler versions upload` | Version command                                  |
+```
 
 ## Credit
 
