@@ -59,6 +59,7 @@ const posts = (await getCollection('weblog')).sort(
         & > a {
           color: inherit;
           display: block;
+          padding: var(--spacing-03);
 
           &:visited {
             color: var(--accent-visited);
@@ -66,7 +67,7 @@ const posts = (await getCollection('weblog')).sort(
 
           & > h2 {
             max-width: 300px;
-            margin: 0 0 8px 0;
+            margin-bottom: var(--spacing-03);
             fond-family: var(--font-family-sans);
             font-weight: var(--font-weight-medium);
             font-size: var(--font-size-18);
