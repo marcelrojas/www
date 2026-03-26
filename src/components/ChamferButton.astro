@@ -6,17 +6,18 @@ interface Props {
 }
 
 const { id, isActive = false, class: className, ...rest } = Astro.props;
+const labelId = `${id}-label`;
 ---
 
 <div class:list={["chamfer-button-container", className]} {...rest}>
-  <span class="label" id={id}>
+  <span class="label" id={labelId}>
     <slot />
   </span>
 
   <button
     class:list={["shape", { active: isActive }]}
     type="button"
-    aria-labelledby={id}
+    aria-labelledby={labelId}
     aria-current={isActive ? "true" : undefined}
   >
   </button>
