@@ -77,4 +77,4 @@ All commands are run from the root of the project, from a terminal:
 
 ## Credit
 
-From me, [Marcel Rojas](https://github.com/marcelrojas/www).
+From me, [Marcel Rojas](https://github.com/marcelrojas).
