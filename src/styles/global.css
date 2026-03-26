@@ -15,13 +15,6 @@
   }
 
   html {
-    scrollbar-width: none;
-    scrollbar-gutter: stable both-edges;
-    scroll-behavior: smooth;
-    font-size: var(--font-size-base);
-    background-color: var(--background-primary);
-    -webkit-tap-highlight-color: transparent;
-
     block-size: auto;
     font-family: var(--font-family-fallback);
     font-feature-settings: 'case', 'ss01', 'ss03';
@@ -29,15 +22,21 @@
     font-variation-settings: normal;
     font-variant-ligatures: contextual;
     -webkit-font-smoothing: antialiased;
+    font-size: var(--font-size-base);
     text-rendering: optimizeLegibility;
-    text-size-adjust: 100%;
+    text-size-adjust: none;
     text-justify: auto;
     word-spacing: normal;
     unicode-bidi: isolate;
     touch-action: manipulation;
+    scrollbar-width: none;
+    scrollbar-gutter: stable both-edges;
     scrollbar-color: auto;
+    scroll-behavior: smooth;
     quotes: '"' '"' "'" "'";
     accent-color: var(--accent);
+    background-color: var(--background-primary);
+    -webkit-tap-highlight-color: transparent;
   }
 
   body {

@@ -17,6 +17,10 @@
     {
       "pattern": "marcelrojas.net",
       "custom_domain": true
+    },
+    {
+      "pattern": "www.marcelrojas.net",
+      "custom_domain": true
     }
   ],
 
