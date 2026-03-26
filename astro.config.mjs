@@ -11,6 +11,10 @@ export default defineConfig({
 
   trailingSlash: 'never',
 
+  build: {
+    format: 'file'
+  },
+
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'es'],
@@ -30,7 +34,7 @@ export default defineConfig({
   // Rendimiento: Configuración de Prefetch unificada
   prefetch: {
     defaultStrategy: 'viewport', // Carga enlaces cuando entran en pantalla
-    prefetchAll: true // Habilita prefetch para todos los links internos
+    prefetchAll: false, // Evita cargar todos los enlaces de la página de golpe
   },
 
   // Optimizaciones de compilación (Vite)
