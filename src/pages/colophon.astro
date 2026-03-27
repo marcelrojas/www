@@ -2,29 +2,57 @@
 import Layout from '@layouts/Layout.astro';
 import PageHeader from '@components/structure/PageHeader.astro';
 import ArticleFooter from '@components/structure/ArticleFooter.astro';
+import Anchor from '@components/Anchor.astro';
 
 const {
   title = 'Colophon',
   screen_title = 'Colophon screen',
-  description = 'Information about the technologies and tools used to build this site.',
+  description = 'Detailed information about the technologies, tools, and design decisions used to build this site.',
 } = Astro.props;
 ---
 
 <Layout title={title} description={description}>
   <PageHeader screen_title={screen_title} />
 
-  <p>This site is built with Astro with Svelte integration, a modern static site generator.</p>
+  <section class="intro">
+    <p class="lead">A colophon is a historical statement regarding the creation and technical specifications of a printed or digital medium. This page documents the tools, design choices, and infrastructure that bring this space to life.</p>
+  </section>
 
-  <p>It uses pure CSS for styling and is hosted on Cloudflare with Workers/Pages.</p>
+  <section class="specs-group">
+    <h2>Typography</h2>
+    <p>Legibility and visual rhythm are paramount. The site relies on modern, screen-optimized typefaces:</p>
+    <ul>
+      <li><strong>Inter:</strong> Designed by Rasmus Andersson, this is the primary sans-serif font used across the UI for its excellent geometric readability.</li>
+      <li><strong>Geist Mono:</strong> Created by Vercel, this is employed for code blocks and technical details, providing a clean, engineering-focused aesthetic.</li>
+    </ul>
+  </section>
 
-  <p>For more information, visit the <a href="https://astro.build">Astro website</a>.</p>
+  <section class="specs-group">
+    <h2>Architecture & Stack</h2>
+    <p>This site is built heavily around JAMstack principles, prioritizing speed, accessibility, and a clean file structure.</p>
+    <ul>
+      <li><strong>Framework:</strong> Built primarily with <Anchor variant="tui" href="https://astro.build" target="_blank">Astro</Anchor>, utilizing its islands architecture to deliver fast, static HTML.</li>
+      <li><strong>Interactivity:</strong> Integrated with <Anchor variant="tui" href="https://svelte.dev" target="_blank">Svelte</Anchor> to inject lightweight reactivity without bloating the main thread.</li>
+      <li><strong>Styling:</strong> Pure Vanilla CSS. All responsive design is handled via custom CSS variables without relying on heavy utility libraries.</li>
+      <li><strong>Infrastructure:</strong> Domain management, routing, and deployments are hosted securely on the edge via <strong>Cloudflare Workers/Pages</strong>.</li>
+    </ul>
+  </section>
+
+  <section class="specs-group">
+    <h2>Software & Hardware Environment</h2>
+    <p>The source code is written, debugged, and compiled using the following daily setup:</p>
+    <ul>
+      <li><strong>Editor:</strong> Developed by alternating between the raw speed of <strong>Neovim / Vim</strong> within the Kitty terminal emulator, and the versatility of <strong>VS Code</strong> and <strong>Kate</strong>.</li>
+      <li><strong>Operating System:</strong> Orchestrated natively on Linux. Primarily running <strong>Debian 13 "Trixie"</strong> with an optimized KDE Plasma environment, and <strong>AntiX Linux</strong> for lightweight legacy development.</li>
+      <li><strong>Machines:</strong> Built across a desktop PC equipped with an Intel Celeron G1610 processor and 4GB of RAM, and a classic 32-bit IBM ThinkPad T42.</li>
+    </ul>
+  </section>
 
   <ArticleFooter>
     <p>made with a lot of passion and love</p>
 
     <div class="signature">
       <span>Love,</span>
-
       <svg aria-hidden="true" aria-labelledby="signature-of-marcel-r" fill="none" height="49" role="img" stroke="currentColor" stroke-linecap="round" stroke-width="1.25" viewBox="0 0 136 43" width="153" xmlns="http://www.w3.org/2000/svg">
         <title id="signature-of-marcel-r">Signature of Marcel Rojas</title>
         <path d="M61.0629 1.31743C57.2716 9.28815 49.0352 26.7073 46.4201 32.6182C48.763 27.4686 46.9574 23.4832 37.6881 24.2444C29.0139 24.9568 7.10384 32.8421 1.14819 35.3497C7.55163 34.0959 65.2722 18.1545 126.62 14.8856" pathLength="1"></path>
@@ -37,3 +65,55 @@ const {
 
   </ArticleFooter>
 </Layout>
+
+<style>
+  .colophon-content {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem 0;
+  }
+
+  .intro .lead {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+  }
+
+  .specs-group {
+    margin-bottom: 3rem;
+
+    & > h2 {
+      font-size: 1.5rem;
+      font-weight: var(--font-weight-medium);
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--fill-border);
+      padding-bottom: 0.5rem;
+    }
+
+    & > p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    & > ul {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      & > li {
+        background: var(--background-secondary);
+        padding: 1.25rem;
+        border-radius: 8px;
+        border: 1px solid var(--fill-border);
+        line-height: 1.6;
+        font-size: 0.95rem;
+
+        & > strong {
+          font-weight: var(--font-weight-bold);
+          color: var(--text-primary);
+        }
+      }
+    }
+  }
+</style>

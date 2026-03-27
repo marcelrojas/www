@@ -6,7 +6,9 @@ const ASSETS_TO_CACHE = [
   '/manifest.webmanifest',
   '/favicon.svg',
   '/fonts/InterVariable.woff2',
-  '/fonts/GeistMono.woff2'
+  '/fonts/GeistMono.woff2',
+  '/fonts/InterVariable-Italic.woff2',
+  '/fonts/GeistMono-Italic.woff2'
 ];
 
 self.addEventListener('install', (event) => {
