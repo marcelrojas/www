@@ -23,8 +23,6 @@ const {
   lang = 'en_US'
 } = Astro.props;
 
-//const canonicalURL = new URL(Astro.url.pathname.replace(/\/$/, ''), Astro.site);
-
 const pathname = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/$/, '');
 const canonicalURL = new URL(pathname, Astro.site);
 
