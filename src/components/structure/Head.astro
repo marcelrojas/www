@@ -41,6 +41,7 @@ const ogImageURL = new URL(imageSrc, Astro.site);
   <meta name="description" content={description} />
   <meta name="generator" content={Astro.generator} />
   <meta name="author" content="Marcel Rojas" />
+
   <meta name="keywords" content="marcelrojas, whyismarcel, Marcel Rojas, Juan Marcel Rojas Hernández, web developer, designer, maketing specialist, software engineering, Venezuela" />
 
   <link rel="preload" href="/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
@@ -49,11 +50,8 @@ const ogImageURL = new URL(imageSrc, Astro.site);
   <link rel="canonical" href={canonicalURL} />
 
   <link rel="icon" type="image/svg+xml" sizes="any" href="/favicon.svg" />
-  <link rel="icon" type="image/x-icon" sizes="any" href="/favicon.ico" />
+  <link rel="icon" type="image/x-icon" sizes="32x32" href="/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.svg" />
-  <link rel="icon" type="image/svg+xml" sizes="32x32" href="/favicon-32x32.svg" />
-  <link rel="icon" type="image/svg+xml" sizes="16x16" href="/favicon-16x16.svg" />
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
   <link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous" />
 
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
@@ -64,10 +62,8 @@ const ogImageURL = new URL(imageSrc, Astro.site);
   <link rel="search" type="application/opensearchdescription+xml" title={`Search ${SITE_TITLE}`} href="/opensearch.xml" />
   <link rel="privacy-policy" href="/privacy-policy" />
 
-  <meta name="application-name" content={SITE_TITLE} />
   <meta name="apple-mobile-web-app-title" content={SITE_TITLE} />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="mobile-web-app-capable" content="yes">
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content={SITE_TITLE} />
