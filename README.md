@@ -13,8 +13,12 @@ github@marcelrojas:~$prophetch
                   |   ❯ xdg-open "https://marcelrojas.net"
 ```
 
-[Alt](https://www.marcelrojas.net)
-[Preview](https://www.marcelrojas.workers.dev)
+# marcelrojas.net
+
+See the [colophon](https://marcelrojas.net/colophon) for details on its design and build.
+
+- [Alt](https://www.marcelrojas.net)
+- [Preview](https://www.marcelrojas.workers.dev)
 
 ## Project Structure
 
