@@ -3,7 +3,10 @@ import { defineConfig } from 'astro/config';
 import svelte from '@astrojs/svelte';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
+import partytown from '@astrojs/partytown';
 import vesper from './src/data/vesper.json';
+
+import partytown from '@astrojs/partytown';
 
 // https://astro.build/config
 export default defineConfig({
@@ -53,9 +56,10 @@ export default defineConfig({
     svelte(),
     mdx(),
     sitemap({
-      // Opcional: Configurar el sitemap para respetar el 'trailingSlash: never'
-      // Aunque el plugin suele leer la config de Astro automáticamente.
-    })
+    // Opcional: Configurar el sitemap para respetar el 'trailingSlash: never'
+    // Aunque el plugin suele leer la config de Astro automáticamente.
+    }),
+    partytown()
   ],
 
   markdown: {

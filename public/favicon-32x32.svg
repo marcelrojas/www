@@ -1,23 +1,356 @@
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_2400_13582)">
-<rect width="32" height="32" rx="3" fill="black"/>
-<rect x="14.4465" y="11.2362" width="3.21035" height="3.21035" fill="#F9F4EB"/>
-<rect x="11.2362" y="11.2362" width="3.21035" height="3.21035" fill="#F9F4EB"/>
-<rect x="14.4465" y="8.02588" width="3.21035" height="3.21035" fill="#F9F4EB"/>
-<rect x="14.4465" y="14.4465" width="3.21035" height="3.21035" fill="#F9F4EB"/>
-<rect x="17.6569" y="14.4465" width="3.21035" height="3.21035" fill="#F9F4EB"/>
-<rect x="17.6569" y="11.2362" width="3.21035" height="3.21035" fill="#F9F4EB"/>
-<rect x="20.8672" y="14.4465" width="3.21035" height="3.21035" fill="#F9F4EB"/>
-<rect x="14.4465" y="17.6569" width="3.21035" height="3.21035" fill="#F9F4EB"/>
-<rect x="17.6569" y="17.6569" width="3.21035" height="3.21035" fill="#F9F4EB"/>
-<rect x="14.4465" y="20.8672" width="3.21035" height="3.21035" fill="#F9F4EB"/>
-<rect x="11.2362" y="14.4465" width="3.21035" height="3.21035" fill="#F9F4EB"/>
-<rect x="11.2362" y="17.6569" width="3.21035" height="3.21035" fill="#F9F4EB"/>
-<rect x="8.02588" y="14.4465" width="3.21035" height="3.21035" fill="#F9F4EB"/>
-</g>
-<defs>
-<clipPath id="clip0_2400_13582">
-<rect width="32" height="32" rx="3" fill="white"/>
-</clipPath>
-</defs>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="32"
+   height="32"
+   viewBox="0 0 32 32"
+   fill="none"
+   version="1.1"
+   id="svg15"
+   sodipodi:docname="favicon-32x32.svg"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <title
+     id="title15">Marcel Rojas</title>
+  <sodipodi:namedview
+     id="namedview15"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:lockguides="true"
+     inkscape:zoom="15"
+     inkscape:cx="16"
+     inkscape:cy="16"
+     inkscape:window-width="1280"
+     inkscape:window-height="731"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg15" />
+  <rect
+     x="14.4465"
+     y="11.2362"
+     width="3.21035"
+     height="3.21035"
+     fill="#F9F4EB"
+     id="rect2"
+     style="fill:#000000"
+     clip-path="url(#clipPath27)" />
+  <rect
+     x="11.2362"
+     y="11.2362"
+     width="3.21035"
+     height="3.21035"
+     fill="#F9F4EB"
+     id="rect3"
+     style="fill:#000000"
+     clip-path="url(#clipPath26)" />
+  <rect
+     x="14.4465"
+     y="8.0258799"
+     width="3.21035"
+     height="3.21035"
+     fill="#F9F4EB"
+     id="rect4"
+     style="fill:#000000"
+     clip-path="url(#clipPath25)" />
+  <rect
+     x="14.4465"
+     y="14.4465"
+     width="3.21035"
+     height="3.21035"
+     fill="#F9F4EB"
+     id="rect5"
+     style="fill:#000000"
+     clip-path="url(#clipPath24)" />
+  <rect
+     x="17.6569"
+     y="14.4465"
+     width="3.21035"
+     height="3.21035"
+     fill="#F9F4EB"
+     id="rect6"
+     style="fill:#000000"
+     clip-path="url(#clipPath23)" />
+  <rect
+     x="17.6569"
+     y="11.2362"
+     width="3.21035"
+     height="3.21035"
+     fill="#F9F4EB"
+     id="rect7"
+     style="fill:#000000"
+     clip-path="url(#clipPath22)" />
+  <rect
+     x="20.867201"
+     y="14.4465"
+     width="3.21035"
+     height="3.21035"
+     fill="#F9F4EB"
+     id="rect8"
+     style="fill:#000000"
+     clip-path="url(#clipPath21)" />
+  <rect
+     x="14.4465"
+     y="17.6569"
+     width="3.21035"
+     height="3.21035"
+     fill="#F9F4EB"
+     id="rect9"
+     style="fill:#000000"
+     clip-path="url(#clipPath20)" />
+  <rect
+     x="17.6569"
+     y="17.6569"
+     width="3.21035"
+     height="3.21035"
+     fill="#F9F4EB"
+     id="rect10"
+     style="fill:#000000"
+     clip-path="url(#clipPath19)" />
+  <rect
+     x="14.4465"
+     y="20.867201"
+     width="3.21035"
+     height="3.21035"
+     fill="#F9F4EB"
+     id="rect11"
+     style="fill:#000000"
+     clip-path="url(#clipPath18)" />
+  <rect
+     x="11.2362"
+     y="14.4465"
+     width="3.21035"
+     height="3.21035"
+     fill="#F9F4EB"
+     id="rect12"
+     style="fill:#000000"
+     clip-path="url(#clipPath17)" />
+  <rect
+     x="11.2362"
+     y="17.6569"
+     width="3.21035"
+     height="3.21035"
+     fill="#F9F4EB"
+     id="rect13"
+     style="fill:#000000"
+     clip-path="url(#clipPath16)" />
+  <rect
+     x="8.0258799"
+     y="14.4465"
+     width="3.21035"
+     height="3.21035"
+     fill="#F9F4EB"
+     id="rect14"
+     style="fill:#000000"
+     clip-path="url(#clipPath15)" />
+  <defs
+     id="defs15">
+    <color-profile
+       name="Wide-Gamut-RGB"
+       xlink:href="file:///usr/share/color/icc/colord/WideGamutRGB.icc"
+       id="color-profile1" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath15">
+      <rect
+         width="32"
+         height="32"
+         rx="3"
+         fill="#ffffff"
+         id="rect16"
+         x="0"
+         y="0" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath16">
+      <rect
+         width="32"
+         height="32"
+         rx="3"
+         fill="#ffffff"
+         id="rect17"
+         x="0"
+         y="0" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath17">
+      <rect
+         width="32"
+         height="32"
+         rx="3"
+         fill="#ffffff"
+         id="rect18"
+         x="0"
+         y="0" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath18">
+      <rect
+         width="32"
+         height="32"
+         rx="3"
+         fill="#ffffff"
+         id="rect19"
+         x="0"
+         y="0" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath19">
+      <rect
+         width="32"
+         height="32"
+         rx="3"
+         fill="#ffffff"
+         id="rect20"
+         x="0"
+         y="0" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath20">
+      <rect
+         width="32"
+         height="32"
+         rx="3"
+         fill="#ffffff"
+         id="rect21"
+         x="0"
+         y="0" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath21">
+      <rect
+         width="32"
+         height="32"
+         rx="3"
+         fill="#ffffff"
+         id="rect22"
+         x="0"
+         y="0" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath22">
+      <rect
+         width="32"
+         height="32"
+         rx="3"
+         fill="#ffffff"
+         id="rect23"
+         x="0"
+         y="0" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath23">
+      <rect
+         width="32"
+         height="32"
+         rx="3"
+         fill="#ffffff"
+         id="rect24"
+         x="0"
+         y="0" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath24">
+      <rect
+         width="32"
+         height="32"
+         rx="3"
+         fill="#ffffff"
+         id="rect25"
+         x="0"
+         y="0" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath25">
+      <rect
+         width="32"
+         height="32"
+         rx="3"
+         fill="#ffffff"
+         id="rect26"
+         x="0"
+         y="0" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath26">
+      <rect
+         width="32"
+         height="32"
+         rx="3"
+         fill="#ffffff"
+         id="rect27"
+         x="0"
+         y="0" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath27">
+      <rect
+         width="32"
+         height="32"
+         rx="3"
+         fill="#ffffff"
+         id="rect28"
+         x="0"
+         y="0" />
+    </clipPath>
+  </defs>
+  <metadata
+     id="metadata15">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>Marcel Rojas</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Marcel Rojas</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>GNU</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <cc:license
+           rdf:resource="http://artlibre.org/licence/lal" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://artlibre.org/licence/lal">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
 </svg>
