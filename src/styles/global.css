@@ -122,26 +122,110 @@
   }
 
   ul {
-    list-style: none;
     list-style-type: disc;
     list-style-position: outside;
-  }
 
-  ul ul {
-    list-style-type: circle;
+    & ul {
+      list-style-type: circle;
+    }
   }
 
   ol {
     list-style-type: decimal;
     list-style-position: outside;
-  }
 
-  ol ol {
-    list-style-type: upper-latin;
+    & ol {
+      list-style-type: upper-latin;
+    }
   }
 
   li {
     list-style: none;
+  }
+
+  strong, b {
+    font-weight: var(--font-weight-bold);
+    color: inherit;
+  }
+
+  :focus, :focus-visible, :focus-within {
+    outline: unset;
+  }
+
+  :link {
+
+  }
+
+  :visited {
+    color: var(--accent-visited);
+  }
+
+  :any-link {
+    cursor: pointer;
+    pointer-events: auto;
+    text-decoration-line: unset;
+    text-underline-offset: 1px;
+    filter: unset;
+    opacity: unset;
+  }
+
+  :local-link {
+    background-color: var(--background-primary);
+  }
+
+  a {
+    overflow: hidden;
+    letter-spacing: inherit;
+    text-decoration-color: currentcolor;
+    text-decoration-thickness: .1em;
+    text-decoration-skip: none;
+    text-decoration-skip-ink: all;
+
+    &[aria-disabled="true"] {
+      cursor: not-allowed;
+      pointer-events: none;
+      filter: grayscale(40%);
+      opacity: .7;
+    }
+
+    &:is([target="_blank"], [rel="external"]) {
+      cursor: alias;
+    }
+
+    &[rel="tag"] {
+
+    }
+  }
+
+  :target {
+    animation: focusTarget;
+  }
+
+  :target-within {
+
+  }
+
+  ::selection {
+    background-color: oklch(69.926% 0.00008 271.152);
+    color: oklch(100% 0.00011 271.152);
+    text-shadow: none;
+  }
+
+  ::marker {
+    color: currentcolor;
+  }
+
+  ::backdrop {
+    position: fixed;
+    inset: 0 0 0 0;
+  }
+
+  :fullscreen {
+
+  }
+
+  :modal {
+
   }
 
   :open {
@@ -363,87 +447,6 @@
   }
 }
 
-:focus, :focus-visible, :focus-within {
-  outline: unset;
-}
-
-:link {
-
-}
-
-:visited {
-  color: var(--accent-visited);
-}
-
-:any-link {
-  cursor: pointer;
-  pointer-events: auto;
-  text-decoration-line: unset;
-  text-underline-offset: 1px;
-  filter: unset;
-  opacity: unset;
-}
-
-:local-link {
-  background-color: var(--background-primary);
-}
-
-a {
-  overflow: hidden;
-  letter-spacing: inherit;
-  text-decoration-color: currentcolor;
-  text-decoration-thickness: .1em;
-  text-decoration-skip: none;
-  text-decoration-skip-ink: all;
-  color: var(--color-internet-blue);
-}
-
-a[aria-disabled="true"] {
-  cursor: not-allowed;
-  pointer-events: none;
-  filter: grayscale(40%);
-  opacity: .7;
-}
-
-a:is([target="_blank"], [rel="external"]) {
-  cursor: alias;
-}
-
-a[rel="tag"] {
-
-}
-
-:target {
-  animation: focusTarget;
-}
-
-:target-within {
-
-}
-
-::selection {
-  background-color: oklch(69.926% 0.00008 271.152);
-  color: oklch(100% 0.00011 271.152);
-  text-shadow: none;
-}
-
-::marker {
-  color: currentcolor;
-}
-
-::backdrop {
-  position: fixed;
-  inset: 0 0 0 0;
-}
-
-:fullscreen {
-
-}
-
-:modal {
-
-}
-
 :is(audio, video):muted {
   outline: 5px solid oklch(62.793% 0.25768 29.223);
 }
@@ -478,18 +481,6 @@ a[rel="tag"] {
 
 [inert] > * {
   opacity: .5;
-}
-
-strong, b {
-  font-weight: var(--font-weight-bold);
-}
-
-a {
-  color: var(--color-accent);
-}
-
-a:hover {
-  color: var(--color-accent-hover);
 }
 
 textarea {
