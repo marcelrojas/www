@@ -7,6 +7,7 @@ interface Props {
   size?: 'small' | 'medium' | 'large' | 'full';
   wide?: 'fit' | 'fill';
   isActive?: boolean;
+  labelId?: string;
   class?: string;
   text?: string;
   [key: string]: any;
@@ -20,6 +21,7 @@ const {
   action = 'default',
   size = 'medium',
   wide = 'fit',
+  labelId,
   class: userClass,
   text,
   ...rest

@@ -69,16 +69,9 @@ const { encEmail = EMAIL } = Astro.props;
         visibility: hidden;
       }
 
-      /* Opened manually */
       body.footer-open & {
-        display: none;
         visibility: visible;
-        pointer-events: auto;
-      }
-
-      /* Standby */
-      body.is-standby & {
-        visibility: visible;
+        opacity: 1;
         pointer-events: auto;
       }
 

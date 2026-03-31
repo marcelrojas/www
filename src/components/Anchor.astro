@@ -14,43 +14,39 @@ const {
   class: className,
   variant,
   action = 'neutral',
-  size,
+  size = 'medium',
   label = 'text-only',
   isActive: forceActive,
   ...props
 } = Astro.props;
 
-// 2. Lógica de URL y Estado Activo
 const { pathname } = Astro.url;
-const currentPath = pathname.replace(/\/$/, ''); // Normaliza la ruta actual (quita slash final)
-const targetHref = href?.toString().replace(/\/$/, ''); // Normaliza el href
+const currentPath = pathname.replace(/\/$/, '');
+const targetHref = href?.toString().replace(/\/$/, '') || '';
 
-// Detecta si es la página actual o una sub-página
 const isActive = forceActive ?? (
   targetHref === currentPath ||
   (targetHref !== '' && targetHref !== '/' && currentPath.startsWith(targetHref + '/'))
 );
 
-// 3. Lógica de Enlaces Externos (Seguridad)
 const isExternal = href?.toString().startsWith('http');
-// Si es externo, fuerza _blank y noopener. Si no, usa lo que venga en props o nada.
 const target = isExternal ? '_blank' : props.target;
 const rel = isExternal ? 'noopener noreferrer' : props.rel;
 
-// 4. Clases dinámicas (BEM style o Utility classes)
 const classes = [
+  className,
   'anchor',
-  `variant-${variant}`,
+  variant ? `variant-${variant}` : '',
   `action-${action}`,
   `size-${size}`,
-  `label-${label ?? 'text-only'}`,
+  `label-${label}`,
   isActive ? 'is-active' : ''
-];
+].filter(Boolean).join(' ');
 ---
 
 <a
   href={href}
-  class:list={classes}
+  class={classes}
   target={target}
   rel={rel}
   aria-current={isActive ? 'page' : undefined}
