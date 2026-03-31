@@ -1,6 +1,6 @@
 ---
 interface Props {
-  id: string;
+  id?: string;
   as?: 'button'| 'input';
   type?: 'button' | 'submit' | 'reset';
   action?: 'default' | 'neutral' | 'danger';
@@ -13,7 +13,7 @@ interface Props {
 }
 
 const {
-  id,
+  id: userID,
   isActive = false,
   as = 'button',
   type = 'button',
@@ -37,6 +37,7 @@ const attrs: Record<string, any> = {
 };
 
 const classList = [
+  userID,
   'button',
   `action-${action}`,
   `size-${size}`,
@@ -46,6 +47,7 @@ const classList = [
 ---
 
 <Tag
+  id={userID}
   class={classList}
   aria-labelledby={labelId}
   aria-current={isActive ? "true" : undefined}
