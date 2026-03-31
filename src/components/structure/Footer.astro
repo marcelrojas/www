@@ -18,7 +18,7 @@ const { encEmail = EMAIL } = Astro.props;
 
       </div>
 
-      <ChamferButton id="clipboard-clipper" class="copy-email" data-encemail={encEmail}>Tab to copy my e-mail</ChamferButton>
+      <Button id="clipboard-clipper" class="copy-email" data-encemail={encEmail}>Tab to copy my e-mail</Button>
     </aside>
 
     <div class="legal">
@@ -64,8 +64,14 @@ const { encEmail = EMAIL } = Astro.props;
       visibility: hidden;
       background-color: var(--background-primary);
 
+      @starting-style {
+        display: none;
+        visibility: hidden;
+      }
+
       /* Opened manually */
       body.footer-open & {
+        display: none;
         visibility: visible;
         pointer-events: auto;
       }
@@ -143,5 +149,5 @@ const { encEmail = EMAIL } = Astro.props;
   }
 </style>
 
-<script client:load src="@scripts/standby.js"></script>
+<script client:load src="@scripts/footerToggle.js"></script>
 <script client:load src="@scripts/encEmail.js"></script>
