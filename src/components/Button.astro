@@ -1,25 +1,27 @@
 ---
 interface Props {
+  id: string;
   as?: 'button'| 'input';
   type?: 'button' | 'submit' | 'reset';
-  action?: 'default' | 'neutral' | 'danger'; // Ajustado a 'default' para hacer match con tu CSS
+  action?: 'default' | 'neutral' | 'danger';
   size?: 'small' | 'medium' | 'large' | 'full';
   wide?: 'fit' | 'fill';
-  disabled?: boolean;
+  isActive?: boolean;
   class?: string;
-  text?: string; // ¡Corregido! Faltaba declarar esta prop
+  text?: string;
   [key: string]: any;
 }
 
 const {
+  id,
+  isActive = false,
   as = 'button',
   type = 'button',
   action = 'default',
   size = 'medium',
   wide = 'fit',
-  disabled = false,
   class: userClass,
-  text, // Extraemos la prop para que el HTML no de error
+  text,
   ...rest
 } = Astro.props;
 
@@ -45,6 +47,8 @@ const classList = [
 
 <Tag
   class={classList}
+  aria-labelledby={labelId}
+  aria-current={isActive ? "true" : undefined}
   {...attrs}
 >
   <slot name="text">{text}</slot>
@@ -53,9 +57,10 @@ const classList = [
 <style is:global>
   @layer components {
     :is(button, input:is([type="button"], [type="submit"], [type="reset"])).button {
-      justify-content: center;
-      align-items: center;
       display: inline-flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
       overflow: hidden;
       position: relative;
       z-index: 0;
@@ -63,6 +68,8 @@ const classList = [
       height: fit-content;
       font-family: var(--font-family-sans);
       font-weight: var(--font-weight-medium);
+      font-size: var(--font-size-12);
+      letter-spacing: 1px;
       text-transform: uppercase;
       text-align: center;
       text-decoration: none;
@@ -87,8 +94,8 @@ const classList = [
       }
 
       &:focus-visible {
-        outline: 2px solid var(--focus);
-        outline-offset: 3px;
+        outline: 2px solid var(--btn-text-color);
+        outline-offset: 4px;
       }
 
       & :is(.symbol, .text):empty {
@@ -114,7 +121,7 @@ const classList = [
       }
 
       &.size-large {
-        gap: 4px;
+        gap: 5px;
         padding-inline: 20px;
         padding-block: 14px;
         font-size: var(--font-size-16);
@@ -151,13 +158,13 @@ const classList = [
 
       &.action-danger {
         background-color: transparent;
-        color: oklch(0.6 0.2 25);
-        fill: oklch(0.6 0.2 25);
-        border: 1px solid oklch(0.6 0.2 25);
+        color: var();
+        fill: var();
+        border: 1px solid var();
 
         @media (hover: hover) {
           &:hover:not(:disabled, [aria-disabled="true"]) {
-            background-color: oklch(0.6 0.2 25);
+            background-color: var();
             color: var(--background-primary);
           }
         }

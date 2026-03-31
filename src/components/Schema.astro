@@ -1,12 +1,10 @@
 ---
 import { SITE_TITLE } from '@types/consts';
 
-// Datos base
 const siteUrl = "https://marcelrojas.net";
 const personName = "Marcel Rojas";
-const twitterHandle = "whyismarcel"; // Tomado de tu Head.astro
+const twitterHandle = "whyismarcel";
 
-// Definición del Schema
 const schema = JSON.stringify({
   "@context": "https://schema.org",
   "@graph": [
@@ -16,10 +14,10 @@ const schema = JSON.stringify({
       "name": personName,
       "url": siteUrl,
       "jobTitle": "Full Stack Web Developer & Designer",
-      "description": "Desarrollador web Full Stack y diseñador orientado a la arquitectura JAMstack. Aspirante a ingeniero de software.",
+      "description": "Desarrollador web Full Stack y diseñador orientado a la arquitectura JAMstack.",
       "image": {
         "@type": "ImageObject",
-        "url": `${siteUrl}/images/profile.jpg`, // Asegrúrate de tener una foto tuya aquí o cambia la ruta
+        "url": `${siteUrl}/images/profile.jpg`,
         "width": 1080,
         "height": 1080
       },
@@ -31,7 +29,7 @@ const schema = JSON.stringify({
       },
       "sameAs": [
         `https://x.com/${twitterHandle}`,
-        "https://github.com/marcelrojas", // Asumo este user por tus keywords
+        "https://github.com/marcelrojas",
         "https://www.linkedin.com/in/marcelrojas/",
         "https://contra.com/marcelrojas",
         "https://www.behance.net/marcelrojas",

@@ -98,6 +98,7 @@
       font-weight: var(--font-weight-regular);
       letter-spacing: var(--font-tracking-normal);
       line-height: var(--font-leading-normal);
+      text-transform: uppercase;
       color: var(--background-tertiary);
     }
   }

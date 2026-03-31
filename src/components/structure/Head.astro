@@ -86,7 +86,7 @@ const ogImageURL = new URL(imageSrc, Astro.site);
     gtag('js', new Date());
     gtag('config', 'G-42TF8GHE8N');
 
-    // Integración con View Transitions
+    // View Transitions integration
     document.addEventListener('astro:page-load', () => {
       gtag('config', 'G-42TF8GHE8N', {
         page_path: window.location.pathname,

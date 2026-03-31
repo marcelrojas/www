@@ -1,13 +1,13 @@
 ---
 import Grain from '@components/decorators/Grain.astro';
 import Anchor from '@components/Anchor.astro';
-import ChamferButton from '@components/ChamferButton.astro';
+import Button from '@components/Button.astro';
 import { EMAIL, COPYRIGHT_NAME, COPYRIGHT_YEAR } from '@types/consts';
 
 const { encEmail = EMAIL } = Astro.props;
 ---
 
-<ChamferButton id="footer-toggle" class="footer-toggle" aria-label="Toggle footer">Further information</ChamferButton>
+<Button id="footer-toggle" type="Button" aria-label="Toggle footer">Further information</Button>
 
 <footer id="footer" aria-label="Global footer" tabindex="-1">
 
@@ -47,15 +47,12 @@ const { encEmail = EMAIL } = Astro.props;
 
 <style is:global>
   @layer components {
-    .footer-toggle {
+    button#footer-toggle {
       position: fixed;
       bottom: 0;
-      left: 20%;
+      left: 0;
       z-index: 90;
       letter-spacing: var(--font-tracking-widest);
-      text-align: left;
-      display: flex;
-      align-items: left;
     }
 
     footer#footer {
