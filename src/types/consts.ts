@@ -38,14 +38,13 @@ export const REFERRAL_RAYCAST = 'https://www.raycast.com/marcelrojas/invite';
 export const REFERRAL_AIRTM = 'https://app.airtm-2.com/ivt/marcelrojas';
 export const REFERRAL_AMAZON_AFFILIATE = 'https://amazon.com/marcelrojas';
 
-export const EMAIL = '';
+export const EMAIL = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20=';
 export const PHONE_NUMBER = '+58412';
 
 export const COPYRIGHT_NAME = 'Marcel Rojas';
 export const COPYRIGHT_YEAR = new Date().getFullYear();
 
 export const PAGE_TITLE_ABOUT = 'About';
-export const PAGE_TITLE_BLOG = 'Blog';
 export const PAGE_TITLE_SHOWCASE = 'Showcase';
 export const PAGE_TITLE_SEVICES = 'Services';
 export const PAGE_TITLE_RESOURCES = 'Resources';

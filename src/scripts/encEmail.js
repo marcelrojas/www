@@ -1,31 +1,79 @@
-function setupClipboardFlower() {
-  const clipboardFlowerElement = document.getElementById('clipboard-clipper');
-  if (!clipboardFlowerElement) {
-    return;
+function hexToString(hex) {
+  let str = '';
+  for (let i = 0; i < hex.length; i += 2) {
+    const code = parseInt(hex.substr(i, 2), 16);
+    if (!isNaN(code)) {
+      str += String.fromCharCode(code);
+    }
+  }
+  return str;
+}
+
+function announceToScreenReader(message) {
+  let liveRegion = document.getElementById('aria-live-region');
+
+  if (!liveRegion) {
+    liveRegion = document.createElement('div');
+    liveRegion.id = 'aria-live-region';
+    liveRegion.setAttribute('aria-live', 'polite');
+    liveRegion.setAttribute('aria-atomic', 'true');
+    liveRegion.className = 'sr-only';
+    document.body.appendChild(liveRegion);
   }
 
-  const encEmail = clipboardFlowerElement.dataset.encemail;
-  if (!encEmail) {
-    console.error('data-encemail attribute not found on clipboard-clipper element.');
-    return;
+  liveRegion.textContent = '';
+
+  setTimeout(() => {
+    liveRegion.textContent = message;
+  }, 100);
+}
+
+async function copyToClipboard(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    announceToScreenReader('Email address copied to clipboard successfully.');
+    return true;
+  } catch (err) {
+    console.error('Failed to copy:', err);
+    announceToScreenReader('Failed to copy automatically. Opening email client instead.');
+
+    window.location.href = `mailto:${text}`;
+    return false;
   }
+}
 
-  const decodedEmail = atob(encEmail);
-  const label = clipboardFlowerElement.querySelector('.label');
-  const originalLabelText = label ? label.textContent : '';
+function initEncryptedEmail() {
+  const buttons = document.querySelectorAll('.enc-email');
 
-  clipboardFlowerElement.addEventListener('click', () => {
-    navigator.clipboard.writeText(decodedEmail).then(() => {
-      if (label) {
-        label.textContent = 'E-mail copied to clipboard!';
-        setTimeout(() => {
-          label.textContent = originalLabelText;
-        }, 2000);
-      }
-    }).catch(err => {
-      console.error('Failed to copy e-mail: ', err);
-      window.location.href = `mailto:${decodedEmail}`;
+  buttons.forEach(btn => {
+    const hex = btn.getAttribute('data-hex');
+    if (!hex) return;
+
+    const email = hexToString(hex);
+
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+
+      const originalText = btn.textContent;
+      btn.textContent = 'Copied!';
+      btn.setAttribute('aria-label', 'Email copied');
+
+      await copyToClipboard(email);
+
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.setAttribute('aria-label', 'Copy email address');
+      }, 2000);
     });
+
+    btn.setAttribute('role', 'button');
+    btn.setAttribute('tabindex', '0');
+    btn.setAttribute('aria-label', 'Copy email address');
   });
 }
-document.addEventListener('astro:page-load', setupClipboardFlower);
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initEncryptedEmail);
+} else {
+  initEncryptedEmail();
+}

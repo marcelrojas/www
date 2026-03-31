@@ -2,9 +2,9 @@
 import Grain from '@components/decorators/Grain.astro';
 import Anchor from '@components/Anchor.astro';
 import ChamferButton from '@components/ChamferButton.astro';
-import { COPYRIGHT_NAME, COPYRIGHT_YEAR } from '@types/consts';
+import { EMAIL, COPYRIGHT_NAME, COPYRIGHT_YEAR } from '@types/consts';
 
-const { encEmail = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20=' } = Astro.props;
+const { encEmail = EMAIL } = Astro.props;
 ---
 
 <ChamferButton id="footer-toggle" class="footer-toggle" aria-label="Toggle footer">Further information</ChamferButton>

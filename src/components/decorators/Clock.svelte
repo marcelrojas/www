@@ -1,5 +1,13 @@
-<script>
-  import { onMount } from 'svelte';
+<script lang="ts">
+  import { onMount, onDestroy } from 'svelte';
+
+  export let timeZone: string = 'America/Caracas';
+  export let locale: string = 'en-US';
+
+  let timeString: string = '';
+  let clockElement: HTMLElement;
+  let isVisible: boolean = false;
+  let intervalId: ReturnType<typeof setInterval> | null = null;
 
   const options = {
     weekday: 'short',
@@ -9,33 +17,79 @@
     minute: '2-digit',
     second: '2-digit',
     hour12: true,
-    timeZone: 'America/Caracas',
     timeZoneName: 'short',
     hourCycle: 'h12'
   };
 
-  const formatter = new Intl.DateTimeFormat('en-US', options);
-  
-  let time = 'Loading time...';
+  function updateTime() {
+    const now = new Date();
 
-  onMount(() => {
-    const updateClock = () => {
-      const now = new Date();
-      time = formatter.format(now).toUpperCase();
+    const options: Intl.DateTimeFormatOptions = {
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric',
+
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true,
+      timeZone: timeZone,
+      timeZoneName: 'short',
+
+      hourCycle: 'h12'
     };
 
-    updateClock();
-    const timerId = setInterval(updateClock, 1000);
+    timeString = now.toLocaleTimeString(locale, options);
+  }
 
-    return () => clearInterval(timerId);
+  function startInterval() {
+    if (intervalId) return;
+
+    updateTime();
+    intervalId = setInterval(() => {
+      updateTime();
+    }, 1000);
+  }
+
+  function stopInterval() {
+    if (intervalId) {
+      clearInterval(intervalId);
+      intervalId = null;
+    }
+  }
+
+  onMount(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        isVisible = entry.isIntersecting;
+
+        if (isVisible) {
+          startInterval();
+        } else {
+          stopInterval();
+        }
+      },
+      {
+        threshold: 0.1
+      }
+    );
+
+    if (clockElement) {
+      observer.observe(clockElement);
+    }
+
+    onDestroy(() => {
+      observer.disconnect();
+      stopInterval();
+    });
   });
 </script>
 
-<time id="clock" aria-live="polite" aria-atomic="true">{time}</time>
+<time id="clock" aria-live="polite" aria-atomic="true" bind:this={clockElement}>{timeString}</time>
 
 <style>
   @layer components {
-
     #clock {
       position: relative;
       font-family: var(--font-family-mono);
@@ -46,6 +100,5 @@
       line-height: var(--font-leading-normal);
       color: var(--background-tertiary);
     }
-
   }
 </style>

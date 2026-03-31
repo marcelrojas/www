@@ -1,37 +1,83 @@
-import { slugify } from "./utils";
+import { slugify } from './utils';
 
-export default function jsonLDGenerator({ type, post, url }) {
-  if (type === 'post') {
-    return `<script type="application/ld+json">
+export function generateJsonLd(options) {
+  const {
+    title,
+    description,
+    url,
+    image,
+    datePublished,
+    dateModified,
+    author,
+    siteName,
+    type = "BlogPosting"
+  } = options;
+
+  const jsonData = {
+    "@context": "https://schema.org",
+    "@graph": [
       {
-        "@context": "https://schema.org",
-        "@graph":[
-          "@type": "BlogPosting",
-          "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "${url}"
-          },
-          "headline": "${post.title}",
-          "description": "${post.description}",
-          "image": "${post.image.src}",
-          "author": {
-            "@type": "Person",
-            "name": "${post.author}",
-            "url": "/author/${slugify(post.author)}"
-          },
-          "datePublished": "${post.date}"
-        ]
+        "@type": type,
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": url
+        },
+        "headline": title,
+        "description": description,
+        "image": {
+          "@type": "ImageObject",
+          "url": image
+        },
+        "datePublished": datePublished,
+        "dateModified": dateModified,
+        "author": {
+          "@type": "Person",
+          "name": author,
+          "url": `${url}/author/${slugify(author)}`
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": siteName,
+          "logo": {
+            "@type": "ImageObject",
+            "url": `${url}/logo.png`
+          }
+        }
       }
-    </script>`;
-  }
-  return `<script type="application/ld+json">
-    {
-      "@context": "https://schema.org/",
-      "@graph":[
-        "@type": "WebSite",
-        "name": "${import.meta.env.SITE}",
-        "url": "${import.meta.env.SITE}"
-      ]
-    }
-    </script>`;
+    ]
+  };
+
+  return `<script type="application/ld+json">${JSON.stringify(jsonData)}</script>`;
+}
+
+export function generateFaqJsonLd(faqs) {
+  const jsonData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
+  return `<script type="application/ld+json">${JSON.stringify(jsonData)}</script>`;
+}
+
+export function generateBreadcrumbJsonLd(items) {
+  const jsonData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": items.map((item, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": item.name,
+      "item": item.url
+    }))
+  };
+
+  return `<script type="application/ld+json">${JSON.stringify(jsonData)}</script>`;
 }
