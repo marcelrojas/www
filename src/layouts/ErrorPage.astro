@@ -1,6 +1,5 @@
 ---
 import Head from '@components/structure/Head.astro';
-import Curtain from '@components/Curtain.astro';
 
 export interface TransitionAnimation {
   name: string;
@@ -34,7 +33,6 @@ const { title, description, lang = 'en' } = Astro.props;
 <html lang={lang} dir="auto" transition:name="root">
   <Head title={title} description={description} />
   <body>
-    <Curtain />
 
     <main id="main" tabindex="-1">
       <slot />
