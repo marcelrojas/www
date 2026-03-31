@@ -7,9 +7,10 @@ interface Props {
   size?: 'small' | 'medium' | 'large' | 'full';
   wide?: 'fit' | 'fill';
   isActive?: boolean;
-  labelId?: string;
   class?: string;
   text?: string;
+  disabled?: boolean;
+  labelId?: string;
   [key: string]: any;
 }
 
@@ -21,9 +22,10 @@ const {
   action = 'default',
   size = 'medium',
   wide = 'fit',
-  labelId,
   class: userClass,
   text,
+  disabled = false,
+  labelId,
   ...rest
 } = Astro.props;
 
@@ -33,7 +35,7 @@ const attrs: Record<string, any> = {
   ...rest,
   type: type,
   value: as === 'input' ? text : undefined,
-  disabled: disabled,
+  disabled: disabled ? true : undefined,
   'aria-disabled': disabled ? 'true' : undefined,
   tabindex: disabled ? -1 : undefined,
 };
@@ -162,13 +164,13 @@ const classList = [
 
       &.action-danger {
         background-color: transparent;
-        color: var();
-        fill: var();
-        border: 1px solid var();
+        color: var(--color-danger, #ef4444);
+        fill: var(--color-danger, #ef4444);
+        border: 1px solid var(--color-danger, #ef4444);
 
         @media (hover: hover) {
           &:hover:not(:disabled, [aria-disabled="true"]) {
-            background-color: var();
+            background-color: var(--color-danger, #ef4444);
             color: var(--background-primary);
           }
         }
