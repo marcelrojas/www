@@ -63,11 +63,13 @@ const { encEmail = EMAIL } = Astro.props;
       content-visibility: auto;
       visibility: hidden;
       opacity: 0;
+      pointer-events: none;
       background-color: var(--background-primary);
 
       @starting-style {
-        display: none;
         visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
       }
 
       body.footer-open & {
