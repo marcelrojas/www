@@ -25,7 +25,15 @@ const {
       <p class="description">Building better business with an individual approach to each client with a wide range of services.</p>
       <ul>
         <li>
-          <Button role="button" wide="fit" class="badge audio_trigger">Review résumé</Button>
+          <Button role="button" wide="fit" class="badge audio_trigger" command="show-modal" commandfor="cvDialog">Review curriculum vitae</Button>
+
+          <dialog id="cvDialog">
+            <h2>Curriculum Vitae</h2>
+            <p>Marcel Rojas</p>
+
+
+            <button commandfor="cvDialog" command="close">Close</button>
+          </dialog>
         </li>
         <li>
           <Anchor variant="gui2" label="text-and-icon" size="small" href="https://contra.com/marcelrojas" target="_blank" rel="noopener noreferrer" class="badge audio_trigger">Explore my services on Contra</Anchor>

@@ -8,19 +8,21 @@ import featured from '@data/featured.json';
   <div class="content">
     <h3>As featured in</h3>
 
-    <ol>
+    <div>
       {
         Object.values(featured).map((featured) => (
-          <li>
-            <a href={featured.url} target="_blank" rel="noopener noreferrer">
-              <span class="headline">{featured.title}</span>
-              <Icon name="arrow-up-right" />
-            </a>
-            <span class="publisher">Published by: <a href={featured.publisherURL} target="_blank" rel="noopener noreferrer">{featured.publisher}</a></span>
-          </li>
+          <article>
+            <h2 class="headline">
+              <a href={featured.url} target="_blank" rel="noopener noreferrer">{featured.title}
+                <Icon name="arrow-up-right" />
+              </a>
+            </h2>
+            <cite class="publisher">Published by: <a href={featured.url} target="_blank" rel="noopener noreferrer">{featured.publisher}</a></cite>
+          </article>
         ))
       }
-    </ol>
+    </div>
+
   </div>
 </section>
 
@@ -36,8 +38,10 @@ import featured from '@data/featured.json';
       padding-inline-end: calc(var(--spacing-sar) + 22px);
       margin-left: auto;
       margin-right: auto;
+      overflow-wrap: break-word;
+      text-wrap: pretty;
 
-      & > ol {
+      & > div {
         padding: var(--spacing-03);
         gap: var(--spacing-03);
         border-radius: 30px;
@@ -53,7 +57,7 @@ import featured from '@data/featured.json';
           --gap: 24px
         }
 
-        & > li {
+        & > article {
           position: relative;
           display: flex;
           flex-direction: column;
@@ -74,33 +78,24 @@ import featured from '@data/featured.json';
             outline-offset: 2px
           }
 
-          & > a {
+          & > h2.headline {
+            box-orient: vertical;
+            max-width: 300px;
             padding-bottom: var(--spacing-04);
             display: flex;
             justify-content: space-between;
+            font-family: var(--font-family-sans);
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--font-size-20);
+            line-height: var(--line-height-24);
+            line-clamp: 3;
             align-items: baseline;
+            color: var(--color-label-primary);
             border-bottom: 1px solid oklch(0.87 0.01 0);
-
-            @media (hover: hover) {
-              &:hover {
-                background-color: oklch(0.97 0.01 84.37)
-              }
             }
-
-            & > span.headline {
-              max-width: 300px;
-              font-family: var(--font-family-sans);
-              font-weight: var(--font-weight-semibold);
-              font-size: var(--font-size-20);
-              line-height: var(--line-height-24);
-              line-clamp: 3;
-              box-orient: vertical;
-              color: var(--color-label-primary)
-            }
-
           }
 
-          & > span.publisher {
+          & > cite.publisher {
             margin-top: 12px;
             font-family: var(--font-family-sans);
             font-weight: var(--font-weight-medium);

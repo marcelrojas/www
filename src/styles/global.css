@@ -215,16 +215,7 @@
     color: currentcolor;
   }
 
-  ::backdrop {
-    position: fixed;
-    inset: 0 0 0 0;
-  }
-
   :fullscreen {
-
-  }
-
-  :modal {
 
   }
 
@@ -236,24 +227,54 @@
 
   }
 
-  [open] {
-
-  }
-
   :popover-open {
 
   }
 
-  dialog {
-    transition-behavior: allow-discrete;
+  /* When a modal window is open, remove scroll from body. */
+  :is(html, body):has(:modal) {
+    overflow: hidden;
   }
 
-  dialog[open]::backdrop {
-    display: block;
-    opacity: 1;
-    @starting-style {
-      display: none;
-      opacity: 0;
+  dialog {
+    border: 2px solid #000000;
+    border-radius: 4px;
+    scrollbar-gutter: stable;
+    transition-behavior: allow-discrete;
+
+    &[open] {
+      animation-duration: 200ms;
+      animation-fill-mode: forwards;
+      animation-iteration-count: 1;
+      animation-name: dialogEnter;
+      animation-timing-function: ease-out;
+
+      /* Note: backdrop only shows for MODAL experiences (not non-modal). */
+      &::backdrop {
+        background: repeating-linear-gradient(
+          45deg,
+          rgba(255, 0, 0, 0.2),
+          rgba(255, 0, 0, 0.2) 1px,
+          rgba(255, 0, 0, 0.3) 1px,
+          rgba(255, 0, 0, 0.3) 20px
+        );
+
+        @starting-style {
+          display: none;
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  @keyframes dialogEnter {
+    from {
+      opacity: 0.7;
+      scale: 0.7;
+    }
+    to {
+      opacity: 1.0;
+      scale: 1.0;
     }
   }
 
