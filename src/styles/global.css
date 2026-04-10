@@ -20,12 +20,10 @@
     hyphens: none;
     word-wrap: normal;
     outline: 0;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjust: 100%;
   }
 
-  button, textarea, input, form, fieldset, label {
+  button, textarea, input, form, fieldset, label, dialog {
     border: unset;
   }
 
@@ -236,8 +234,7 @@
   }
 
   dialog {
-    border: 2px solid #000000;
-    border-radius: 4px;
+    padding: unset;
     scrollbar-gutter: stable;
     transition-behavior: allow-discrete;
 
