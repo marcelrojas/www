@@ -7,7 +7,7 @@ import { EMAIL, COPYRIGHT_NAME, COPYRIGHT_YEAR } from '@types/consts';
 const { encEmail = EMAIL } = Astro.props;
 ---
 
-<Button id="footer-toggle" type="Button" aria-label="Toggle footer">Further information</Button>
+<Button id="footer-toggle" type="button" aria-controls="footer" aria-expanded="false" aria-label="Toggle footer">Further information</Button>
 
 <footer id="footer" aria-label="Global footer" tabindex="-1">
 
@@ -18,7 +18,7 @@ const { encEmail = EMAIL } = Astro.props;
 
       </div>
 
-      <Button id="clipboard-clipper" type="Button" data-encemail={encEmail}>Tab to copy my e-mail</Button>
+      <Button id="clipboard-clipper" type="button" data-encemail={encEmail}>Tab to copy my e-mail</Button>
     </aside>
 
     <div class="legal">
@@ -62,6 +62,7 @@ const { encEmail = EMAIL } = Astro.props;
       contain: layout paint;
       content-visibility: auto;
       visibility: hidden;
+      opacity: 0;
       background-color: var(--background-primary);
 
       @starting-style {

@@ -1,3 +1,6 @@
+let isKeydownListenerActive = false;
+let previousFocus = null;
+
 function initInfoSystem() {
   const body = document.body;
   const footerToggleBtn = document.getElementById('footer-toggle');
@@ -5,17 +8,11 @@ function initInfoSystem() {
 
   if (!footerToggleBtn || !footer) return;
 
-  // Clean up old listeners on ViewTransition navigations
-  const newBtn = footerToggleBtn.cloneNode(true);
-  footerToggleBtn.parentNode.replaceChild(newBtn, footerToggleBtn);
-
   const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-  let previousFocus = null;
 
   function getFocusableElements() {
-    // Include the toggle button so the user can Tab back to it to close the footer
     const footerElements = Array.from(footer.querySelectorAll(focusableSelectors));
-    return [newBtn, ...footerElements].filter(
+    return [footerToggleBtn, ...footerElements].filter(
       el => !el.hasAttribute('disabled') && el.getAttribute('aria-hidden') !== 'true'
     );
   }
@@ -55,30 +52,40 @@ function initInfoSystem() {
     if (isOpen) {
       previousFocus = document.activeElement;
       body.classList.add('footer-open');
-      newBtn.setAttribute('aria-expanded', 'true');
-      body.style.overflow = 'hidden'; // Prevent background scrolling
+      footerToggleBtn.setAttribute('aria-expanded', 'true');
+      body.style.overflow = 'hidden';
 
       const focusable = getFocusableElements();
-      // Focus the first interactive element inside the footer (index 1, as index 0 is the toggle btn)
       if (focusable.length > 1) {
         focusable[1].focus();
       } else {
         footer.focus();
       }
 
-      document.addEventListener('keydown', handleKeydown);
+      if (!isKeydownListenerActive) {
+        document.addEventListener('keydown', handleKeydown);
+        isKeydownListenerActive = true;
+      }
     } else {
       body.classList.remove('footer-open');
-      newBtn.setAttribute('aria-expanded', 'false');
-      body.style.overflow = ''; // Restore background scrolling
-      document.removeEventListener('keydown', handleKeydown);
+      footerToggleBtn.setAttribute('aria-expanded', 'false');
+      body.style.overflow = '';
 
-      // Return focus to whatever the user was interacting with before opening
+      if (isKeydownListenerActive) {
+        document.removeEventListener('keydown', handleKeydown);
+        isKeydownListenerActive = false;
+      }
+
       if (previousFocus) previousFocus.focus();
     }
   }
 
-  newBtn.addEventListener('click', () => toggleFooter());
+  if (footerToggleBtn._toggleHandler) {
+    footerToggleBtn.removeEventListener('click', footerToggleBtn._toggleHandler);
+  }
+
+  footerToggleBtn._toggleHandler = () => toggleFooter();
+  footerToggleBtn.addEventListener('click', footerToggleBtn._toggleHandler);
 }
 
 document.addEventListener('astro:page-load', initInfoSystem);
