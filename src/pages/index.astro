@@ -18,21 +18,15 @@ const {
   <PageHeader screen_title={screen_title} />
 
   <section class="collection--module">
+    <h2 class="sr-only">About my work and profiles</h2>
 
     <article class="module--work">
       <audio loop="" src="/audio/beats.aac"></audio>
-      <h1 class="title">Work</h1>
+      <h2 class="title">Work</h2>
       <p class="description">Building better business with an individual approach to each client with a wide range of services.</p>
       <ul>
         <li>
           <Button as="button" wide="fit" class="audio_trigger" command="show-modal" commandfor="cvDialog">Review curriculum vitae</Button>
-
-          <dialog id="cvDialog">
-            <span>Curriculum Vitae</span>
-            <h2>Marcel Rojas</h2>
-
-            <Button as="button" wide="fit" commandfor="cvDialog" command="close">Close</Button>
-          </dialog>
         </li>
         <li>
           <Anchor variant="gui2" label="text-and-icon" size="small" href="https://contra.com/marcelrojas" target="_blank" rel="noopener noreferrer" class="badge audio_trigger">Explore my services on Contra</Anchor>
@@ -41,9 +35,16 @@ const {
           <Anchor variant="gui2" label="text-and-icon" size="small" href={SOCIAL_LINKEDIN} target="_blank" rel="noopener noreferrer">Connect on LinkedIn</Anchor>
         </li>
       </ul>
+
+      <dialog id="cvDialog">
+        <span>Curriculum Vitae</span>
+        <h3>Marcel Rojas</h3>
+
+        <Button as="button" wide="fit" commandfor="cvDialog" command="close">Close</Button>
+      </dialog>
     </article>
 
-    <aside>
+    <nav aria-label="Social media profiles">
       <ul>
         <li>
           <Anchor variant="gui2" label="text-and-icon" size="medium" href={SOCIAL_X} target="_blank" rel="noopener noreferrer" aria-label={`Visit my X profile`}>
@@ -66,7 +67,7 @@ const {
           </Anchor>
         </li>
       </ul>
-    </aside>
+    </nav>
   </section>
 
 </Layout>
@@ -84,7 +85,7 @@ const {
       display: block;
       background-color: var(--background-secondary);
 
-      & > h1.title {
+      & > h2.title {
         font-size: 32px;
         font-weight: var(--font-weight-medium);
         line-height: 40px;
@@ -106,7 +107,7 @@ const {
 
   @media screen and (width <= 1024px) {
 
-    h1.title {
+    h2.title {
       line-height: 50px;
     }
 
