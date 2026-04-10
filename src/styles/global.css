@@ -242,11 +242,6 @@
     transition-behavior: allow-discrete;
 
     &[open] {
-      animation-duration: 200ms;
-      animation-fill-mode: forwards;
-      animation-iteration-count: 1;
-      animation-name: dialogEnter;
-      animation-timing-function: ease-out;
 
       /* Note: backdrop only shows for MODAL experiences (not non-modal). */
       &::backdrop {
@@ -257,23 +252,7 @@
           rgba(255, 0, 0, 0.3) 1px,
           rgba(255, 0, 0, 0.3) 20px
         );
-
-        @starting-style {
-          display: none;
-          opacity: 0;
-        }
       }
-    }
-  }
-
-  @keyframes dialogEnter {
-    from {
-      opacity: 0.7;
-      scale: 0.7;
-    }
-    to {
-      opacity: 1.0;
-      scale: 1.0;
     }
   }
 
