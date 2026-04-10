@@ -25,14 +25,13 @@ const {
       <p class="description">Building better business with an individual approach to each client with a wide range of services.</p>
       <ul>
         <li>
-          <Button role="button" wide="fit" class="badge audio_trigger" command="show-modal" commandfor="cvDialog">Review curriculum vitae</Button>
+          <Button as="button" wide="fit" class="audio_trigger" command="show-modal" commandfor="cvDialog">Review curriculum vitae</Button>
 
           <dialog id="cvDialog">
-            <h2>Curriculum Vitae</h2>
-            <p>Marcel Rojas</p>
+            <span>Curriculum Vitae</span>
+            <h2>Marcel Rojas</h2>
 
-
-            <button commandfor="cvDialog" command="close">Close</button>
+            <Button as="button" wide="fit" commandfor="cvDialog" command="close">Close</Button>
           </dialog>
         </li>
         <li>

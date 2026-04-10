@@ -231,7 +231,6 @@
 
   }
 
-  /* When a modal window is open, remove scroll from body. */
   :is(html, body):has(:modal) {
     overflow: hidden;
   }

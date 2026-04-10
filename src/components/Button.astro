@@ -6,9 +6,9 @@ interface Props {
   action?: 'default' | 'neutral' | 'danger';
   size?: 'small' | 'medium' | 'large' | 'full';
   wide?: 'fit' | 'fill';
-  isActive?: boolean;
   class?: string;
   text?: string;
+  isActive?: boolean;
   disabled?: boolean;
   labelId?: string;
   [key: string]: any;
@@ -16,7 +16,6 @@ interface Props {
 
 const {
   id: userID,
-  isActive = true,
   as = 'button',
   type = 'button',
   action = 'default',
@@ -24,6 +23,7 @@ const {
   wide = 'fit',
   class: userClass,
   text,
+  isActive = true,
   disabled = false,
   labelId,
   ...rest
@@ -114,6 +114,7 @@ const classList = [
         padding-block: 4px;
         font-size: var(--font-size-12);
         letter-spacing: var(--font-tracking-wide);
+
         &.wide-full { width: 100%; }
       }
 
@@ -123,6 +124,7 @@ const classList = [
         padding-block: 7px;
         font-size: var(--font-size-14);
         letter-spacing: var(--font-tracking-wide);
+
         &.wide-full { width: 100%; }
       }
 
@@ -132,6 +134,7 @@ const classList = [
         padding-block: 14px;
         font-size: var(--font-size-16);
         letter-spacing: var(--font-tracking-wider);
+
         &.wide-full { width: 100%; }
       }
 

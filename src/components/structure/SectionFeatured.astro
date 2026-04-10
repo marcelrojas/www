@@ -1,5 +1,4 @@
 ---
-import Icon from '@components/Icon.astro';
 import Anchor from '@components/Anchor.astro';
 import featured from '@data/featured.json';
 ---
@@ -13,9 +12,7 @@ import featured from '@data/featured.json';
         Object.values(featured).map((featured) => (
           <article>
             <h2 class="headline">
-              <a href={featured.url} target="_blank" rel="noopener noreferrer">{featured.title}
-                <Icon name="arrow-up-right" />
-              </a>
+              <a href={featured.url} target="_blank" rel="noopener noreferrer">{featured.title}</a>
             </h2>
             <cite class="publisher">Published by: <a href={featured.url} target="_blank" rel="noopener noreferrer">{featured.publisher}</a></cite>
           </article>
@@ -91,8 +88,7 @@ import featured from '@data/featured.json';
             line-clamp: 3;
             align-items: baseline;
             color: var(--color-label-primary);
-            border-bottom: 1px solid oklch(0.87 0.01 0);
-            }
+            border-bottom: 1px solid oklch(0.87 0.01 0)
           }
 
           & > cite.publisher {
