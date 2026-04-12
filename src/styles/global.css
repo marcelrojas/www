@@ -42,9 +42,7 @@
     word-spacing: normal;
     unicode-bidi: isolate;
     touch-action: manipulation;
-    scrollbar-width: none;
     scrollbar-gutter: stable both-edges;
-    scrollbar-color: auto;
     scroll-behavior: smooth;
     quotes: '"' '"' "'" "'";
     accent-color: var(--accent);
@@ -56,9 +54,26 @@
     display: block;
     position: relative;
     overflow-wrap: break-word;
+    scrollbar-width: none;
+    scrollbar-color: black transparent;
 
     & ::-webkit-scrollbar {
       display: none;
+      width: 10px;
+    }
+
+    & ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* 3. Style the thumb (draggable handle) */
+    & ::-webkit-scrollbar-thumb {
+      background: black;
+      border-radius: unset;
+
+      &:hover {
+        background: white;
+      }
     }
 
     &.isloading {
@@ -146,6 +161,14 @@
     color: inherit;
   }
 
+  span {
+
+  }
+
+  time {
+    user-select: none;
+  }
+
   :focus, :focus-visible, :focus-within {
     outline: unset;
   }
@@ -204,8 +227,8 @@
   }
 
   ::selection {
-    background-color: oklch(69.926% 0.00008 271.152);
-    color: oklch(100% 0.00011 271.152);
+    background-color: currentColor;
+    color: white;
     text-shadow: none;
   }
 
@@ -244,10 +267,10 @@
       &::backdrop {
         background: repeating-linear-gradient(
           45deg,
-          rgba(255, 0, 0, 0.2),
-          rgba(255, 0, 0, 0.2) 1px,
-          rgba(255, 0, 0, 0.3) 1px,
-          rgba(255, 0, 0, 0.3) 20px
+          rgba(255, 255, 255, 0.2) 2px,
+          rgba(255, 255, 255, 0.2) 2px,
+          rgba(255, 255, 255, 0.2) 2px,
+          rgba(255, 255, 255, 0.2) 10px
         );
       }
     }
@@ -523,15 +546,6 @@ hr {
 }
 
 /* --- Merged from global1.css --- */
-
-
-span {
-
-}
-
-time {
-  color: hsl(0, 0%, 44%);
-}
 
 article ul::marker {
   content: '\203B';

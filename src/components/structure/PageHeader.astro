@@ -9,9 +9,6 @@ const { screen_title } = Astro.props;
 <style is:global>
   section#PageHeader {
     --offset: 80px;
-    width: calc(87.5vw - var(--global-scrollbar-buffer, 0px));
-    max-width: 1680px;
-    margin-inline: auto;
     padding-block: var(--offset);
     display: block;
 
@@ -32,9 +29,8 @@ const { screen_title } = Astro.props;
       font-size: var();
       font-weight: var(--font-weight-regular);
       line-height: 1.05;
-      line-clamp: 2;
       letter-spacing: -.015em;
-      text-transform: lowercase;
+      text-transform: uppercase;
       color: var(--color-text-primary);
     }
   }
