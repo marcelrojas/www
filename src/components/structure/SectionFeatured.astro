@@ -41,26 +41,16 @@ import featured from '@data/featured.json';
       & > div {
         padding: var(--spacing-03);
         gap: var(--spacing-03);
-        border-radius: 30px;
         display: flex;
         flex-direction: column;
-        background-color: oklch(94.611% 0.00011 271.152);
-
-        @media screen and (max-width: 768px) {
-          --gap: 16px
-        }
-
-        @media screen and (min-width: 768px) {
-          --gap: 24px
-        }
+        background-color: var();
 
         & > article {
           position: relative;
           display: flex;
           flex-direction: column;
           overflow: hidden;
-          padding: 24px;
-          border-radius: 24px;
+          padding: var(--spacing-05);
           background-color: var(--background-primary);
           will-change: opacity, transform;
           user-select: none;
@@ -76,9 +66,7 @@ import featured from '@data/featured.json';
           }
 
           & > h2.headline {
-            box-orient: vertical;
             max-width: 300px;
-            padding-bottom: var(--spacing-04);
             display: flex;
             justify-content: space-between;
             font-family: var(--font-family-sans);
@@ -88,11 +76,10 @@ import featured from '@data/featured.json';
             line-clamp: 3;
             align-items: baseline;
             color: var(--color-label-primary);
-            border-bottom: 1px solid oklch(0.87 0.01 0)
           }
 
           & > cite.publisher {
-            margin-top: 12px;
+            margin-top: var(--spacing-04);
             font-family: var(--font-family-sans);
             font-weight: var(--font-weight-medium);
             font-size: var(--font-size-12);

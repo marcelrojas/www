@@ -43,7 +43,7 @@ const posts = (await getCollection('weblog')).sort(
     & > div.content {
       display: flex;
       flex-direction: column;
-      gap: 48px;
+      gap: var(--spacing-03);
       max-width: 980px;
       padding-inline-start: calc(var(--spacing-sal) + var(--spacing-06));
       padding-inline-end: calc(var(--spacing-sar) + var(--spacing-06));

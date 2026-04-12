@@ -9,13 +9,12 @@ const { screen_title } = Astro.props;
 <style is:global>
   section#PageHeader {
     padding-block: var(--offset);
-    display: block;
 
     @media screen and (width <= 480px) {
       --offset: 56px;
     }
 
-    @media screen and (width < 480px) {
+    @media screen and (width > 480px) {
       --offset: 64px;
     }
 
