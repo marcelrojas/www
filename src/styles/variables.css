@@ -4,28 +4,29 @@
   :root {
     color-scheme: light dark;
 
-  /*
-   * General design tokens
-   * Base token in raw format.
-   * Global token with value.
-  */
-
-    --color-metal: oklch(0.75 0 0);
-    --color-tan: oklch(0.88 0.01 93.58);
-    --color-dark_clay: oklch(0.37 0.01 31.09);
-
+    /*/
+     * Base token in raw format.
+     * Global token with value.
+    /*/
     --color-red_violet: oklch(0.55335 0.2217 349.67);
-    --color-yellow_digital: oklch(86.055% 0.17305 91.942);
+    --color-yellow_digital: oklch(86.055 0.17305 91.942);
     --color-powder_blue: oklch(0.90293 0.06231 187.421);
     --color-bubblegum_pink: oklch(0.7 0.19 350);
     --color-soft_orange: oklch(0.75 0.15 55);
     --color-internet_blue: oklch(0.52617 0.26402 263.603);
     --color-deep_yellow: oklch(0.81453 0.16585 79.812);
 
-  /*
-   * Opal’s design token system
-   * Alias token and component-specific token.
-  */
+    --color-off_white: #F8F8E0;
+    --color-water_blue: #1098D0;
+    --color-dirty_yellow: #D8C800;
+    --color-light_gray: #D8D8D8;
+    --color-charcoal: #203028;
+    --color-dark_magenta: #900858;
+    --color-red_purple: #780848;
+
+    /*/
+     * Opal’s design token system.
+    /*/
 
     --font-family-fallback: system-ui, sans-serif, arial;
     --font-family-sans: 'InterVariable', 'Inter', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -216,84 +217,82 @@
 
   @media screen and (prefers-color-scheme: light) {
     :root {
-      --background-primary: oklch(0.99 0 0); /* Blanco quirurgico background */
-      --background-secondary: oklch(0.95 0 0); /* Gris muy claro para paneles */
-      --background-tertiary: oklch(0.90 0 0);
+      --background-primary: var();
+      --background-secondary: var(); /* Panels */
+      --background-tertiary: var();
 
-      --text-primary: oklch(0.15 0 0); /* Casi negro, alto contraste */
-      --text-secondary: oklch(0.45 0 0); /* Gris técnico medio */
-      --text-tertiary: ;
+      --text-primary: var(--color-charcoal);
+      --text-secondary: var();
+      --text-tertiary: var();
 
-      --accent: oklch(0.65 0.22 45);
-      --accent-hover: oklch(0.55 0.22 45);
+      --fill-accent: var(--color-water_blue);
+      --fill-accent-hover: var();
 
-      --success: ;
-      --info: ;
-      --danger: ;
-      --warning: ;
+      --label-success: var();
+      --label-info: var();
+      --label-danger: var();
+      --label-warning: var();
 
-      --overlay: ;
+      --overlay: var();
 
-      --separator-opaque: oklch(0.85 0 0);
-      --separator-translucent: oklch(0 0 0 / 0.1);
+      --separator-opaque: var();
+      --separator-translucent: var();
 
       --focus: var(--accent);
-      --focus-alt: oklch(0 0 0);
-      --ring-offset: var(--background-primary);
+      --focus-alt: var();
+      --ring-offset: var();
 
-      --skeleton: oklch(0.5883 0.0174 67.48);
+      --skeleton: var();
 
-      --label-primary: oklch(0.22 0 0); /* for standard label */
-      --label-primary-active: oklch(0.99 0 0); /* for standard label active */
-      --label-primary-controls: oklch(37.15% 0.00004 271.152); /* for standard label on accent */
-      --label-primary-controls: var(--color-black); /* for standard label on accent */
-      --label-secondary: var(--color-); /* for descriptive label like footnotes and subtitles */
-      --label-tertiary: oklch(35.926% 0.01374 285.653 / 0.3); /* for inactive elements, and only when label doesn’t need high legibility */
+      --label-primary: var(); /* for standard label */
+      --label-primary-active: var()); /* for standard active label */
+      --label-primary-controls: var(); /* for standard label on accent */
+      --label-primary-controls-active: var(); /* for standard active label on accent */
+      --label-secondary: var(); /* for descriptive label like footnotes and subtitles */
+      --label-tertiary: var(); /* for inactive elements, and only when label doesn’t need high legibility */
 
-      --fill-primary: ;
-      --fill-secondary: ;
-      --fill-tertiary: ;
-      --fill-border: ;
+      --fill-primary: var();
+      --fill-secondary: var();
+      --fill-tertiary: var();
+      --fill-border: var();
 
-      --button-primary-background: transparent;
-      --button-primary-hover-background: oklch(69.304% 0.1968 24.755);
-      --button-primary-label: oklch(0.173 0 0);
-      --button-primary-hover-label: oklch(69.304% 0.1968 24.755);
-
-      --button-secondary-background: transparent;
-      --button-secondary-hover-background: ;
-      --button-secondary-label: ;
-      --button-secondary-hover-label: ;
+      /*/
+       * Alias token and component-specific token.
+      /*/
+      --button-primary-background: var();
+      --button-primary-label: var();
+      --button-primary-hover-background: var();
+      --button-primary-hover-label: var();
     }
   }
 
   @media screen and (prefers-color-scheme: dark) {
     :root {
       --background-primary: oklch(0.5018 0.0181 67.4);
-      --background-secondary: oklch(0.18 0 0);
-      --background-tertiary: oklch(0.22 0 0);
+      --background-secondary: var();
+      --background-tertiary: var();
 
-      --text-primary: oklch(0.173 0 0);
-      --text-secondary: oklch(0.8738 0.0108 106.62);
-      --text-tertiary: oklch(0.5883 0.0174 67.48);
+      --text-primary: var();
+      --text-secondary: var();
+      --text-tertiary: var();
 
-      --accent: oklch(0.70 0.22 45);
-      --accent-hover: oklch(0.80 0.22 45);
+      --fill-accent: var(--color-water_blue);
+      --fill-accent-hover: var();
 
-      --success: ;
-      --info: ;
-      --danger: ;
-      --warning: ;
+      --label-success: var();
+      --label-info: var();
+      --label-danger: var();
+      --label-warning: var();
 
-      --overlay: ;
+      --overlay: var();
 
-      --separator-opaque: oklch(0.25 0 0);
-      --separator-translucent: oklch(1 1 1 / 0.1);
+      --separator-opaque: var();
+      --separator-translucent: var();
 
       --focus: var(--accent);
-      --ring-offset: var(--background-primary);
+      --ring-offset: var();
 
-      --skeleton: oklch(0.5883 0.0174 67.48);
+      --skeleton: var();
     }
   }
 

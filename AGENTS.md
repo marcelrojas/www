@@ -6,13 +6,12 @@
 - Use `pnpm` exclusively for all package management and script execution. Do not use `npm` or `yarn`.
 
 ## Architecture & Stack
-- **Core Framework:** Astro with Svelte integrations.
+- **Core Framework:** Astro.
 - **Language:** TypeScript. Enforce strict type checking and avoid `any`.
-- **Styling:** CSS. 
+- **Styling:** CSS.
 - **Deployment Target:** Cloudflare Workers and Cloudflare Pages. Ensure all backend logic is optimized for edge runtimes.
 
 ## Component-Specific Style Guides
 # The CLI allows you to use the @ syntax to import specific Markdown files 
 # for different parts of your codebase, keeping the root file clean:
-@./src/components/svelte-style-guide.md
 @./docs/accessibility-checklist.md
