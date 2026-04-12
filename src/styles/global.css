@@ -267,10 +267,10 @@
       &::backdrop {
         background: repeating-linear-gradient(
           45deg,
-          rgba(255, 255, 255, 0.2) 2px,
-          rgba(255, 255, 255, 0.2) 2px,
-          rgba(255, 255, 255, 0.2) 2px,
-          rgba(255, 255, 255, 0.2) 10px
+          oklab(0.63 0.22 0.13 / 0.5) 2px,
+          oklab(0.63 0.22 0.13 / 0.7) 1px,
+          oklab(0.63 0.22 0.13 / 0.3)) 3px,
+          oklab(0.63 0.22 0.13 / 0.2) 5px
         );
       }
     }
