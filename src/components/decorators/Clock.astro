@@ -1,0 +1,93 @@
+---
+interface Props {
+  timeZone?: string;
+  locale?: string;
+}
+
+const {
+  timeZone = 'America/Caracas',
+  locale = 'en-US',
+} = Astro.props;
+---
+
+<time
+  id="clock"
+  aria-live="polite"
+  aria-atomic="true"
+  data-timezone={timeZone}
+  data-locale={locale}
+></time>
+
+<style is:global>
+  @layer components {
+    #clock {
+      position: relative;
+      display: inline-flex;
+      font-family: var(--font-family-mono);
+      font-feature-settings: "zero", "tnum";
+      font-variant-numeric: tabular-nums;
+      font-size: var(--font-size-12);
+      font-weight: var(--font-weight-regular);
+      letter-spacing: var(--font-tracking-normal);
+      line-height: var(--font-leading-normal);
+      text-transform: uppercase;
+      color: var(--background-tertiary);
+    }
+  }
+</style>
+
+<script>
+  function initClock() {
+    const clock = document.getElementById('clock') as HTMLTimeElement | null;
+    if (!clock) return;
+
+    const timeZone = clock.dataset.timezone ?? 'America/Caracas';
+    const locale = clock.dataset.locale ?? 'en-US';
+    let intervalId: ReturnType<typeof setInterval> | null = null;
+
+    const options: Intl.DateTimeFormatOptions = {
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true,
+      timeZone,
+      timeZoneName: 'short',
+      hourCycle: 'h12',
+    };
+
+    const updateTime = () => {
+      clock.textContent = new Date().toLocaleTimeString(locale, options);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          updateTime();
+          if (!intervalId) intervalId = setInterval(updateTime, 1000);
+        } else {
+          if (intervalId) {
+            clearInterval(intervalId);
+            intervalId = null;
+          }
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(clock);
+
+    document.addEventListener(
+      'astro:before-swap',
+      () => {
+        if (intervalId) clearInterval(intervalId);
+        observer.disconnect();
+      },
+      { once: true }
+    );
+  }
+
+  document.addEventListener('astro:page-load', initClock);
+</script>

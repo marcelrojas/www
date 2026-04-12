@@ -76,18 +76,15 @@
     --font-leading-relaxed: 1.75;
     --font-leading-loose: 2;
 
-    --font-tracking-: -0.2em;
-    --font-tracking-: -0.16em;
-    --font-tracking-: -0.12em;
-    --font-tracking-: -0.04em;
+    --font-tracking-tightest: -0.2em;
+    --font-tracking-tighter: -0.16em;
+    --font-tracking-tight: -0.12em;
+    --font-tracking-snug: -0.04em;
     --font-tracking-common: -0.01em;
     --font-tracking-normal: 0em;
-    --font-tracking-: 0.01em;
-    --font-tracking-: 0.04em;
-    --font-tracking-: 0.08em;
-    --font-tracking-: 0.12em;
-    --font-tracking-: 0.16em;
-    --font-tracking-: 0.2em;
+    --font-tracking-wide: 0.04em;
+    --font-tracking-wider: 0.08em;
+    --font-tracking-widest: 0.12em;
 
     --global-scrollbar-buffer: 15px;
     --header-height: 64px;

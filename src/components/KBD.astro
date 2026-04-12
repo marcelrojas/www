@@ -1,7 +1,10 @@
 ---
-export let kbdClass: string = '';
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
 ---
 
-<kbd class={twMerge(kbdClass, $$props.class)}>
+<kbd class={className}>
   <slot />
 </kbd>

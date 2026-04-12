@@ -1,16 +1,16 @@
 ---
-import Clock from '@components/decorators/Clock.svelte';
+import Clock from '@components/decorators/Clock.astro';
 import NavBar from '@components/structure/NavBar.astro';
 ---
 
 <header id="header">
   <div class="content">
     <div class="gmt">
-      <Clock client:only="svelte" />
+      <Clock />
     </div>
 
     <div id="dynamic-content">
-
+      <!-- placeholder -->
     </div>
 
     <NavBar />
