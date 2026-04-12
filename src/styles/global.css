@@ -42,6 +42,8 @@
     word-spacing: normal;
     unicode-bidi: isolate;
     touch-action: manipulation;
+    scrollbar-width: none;
+    scrollbar-color: black transparent;
     scrollbar-gutter: stable both-edges;
     scroll-behavior: smooth;
     quotes: '"' '"' "'" "'";
@@ -54,8 +56,6 @@
     display: block;
     position: relative;
     overflow-wrap: break-word;
-    scrollbar-width: none;
-    scrollbar-color: black transparent;
 
     & ::-webkit-scrollbar {
       display: none;
@@ -66,7 +66,6 @@
       background: transparent;
     }
 
-    /* 3. Style the thumb (draggable handle) */
     & ::-webkit-scrollbar-thumb {
       background: black;
       border-radius: unset;

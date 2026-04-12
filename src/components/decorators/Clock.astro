@@ -31,11 +31,12 @@ const {
       letter-spacing: var(--font-tracking-normal);
       line-height: var(--font-leading-normal);
       text-transform: uppercase;
+      color: black;
     }
   }
 </style>
 
-<script is:inline>
+<script>
   function initClock() {
     const clock = document.getElementById('clock') as HTMLTimeElement | null;
     if (!clock) return;
