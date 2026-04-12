@@ -265,12 +265,10 @@
 
       /* Note: backdrop only shows for MODAL experiences (not non-modal). */
       &::backdrop {
-        background: repeating-linear-gradient(
+        background-image: repeating-linear-gradient(
           45deg,
-          oklab(0.63 1 0 / 1) 2px,
-          oklab(0.63 1 0 / 0) 1px,
-          oklab(0.63 1 0 / 1) 3px,
-          oklab(0.63 1 0 / 0) 4px
+          oklab(0.63 1 0 / 1) 0 2px,
+          transparent 2px 4px
         );
       }
     }
