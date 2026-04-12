@@ -8,7 +8,6 @@ const { screen_title } = Astro.props;
 
 <style is:global>
   section#PageHeader {
-    --offset: 80px;
     padding-block: var(--offset);
     display: block;
 
@@ -16,17 +15,12 @@ const { screen_title } = Astro.props;
       --offset: 56px;
     }
 
-    @media screen and (width <= 734px) {
+    @media screen and (width < 480px) {
       --offset: 64px;
     }
 
-    @media screen and (width <= 1068px) {
-      --offset: 72px;
-    }
-
     & > h1 {
-      max-width: 270px;
-      font-size: var();
+      font-size: var(--font-size-16);
       font-weight: var(--font-weight-regular);
       line-height: 1.05;
       letter-spacing: -.015em;
