@@ -28,12 +28,15 @@
   }
 
   html {
+    overflow-x: hidden;
+    height: 100%;
     block-size: auto;
     font-family: var(--font-family-fallback);
     font-feature-settings: 'case', 'ss01', 'ss03';
     font-optical-sizing: auto;
     font-variation-settings: normal;
     font-variant-ligatures: contextual;
+    font-smooth: always;
     -webkit-font-smoothing: antialiased;
     font-size: var(--font-size-base);
     text-rendering: optimizeLegibility;

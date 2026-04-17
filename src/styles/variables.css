@@ -23,12 +23,13 @@
     --color-charcoal: #203028;
     --color-dark_magenta: #900858;
     --color-red_purple: #780848;
+    --color-red_valve: #f74843;
 
     /*/
      * Opal’s design token system.
     /*/
 
-    --font-family-fallback: system-ui, sans-serif, arial;
+    --font-family-fallback: -apple-system, system, system-ui, sans-serif, arial;
     --font-family-sans: 'InterVariable', 'Inter', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-family-display: 'InterDisplay';
     --font-family-serif: 'TrajanPro', ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
