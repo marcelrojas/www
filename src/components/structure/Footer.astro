@@ -7,17 +7,13 @@ import { EMAIL, COPYRIGHT_NAME, COPYRIGHT_YEAR } from '@types/consts';
 const { encEmail = EMAIL } = Astro.props;
 ---
 
-<Button id="footer-toggle" type="button" aria-controls="footer" aria-expanded="false" aria-label="Toggle footer">Further information</Button>
+<!--Button id="footer-toggle" type="button" aria-controls="footer" aria-expanded="false" aria-label="Toggle footer">Further information</Button-->
 
 <footer id="footer" aria-label="Global footer" tabindex="-1">
 
   <div class="content">
 
     <aside aria-label="Contact me">
-      <div class="">
-
-      </div>
-
       <Button id="clipboard-clipper" class="enc-email" type="button" data-hex={encEmail} aria-label="Copy email address">Tab to copy my e-mail</Button>
     </aside>
 
@@ -47,38 +43,15 @@ const { encEmail = EMAIL } = Astro.props;
 
 <style is:global>
   @layer components {
-    button#footer-toggle {
-      position: fixed;
-      bottom: 0;
-      left: 2ch;
-      z-index: 90;
-    }
-
     footer#footer {
-      position: fixed;
-      inset: 0;
-      z-index: var(--z-footer);
       contain: layout paint;
       content-visibility: auto;
-      visibility: hidden;
-      opacity: 0;
       pointer-events: none;
       background-color: var(--background-primary);
 
-      @starting-style {
-        visibility: hidden;
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      body.footer-open & {
-        visibility: visible;
-        opacity: 1;
-        pointer-events: auto;
-      }
-
       & > div.content {
         display: flex;
+        justify-content: space-between;
         position: relative;
         height: 100%;
 
@@ -105,17 +78,9 @@ const { encEmail = EMAIL } = Astro.props;
           position: relative;
           display: flex;
           gap: var(--spacing-06);
-          flex-direction: column;
+          flex-direction: row;
           align-self: start;
           align-items: baseline;
-          padding-inline-start: calc(var(--spacing-sal) + var(--spacing-03));
-          padding-inline-end: calc(var(--spacing-sar) + var(--spacing-06));
-          padding-block-start: calc(var(--spacing-sat) + var(--spacing-03));
-          padding-block-end: calc(var(--spacing-sab) + var(--spacing-02));
-          margin-block-end: calc(var(--spacing-sab) + var(--spacing-07));
-          border-width: 2px 1px;
-          border-style: solid;
-          border-color: var(--fill-border);
 
           & > small.copyright {
             position: relative;
@@ -145,6 +110,5 @@ const { encEmail = EMAIL } = Astro.props;
 </style>
 
 <script>
-  import "@scripts/footerToggle.js";
   import "@scripts/encEmail.js";
 </script>
