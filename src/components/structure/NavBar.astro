@@ -24,16 +24,22 @@ const anchors = [
     nav.navbar {
       position: relative;
       height: min-content;
+      width: fit-content;
 
       & > ul {
         position: relative;
         display: flex;
         flex-flow: row;
-        gap: var(--spacing-04);
 
         & > li {
           position: relative;
           width: fit-content;
+
+          & > a {
+            padding-block: 0.625lh;
+            padding-inline: 0.625lh;
+            line-height: 1;
+          }
         }
       }
     }

@@ -8,7 +8,15 @@ const { screen_title } = Astro.props;
 
 <style is:global>
   section#PageHeader {
-    padding-block: var(--offset);
+    margin-inline: 20px;
+    padding-left: calc(var(--spacing-sal) + var(--spacing-06));
+    padding-right: calc(var(--spacing-sar) + var(--spacing-06));
+    display: flex;
+    justify-content: start;
+    align-items: end;
+    height: 40vh;
+    background-color: #eee;
+
 
     @media screen and (width <= 480px) {
       --offset: 56px;
