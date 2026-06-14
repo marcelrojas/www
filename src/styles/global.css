@@ -479,6 +479,10 @@
   }
 }
 
+.display-none {
+  display: none;
+}
+
 :is(audio, video):muted {
   outline: 5px solid oklch(62.793% 0.25768 29.223);
 }

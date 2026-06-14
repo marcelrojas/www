@@ -18,10 +18,11 @@ const {
   <PageHeader screen_title={screen_title} />
 
   <section class="collection--module">
-    <h2 class="sr-only">About my work and profiles</h2>
-
+    <h2>Biography</h2>
+    <p></p>
+    
     <article class="module--work">
-      <audio loop src="/audio/beats.aac"></audio>
+      <audio class="display-none" loop src="/audio/beats.aac"></audio>
       <h2 class="title">Work</h2>
       <p class="description">Building better business with an individual approach to each client with a wide range of services.</p>
       <ul>
@@ -47,24 +48,16 @@ const {
     <nav aria-label="Social media profiles">
       <ul>
         <li>
-          <Anchor variant="gui2" label="text-and-icon" size="medium" href={SOCIAL_X} target="_blank" rel="noopener noreferrer" aria-label={`Visit my X profile`}>
-            <Icon name="x" />
-          </Anchor>
+          <Anchor variant="gui2" label="text-and-icon" size="medium" href={SOCIAL_X} target="_blank" rel="noopener noreferrer" aria-label={`Visit my X profile`}>X</Anchor>
         </li>
         <li>
-          <Anchor variant="gui2" label="text-and-icon" size="medium" href={SOCIAL_INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label={`Visit my Instagram profile`}>
-            <Icon name="instagram" />
-          </Anchor>
+          <Anchor variant="gui2" label="text-and-icon" size="medium" href={SOCIAL_INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label={`Visit my Instagram profile`}>Instagram</Anchor>
         </li>
         <li>
-          <Anchor variant="gui2" label="text-and-icon" size="medium" href={SOCIAL_YOUTUBE} target="_blank" rel="noopener noreferrer" aria-label={`Visit my YouTube profile`}>
-            <Icon name="youtube" />
-          </Anchor>
+          <Anchor variant="gui2" label="text-and-icon" size="medium" href={SOCIAL_YOUTUBE} target="_blank" rel="noopener noreferrer" aria-label={`Visit my YouTube profile`}>YouTube</Anchor>
         </li>
         <li>
-          <Anchor variant="gui2" label="text-and-icon" size="medium" href={SOCIAL_GITHUB} target="_blank" rel="noopener noreferrer" aria-label={`Visit my GitHub profile`}>
-            <Icon name="github" />
-          </Anchor>
+          <Anchor variant="gui2" label="text-and-icon" size="medium" href={SOCIAL_GITHUB} target="_blank" rel="noopener noreferrer" aria-label={`Visit my GitHub profile`}>GitHub</Anchor>
         </li>
       </ul>
     </nav>
@@ -76,10 +69,6 @@ const {
   .collection--module {
     display: flex;
     flex-wrap: wrap;
-
-    & audio {
-      display: none;
-    }
 
     & > article[class*="module--"] {
       display: block;
