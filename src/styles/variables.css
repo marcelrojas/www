@@ -246,7 +246,7 @@
       --skeleton: var();
 
       --label-primary: var(); /* for standard label */
-      --label-primary-active: var()); /* for standard active label */
+      --label-primary-active: var(); /* for standard active label */
       --label-primary-controls: var(); /* for standard label on accent */
       --label-primary-controls-active: var(); /* for standard active label on accent */
       --label-secondary: var(); /* for descriptive label like footnotes and subtitles */
