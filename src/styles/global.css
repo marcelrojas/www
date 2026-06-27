@@ -1248,7 +1248,7 @@ hr {
   }
 
   section.sosumi {
-    color: ;
+    color: var();
   }
 
   section.advice {
