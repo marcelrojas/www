@@ -794,7 +794,7 @@ code, kbd, pre, samp {
 code {
   width: fit-content;
   padding: 2px 5px;
-  background-color: rgb(var(--gray-light));
+  background-color: var(--gray-light);
   border-radius: 2px;
 }
 
@@ -952,7 +952,7 @@ textarea,
 input:is([type="email"], [type="number"], [type="password"], [type="search"], [type="tel"], [type="text"], [type="url"]):disabled {
   cursor: not-allowed;
   pointer-events: none;
-  transform: scale(-.08);
+  transform: scale(-0.08);
   filter: grayscale(80%);
   opacity: .8;
 }
@@ -1089,7 +1089,7 @@ blockquote {
 
 hr {
   border: none;
-  border-top: 1px solid rgb(var(--gray-light));
+  border-top: 1px solid var(--gray-light);
 }
 
 /* Show hover only on supported devices */
