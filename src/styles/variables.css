@@ -248,9 +248,9 @@
       --label-primary: var(--); /* for standard label */
       --label-primary-active: var(--); /* for standard active label */
       --label-primary-controls: var(--); /* for standard label on accent */
-      --label-primary-controls-active: var(); /* for standard active label on accent */
-      --label-secondary: var(); /* for descriptive label like footnotes and subtitles */
-      --label-tertiary: var(); /* for inactive elements, and only when label doesn’t need high legibility */
+      --label-primary-controls-active: var(--); /* for standard active label on accent */
+      --label-secondary: var(--); /* for descriptive label like footnotes and subtitles */
+      --label-tertiary: var(--); /* for inactive elements, and only when label doesn’t need high legibility */
 
       --fill-primary: var(--);
       --fill-secondary: var(--);

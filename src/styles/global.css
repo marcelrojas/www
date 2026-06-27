@@ -443,10 +443,10 @@
     white-space: nowrap;
     border: 0;
   }
-}
 
-.display-none {
-  display: none;
+  .display-none {
+    display: none;
+  }
 }
 
 :is(audio, video):muted {
@@ -906,10 +906,34 @@ label {
 
 input {
   appearance: none;
-}
 
-input:indeterminate {
-  background: oklch(86.645% 0.29481 142.511);
+  &:indeterminate {
+    background: oklch(86.645% 0.29481 142.511);
+  }
+
+  &:in-range {
+    
+  }
+
+  &:out-of-range {
+    
+  }
+
+  &:default {
+    
+  }
+
+  &:indeterminate {
+    
+  }
+
+  &:empty {
+    
+  }
+
+  &:checked {
+    
+  }
 }
 
 textarea,
@@ -981,14 +1005,6 @@ input[type="color"] {
 
 }
 
-input:in-range {
-
-}
-
-input:out-of-range {
-
-}
-
 input[type="file"]::file-selector-button {
   padding: .2em .4em;
   border: 2px solid oklch(56.761% 0.20219 283.089);
@@ -1007,24 +1023,8 @@ input:is([type="email"], [type="number"], [type="password"], [type="search"], [t
 
 }
 
-input:default {
-
-}
-
-input:indeterminate {
-
-}
-
 textarea,
 input:is([type="email"], [type="number"], [type="password"], [type="search"], [type="tel"], [type="text"], [type="url"]):placeholder-shown {
-
-}
-
-input:empty {
-
-}
-
-input:checked {
 
 }
 
