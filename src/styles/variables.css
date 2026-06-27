@@ -4,10 +4,10 @@
   :root {
     color-scheme: light dark;
 
-    /*/
+    /*
      * Base token in raw format.
      * Global token with value.
-    /*/
+     */
     --color-red_violet: oklch(0.55335 0.2217 349.67);
     --color-yellow_digital: oklch(86.055 0.17305 91.942);
     --color-powder_blue: oklch(0.90293 0.06231 187.421);
@@ -25,9 +25,9 @@
     --color-red_purple: #780848;
     --color-red_valve: #f74843;
 
-    /*/
+    /*
      * Opal’s design token system.
-    /*/
+     */
 
     --font-family-fallback: -apple-system, system, system-ui, sans-serif, arial;
     --font-family-sans: 'InterVariable', 'Inter', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -257,9 +257,9 @@
       --fill-tertiary: var();
       --fill-border: var();
 
-      /*/
+      /*
        * Alias token and component-specific token.
-      /*/
+       */
       --button-primary-background: var();
       --button-primary-label: var();
       --button-primary-hover-background: var();

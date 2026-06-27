@@ -288,6 +288,7 @@
   }
 
   :open::picker-icon {
+
     @starting-style {
 
     }
@@ -309,7 +310,7 @@
     }
     &:open::picker(select) {
       opacity: 1;
-      starting-style {
+      @starting-style {
         opacity: 0;
       }
     }
