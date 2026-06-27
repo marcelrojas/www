@@ -277,9 +277,9 @@
   }
 
   ::picker-icon {
-    color: var();
-    background-color: var();
-    fill: var();
+    color: var(--color-);
+    background-color: var(--color-);
+    fill: var(--color-);
     transition-behavior: allow-discrete;
   }
 
@@ -329,11 +329,7 @@
     }
   }
 
-  @media screen and (prefers-reduced-motion: reduce) {
-    * { transition: all 0s ease 0s; }
-  }
-
-  @media (forced-colors: active) {
+  @media screen and (forced-colors: active) {
     * { forced-color-adjust: auto; }
   }
 
@@ -415,37 +411,6 @@
     }
   }
 
-  @font-feature-values InterDisplay {
-    @character-variant {
-      cv01: 1; cv02: 2; cv03: 3; cv04: 4; cv05: 5; cv06: 6; cv07: 7; cv08: 8;
-      cv09: 9; cv10: 10; cv11: 11; cv12: 12; cv13: 13;
-      alt-1:            1;
-      alt-3:            9;
-      open-4:           2;
-      open-6:           3;
-      open-9:           4;
-      lc-l-with-tail:   5;
-      simplified-u:     6;
-      alt-double-s:     7;
-      uc-i-with-serif:  8;
-      uc-g-with-spur:  10;
-      single-story-a:  11;
-      compact-lc-f:    12;
-      compact-lc-t:    13;
-    }
-    @styleset {
-      ss01: 1; ss02: 2; ss03: 3; ss04: 4; ss05: 5; ss06: 6; ss07: 7; ss08: 8;
-      open-digits: 1;
-      disambiguation: 2;
-      disambiguation-except-zero: 4;
-      round-quotes-and-commas: 3;
-      square-punctuation: 7;
-      square-quotes: 8;
-      circled-characters: 5;
-      squared-characters: 6;
-    }
-  }
-
   .markdown-body :where(h2, h3, h4, h5, h6) a {
     text-decoration: none;
     color: inherit;
@@ -456,7 +421,7 @@
       position: absolute;
 
       left: -1.2em;
-      color: var(--accent, #a1a1aa);
+      color: var(--accent);
       opacity: 0;
       transition: opacity 0.2s ease-in-out;
 
@@ -1130,10 +1095,11 @@ hr {
 /* Show hover only on supported devices */
 @media (hover: hover) and (pointer: fine) {
   #globalheader > nav:nth-child(1) ul.language-selector li a:hover {
-  color: hsl(0 0% 62%);
+    color: hsl(0 0% 62%);
   }
+
   #globalheader > nav:nth-child(2) ul li a:hover {
-  color: hsl(0 0% 62%);
+    color: hsl(0 0% 62%);
   }
 }
 
@@ -1153,6 +1119,7 @@ hr {
   from {
     transform: translateY(100%);
   }
+
   to {
     transform: translateY(0%);
   }
@@ -1482,7 +1449,7 @@ hr {
   div.banner {
     padding: 24px 0 24px 24px;
     opacity: 0;
-    background-color: var();
+    background-color: var(--color-);
 
     & .description {
 
@@ -1493,12 +1460,12 @@ hr {
 @layer print {
   @media print {
     body {
-      background-color: var();
-      color: var();
+      background-color: var(--color--);
+      color: var(--color-);
     }
 
     a {
-      color: var();
+      color: var(--color-);
     }
   }
 }
@@ -1531,7 +1498,7 @@ hr {
   animation: wipeout-hard-cut-in 0.3s linear both;
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media screen and (prefers-reduced-motion: reduce) {
   ::view-transition-group(root),
   ::view-transition-old(root),
   ::view-transition-new(root) {

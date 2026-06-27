@@ -218,86 +218,90 @@
 
   @media screen and (prefers-color-scheme: light) {
     :root {
-      --background-primary: var();
-      --background-secondary: var(); /* Panels */
-      --background-tertiary: var();
+      --background-primary: var(--);
+      --background-secondary: var(--); /* Panels */
+      --background-tertiary: var(--);
 
       --text-primary: var(--color-charcoal);
-      --text-secondary: var();
-      --text-tertiary: var();
+      --text-secondary: var(--);
+      --text-tertiary: var(--);
 
       --fill-accent: var(--color-water_blue);
-      --fill-accent-hover: var();
+      --fill-accent-hover: var(--);
 
-      --label-success: var();
-      --label-info: var();
-      --label-danger: var();
-      --label-warning: var();
+      --label-success: var(--);
+      --label-info: var(--);
+      --label-danger: var(--);
+      --label-warning: var(--);
 
-      --overlay: var();
+      --overlay: var(--);
 
-      --separator-opaque: var();
-      --separator-translucent: var();
+      --separator-opaque: var(--);
+      --separator-translucent: var(--);
 
       --focus: var(--accent);
-      --focus-alt: var();
-      --ring-offset: var();
+      --focus-alt: var(--);
+      --ring-offset: var(--);
 
-      --skeleton: var();
+      --skeleton: var(--);
 
-      --label-primary: var(); /* for standard label */
-      --label-primary-active: var(); /* for standard active label */
-      --label-primary-controls: var(); /* for standard label on accent */
+      --label-primary: var(--); /* for standard label */
+      --label-primary-active: var(--); /* for standard active label */
+      --label-primary-controls: var(--); /* for standard label on accent */
       --label-primary-controls-active: var(); /* for standard active label on accent */
       --label-secondary: var(); /* for descriptive label like footnotes and subtitles */
       --label-tertiary: var(); /* for inactive elements, and only when label doesn’t need high legibility */
 
-      --fill-primary: var();
-      --fill-secondary: var();
-      --fill-tertiary: var();
-      --fill-border: var();
+      --fill-primary: var(--);
+      --fill-secondary: var(--);
+      --fill-tertiary: var(--);
+      --fill-border: var(--);
 
       /*
        * Alias token and component-specific token.
        */
-      --button-primary-background: var();
-      --button-primary-label: var();
-      --button-primary-hover-background: var();
-      --button-primary-hover-label: var();
+      --button-primary-background: var(--);
+      --button-primary-label: var(--);
+      --button-primary-hover-background: var(--);
+      --button-primary-hover-label: var(--);
     }
   }
 
   @media screen and (prefers-color-scheme: dark) {
     :root {
       --background-primary: oklch(0.5018 0.0181 67.4);
-      --background-secondary: var();
-      --background-tertiary: var();
+      --background-secondary: var(--);
+      --background-tertiary: var(--);
 
-      --text-primary: var();
-      --text-secondary: var();
-      --text-tertiary: var();
+      --text-primary: var(--);
+      --text-secondary: var(--);
+      --text-tertiary: var(--);
 
       --fill-accent: var(--color-water_blue);
-      --fill-accent-hover: var();
+      --fill-accent-hover: var(--);
 
-      --label-success: var();
-      --label-info: var();
-      --label-danger: var();
-      --label-warning: var();
+      --label-success: var(--);
+      --label-info: var(--);
+      --label-danger: var(--);
+      --label-warning: var(--);
 
-      --overlay: var();
+      --overlay: var(--);
 
-      --separator-opaque: var();
-      --separator-translucent: var();
+      --separator-opaque: var(--);
+      --separator-translucent: var(--);
 
       --focus: var(--accent);
-      --ring-offset: var();
+      --ring-offset: var(--);
 
-      --skeleton: var();
+      --skeleton: var(--);
     }
   }
 
-  @media (prefers-reduced-transparency) {
+  @media (prefers-reduced-transparency: no-preference) {
+    
+  }
+
+  @media (prefers-reduced-transparency: reduce) {
     :root {
       --separator-translucent: var(--separator-opaque);
     }
