@@ -24,12 +24,28 @@ const { currentNumber, totalNumber, nextPage, disabled } = Astro.props;
 
 <style>
   @layer components {
-    .pagination {
-      display: flex;
-      justify-content: space-between;
+    nav.pagination {
       padding: 1rem 0;
       font-size: 0.875rem;
       font-weight: 500;
+      user-select: none;
+
+      & > ul {
+        display: inline-flex;
+        gap: 2px;
+
+        & > li {
+
+
+          & > a {
+            will-change: color;
+
+            &[aria-current="page"] {
+
+            }
+          }
+        }
+      }
     }
   }
 </style>

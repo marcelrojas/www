@@ -1041,25 +1041,6 @@ legend {
 }
 
 /* --- Added from global1.css --- */
-button {
-  cursor: pointer;
-}
-
-button:disabled {
-  cursor: not-allowed;
-  pointer-events: none;
-  filter: grayscale(70%);
-  opacity: .92;
-}
-
-button:enabled {
-
-}
-
-aside {
-
-}
-
 aside[role="marquee"] {
   width: 100%;
   display: flex;
@@ -1134,95 +1115,6 @@ hr {
 
   }
 
-  section.information {
-
-  }
-
-  section.information .list {
-
-  }
-
-  section.information .item {
-
-  }
-
-  section.information .title {
-
-  }
-
-  section.information .definition {
-
-  }
-
-  section.credit {
-
-  }
-
-  section.credit .list {
-
-  }
-
-  section.credit .item {
-
-  }
-
-  section.credit .title {
-
-  }
-
-  section.credit .definition {
-
-  }
-
-  section.presscontacts .content {
-    border-top: 1px solid hsl(0, 6%, 83%);
-  }
-
-  section.contactinfo {
-    width: 326px;
-    padding-right: 20px;
-    display: inline-block;
-    vertical-align: top;
-    word-wrap: break-word;
-  }
-
-  section.contactinfo .title {
-    margin-bottom: 2px;
-  }
-
-  section.contactinfo .text {
-    font: 400 14px/1.5 'Inter';
-  }
-
-  section.legalinfo .entry:last-child {
-    margin-bottom: 0;
-  }
-
-  .legalinfo .headline {
-    margin-bottom: 4px;
-    font: 600 14px/1.25 'Inter';
-  }
-
-  .legalinfo .body {
-    font: 400 12px/1.5 'Inter';
-  }
-
-  section.changelog {
-
-  }
-
-  section.footertile {
-
-  }
-
-  section.sosumi {
-    color: var();
-  }
-
-  section.advice {
-
-  }
-
   p.excerpt {
 
   }
@@ -1255,27 +1147,6 @@ hr {
 
       &.wall {
 
-      }
-    }
-  }
-
-  nav.pagination {
-    user-select: none;
-
-    & > ul {
-      display: inline-flex;
-      gap: 2px;
-
-      & > li {
-
-
-        & > a {
-          will-change: color;
-
-          &[aria-current="page"] {
-
-          }
-        }
       }
     }
   }
@@ -1405,54 +1276,6 @@ hr {
       &.is-active {
 
       }
-    }
-  }
-
-  aside#filterbar {
-    width: var(--width);
-    margin-left: auto;
-    margin-right: auto;
-
-    & .label {
-      margin-bottom: 16px;
-    }
-
-    & control ul {
-      gap: 12px;
-      margin-left: auto;
-      margin-right: auto;
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    & control li {
-
-    }
-
-    & select {
-      padding-top: 10px;
-      padding-bottom: 10px;
-      padding-left: 16px;
-      padding-right: 16px;
-
-      &:focus {
-        outline: 3px solid hsl(210, 100%, 57%);
-        outline-offset: -3px;
-      }
-
-      & option {
-
-      }
-    }
-  }
-
-  div.banner {
-    padding: 24px 0 24px 24px;
-    opacity: 0;
-    background-color: var(--color-);
-
-    & .description {
-
     }
   }
 }
