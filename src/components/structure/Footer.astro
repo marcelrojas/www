@@ -7,56 +7,80 @@ import { EMAIL, COPYRIGHT_NAME, COPYRIGHT_YEAR } from '@src/types/consts';
 const { encEmail = EMAIL } = Astro.props;
 ---
 
-<!--Button id="footer-toggle" type="button" aria-controls="footer" aria-expanded="false" aria-label="Toggle footer">Further information</Button-->
-
-<footer id="footer" aria-label="Global footer" tabindex="-1">
-
+<footer id="footer" aria-label="Site footer" tabindex="-1">
   <div class="content">
 
-    <aside aria-label="Contact me">
-      <Button id="clipboard-clipper" class="enc-email" type="button" data-hex={encEmail} aria-label="Copy email address">Tab to copy my e-mail</Button>
+    <aside>
+      <Button id="clipboard-clipper" class="enc-email" type="button" data-hex={encEmail} aria-label="Copy email address">Copy my email</Button>
     </aside>
+
+    <nav aria-label="Find me on the web">
+      <ul>
+        <li>
+          <Anchor variant="gui2" label="text-and-icon" size="medium" href={SOCIAL_X} target="_blank" rel="noopener noreferrer" aria-label={`Visit my X profile`}>X</Anchor>
+        </li>
+        <li>
+          <Anchor variant="gui2" label="text-and-icon" size="medium" href={SOCIAL_INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label={`Visit my Instagram profile`}>Instagram</Anchor>
+        </li>
+        <li>
+          <Anchor variant="gui2" label="text-and-icon" size="medium" href={SOCIAL_YOUTUBE} target="_blank" rel="noopener noreferrer" aria-label={`Visit my YouTube profile`}>YouTube</Anchor>
+        </li>
+        <li>
+          <Anchor variant="gui2" label="text-and-icon" size="medium" href={SOCIAL_GITHUB} target="_blank" rel="noopener noreferrer" aria-label={`Visit my GitHub profile`}>GitHub</Anchor>
+        </li>
+      </ul>
+    </nav>
 
     <div class="legal">
       <Grain />
 
-      <small class="copyright">&copy; {COPYRIGHT_YEAR} {COPYRIGHT_NAME}. All rights reserved.</small>
-
       <nav aria-label="Legal">
         <ul>
           <li>
-            <Anchor variant="gui2" label="text-only" size="small" href="/colophon">Colophon</Anchor>
+            <a href="/colophon">Colophon</a>
           </li>
           <li>
-            <Anchor variant="gui2" label="text-only" size="small" href="/impressum">Impressum</Anchor>
+            <a href="/impressum">Impressum</a>
           </li>
           <li>
-            <Anchor variant="gui2" label="text-only" size="small" href="/privacy-policy">Privacy Policy</Anchor>
+            <a href="/privacy-policy">Privacy Policy</a>
           </li>
         </ul>
       </nav>
+
+      <small class="copyright">&copy; {COPYRIGHT_YEAR} {COPYRIGHT_NAME}. All rights reserved.</small>
     </div>
     
   </div>
-
 </footer>
 
 <style is:global>
   @layer components {
     footer#footer {
-      position: fixed;
-      inset: auto 0px 0px 0px;
-      padding: 22px;
       contain: layout paint;
       content-visibility: auto;
       pointer-events: none;
-      background-color: var(--background-primary);
 
       & > div.content {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        padding: 48px 22px 144px;
         position: relative;
-        height: 100%;
+
+        & a {
+
+          &:hover {
+            opacity: 1;
+          }
+
+          &:focus-visible {
+            outline: 2px solid currentColor;
+            outlineOffset: 4px;
+          }
+        }
 
         @media screen and (width <= 768px) {
           flex-direction: column;
@@ -80,17 +104,11 @@ const { encEmail = EMAIL } = Astro.props;
         & > div.legal {
           position: relative;
           display: flex;
-          gap: var(--spacing-06);
-          flex-direction: row;
+          flex-direction: column;
           align-self: start;
           align-items: baseline;
-
-          & > small.copyright {
-            position: relative;
-            display: block;
-            font-family: var(--font-family-sans);
-            font-size: var(--font-size-14);
-          }
+          gap: var(--spacing-06);
+          text-transform: uppercase;
 
           & > nav {
             position: relative;
@@ -104,6 +122,13 @@ const { encEmail = EMAIL } = Astro.props;
               gap: var(--spacing-04);
               font-size: var(--font-size-12);
             }
+          }
+
+          & > small.copyright {
+            position: relative;
+            display: block;
+            font-family: var(--font-family-sans);
+            font-size: var(--font-size-14);
           }
         }
       }

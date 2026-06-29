@@ -1,33 +1,34 @@
 @charset "UTF-8";
 
-@layer properties {
+/*
+ * ’s design token system.
+ */
+
+/*
+ * Base token in raw format.
+ * Global token properties with value.
+ * Prefix sk- for 'StyleKit' or 'SystemKit'.
+ */
+
+@layer tokens.primitive {
   :root {
     color-scheme: light dark;
 
-    /*
-     * Base token in raw format.
-     * Global token with value.
-     */
-    --color-red_violet: oklch(0.55335 0.2217 349.67);
-    --color-yellow_digital: oklch(86.055 0.17305 91.942);
-    --color-powder_blue: oklch(0.90293 0.06231 187.421);
-    --color-bubblegum_pink: oklch(0.7 0.19 350);
-    --color-soft_orange: oklch(0.75 0.15 55);
-    --color-internet_blue: oklch(0.52617 0.26402 263.603);
-    --color-deep_yellow: oklch(0.81453 0.16585 79.812);
-
-    --color-off_white: #F8F8E0;
-    --color-water_blue: #1098D0;
-    --color-dirty_yellow: #D8C800;
-    --color-light_gray: #D8D8D8;
-    --color-charcoal: #203028;
-    --color-dark_magenta: #900858;
-    --color-red_purple: #780848;
-    --color-red_valve: #f74843;
-
-    /*
-     * Opal’s design token system.
-     */
+    --sk-color-red-violet: oklch(0.55335 0.2217 349.67);
+    --sk-color-yellow-igital: oklch(86.055 0.17305 91.942);
+    --sk-color-powder-blue: oklch(0.90293 0.06231 187.421);
+    --sk-color-bubblegum-pink: oklch(0.7 0.19 350);
+    --sk-color-soft-orange: oklch(0.75 0.15 55);
+    --sk-color-internet-blue: oklch(0.52617 0.26402 263.603);
+    --sk-color-deep-yellow: oklch(0.81453 0.16585 79.812);
+    --sk-color-off-white: #F8F8E0;
+    --sk-color-water-blue: #1098D0;
+    --sk-color-dirty-yellow: #D8C800;
+    --sk-color-light-gray: #D8D8D8;
+    --sk-color-charcoal: #203028;
+    --sk-color-dark-magenta: #900858;
+    --sk-color-red-purple: #780848;
+    --sk-color-red-valve: #f74843;
 
     --font-family-fallback: -apple-system, system, system-ui, sans-serif, arial;
     --font-family-sans: 'InterVariable', 'Inter', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -91,10 +92,10 @@
     --global-scrollbar-buffer: 15px;
     --header-height: 64px;
 
-    --spacing-sat: env(safe-area-inset-top, 0px);
-    --spacing-sar: env(safe-area-inset-right, 0px);
-    --spacing-sab: env(safe-area-inset-bottom, 0px);
-    --spacing-sal: env(safe-area-inset-left, 0px);
+    --r-sk-sait: env(safe-area-inset-top, 0px);
+    --r-sk-sair: env(safe-area-inset-right, 0px);
+    --r-sk-saib: env(safe-area-inset-bottom, 0px);
+    --r-sk-sail: env(safe-area-inset-left, 0px);
     --spacing-01: 2px;
     --spacing-02: 4px;
     --spacing-03: 8px;
@@ -210,100 +211,74 @@
     --hover-transition-time: var(--duration-micro-x2);
     --animate-pulse: pulse 2s var(--easing-ease-in-out) infinite;
     --animate-blink: blink 2s var(--easing-ease-in-out) infinite;
+  }
+}
 
-    --ring-inset: 0px;
-    --ring-offset: 1px;
-    --width-ring-offset: 2px;
+@layer tokens.semantic {
+  :root {
+    --globalnav-collective-height: var(--globalnav-height);
+
+    --sk-body-text-color: rgb(29, 29, 31);
+    --sk-headline-text-color: rgb(29, 29, 31);
+    --sk-body-background-color: rgb(255, 255, 255);
+    --sk-body-font-stack: text;
+    --sk-default-stacked-margin: 0.4em;
+    --sk-paragraph-plus-element-margin: 0.8em;
+    --sk-headline-plus-first-element-margin: 0.8em;
+    --sk-headline-plus-headline-margin: 0.4em;
+    --sk-paragraph-plus-headline-margin: 1.6em;
+
+    --sk-glyph-blue: rgb(0, 102, 204);
+    --sk-glyph-orange: rgb(182, 68, 0);
+    --sk-glyph-green: rgb(0, 128, 9);
+    --sk-glyph-red: rgb(227, 0, 0);
+
+    --sk-fill: rgb(255, 255, 255);
+    --sk-fill-secondary: rgb(250, 250, 252);
+    --sk-fill-tertiary: rgb(245, 245, 247);
+    --sk-fill-gray: rgb(29, 29, 31);
+    --sk-fill-gray-alpha: rgba(0, 0, 0, 0.88);
+
+    --sk-focus-color: #0071e3;
+    --sk-focus-color-alt: rgb(0, 0, 0);
+    --sk-focus-inset: 0px;
+    --sk-focus-offset: 1px;
+    --sk-focus-offset-container: 3px;
+
+    --sk-body-link-color: rgb(0, 102, 204);
+    --sk-link-disabled-opacity: 0.42;
+  }
+
+  @media only screen and (max-width: 833px) {
+    :root {
+      --globalnav-height: 48px;
+    }
   }
 
   @media screen and (prefers-color-scheme: light) {
     :root {
-      --background-primary: var(--);
-      --background-secondary: var(--); /* Panels */
-      --background-tertiary: var(--);
-
-      --text-primary: var(--color-charcoal);
-      --text-secondary: var(--);
-      --text-tertiary: var(--);
-
-      --fill-accent: var(--color-water_blue);
-      --fill-accent-hover: var(--);
-
-      --label-success: var(--);
-      --label-info: var(--);
-      --label-danger: var(--);
-      --label-warning: var(--);
-
-      --overlay: var(--);
-
-      --separator-opaque: var(--);
-      --separator-translucent: var(--);
-
-      --focus: var(--accent);
-      --focus-alt: var(--);
-      --ring-offset: var(--);
-
-      --skeleton: var(--);
-
-      --label-primary: var(--); /* for standard label */
-      --label-primary-active: var(--); /* for standard active label */
-      --label-primary-controls: var(--); /* for standard label on accent */
-      --label-primary-controls-active: var(--); /* for standard active label on accent */
-      --label-secondary: var(--); /* for descriptive label like footnotes and subtitles */
-      --label-tertiary: var(--); /* for inactive elements, and only when label doesn’t need high legibility */
-
-      --fill-primary: var(--);
-      --fill-secondary: var(--);
-      --fill-tertiary: var(--);
-      --fill-border: var(--);
 
       /*
        * Alias token and component-specific token.
        */
-      --button-primary-background: var(--);
-      --button-primary-label: var(--);
-      --button-primary-hover-background: var(--);
-      --button-primary-hover-label: var(--);
     }
   }
 
   @media screen and (prefers-color-scheme: dark) {
     :root {
-      --background-primary: oklch(0.5018 0.0181 67.4);
-      --background-secondary: var(--);
-      --background-tertiary: var(--);
 
-      --text-primary: var(--);
-      --text-secondary: var(--);
-      --text-tertiary: var(--);
-
-      --fill-accent: var(--color-water_blue);
-      --fill-accent-hover: var(--);
-
-      --label-success: var(--);
-      --label-info: var(--);
-      --label-danger: var(--);
-      --label-warning: var(--);
-
-      --overlay: var(--);
-
-      --separator-opaque: var(--);
-      --separator-translucent: var(--);
-
-      --focus: var(--accent);
-      --ring-offset: var(--);
-
-      --skeleton: var(--);
     }
   }
+}
 
-  @media (prefers-reduced-transparency: no-preference) {
-    
+@media (prefers-reduced-transparency: no-preference) {
+  :root {
+
   }
+}
 
-  @media (prefers-reduced-transparency: reduce) {
-    :root {
-      --separator-translucent: var(--separator-opaque);
-    }
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --separator-translucent: var(--separator-opaque);
   }
 }

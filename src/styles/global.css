@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-@layer variables, base, components, pages, animations, print;
+@layer base, components, layout, pages, animations, print;
 
 @layer base {
   *, *:is(::before, ::after, ::backdrop) {
@@ -37,7 +37,10 @@
     font-variation-settings: normal;
     font-variant-ligatures: contextual;
     font-smooth: always;
+    font-synthesis: none;
+    -moz-font-feature-settings: "kern";
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     font-size: var(--font-size-base);
     text-rendering: optimizeLegibility;
     text-size-adjust: none;
@@ -55,9 +58,18 @@
     -webkit-tap-highlight-color: transparent;
   }
 
+  html:not([dir=rtl]) {
+    --r-sk-start: left;
+    --r-sk-end: right;
+    --r-sk-safe-area-inset-start: env(safe-area-inset-left);
+    --r-sk-safe-area-inset-end: env(safe-area-inset-right);
+    --r-sk-logical-factor: 1;
+  }
+
   body {
     display: block;
     position: relative;
+    min-width: 320px;
     overflow-wrap: break-word;
 
     & ::-webkit-scrollbar {
@@ -447,34 +459,68 @@
   .display-none {
     display: none;
   }
+
+  .is-active {
+
+  }
+
+  .has-focus {
+
+  }
+
+  .is-expanded {
+
+  }
+
+  .theme-dark {
+
+  }
+
+  :is(h1, h2).typography-headline {
+
+  }
+
+  p.typography-intro {
+
+  }
+
+  :is(p, ul, ol).typography-body {
+
+  }
+
+  .violator {
+
+  }
 }
 
-:is(audio, video):muted {
-  outline: 5px solid oklch(62.793% 0.25768 29.223);
-}
+:is(audio, video) {
+  &:muted {
+    outline: 5px solid oklch(62.793% 0.25768 29.223);
+  }
 
-:is(audio, video):paused {
-  border: 5px solid oklch(79.268% 0.17097 70.665);
-}
+  &:paused {
+    border: 5px solid oklch(79.268% 0.17097 70.665);
+  }
 
-:is(audio, video):playing {
-  border: 5px solid oklch(51.976% 0.17685 142.511);
-}
+  &:playing {
+    border: 5px solid oklch(51.976% 0.17685 142.511);
+  }
 
-:is(audio, video):seeking {
-  outline: 5px solid oklch(62.793% 0.25768 29.223);
-}
+  &:seeking {
+    outline: 5px solid oklch(62.793% 0.25768 29.223);
+  }
 
-:is(audio, video):stalled {
-  outline: 5px solid oklch(62.793% 0.25768 29.223);
-}
+  &:stalled {
+    outline: 5px solid oklch(62.793% 0.25768 29.223);
+  }
 
-:is(audio, video):volume-locked {
-  border: 5px solid oklch(51.976% 0.17685 142.511);
-}
+  &:volume-locked {
+    border: 5px solid oklch(51.976% 0.17685 142.511);
+  }
 
-:is(audio, video):buffering {
-  outline: 5px solid oklch(62.793% 0.25768 29.223);
+  &:buffering {
+    outline: 5px solid oklch(62.793% 0.25768 29.223);
+  }
 }
 
 :picture-in-picture {
@@ -538,28 +584,28 @@ menu {
 }
 
 blockquote {
-  font: 600 16px/1.25 'Inter';
   hanging-punctuation: first;
+
+  & cite::before {
+    content: '\2014\2002';
+  }
 }
 
 cite {
 
 }
 
-blockquote cite::before {
-  content: '\2014\2002';
-}
-
 blockquote, q {
 
 }
 
-:is(blockquote, q)::before {
-  content: open-quote;
-}
-
-:is(blockquote, q)::after {
-  content: close-quote;
+:is(blockquote, q) {
+  &::before {
+    content: open-quote;
+  }
+  &::after {
+    content: close-quote;
+  }
 }
 
 :lang(en) > q {
@@ -581,24 +627,24 @@ blockquote, q {
 mark {
   background-color: oklch(51.626% 0.19092 27.628);
   color: oklch(100% 0.00011 271.152);
-}
 
-mark::before, mark::after {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(100%);
-  clip: rect(1px, 1px, 1px, 1px);
-  white-space: nowrap;
-}
+  &:is(::before, ::after) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(100%);
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+  }
 
-mark::before {
-  content: " [highlight start] ";
-}
+  &::before {
+    content: " [highlight start] ";
+  }
 
-mark::after {
-  content: " [highlight end] ";
+  &::after {
+    content: " [highlight end] ";
+  }
 }
 
 strong, b {
@@ -613,23 +659,23 @@ i, em, cite, dfn {
 del, s {
   text-decoration: line-through solid;
   text-decoration-thickness: .1em;
-}
+  
+  &:is(::before, ::after) {
+    clip-path: inset(100%);
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+    height: 1px;
+  }
 
-:is(del, s)::before, :is(del, s)::after {
-  clip-path: inset(100%);
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-  height: 1px;
-}
+  &::before {
+    content: ' [start of stricken text] ';
+  }
 
-:is(del, s)::before {
-  content: ' [start of stricken text] ';
-}
-
-:is(del, s)::after {
-  content: ' [end of stricken text] ';
+  &::after {
+    content: ' [end of stricken text] ';
+  }
 }
 
 ins {
@@ -689,6 +735,12 @@ wbr {
 
 }
 
+caption {
+  padding: var(--spacing-05);
+  caption-side: top;
+  text-align: start;
+}
+
 table {
   width: 100%;
   text-indent: 0;
@@ -696,66 +748,56 @@ table {
   table-layout: fixed;
   border-collapse: collapse;
   empty-cells: show;
-}
 
-caption {
-  padding: var(--spacing-05);
-  caption-side: top;
-  text-align: start;
-}
+  & :is(th, tr, td) {
+    border-width: 1px;
+  }
 
-table thead {
+  & th {
+    &[scope="row"] {
+    
+    }
+  
+    &[scope="col"] {
 
-}
+    }
 
-table thead tr {
-  border-bottom: solid oklch(0% 0 0);
-}
+    &[scope="rowgroup"] {
 
-table thead tr th {
-  padding: 10px;
-  font: var(--font-);
-  text-align: left;
-  vertical-align: bottom;
-}
+    }
 
-table tbody {
+    &[scope="colgroup"] {
 
-}
+    }
+  }
 
-table tbody tr {
-  border-top: solid oklch(42.024% 0.00005 271.152);
-}
+  & > thead {
+    & tr {
+      border-bottom: solid oklch(0% 0 0);
 
-table tbody tr td {
-  padding: 10px;
-  font: var(--font-);
-  text-align: left;
-  vertical-align: top;
-}
+      & th {
+        padding: 10px;
+        text-align: left;
+        vertical-align: bottom;
+      }
+    }
+  }
 
-tfoot {
-  font-weight: 600;
-}
+  & > tbody {
+    & tr {
+      border-top: solid oklch(42.024% 0.00005 271.152);
 
-th, tr, td {
-  border-width: 1px;
-}
+      & td {
+        padding: 10px;
+        text-align: left;
+        vertical-align: top;
+      }
+    }
+  }
 
-th[scope="row"] {
-
-}
-
-th[scope="col"] {
-
-}
-
-th[scope="rowgroup"] {
-
-}
-
-th[scope="colgroup"] {
-
+  & > tfoot {
+    font-weight: 600;
+  }
 }
 
 abbr[title] {
@@ -768,23 +810,22 @@ abbr[title] {
 
 details {
 
-}
+  & details {
+    margin-inline: 10px;
+  }
 
-details details {
-  margin-inline: 10px;
-}
+  & summary {
+    cursor: pointer;
+    user-select: none;
+  }
 
-summary {
-  cursor: pointer;
-  user-select: none;
-}
+  & summary::marker {
+    content: '▼';
+  }
 
-details summary::marker {
-  content: '▼';
-}
-
-details[open] summary::marker {
-  content: '▲';
+  &[open] summary::marker {
+    content: '▲';
+  }
 }
 
 code, kbd, pre, samp {
@@ -798,16 +839,6 @@ code {
   border-radius: 2px;
 }
 
-:is(h1, h2, h3, h4, h5, h6, p, li) code {
-
-}
-
-pre code {
-  padding: 8px 14px;
-  display: block;
-  overflow-x: scroll;
-}
-
 pre {
   clear: both;
   tab-size: 4;
@@ -815,11 +846,18 @@ pre {
   speak: literal-punctuation;
   padding: 1.5em;
   border-radius: 8px;
-}
 
-pre:has(code) {
-  background-color: oklch(9.7015 0.00011 271.152);
-  border: 1px solid oklch(9.2758 0.00592 264.656);
+  &:has(code) {
+    background-color: oklch(9.7015 0.00011 271.152);
+    border: 1px solid oklch(9.2758 0.00592 264.656);
+  }
+
+  & > code {
+    all: unset;
+    display: block;
+    padding: 8px 14px;
+    overflow-x: scroll;
+  }
 }
 
 kbd {
@@ -829,10 +867,10 @@ kbd {
   background-color: oklch(1 0.00011 271.152);
   color: oklch(5.5553 0.00006 271.152);
   box-shadow: 0 2px 0 0 hsl(0 0% 86%);
-}
 
-samp > kbd {
-  font-weight: 600;
+  samp > & {
+    font-weight: 600;
+  }
 }
 
 var {
@@ -952,7 +990,13 @@ input {
     border: 2px solid oklch(56.761% 0.20219 283.089);
     border-radius: 12px;
     background-color: oklch(73.588% 0.14122 285.603);
-    transition: 1s;
+  }
+
+  :is([type="radio"], [type="checkbox"]) &[checked] {
+    
+    &:default {
+
+    }
   }
 }
 
@@ -1028,14 +1072,6 @@ input:is([type="email"], [type="number"], [type="password"], [type="search"], [t
 
 }
 
-:is([type="radio"], [type="checkbox"]) input[checked] {
-
-}
-
-:is([type="radio"], [type="checkbox"]) input[checked]:default {
-
-}
-
 legend {
 
 }
@@ -1057,10 +1093,6 @@ address {
   font-style: normal;
 }
 
-pre > code {
-  all: unset;
-}
-
 blockquote {
   border-left: 4px solid var(--accent);
   padding: 0 0 0 20px;
@@ -1076,11 +1108,11 @@ hr {
 /* Show hover only on supported devices */
 @media (hover: hover) and (pointer: fine) {
   #globalheader > nav:nth-child(1) ul.language-selector li a:hover {
-    color: hsl(0 0% 62%);
+    
   }
 
   #globalheader > nav:nth-child(2) ul li a:hover {
-    color: hsl(0 0% 62%);
+    
   }
 }
 
@@ -1111,7 +1143,7 @@ hr {
     contain: content;
   }
 
-  #contextmenu {
+  #contextualmenu {
 
   }
 

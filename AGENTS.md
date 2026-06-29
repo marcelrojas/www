@@ -11,6 +11,7 @@
 ## Styling and UX/UI
 - CSS in the only style solution.
 - a11y is not optional: semantic HTML, ARIA roles when apply and gestioned focus
+- Metodología de Nombrado de Components: Component > Element > Estatus. Namespacing (Prefixes).
 
 ## Architecture & Stack
 - **Core Framework:** Astro.
