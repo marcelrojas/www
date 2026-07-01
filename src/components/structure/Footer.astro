@@ -2,37 +2,34 @@
 import Grain from '@components/decorators/Grain.astro';
 import Anchor from '@components/Anchor.astro';
 import Button from '@components/Button.astro';
-import { EMAIL, COPYRIGHT_NAME, COPYRIGHT_YEAR } from '@src/types/consts';
+import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_X, SOCIAL_INSTAGRAM, SOCIAL_YOUTUBE, SOCIAL_GITHUB, EMAIL, COPYRIGHT_NAME, COPYRIGHT_YEAR } from '@src/types/consts';
 
 const { encEmail = EMAIL } = Astro.props;
 ---
 
 <footer id="footer" aria-label="Site footer" tabindex="-1">
   <div class="content">
+    <Grain />
 
-    <aside>
+    <nav class="contact" aria-label="Find me on the web">
       <Button id="clipboard-clipper" class="enc-email" type="button" data-hex={encEmail} aria-label="Copy email address">Copy my email</Button>
-    </aside>
-
-    <nav aria-label="Find me on the web">
       <ul>
         <li>
-          <Anchor variant="gui2" label="text-and-icon" size="medium" href={SOCIAL_X} target="_blank" rel="noopener noreferrer" aria-label={`Visit my X profile`}>X</Anchor>
+          <Anchor label="text-only" size="medium" href={SOCIAL_X} target="_blank" rel="noopener noreferrer" aria-label={`Visit my X profile`}>X</Anchor>
         </li>
         <li>
-          <Anchor variant="gui2" label="text-and-icon" size="medium" href={SOCIAL_INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label={`Visit my Instagram profile`}>Instagram</Anchor>
+          <Anchor label="text-only" size="medium" href={SOCIAL_INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label={`Visit my Instagram profile`}>Instagram</Anchor>
         </li>
         <li>
-          <Anchor variant="gui2" label="text-and-icon" size="medium" href={SOCIAL_YOUTUBE} target="_blank" rel="noopener noreferrer" aria-label={`Visit my YouTube profile`}>YouTube</Anchor>
+          <Anchor label="text-only" size="medium" href={SOCIAL_YOUTUBE} target="_blank" rel="noopener noreferrer" aria-label={`Visit my YouTube profile`}>YouTube</Anchor>
         </li>
         <li>
-          <Anchor variant="gui2" label="text-and-icon" size="medium" href={SOCIAL_GITHUB} target="_blank" rel="noopener noreferrer" aria-label={`Visit my GitHub profile`}>GitHub</Anchor>
+          <Anchor label="text-only" size="medium" href={SOCIAL_GITHUB} target="_blank" rel="noopener noreferrer" aria-label={`Visit my GitHub profile`}>GitHub</Anchor>
         </li>
       </ul>
     </nav>
 
     <div class="legal">
-      <Grain />
 
       <nav aria-label="Legal">
         <ul>
@@ -67,8 +64,8 @@ const { encEmail = EMAIL } = Astro.props;
         align-items: center;
         justify-content: center;
         gap: 16px;
-        padding: 48px 22px 144px;
-        position: relative;
+        padding: 48px 24px 144px;
+        color: var(--sk-color-text-muted);
 
         & a {
 
@@ -83,40 +80,49 @@ const { encEmail = EMAIL } = Astro.props;
         }
 
         @media screen and (width <= 768px) {
-          flex-direction: column;
+          
         }
 
         @media screen and (width > 768px) {
-          flex-direction: row;
+          
         }
 
-        & > aside {
-          position: relative;
+        & > nav.contact {
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+          gap: 24px;
+          text-transform: uppercase;
 
-          & > span.section-tag {
-            font-family: var(--font-family-sans);
-            font-weight: var(--font-weight-regular);
+          & > button {
+
+          }
+
+          & > ul {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            gap: 24px;
             font-size: var(--font-size-12);
-            text-transform: uppercase;
           }
         }
 
         & > div.legal {
-          position: relative;
           display: flex;
           flex-direction: column;
-          align-self: start;
-          align-items: baseline;
-          gap: var(--spacing-06);
+          align-items: center;
+          gap: 8px;
+          font-size: 10px;
+          line-height: 1.6;
+          letter-spacing: 0.05em;
           text-transform: uppercase;
 
           & > nav {
-            position: relative;
-            display: block;
-            align-self: start;
+          display: flex;
+          flex-direction: row;
+          align-items: baseline;
 
             & > ul {
-              position: relative;
               display: flex;
               flex-direction: row;
               gap: var(--spacing-04);
@@ -125,10 +131,9 @@ const { encEmail = EMAIL } = Astro.props;
           }
 
           & > small.copyright {
-            position: relative;
             display: block;
             font-family: var(--font-family-sans);
-            font-size: var(--font-size-14);
+            font-size: var(--font-size-12);
           }
         }
       }

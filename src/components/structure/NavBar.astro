@@ -13,7 +13,7 @@ const anchors = [
   <ul>
     {anchors.map(link => (
       <li>
-        <Anchor variant="gui1" size="large" href={link.href}>{link.text}</Anchor>
+        <Anchor size="large" href={link.href}>{link.text}</Anchor>
       </li>
     ))}
   </ul>
@@ -22,22 +22,20 @@ const anchors = [
 <style is:global>
   @layer components {
     nav.navbar {
-      position: relative;
-      height: min-content;
-      width: fit-content;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      height: stretch;
+      width: stretch;
 
       & > ul {
-        position: relative;
         display: flex;
         flex-flow: row;
 
         & > li {
-          position: relative;
           width: fit-content;
 
           & > a {
-            padding-block: 0.625lh;
-            padding-inline: 0.625lh;
             line-height: 1;
           }
         }

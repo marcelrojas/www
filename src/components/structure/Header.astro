@@ -20,30 +20,35 @@ import NavBar from '@components/structure/NavBar.astro';
 <style is:global>
   @layer components {
     header#header {
-      position: absolute;
+      position: fixed;
       inset: 0px 0px auto 0px;
       z-index: var(--z-header);
-      padding-left: calc(var(--spacing-sal) + var(--spacing-06));
-      padding-right: calc(var(--spacing-sar) + var(--spacing-06));
+      padding-left: calc(var(--spacing-sail) + 0px);
+      padding-right: calc(var(--spacing-sair) + 0px);
+      background: var(--sk-header-bg);
   
       & > div.content {
-        position: relative;
-        display: flex;
-        flex-flow: column;
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas: "a a" "b b" "c c";
+        display: grid;
+        lign-items: center;
+        grid-template-columns: minmax(0px, 1fr) auto minmax(0px, 1fr);
+        height: 48px;
 
         & > div.gmt {
-          
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          height: stretch;
+          width: stretch;
+          padding-left: 16px;
         }
 
         & > div.dynamic-content  {
-          
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: stretch;
+          width: stretch;
         }
-
-        & > :first-child { grid-area: a; }
-        & > :nth-child(2) { grid-area: b; }
-        & > :nth-child(3) { grid-area: c; }
       }
     }
   }

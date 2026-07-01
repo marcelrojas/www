@@ -19,7 +19,7 @@ const {
   as = 'button',
   type = 'button',
   action = 'default',
-  size = 'medium',
+  size,
   wide = 'fit',
   class: userClass,
   text,
@@ -65,7 +65,7 @@ const classList = [
     :is(button, input:is([type="button"], [type="submit"], [type="reset"])).button {
       display: inline-flex;
       flex-direction: row;
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
       overflow: hidden;
       position: relative;
@@ -74,15 +74,12 @@ const classList = [
       height: fit-content;
       font-family: var(--font-family-sans);
       font-weight: var(--font-weight-medium);
-      font-size: var(--font-size-12);
-      letter-spacing: 1px;
-      text-transform: uppercase;
       text-align: center;
-      text-decoration: none;
       user-select: none;
+      -webkit-font-smoothing: subpixel-antialiased;
       touch-action: manipulation;
-      transition: background-color 0.15s linear, color 0.15s linear, transform 0.1s linear;
       will-change: background-color, color, opacity, transform;
+      transition: background-color 0.15s linear, color 0.15s linear, transform 0.1s linear;
 
       &:is(:enabled, [aria-disabled="false"]) {
         cursor: pointer;

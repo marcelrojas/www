@@ -3,8 +3,7 @@ import Layout from '@layouts/Layout.astro';
 import PageHeader from '@components/structure/PageHeader.astro';
 import Anchor from '@components/Anchor.astro';
 import Button from '@components/Button.astro';
-import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKEDIN, SOCIAL_X, SOCIAL_INSTAGRAM, SOCIAL_YOUTUBE, SOCIAL_GITHUB } from '@src/types/consts';
-import Icon from '@components/Icon.astro';
+import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKEDIN } from '@src/types/consts';
 
 const {
   title = 'About',
@@ -15,14 +14,12 @@ const {
 <Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <PageHeader screen_title={screen_title} />
 
-  <section class="collection--module">
+  <section class="collection-module">
     <h2>Biography</h2>
-    <p></p>
     
-    <article class="module--work">
+    <article class="module-work">
       <audio class="display-none" loop src="/audio/beats.aac"></audio>
       <h2 class="title">Work</h2>
-      <p class="description">Building better business with an individual approach to each client with a wide range of services.</p>
       <ul>
         <li>
           <Button as="button" wide="fit" class="audio_trigger" command="show-modal" commandfor="cvDialog">Review CV</Button>
@@ -47,11 +44,11 @@ const {
 </Layout>
 
 <style>
-  .collection--module {
+  .collection-module {
     display: flex;
     flex-wrap: wrap;
 
-    & > article[class*="module--"] {
+    & > article[class*="module-"] {
       display: block;
       background-color: var(--background-secondary);
 

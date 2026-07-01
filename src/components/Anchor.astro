@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from 'astro/types';
 
 interface Props extends HTMLAttributes<'a'> {
-  variant?: 'gui1' | 'gui2' | 'gui3' | 'tui';
+  variant?: 'gui1' | 'gui2' | 'tui';
   action?: 'neutral' | 'cta';
   size?: 'small' | 'medium' | 'large';
   label?: 'text-only' | 'icon-only' | 'text-and-icon';
@@ -60,8 +60,12 @@ const classes = [
   @layer components {
     :is(a, a[role="button"]).anchor {
       display: inline-flex;
+      flex-direction: row;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
+      position: relative;
+      z-index: 0;
       width: fit-content;
       height: fit-content;
       font-family: var(--font-family-sans);
@@ -70,8 +74,8 @@ const classes = [
       backface-visibility: hidden;
       -webkit-font-smoothing: subpixel-antialiased;
       touch-action: manipulation;
-      will-change: color;
-      transition: color 0.15s linear;
+      will-change: background-color, color, opacity, transform;
+      transition: background-color 0.15s linear, color 0.15s linear, transform 0.1s linear;
 
       @media (hover: hover) {
         &:hover:not([aria-current="page"]) {
@@ -108,15 +112,6 @@ const classes = [
       &.variant-gui2 {
         font-weight: var(--font-weight-regular);
         text-transform: uppercase;
-
-        @media (hover: hover) {
-          &:hover {
-
-          }
-        }
-      }
-
-      &.variant-gui3 {
 
         @media (hover: hover) {
           &:hover {

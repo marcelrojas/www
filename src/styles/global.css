@@ -241,8 +241,8 @@
   }
 
   ::selection {
-    background-color: currentColor;
-    color: white;
+    background-color: var(--sk-highlight);
+    color: currentcolor;
     text-shadow: none;
   }
 
