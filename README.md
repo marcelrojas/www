@@ -18,7 +18,8 @@ github@marcelrojas:~$prophetch
 See the [colophon](https://marcelrojas.net/colophon) for details on its design and build.
 
 - [Alt](https://www.marcelrojas.net)
-- [Preview](https://www.marcelrojas.workers.dev)
+- [Production](https://www.marcelrojas.workers.dev)
+- [preview](https://*-www.marcelrojas.workers.dev)
 
 ## Project Structure
 
@@ -53,10 +54,12 @@ marcelrojas/www
 │   │   ├── global.css        # Resets and global utilities
 │   │   └── variables.css     # Atomic design tokens (Design System)
 │   └── types/                # TypeScript definitions and global interfaces
+├── AGENTS.md                 # 
 ├── astro.config.mjs          # Main Astro framework configuration
 ├── package.json              # Project dependencies and npm/pnpm scripts
 ├── pnpm-lock.yaml            # Package version lockfile
-├── svelte.config.js          # Svelte compiler integration
+├── pnpm-workspace.yaml       # 
+├── README.md                 # / You are here, btw
 ├── tsconfig.json             # Strict TypeScript configuration
 └── wrangler.jsonc            # Deployment configuration for Cloudflare Workers/Assets
 ```
