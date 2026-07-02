@@ -3,10 +3,6 @@
 @layer reset, utility, base, component, layout, page, motion, print;
 
 @layer reset {
-
-}
-
-@layer base {
   *, *:is(::before, ::after, ::backdrop) {
     box-sizing: border-box;
     background-clip: padding-box;
@@ -17,7 +13,9 @@
     margin: unset;
     padding: unset;
   }
+}
 
+@layer base {
   :host, html, body, div, table, ul, ol, form, input, select, textarea, p, span, svg, img {
     box-sizing: content-box;
     font-kerning: auto;
