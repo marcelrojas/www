@@ -11,6 +11,8 @@ export default defineConfig({
 
   trailingSlash: 'never',
 
+  output: 'hybrid',
+
   build: {
     format: 'file'
   },
