@@ -19,27 +19,27 @@ const {
   <section class="product-showcase">
     <h2>Featured products</h2>
 
-    <div class="collection--module">
+    <div class="collection-module">
 
-      <article class="module--">
+      <article class="module-">
         <h1 class="title">Title</h1>
         <p class="description">Description</p>
         <Anchor class="badge" href="/">Now $19</Anchor>
       </article>
 
-      <article class="module--">
+      <article class="module-">
         <h1 class="title">Title</h1>
         <p class="description">Description</p>
         <Anchor class="badge" href="/">$299</Anchor>
       </article>
 
-      <article class="module--">
+      <article class="module-">
         <h1 class="title">Composer</h1>
         <p class="description">CLI text <i>Composer</i>.</p>
         <Anchor class="badge" href="https://composer.com">FOSS!</Anchor>
       </article>
 
-      <article class="module--cap">
+      <article class="module-cap">
         <h1 class="title">Compact Audio Player</h1>
         <p class="description">Description.</p>
         <Anchor class="badge" href="https://cap.net">FOSS!</Anchor>
@@ -54,24 +54,24 @@ const {
 <style is:global>
   section.product-showcase {
 
-    & > .collection--module {
+    & > .collection-module {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
 
-      &:not(:last-child) > article.[class*="module--"] {
+      &:not(:last-child) > article[class*="module-"] {
         border-right: 1px solid var(--color-border-default);
       }
 
-      &:is(:first-child, :last-child) > article.[class*="module--"] {
+      &:is(:first-child, :last-child) > article[class*="module-"] {
         width: 100%;
       }
 
-      &:not(:first-child):not(:last-child) > article.[class*="module--"] {
+      &:not(:first-child):not(:last-child) > article[class*="module-"] {
         width: 50%;
       }
 
-      & > article[class*="module--"] {
+      & > article[class*="module-"] {
         min-height: var(--min-height);
         display: block;
         margin-left: auto;
@@ -102,7 +102,7 @@ const {
           justify-content: center;
           border-radius: 32px;
           background-color: var(--color-yellow-digital);
-          padding-inline: 1.25rem; /* px-5 */
+          padding-inline: 1.25rem;
           font-size: 14px;
         }
       }
