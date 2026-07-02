@@ -23,10 +23,12 @@ const { question, answer } = Astro.props;
   details.faq-item {
     padding-bottom: var(--spacing-04);
     border-bottom: 1px solid oklch(0.17 0 0 / 0.1);
+
     &[open] > summary.question > svg {
       opacity: 0.4;
       transform: rotate(45deg)
     }
+
     & > summary.question {
       padding: var(--spacing-03);
       gap: var(--spacing-03);
@@ -41,18 +43,22 @@ const { question, answer } = Astro.props;
       color: oklch(16.77% 0.00267 248.154 / 0.8);
       cursor: pointer;
       transition: 200ms ease-out;
+
       &::-webkit-details-marker {
         display: hidden
       }
+
       &:hover {
         color: oklch(52.617% 0.26402 263.603)
       }
+
       & > svg {
         flex-shrink: 0;
         transform: rotate(0deg);
         transition: transform 200ms ease-out
       }
     }
+
     & > div.answer {
       display: flex;
       flex-direction: column;
@@ -64,6 +70,7 @@ const { question, answer } = Astro.props;
       color: oklch(16.77% 0.00267 248.154 / 0.6);
       letter-spacing: -0.32px;
       line-height: 130%;
+      
       & > p {
         font-family: inherit;
         font-weight: inherit

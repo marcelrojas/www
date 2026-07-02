@@ -1,6 +1,10 @@
 @charset "UTF-8";
 
-@layer base, components, layout, pages, animations, print;
+@layer reset, utility, base, component, layout, page, motion, print;
+
+@layer reset {
+
+}
 
 @layer base {
   *, *:is(::before, ::after, ::backdrop) {
@@ -97,7 +101,6 @@
       filter: grayscale(80%);
       opacity: .6;
     }
-
   }
 
   main {
@@ -314,27 +317,34 @@
     &, &::picker(select) {
       appearance: base-select;
     }
+
     &::picker(select) {
       transition: display allow-discrete 1s, opacity 1s, overlay 1s allow-discrete;
     }
+
     &:not(:open)::picker(select) {
       opacity: 0;
     }
+
     &:open::picker(select) {
       opacity: 1;
+
       @starting-style {
         opacity: 0;
       }
     }
+
     & option {
       &::before {
         content: '►c';
         color: var(--accent);
       }
+
       &:checked {
         content: '✔';
         color: var(--accent);
       }
+
       &::checkmark {
         content: '⮕';
       }
@@ -443,6 +453,24 @@
     }
   }
 
+  :is(h1, h2).typography-headline {
+
+  }
+
+  p.typography-intro {
+
+  }
+
+  :is(p, ul, ol).typography-body {
+
+  }
+
+  .violator {
+
+  }
+}
+
+@layer utility {
   .sr-only {
     position: absolute !important;
     width: 1px;
@@ -473,22 +501,6 @@
   }
 
   .theme-dark {
-
-  }
-
-  :is(h1, h2).typography-headline {
-
-  }
-
-  p.typography-intro {
-
-  }
-
-  :is(p, ul, ol).typography-body {
-
-  }
-
-  .violator {
 
   }
 }
@@ -603,6 +615,7 @@ blockquote, q {
   &::before {
     content: open-quote;
   }
+
   &::after {
     content: close-quote;
   }
@@ -1049,7 +1062,7 @@ input:is([type="email"], [type="number"], [type="password"], [type="search"], [t
 input:is([type="email"], [type="number"], [type="password"], [type="search"], [type="tel"], [type="text"], [type="url"]):focus {
   border: 1px solid oklch(77.526% 0.08058 171.087);
   color: oklch(48.193% 0.00005 271.152);
-  outline: var(--);
+  outline: var(--color-);
 }
 
 textarea,
@@ -1138,7 +1151,7 @@ hr {
   }
 }
 
-@layer components {
+@layer component {
   #chapternav {
     contain: content;
   }

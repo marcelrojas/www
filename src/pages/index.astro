@@ -44,43 +44,45 @@ const {
 </Layout>
 
 <style>
-  .collection-module {
-    display: flex;
-    flex-wrap: wrap;
+  @layer page {
+    .collection-module {
+      display: flex;
+      flex-wrap: wrap;
 
-    & > article[class*="module-"] {
-      display: block;
-      background-color: var(--background-secondary);
+      & > article[class*="module-"] {
+        display: block;
+        background-color: var(--background-secondary);
 
-      & > h2.title {
-        font-size: 32px;
-        font-weight: var(--font-weight-medium);
-        line-height: 40px;
+        & > h2.title {
+          font-size: 32px;
+          font-weight: var(--font-weight-medium);
+          line-height: 40px;
+        }
+
+        & > p.description {
+          padding-bottom: 18px;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 24px;
+          color: var(--text-secondary);
+        }
+
+        & > .badge {
+          font-size: 14px;
+        }
+      }
+    }
+
+    @media screen and (width <= 1024px) {
+
+      h2.title {
+        line-height: 50px;
       }
 
-      & > p.description {
+      p.description {
         padding-bottom: 18px;
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 24px;
-        color: var(--text-secondary);
+        font-size: 16px;
       }
-
-      & > .badge {
-        font-size: 14px;
-      }
-    }
-  }
-
-  @media screen and (width <= 1024px) {
-
-    h2.title {
-      line-height: 50px;
-    }
-
-    p.description {
-      padding-bottom: 18px;
-      font-size: 16px;
     }
   }
 </style>
