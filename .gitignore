@@ -22,7 +22,7 @@ dist
 .cache/
 .vercel/
 .netlify/
-public/sw.js.map # Optional: sourcemaps for service worker
+public/sw.js.map
 
 # IDE / Editor
 .vscode/*

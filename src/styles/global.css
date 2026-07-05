@@ -242,9 +242,12 @@
   }
 
   ::selection {
-    background-color: var(--sk-highlight);
-    color: currentcolor;
     text-shadow: none;
+
+    a& {
+      background-color: var(--sk-highlight);
+      color: var(--sk-highlight-text);
+    }
   }
 
   ::marker {

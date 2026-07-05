@@ -10,18 +10,19 @@ const {
 } = Astro.props;
 ---
 
-<time
-  id="clock"
-  aria-live="polite"
-  aria-atomic="true"
-  data-timezone={timeZone}
-  data-locale={locale}
-></time>
+<flip-clock data-timezone={timeZone} data-locale={locale}>
+  <time id="clock" aria-live="polite" aria-atomic="true"></time>
+</flip-clock>
 
 <style is:global>
   @layer component {
-    #clock {
+    flip-clock {
       position: relative;
+      display: inline-flex;
+      perspective: 120px; 
+    }
+
+    #clock {
       display: inline-flex;
       font-family: var(--font-family-mono);
       font-feature-settings: "zero", "tnum";
@@ -31,63 +32,127 @@ const {
       letter-spacing: var(--font-tracking-normal);
       line-height: var(--font-leading-normal);
       text-transform: uppercase;
+      white-space: pre;
       color: black;
+    }
+
+    .clock-char {
+      display: inline-block;
+      text-align: center;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+    }
+
+    .clock-char.is-flipping {
+      animation:
+        clock-flip 760ms cubic-bezier(0.22, 1, 0.36, 1),
+        clock-flip-opacity 280ms ease-out;
+      will-change: transform;
+      transform-origin: 50% 55%;
+    }
+
+    @keyframes clock-flip {
+      0% { transform: rotateX(-88deg) translateY(-2px) scale(0.985); }
+      52% { transform: rotateX(7deg) translateY(0) scale(1.008); }
+      76% { transform: rotateX(-2deg) translateY(0) scale(1); }
+      100% { transform: rotateX(0deg) translateY(0) scale(1); }
+    }
+
+    @keyframes clock-flip-opacity {
+      from { opacity: 0.75; }
+      to { opacity: 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .clock-char.is-flipping {
+        animation: none;
+      }
     }
   }
 </style>
 
 <script>
-  function initClock() {
-    const clock = document.getElementById('clock') as HTMLTimeElement | null;
-    if (!clock) return;
+  class FlipClock extends HTMLElement {
+    private timeElement: HTMLTimeElement | null = null;
+    private intervalId: ReturnType<typeof setInterval> | null = null;
+    private observer: IntersectionObserver | null = null;
+    private previousTimeStr: string = "";
 
-    const timeZone = clock.dataset.timezone ?? 'America/Caracas';
-    const locale = clock.dataset.locale ?? 'en-US';
-    let intervalId: ReturnType<typeof setInterval> | null = null;
+    connectedCallback() {
+      this.timeElement = this.querySelector('time');
+      if (!this.timeElement) return;
 
-    const options: Intl.DateTimeFormatOptions = {
-      weekday: 'short',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      hour12: true,
-      timeZone,
-      timeZoneName: 'short',
-      hourCycle: 'h12',
-    };
+      const timeZone = this.dataset.timezone ?? 'America/Caracas';
+      const locale = this.dataset.locale ?? 'en-US';
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    const updateTime = () => {
-      clock.textContent = new Date().toLocaleTimeString(locale, options);
-    };
+      const options: Intl.DateTimeFormatOptions = {
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true,
+        timeZone,
+        timeZoneName: 'short',
+        hourCycle: 'h12',
+      };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          updateTime();
-          if (!intervalId) intervalId = setInterval(updateTime, 1000);
-        } else {
-          if (intervalId) {
-            clearInterval(intervalId);
-            intervalId = null;
+      const updateTime = () => {
+        const currentTimeStr = new Date().toLocaleTimeString(locale, options);
+        if (currentTimeStr === this.previousTimeStr) return;
+
+        let htmlContent = "";
+        
+        for (let i = 0; i < currentTimeStr.length; i++) {
+          const char = currentTimeStr[i];
+          const oldChar = this.previousTimeStr[i];
+          
+          if (char !== oldChar && !prefersReducedMotion) {
+            htmlContent += `<span class="clock-char is-flipping">${char}</span>`;
+          } else {
+            htmlContent += `<span class="clock-char">${char}</span>`;
           }
         }
-      },
-      { threshold: 0.1 }
-    );
 
-    observer.observe(clock);
+        this.timeElement!.innerHTML = htmlContent;
+        this.timeElement!.dateTime = new Date().toISOString();
+        this.previousTimeStr = currentTimeStr;
+      };
 
-    document.addEventListener(
-      'astro:before-swap',
-      () => {
-        if (intervalId) clearInterval(intervalId);
-        observer.disconnect();
-      },
-      { once: true }
-    );
+      this.observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            updateTime();
+            if (!this.intervalId) this.intervalId = setInterval(updateTime, 1000);
+          } else {
+            this.clearTimer();
+          }
+        },
+        { threshold: 0.1 }
+      );
+
+      this.observer.observe(this);
+    }
+
+    disconnectedCallback() {
+      this.clearTimer();
+      if (this.observer) {
+        this.observer.disconnect();
+        this.observer = null;
+      }
+    }
+
+    private clearTimer() {
+      if (this.intervalId) {
+        clearInterval(this.intervalId);
+        this.intervalId = null;
+      }
+    }
   }
 
-  document.addEventListener('astro:page-load', initClock);
+  if (!customElements.get('flip-clock')) {
+    customElements.define('flip-clock', FlipClock);
+  }
 </script>
