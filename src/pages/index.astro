@@ -14,32 +14,69 @@ const {
 <Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <PageHeader screen_title={screen_title} />
 
-  <section class="collection-module">
+  <section>
+    <audio class="display-none" loop src="/audio/beats.aac"></audio>
+    <div>
+      <div aria-hidden="true">
+        
+      </div>
+    </div>
+
+    <div>
+      <h2></h2>
+      <p>
+        <span aria-hidden="true" class="invisible">To ship apps and websites</span>
+        <span aria-hidden="true"></span>
+        <span class="sr-only">.</span>
+      </p>
+      <div>
+        <Anchor label="text-only" size="small" href="https://tally.com/marcelrojas/" target="_blank" rel="noopener noreferrer" class="badge audio_trigger">Fill Form</Anchor>
+        <Anchor label="text-only" size="small" href="https://contra.com/marcelrojas" target="_blank" rel="noopener noreferrer" class="badge audio_trigger">Talk to Me</Anchor>
+        <Button as="button" wide="fit" class="audio_trigger" command="show-modal" commandfor="cvDialog">Review CV</Button>
+      </div>
+    </div>
+
+    <div>
+      <nav aria-label="My capabilities">
+        <div>
+          <span>
+            <span></span>
+            <span aria-hidden="true">.</span>
+          </span>
+        </div>
+
+        <div>
+          <span>
+            <span></span>
+            <span aria-hidden="true">.</span>
+          </span>
+        </div>
+
+        <div>
+          <span>
+            <span></span>
+            <span aria-hidden="true">.</span>
+          </span>
+        </div>
+      </nav>
+    </div>
+  </section>
+
     <h2>Biography</h2>
-    
-    <article class="module-work">
-      <audio class="display-none" loop src="/audio/beats.aac"></audio>
-      <h2 class="title">Work</h2>
-      <ul>
-        <li>
-          <Button as="button" wide="fit" class="audio_trigger" command="show-modal" commandfor="cvDialog">Review CV</Button>
-        </li>
-        <li>
-          <Anchor variant="gui2" label="text-and-icon" size="small" href="https://contra.com/marcelrojas" target="_blank" rel="noopener noreferrer" class="badge audio_trigger">Explore my services on Contra</Anchor>
-        </li>
-        <li>
-          <Anchor variant="gui2" label="text-and-icon" size="small" href={SOCIAL_LINKEDIN} target="_blank" rel="noopener noreferrer">Connect on LinkedIn</Anchor>
-        </li>
-      </ul>
 
       <dialog id="cvDialog">
         <span>Curriculum Vitae</span>
         <h3>Marcel Rojas</h3>
 
+        <ul>
+          <li>Explore my services on Contra</li>
+          <li>
+            <Anchor label="text-and-icon" size="small" href={SOCIAL_LINKEDIN} target="_blank" rel="noopener noreferrer">Connect on LinkedIn</Anchor>
+          </li>
+        </ul>
+
         <Button as="button" wide="fit" commandfor="cvDialog" command="close">Close</Button>
       </dialog>
-    </article>
-  </section>
 
 </Layout>
 

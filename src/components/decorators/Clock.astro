@@ -28,8 +28,8 @@ const {
       font-feature-settings: "zero", "tnum";
       font-variant-numeric: tabular-nums;
       font-size: var(--font-size-12);
-      font-weight: var(--font-weight-regular);
-      letter-spacing: var(--font-tracking-normal);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--font-tracking-wide);
       line-height: var(--font-leading-normal);
       text-transform: uppercase;
       white-space: pre;
@@ -104,7 +104,7 @@ const {
         if (currentTimeStr === this.previousTimeStr) return;
 
         let htmlContent = "";
-        
+
         for (let i = 0; i < currentTimeStr.length; i++) {
           const char = currentTimeStr[i];
           const oldChar = this.previousTimeStr[i];
