@@ -2,39 +2,37 @@
 const { screen_title } = Astro.props;
 ---
 
-<section id="PageHeader">
+<div id="PageHeader">
   <h1>{screen_title}</h1>
-</section>
+</div>
 
 <style is:global>
-  section#PageHeader {
+  #PageHeader {
     margin-left: calc(var(--spacing-sal) + var(--spacing-06));
     margin-right: calc(var(--spacing-sar) + var(--spacing-06));
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-inline: 20px;
     padding-block: 20px;
-    display: flex;
-    justify-content: start;
-    align-items: end;
-    height: 40dvh;
-    background-color: #eee;
-
-
-    @media screen and (width <= 480px) {
-      --offset: 56px;
-    }
-
-    @media screen and (width > 480px) {
-      --offset: 64px;
-    }
+    display: contents;
 
     & > h1 {
-      font-size: var(--font-size-16);
-      font-weight: var(--font-weight-regular);
-      line-height: 1.05;
-      letter-spacing: -.015em;
+      --page-header-text-size: var(--font-size);
+      display: inline-block;
+      font-size: var(--page-header-text-size);
+      font-weight: var(--font-weight-medium);
+      line-height: var(--font-leading-very-compact);
+      letter-spacing: var(--font-tracking-wide);
       text-transform: uppercase;
-      color: var(--color-text-primary);
+      text-align: center;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+
+      @media screen and (width <= 480px) {
+        --font-size: var(--font-size-18);
+      }
+
+      @media screen and (width > 480px) {
+        --font-size: var(--font-size-20);
+      }
     }
   }
 </style>
