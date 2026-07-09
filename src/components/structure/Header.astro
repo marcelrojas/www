@@ -20,12 +20,9 @@ import NavBar from '@components/structure/NavBar.astro';
 <style is:global>
   @layer component {
     header#header {
-      position: fixed;
-      inset: 0px 0px auto 0px;
       z-index: var(--z-header);
       padding-left: calc(var(--spacing-sail) + 0px);
       padding-right: calc(var(--spacing-sair) + 0px);
-      background: var(--sk-header-bg);
   
       & > div.content {
         display: grid;
