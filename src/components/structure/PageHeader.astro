@@ -12,26 +12,24 @@ const { screen_title } = Astro.props;
     margin-right: calc(var(--spacing-sar) + var(--spacing-06));
     padding-inline: 20px;
     padding-block: 20px;
-    display: contents;
 
     & > h1 {
       --page-header-text-size: var(--font-size);
-      display: inline-block;
       font-size: var(--page-header-text-size);
-      font-weight: var(--font-weight-bold);
+      font-weight: var(--font-weight-ultrabold);
       line-height: var(--font-leading-very-compact);
-      letter-spacing: var(--font-tracking-wide);
+      letter-spacing: var(--font-tracking-normal);
       text-transform: uppercase;
       text-align: center;
       backface-visibility: hidden;
       transform-style: preserve-3d;
 
       @media screen and (width <= 480px) {
-        --font-size: var(--font-size-18);
+        --font-size: var(--font-size-20);
       }
 
       @media screen and (width > 480px) {
-        --font-size: var(--font-size-20);
+        --font-size: var(--font-size-24);
       }
     }
   }
