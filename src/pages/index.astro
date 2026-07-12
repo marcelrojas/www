@@ -25,13 +25,13 @@ const {
     <div>
       <h2></h2>
       <p>
-        <span aria-hidden="true" class="invisible">To ship apps and websites</span>
+        <span aria-hidden="true" class="sr-only">To ship apps and websites</span>
         <span aria-hidden="true"></span>
         <span class="sr-only">.</span>
       </p>
       <div>
         <Anchor label="text-only" size="small" href="https://tally.com/marcelrojas/" target="_blank" rel="noopener noreferrer" class="badge audio_trigger">Fill Form</Anchor>
-        <Anchor label="text-only" size="small" href="https://contra.com/marcelrojas" target="_blank" rel="noopener noreferrer" class="badge audio_trigger">Talk to Me</Anchor>
+        <Anchor label="text-only" size="small" href="https://contra.com/marcelrojas" target="_blank" rel="noopener noreferrer" class="badge audio_trigger">Explore my services on Contra</Anchor>
         <Button as="button" wide="fit" class="audio_trigger" command="show-modal" commandfor="cvDialog">Review CV</Button>
       </div>
     </div>
@@ -62,21 +62,21 @@ const {
     </div>
   </section>
 
-    <h2>Biography</h2>
-
-      <dialog id="cvDialog">
-        <span>Curriculum Vitae</span>
-        <h3>Marcel Rojas</h3>
-
-        <ul>
-          <li>Explore my services on Contra</li>
-          <li>
-            <Anchor label="text-and-icon" size="small" href={SOCIAL_LINKEDIN} target="_blank" rel="noopener noreferrer">Connect on LinkedIn</Anchor>
-          </li>
-        </ul>
-
-        <Button as="button" wide="fit" commandfor="cvDialog" command="close">Close</Button>
-      </dialog>
+  <dialog id="cvDialog">
+    <span>Curriculum Vitae</span>
+    <h3>Marcel Rojas</h3>
+    <h4>Biography</h4>
+    <p>.</p>
+    <ul>
+      <li>
+        <Anchor label="text-only" size="small" href="https://contra.com/marcelrojas" target="_blank" rel="noopener noreferrer" class="badge audio_trigger">Talk to Me</Anchor>
+      </li>
+      <li>
+        <Anchor label="text-and-icon" size="small" href={SOCIAL_LINKEDIN} target="_blank" rel="noopener noreferrer">Connect on LinkedIn</Anchor>
+      </li>
+    </ul>
+    <Button as="button" wide="fit" commandfor="cvDialog" command="close">Close</Button>
+  </dialog>
 
 </Layout>
 
