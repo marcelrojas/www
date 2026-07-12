@@ -20,14 +20,23 @@ const {
   ...props
 } = Astro.props;
 
-const { pathname } = Astro.url;
-const currentPath = pathname.replace(/\/$/, '');
-const targetHref = href?.toString().replace(/\/$/, '') || '';
+let isCurrentlyActive = forceActive;
 
-const isActive = forceActive ?? (
-  targetHref === currentPath ||
-  (targetHref !== '' && targetHref !== '/' && currentPath.startsWith(targetHref + '/'))
-);
+if (isCurrentlyActive === undefined && href) {
+  try {
+    const targetUrl = new URL(href.toString(), Astro.url);
+    const targetPath = targetUrl.pathname.replace(/\/$/, '');
+    const currentPath = Astro.url.pathname.replace(/\/$/, '');
+
+    isCurrentlyActive = 
+      targetPath === currentPath || 
+      (targetPath !== '' && currentPath.startsWith(targetPath + '/'));
+  } catch (e) {
+    isCurrentlyActive = false;
+  }
+} else if (isCurrentlyActive === undefined) {
+  isCurrentlyActive = false; 
+}
 
 const isExternal = href?.toString().startsWith('http');
 const target = isExternal ? '_blank' : props.target;
@@ -45,13 +54,13 @@ const classes = [
 ---
 
 <a
+  {...props}
   href={href}
   class={classes}
   target={target}
   rel={rel}
-  aria-current={isActive ? 'page' : undefined}
+  aria-current={isCurrentlyActive ? 'page' : undefined}
   data-astro-prefetch={isExternal ? 'false' : 'viewport'}
-  {...props}
 >
   <slot />
 </a>
@@ -68,8 +77,8 @@ const classes = [
       height: fit-content;
       font-family: var(--font-family-sans);
       text-align: center;
-      will-change: background-color, color, opacity, transform;
-      transition: background-color 0.15s linear, color 0.15s linear, transform 0.1s linear;
+      will-change: background-color, color, opacity;
+      transition: background-color 0.15s linear, color 0.15s linear, opacity 0.15s linear;
 
       @media (hover: hover) {
         &:hover:not([aria-current="page"]) {
