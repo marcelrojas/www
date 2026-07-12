@@ -25,9 +25,11 @@ import NavBar from '@components/structure/NavBar.astro';
       padding-right: calc(var(--spacing-sair) + 0px);
   
       & > div.content {
-        display: grid;
-        lign-items: center;
-        grid-template-columns: minmax(0px, 1fr) auto minmax(0px, 1fr);
+        display: flex;
+        align-items: self-start;
+        justify-content: space-between;
+        padding-inline: 40px;
+        margin-top: 36px;
         height: 48px;
 
         & > div.gmt {
