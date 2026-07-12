@@ -51,21 +51,20 @@ const posts = (await getCollection('weblog')).sort(
     </div>
   </section>
 
-  <section>
+
     <figure>
       <picture>
-        <img src="" alt="The Ramp game promotional image" />
+        <img src="" alt="" />
       </picture>
       <figcaption>
         <img src="" aria-hidden="true" />
-        <div class="adaptive-glass">
+        <div class="">
           <h3>THE RAMP is OUT NOW!</h3>
           <date>Tue, August 3, 2021 9:05 AM PDT</date>
         </div>
       </figcaption>
     </figure>
-  </section>
-</section>
+ </section>
 
 <style is:global>
   section#post-list {
@@ -92,7 +91,7 @@ const posts = (await getCollection('weblog')).sort(
         & > a {
           color: inherit;
           display: block;
-          padding: var(--spacing-03);
+          padding: var(--spacing-06);
 
           &:visited {
             color: var(--accent-visited);
