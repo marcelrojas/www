@@ -285,7 +285,7 @@
 
   dialog {
     padding: unset;
-    scrollbar-gutter: stable;
+    scrollbar-gutter: unset;
     transition-behavior: allow-discrete;
 
     &[open] {
