@@ -25,7 +25,7 @@ const {
       <div class="actions">
         <Anchor label="text-only" size="small" href="https://tally.com/marcelrojas/" target="_blank" rel="noopener noreferrer" class="badge audio_trigger">Fill Form</Anchor>
         <Anchor label="text-only" size="small" href="https://contra.com/marcelrojas" target="_blank" rel="noopener noreferrer" class="badge audio_trigger">Explore my services on Contra</Anchor>
-        <Button as="button" wide="fit" command="show-modal" commandfor="cvDialog" class="audio_trigger">Review Full CV</Button>
+        <Button as="button" wide="fit" command="show-modal" commandfor="cvDialog" class="audio_trigger">Review full CV</Button>
       </div>
     </div>
 
@@ -52,19 +52,10 @@ const {
           </span>
         </div>
 
-        <Anchor href="/services">Know Them All</Anchor>
+        <Anchor href="/services">Know them all</Anchor>
       </nav>
     </div>
   </section>
-
-  <dialog id="cvDialog">
-    <h4>Biography</h4>
-    <ul>
-      <li>
-        <Anchor label="text-only" size="small" href="https://contra.com/marcelrojas" target="_blank" rel="noopener noreferrer" class="badge audio_trigger">Talk to Me</Anchor>
-      </li>
-    </ul>
-  </dialog>
 
   <dialog id="cvDialog" aria-labelledby="cv-name" aria-describedby="cv-role">
     <article class="cv-container">
@@ -109,6 +100,7 @@ const {
       </div>
 
       <footer class="cv-footer">
+        <Anchor label="text-only" href="" target="_blank" rel="noopener noreferrer">Talk to Me</Anchor>
         <Button as="button" variant="secondary"  wide="fit" commandfor="cvDialog" command="close">Close CV</Button>
       </footer>
     </article>
@@ -140,12 +132,11 @@ const {
       background-color: var(--background-primary, #ffffff);
       color: var(--text-primary, #111111);
       box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-    }
 
-    /* Modern backdrop blur for the modal */
-    dialog#cvDialog::backdrop {
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(4px); 
+      &::backdrop {
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(4px); 
+      }
     }
 
     /* CV Internal Layout */
@@ -161,13 +152,12 @@ const {
     .cv-header {
       border-bottom: 1px solid var(--border-color, #e5e7eb);
       padding-bottom: 1.5rem;
-    }
 
-    .cv-header h3 {
-      margin: 0;
-      font-size: 2rem;
-      font-weight: 700;
-      line-height: 1.2;
+      & h3 {
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1.2;
+      }
     }
 
     .role {
@@ -192,23 +182,23 @@ const {
       display: flex;
       flex-direction: column;
       gap: 1.75rem;
-    }
 
-    .cv-section h4 {
-      font-size: 1.125rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-accent, #374151);
-      margin-bottom: 0.75rem;
-      border-bottom: 2px solid var(--text-accent, #e5e7eb);
-      padding-bottom: 0.25rem;
-      display: inline-block;
-    }
+      & h4 {
+        font-size: 1.125rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-accent, #374151);
+        margin-bottom: 0.75rem;
+        border-bottom: 2px solid var(--text-accent, #e5e7eb);
+        padding-bottom: 0.25rem;
+        display: inline-block;
+      }
 
-    .cv-section p {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: var(--text-secondary, #374151);
+      & p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: var(--text-secondary, #374151);
+      }
     }
 
     .skills-list {
@@ -222,13 +212,13 @@ const {
       display: flex;
       flex-direction: column;
       gap: 1.25rem;
-    }
 
-    .experience-list strong {
-      display: block;
-      font-size: 1rem;
-      color: var(--text-primary, #111111);
-      margin-bottom: 0.25rem;
+      & strong {
+        display: block;
+        font-size: 1rem;
+        color: var(--text-primary, #111111);
+        margin-bottom: 0.25rem;
+      }
     }
 
     .cv-footer {
