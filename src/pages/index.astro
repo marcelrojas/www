@@ -14,25 +14,18 @@ const {
 <Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <PageHeader screen_title={screen_title} />
 
-  <section>
-    <audio class="display-none" loop src="/audio/beats.aac"></audio>
-    <div>
-      <div aria-hidden="true">
-        
-      </div>
-    </div>
-
-    <div>
-      <h2></h2>
+  <section class="intro-section">
+    <h2 class="sr-only">About Me</h2>
+    <div aria-label="My purpose">
       <p>
         <span aria-hidden="true" class="sr-only">To ship apps and websites</span>
         <span aria-hidden="true"></span>
         <span class="sr-only">.</span>
       </p>
-      <div>
+      <div class="actions">
         <Anchor label="text-only" size="small" href="https://tally.com/marcelrojas/" target="_blank" rel="noopener noreferrer" class="badge audio_trigger">Fill Form</Anchor>
         <Anchor label="text-only" size="small" href="https://contra.com/marcelrojas" target="_blank" rel="noopener noreferrer" class="badge audio_trigger">Explore my services on Contra</Anchor>
-        <Button as="button" wide="fit" class="audio_trigger" command="show-modal" commandfor="cvDialog">Review CV</Button>
+        <Button as="button" wide="fit" command="show-modal" commandfor="cvDialog" class="audio_trigger">Review Full CV</Button>
       </div>
     </div>
 
@@ -58,51 +51,209 @@ const {
             <span aria-hidden="true">.</span>
           </span>
         </div>
+
+        <Anchor href="/services">Know Them All</Anchor>
       </nav>
     </div>
   </section>
 
   <dialog id="cvDialog">
-    <span>Curriculum Vitae</span>
-    <h3>Marcel Rojas</h3>
     <h4>Biography</h4>
-    <p>.</p>
     <ul>
       <li>
         <Anchor label="text-only" size="small" href="https://contra.com/marcelrojas" target="_blank" rel="noopener noreferrer" class="badge audio_trigger">Talk to Me</Anchor>
       </li>
-      <li>
-        <Anchor label="text-and-icon" size="small" href={SOCIAL_LINKEDIN} target="_blank" rel="noopener noreferrer">Connect on LinkedIn</Anchor>
-      </li>
     </ul>
-    <Button as="button" wide="fit" commandfor="cvDialog" command="close">Close</Button>
   </dialog>
 
+  <dialog id="cvDialog" aria-labelledby="cv-name" aria-describedby="cv-role">
+    <article class="cv-container">
+      <header class="cv-header">
+        <h3 id="cv-name">Marcel Rojas</h3>
+        <p id="cv-role" class="role">Frontend Developer & UI/UX Designer</p>
+        <address class="contact-info">
+          <span>Anzoátegui, Venezuela</span> • 
+          <Anchor label="text-only" size="small" href={SOCIAL_LINKEDIN} target="_blank" rel="noopener noreferrer">LinkedIn</Anchor>
+        </address>
+      </header>
+
+      <div class="cv-body">
+        <section class="cv-section">
+          <h4>Profile</h4>
+          <p>Multidisciplinary developer and designer focused on the JAMstack ecosystem, crafting performant, accessible, and highly interactive digital experiences. Experienced in component-driven architecture and technical writing.</p>
+        </section>
+
+        <section class="cv-section">
+          <h4>Technical Expertise</h4>
+          <ul class="skills-list">
+            <li><strong>Core Languages:</strong> JavaScript, TypeScript, HTML, CSS, C++, Python, Rust.</li>
+            <li><strong>Frameworks & Libraries:</strong> Astro, Svelte, React, Vue, Next.js, Nuxt, Tailwind CSS, shadcn/ui.</li>
+            <li><strong>Platforms & Cloud:</strong> Vercel, Cloudflare, GitHub, Netlify, Node.js (Hono, Fastify).</li>
+            <li><strong>Design & UI:</strong> Figma, Spline, Rive, Webflow, Framer.</li>
+          </ul>
+        </section>
+
+        <section class="cv-section">
+          <h4>Highlights & Contributions</h4>
+          <ul class="experience-list">
+            <li>
+              <strong>Technical Writer — CSS-Tricks</strong>
+              <p>Authored and published 3 technical articles focusing on modern frontend styling techniques and web development paradigms.</p>
+            </li>
+            <li>
+              <strong>Freelance Developer — Contra & UpWork</strong>
+              <p>Designing and deploying tailored web applications, leveraging visual builders and code-based meta-frameworks for diverse clients.</p>
+            </li>
+          </ul>
+        </section>
+      </div>
+
+      <footer class="cv-footer">
+        <Button as="button" variant="secondary"  wide="fit" commandfor="cvDialog" command="close">Close CV</Button>
+      </footer>
+    </article>
+  </dialog>
+
+  <audio loop src="/audio/beats.aac" class="display-none"></audio>
 </Layout>
 
 <style>
   @layer page {
-    .collection-module {
+    .intro-section {
+      padding: 2rem 0;
+    }
+  
+    .actions {
       display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      align-items: center;
+    }
+
+    /* Modal & Backdrop Styling */
+    dialog#cvDialog {
+      width: 100%;
+      max-width: 650px;
+      padding: 0;
+      border: none;
+      border-radius: 12px;
+      background-color: var(--background-primary, #ffffff);
+      color: var(--text-primary, #111111);
+      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    }
+
+    /* Modern backdrop blur for the modal */
+    dialog#cvDialog::backdrop {
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px); 
+    }
+
+    /* CV Internal Layout */
+    .cv-container {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+
+    .cv-header {
+      border-bottom: 1px solid var(--border-color, #e5e7eb);
+      padding-bottom: 1.5rem;
+    }
+
+    .cv-header h3 {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .role {
+      font-size: 1.125rem;
+      color: var(--text-secondary, #4b5563);
+      margin-top: 0.25rem;
+      font-weight: 500;
+    }
+
+    .contact-info {
+      font-style: normal;
+      font-size: 0.875rem;
+      color: var(--text-muted, #6b7280);
+      margin-top: 0.75rem;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
       flex-wrap: wrap;
+    }
+
+    .cv-body {
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+
+    .cv-section h4 {
+      font-size: 1.125rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-accent, #374151);
+      margin-bottom: 0.75rem;
+      border-bottom: 2px solid var(--text-accent, #e5e7eb);
+      padding-bottom: 0.25rem;
+      display: inline-block;
+    }
+
+    .cv-section p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-secondary, #374151);
+    }
+
+    .skills-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .experience-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .experience-list strong {
+      display: block;
+      font-size: 1rem;
+      color: var(--text-primary, #111111);
+      margin-bottom: 0.25rem;
+    }
+
+    .cv-footer {
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color, #e5e7eb);
+    }
+
+    /* Scrollbar styling for the modal */
+    .cv-container::-webkit-scrollbar {
+      width: 8px;
+    }
+    .cv-container::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .cv-container::-webkit-scrollbar-thumb {
+      background-color: var(--border-color, #cbd5e1);
+      border-radius: 20px;
+    }
+
+
+    .collection-module {
 
       & > article[class*="module-"] {
-        display: block;
-        background-color: var(--background-secondary);
-
-        & > h2.title {
-          font-size: 32px;
-          font-weight: var(--font-weight-medium);
-          line-height: 40px;
-        }
-
-        & > p.description {
-          padding-bottom: 18px;
-          font-size: 14px;
-          font-weight: 500;
-          line-height: 24px;
-          color: var(--text-secondary);
-        }
 
         & > .badge {
           font-size: 14px;
@@ -112,14 +263,6 @@ const {
 
     @media screen and (width <= 1024px) {
 
-      h2.title {
-        line-height: 50px;
-      }
-
-      p.description {
-        padding-bottom: 18px;
-        font-size: 16px;
-      }
     }
   }
 </style>
