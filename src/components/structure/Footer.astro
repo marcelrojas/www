@@ -1,7 +1,8 @@
 ---
 import Grain from '@components/decorators/Grain.astro';
+import Anchor from '@components/Anchor.astro';
 import Button from '@components/Button.astro';
-import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_X, SOCIAL_INSTAGRAM, SOCIAL_YOUTUBE, SOCIAL_GITHUB, EMAIL, COPYRIGHT_NAME, COPYRIGHT_YEAR } from '@src/types/consts';
+import { SOCIAL_X, SOCIAL_INSTAGRAM, SOCIAL_YOUTUBE, SOCIAL_GITHUB, EMAIL, COPYRIGHT_NAME, COPYRIGHT_YEAR } from '@src/types/consts';
 
 const { encEmail = EMAIL } = Astro.props;
 ---
@@ -32,13 +33,13 @@ const { encEmail = EMAIL } = Astro.props;
       <nav aria-label="Legal">
         <ul>
           <li>
-            <a href="/colophon">Colophon</a>
+            <Anchor href="/colophon">Colophon</Anchor>
           </li>
           <li>
-            <a href="/impressum">Impressum</a>
+            <Anchor href="/impressum">Impressum</Anchor>
           </li>
           <li>
-            <a href="/privacy-policy">Privacy Policy</a>
+            <Anchor href="/privacy-policy">Privacy Policy</Anchor>
           </li>
         </ul>
       </nav>
