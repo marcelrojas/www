@@ -76,6 +76,7 @@ const classes = [
       width: fit-content;
       height: fit-content;
       text-align: center;
+      white-space: nowrap;
       will-change: background-color, color, opacity;
       transition: background-color 0.15s linear, color 0.15s linear, opacity 0.15s linear;
 
@@ -94,54 +95,55 @@ const classes = [
 
       }
 
-      &:focus-visible {
-        outline: 2px solid var(--ring);
-      }
-
       /* Variants */
       &.variant-gui1 {
-        font-weight: var(--font-weight-medium);
-        text-transform: lowercase;
-
-        @media (hover: hover) {
-          &:hover {
-
-          }
-        }
+        font-weight: var(--font-weight-regular);
+        text-transform: uppercase;
       }
 
       &.variant-gui2 {
-        font-weight: var(--font-weight-regular);
+        font-weight: var(--font-weight-medium);
         text-transform: uppercase;
-
-        @media (hover: hover) {
-          &:hover {
-
-          }
-        }
       }
 
-      &.variant-tui {
-        color: var(--text-primary);
-        text-decoration: underline;
-        text-underline-offset: 4px;
-
-        @media (hover: hover) {
-          &:hover {
-
-          }
-        }
+      &.variant-gui3 {
+        font-weight: var(--font-weight-medium);
+        text-transform: lowercase;
       }
 
       /* Actions */
       &.action-neutral {
-        color: var(--label-);
-        fill: var(--label-);
+        color: var(--);
+        fill: var(--);
+
+        &:focus, &:focus-visible {
+          color: var(--brand-red);
+          outline: 2px solid var(--brand-red);
+          outline-offset: -2px;
+        }
+
+        @media (hover: hover) {
+          &:hover {
+            color: var(--brand-red);
+          }
+        }
       }
 
       &.action-cta {
-        color: var(--label-primary-controls);
-        fill: var(--label-primary-controls);
+        color: var(--);
+        fill: var(--);
+
+        &:focus, &:focus-visible {
+          box-shadow: rgba(8, 40, 69, 0.35) 0px 0px 0px 1px inset;
+          outline: rgb(255, 255, 255) solid 2px;
+          outline-offset: -4px;
+        }
+
+        @media (hover: hover) {
+          &:hover {
+            color: var(--);
+          }
+        }
       }
 
       /* Sizes */
