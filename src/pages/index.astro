@@ -69,12 +69,12 @@ const {
       </header>
 
       <div class="cv-body">
-        <section class="cv-section">
+        <section>
           <h4>Profile</h4>
           <p>Multidisciplinary developer and designer focused on the JAMstack ecosystem, crafting performant, accessible, and highly interactive digital experiences. Experienced in component-driven architecture and technical writing.</p>
         </section>
 
-        <section class="cv-section">
+        <section>
           <h4>Technical Expertise</h4>
           <ul class="skills-list">
             <li><strong>Core Languages:</strong> JavaScript, TypeScript, HTML, CSS, C++, Python, Rust.</li>
@@ -84,7 +84,7 @@ const {
           </ul>
         </section>
 
-        <section class="cv-section">
+        <section>
           <h4>Highlights & Contributions</h4>
           <ul class="experience-list">
             <li>
@@ -101,7 +101,7 @@ const {
 
       <footer class="cv-footer">
         <Anchor label="text-only" href="/" target="_blank" rel="noopener noreferrer">Talk to Me</Anchor>
-        <Button as="button" commandfor="cvDialog" command="close">Close CV</Button>
+        <Button as="button" wide="fit" commandfor="cvDialog" command="close">Close CV</Button>
       </footer>
     </article>
   </dialog>
@@ -113,13 +113,13 @@ const {
   @layer page {
     section.intro-section {
       padding: 2rem 0;
-    }
-  
-    .actions {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1.5rem;
-      align-items: center;
+
+      & .actions {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        align-items: center;
+      }
     }
 
     dialog#cvDialog {
@@ -132,60 +132,60 @@ const {
         background: rgba(0, 0, 0, 0.6);
         backdrop-filter: blur(4px); 
       }
-    }
 
-    .cv-container {
-      padding: 2.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      max-height: 85vh;
-      overflow-y: auto;
-    }
+      & > article.cv-container {
+        padding: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        max-height: 85vh;
+        overflow-y: auto;
 
-    .cv-header {
-      padding-bottom: 1.5rem;
+        & header.cv-header {
+          padding-bottom: 1.5rem;
 
-      & h3 {
-        font-size: 2rem;
-        font-weight: 700;
-        line-height: 1.2;
-      }
-    }
+          & h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.2;
+          }
 
-    .role {
-      font-size: 1.125rem;
-      margin-top: 0.25rem;
-      font-weight: 500;
-    }
+          p.role {
+            font-size: 1.125rem;
+            margin-top: 0.25rem;
+            font-weight: 500;
+          }
 
-    .contact-info {
-      font-style: normal;
-      font-size: 0.875rem;
-      margin-top: 0.75rem;
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-      flex-wrap: wrap;
-    }
+          address.contact-info {
+            font-style: normal;
+            font-size: 0.875rem;
+            margin-top: 0.75rem;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+          }
+        }
 
-    .cv-body {
-      display: flex;
-      flex-direction: column;
-      gap: 1.75rem;
+        & .cv-body {
+          display: flex;
+          flex-direction: column;
+          gap: 1.75rem;
 
-      & h4 {
-        font-size: 1.125rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        margin-bottom: 0.75rem;
-        padding-bottom: 0.25rem;
-        display: inline-block;
-      }
+          & h4 {
+            font-size: 1.125rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.25rem;
+            display: inline-block;
+          }
 
-      & p {
-        font-size: 0.95rem;
-        line-height: 1.6;
+          & p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+          }
+        }
       }
     }
 
@@ -214,25 +214,9 @@ const {
       padding-top: 1rem;
     }
 
-    .cv-container::-webkit-scrollbar {
-      width: 8px;
-    }
-    .cv-container::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    .cv-container::-webkit-scrollbar-thumb {
-      background-color: var(--border-color, #cbd5e1);
-    }
 
+    article[class*="module-"] {
 
-    .collection-module {
-
-      & > article[class*="module-"] {
-
-        & > .badge {
-          font-size: 14px;
-        }
-      }
     }
 
     @media screen and (width <= 1024px) {
