@@ -75,16 +75,13 @@ const classes = [
       position: relative;
       width: fit-content;
       height: fit-content;
+      font-feature-settings: "zero", "tnum";
+      font-variant-numeric: tabular-nums;
+      letter-spacing: var(--font-tracking-wide);
       text-align: center;
-      white-space: nowrap;
+      white-space: pre;
       will-change: background-color, color, opacity;
       transition: background-color 0.15s linear, color 0.15s linear, opacity 0.15s linear;
-
-      @media (hover: hover) {
-        &:hover:not([aria-current="page"]) {
-          color: var(--accent-hover);
-        }
-      }
 
       &[aria-current="page"] {
         font-weight: var(--font-weight-semibold);
@@ -116,14 +113,14 @@ const classes = [
         color: var(--);
         fill: var(--);
 
-        &:focus, &:focus-visible {
+        &:is(:focus, :focus-visible) {
           color: var(--brand-red);
           outline: 2px solid var(--brand-red);
           outline-offset: -2px;
         }
 
         @media (hover: hover) {
-          &:hover {
+          &:hover:not([aria-current="page"]) {
             color: var(--brand-red);
           }
         }
@@ -140,7 +137,7 @@ const classes = [
         }
 
         @media (hover: hover) {
-          &:hover {
+          &:hover:not([aria-current="page"]) {
             color: var(--);
           }
         }

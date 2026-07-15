@@ -12,7 +12,7 @@ const anchors = [
   <ul>
     {anchors.map(link => (
       <li>
-        <Anchor size="large" href={link.href}>{link.text}</Anchor>
+        <Anchor variant="gui1" size="small" href={link.href}>{link.text}</Anchor>
       </li>
     ))}
   </ul>
@@ -40,7 +40,6 @@ const anchors = [
             padding-inline: 20px;
             font-family: var(--font-family-mono);
             line-height: var(--font-leading-normal);
-            text-transform: uppercase;
           }
         }
       }

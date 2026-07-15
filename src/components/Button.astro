@@ -7,7 +7,6 @@ interface Props {
   size?: 'small' | 'medium' | 'large' | 'full';
   wide?: 'fit' | 'fill';
   class?: string;
-  text?: string;
   isActive?: boolean;
   disabled?: boolean;
   labelId?: string;
@@ -22,7 +21,6 @@ const {
   size = 'medium',
   wide = 'fit',
   class: userClass,
-  text,
   isActive = true,
   disabled = false,
   labelId,
@@ -34,7 +32,6 @@ const Tag = as === 'input' ? 'input' : 'button';
 const attrs: Record<string, any> = {
   ...rest,
   type: type,
-  value: as === 'input' ? text : undefined,
   disabled: disabled ? true : undefined,
   'aria-disabled': disabled ? 'true' : undefined,
   tabindex: disabled ? -1 : undefined,
@@ -57,7 +54,7 @@ const classList = [
   aria-current={isActive ? "true" : undefined}
   {...attrs}
 >
-  <slot>{text}</slot>
+  <slot />
 </Tag>
 
 <style is:global>
@@ -68,33 +65,17 @@ const classList = [
       align-items: center;
       justify-content: center;
       font-family: var(--font-family-mono);
+      font-feature-settings: "zero", "tnum";
+      font-variant-numeric: tabular-nums;
       font-weight: var(--font-weight-medium);
+      letter-spacing: var(--font-tracking-wide);
+      text-transform: uppercase;
+      white-space: pre;
       will-change: background-color, color, opacity;
       transition: background-color 0.15s linear, color 0.15s linear, opacity 0.15s linear;
 
-      &:is(:enabled, [aria-disabled="false"]) {
-        cursor: pointer;
-        pointer-events: auto;
-      }
-
-      &:is(:disabled, [aria-disabled="true"]) {
-        cursor: not-allowed;
-        pointer-events: none;
-        filter: grayscale(70%);
-        opacity: 0.5;
-      }
-
       &:active:not(:disabled, [aria-disabled="true"]) {
 
-      }
-
-      &:focus-visible {
-        outline: 2px solid var(--btn-text-color);
-        outline-offset: 4px;
-      }
-
-      & :is(.symbol, .text):empty {
-        display: none;
       }
 
       &.size-small {
@@ -102,7 +83,6 @@ const classList = [
         padding-inline: 10px;
         padding-block: 4px;
         font-size: var(--font-size-12);
-        letter-spacing: var(--font-tracking-wide);
       }
 
       &.size-medium {
@@ -110,7 +90,6 @@ const classList = [
         padding-inline: 14px;
         padding-block: 7px;
         font-size: var(--font-size-14);
-        letter-spacing: var(--font-tracking-wide);
       }
 
       &.size-large {
@@ -118,20 +97,60 @@ const classList = [
         padding-inline: 20px;
         padding-block: 14px;
         font-size: var(--font-size-16);
-        letter-spacing: var(--font-tracking-wider);
       }
 
       &.action-neutral {
         background-color: transparent;
         color: var(--text-primary);
         fill: var(--text-primary);
+
+        &:is(:focus, :focus-visible) {
+          color: var(--brand-red);
+          outline: 2px solid var(--brand-red);
+          outline-offset: -2px;
+        }
+
+        @media (hover: hover) {
+          &:hover:not([aria-current="page"]) {
+            color: var(--brand-red);
+          }
+        }
+      }
+
+      &.action-cta {
+        background-color: transparent;
+        color: var(--text-primary);
+        fill: var(--text-primary);
+
+        &:focus, &:focus-visible {
+          box-shadow: rgba(8, 40, 69, 0.35) 0px 0px 0px 1px inset;
+          outline: rgb(255, 255, 255) solid 2px;
+          outline-offset: -4px;
+        }
+
+        @media (hover: hover) {
+          &:hover:not([aria-current="page"]) {
+            color: var(--);
+          }
+        }
       }
 
       &.action-danger {
         background-color: transparent;
         color: var(--color-danger);
         fill: var(--color-danger);
-        border: 1px solid var(--color-danger);
+
+        &:focus, &:focus-visible {
+          box-shadow: rgba(8, 40, 69, 0.35) 0px 0px 0px 1px inset;
+          outline: rgb(255, 255, 255) solid 2px;
+          outline-offset: -4px;
+        }
+
+        @media (hover: hover) {
+          &:hover:not([aria-current="page"]) {
+            color: var(--);
+          }
+        }
       }
 
       &.wide-full { width: 100%; }
