@@ -23,8 +23,8 @@ const {
         <span class="sr-only">.</span>
       </p>
       <div class="actions">
-        <Anchor label="text-only" size="small" href="https://tally.com/marcelrojas/" target="_blank" rel="noopener noreferrer" class="badge audio_trigger">Fill Form</Anchor>
-        <Anchor label="text-only" size="small" href="https://contra.com/marcelrojas" target="_blank" rel="noopener noreferrer" class="badge audio_trigger">Explore my services on Contra</Anchor>
+        <Anchor size="small" href="https://tally.com/marcelrojas/" target="_blank" rel="noopener noreferrer" class="badge audio_trigger">Fill form</Anchor>
+        <Anchor size="small" href="https://contra.com/marcelrojas" target="_blank" rel="noopener noreferrer" class="badge audio_trigger">Explore my services on Contra</Anchor>
         <Button as="button" wide="fit" command="show-modal" commandfor="cvDialog" class="audio_trigger">Review full CV</Button>
       </div>
     </div>
@@ -52,7 +52,7 @@ const {
           </span>
         </div>
 
-        <Anchor href="/services">Know them all</Anchor>
+        <Anchor size="medium" href="/services">Know them all</Anchor>
       </nav>
     </div>
   </section>
@@ -61,10 +61,9 @@ const {
     <article class="cv-container">
       <header class="cv-header">
         <h3 id="cv-name">Marcel Rojas</h3>
-        <p id="cv-role" class="role">Frontend Developer & UI/UX Designer</p>
+        <p id="cv-role" class="role">Web Developer, UI/UX Designer, Administrator, OpenSource Maker</p>
         <address class="contact-info">
-          <span>Anzoátegui, Venezuela</span> • 
-          <Anchor label="text-only" href={SOCIAL_LINKEDIN} target="_blank" rel="noopener noreferrer">LinkedIn</Anchor>
+          <span>Anzoátegui, Venezuela</span> • <a href={SOCIAL_LINKEDIN} target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </address>
       </header>
 
@@ -92,7 +91,7 @@ const {
               <p>Authored and published 3 technical articles focusing on modern frontend styling techniques and web development paradigms.</p>
             </li>
             <li>
-              <strong>Freelance Developer — Contra & UpWork</strong>
+              <strong>Freelance Developer — Contra</strong>
               <p>Designing and deploying tailored web applications, leveraging visual builders and code-based meta-frameworks for diverse clients.</p>
             </li>
           </ul>
@@ -100,7 +99,7 @@ const {
       </div>
 
       <footer class="cv-footer">
-        <Anchor label="text-only" href="/" target="_blank" rel="noopener noreferrer">Talk to Me</Anchor>
+        <Anchor size="medium" href="/" target="_blank" rel="noopener noreferrer">Talk to Me</Anchor>
         <Button as="button" wide="fit" commandfor="cvDialog" command="close">Close CV</Button>
       </footer>
     </article>
@@ -125,8 +124,6 @@ const {
     dialog#cvDialog {
       width: 100%;
       max-width: 650px;
-      background-color: var(--background-primary, #000);
-      color: var(--text-primary, #fff);
 
       &::backdrop {
         background: rgba(0, 0, 0, 0.6);

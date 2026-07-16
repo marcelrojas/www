@@ -5,7 +5,6 @@ interface Props extends HTMLAttributes<'a'> {
   variant?: 'gui1' | 'gui2' | 'gui3';
   action?: 'neutral' | 'cta';
   size?: 'small' | 'medium' | 'large';
-  label?: 'text-only' | 'icon-only' | 'text-and-icon';
   isActive?: boolean;
 }
 
@@ -15,7 +14,6 @@ const {
   variant,
   action = 'neutral',
   size = 'medium',
-  label = 'text-only',
   isActive: forceActive,
   ...props
 } = Astro.props;
@@ -48,7 +46,6 @@ const classes = [
   variant ? `variant-${variant}` : '',
   `action-${action}`,
   `size-${size}`,
-  `label-${label}`,
   isCurrentlyActive ? 'is-active' : ''
 ].filter(Boolean).join(' ');
 ---
@@ -92,7 +89,6 @@ const classes = [
 
       }
 
-      /* Variants */
       &.variant-gui1 {
         font-weight: var(--font-weight-regular);
         text-transform: uppercase;
@@ -108,7 +104,6 @@ const classes = [
         text-transform: lowercase;
       }
 
-      /* Actions */
       &.action-neutral {
         color: var(--);
         fill: var(--);
@@ -143,21 +138,9 @@ const classes = [
         }
       }
 
-      /* Sizes */
       &.size-small {
         font-size: var(--font-size-12);
-
-        &.label-text-and-icon {
-          gap: 3px;
-        }
-
-        &.label-text-only {
-
-        }
-
-        &.label-icon-only {
-
-        }
+        gap: 3px;
 
         & svg {
           width: 8px;
@@ -167,18 +150,7 @@ const classes = [
 
       &.size-medium {
         font-size: var(--font-size-14);
-
-        &.label-text-and-icon {
-          gap: 5px;
-        }
-
-        &.label-text-only {
-
-        }
-
-        &.label-icon-only {
-
-        }
+        gap: 5px;
 
         & svg {
           width: 16px;
@@ -188,18 +160,7 @@ const classes = [
 
       &.size-large {
         font-size: var(--font-size-14);
-
-        &.label-text-and-icon {
-          gap: 6px;
-        }
-
-        &.label-text-only {
-
-        }
-
-        &.label-icon-only {
-
-        }
+        gap: 6px;
 
         & svg {
           width: 32px;
