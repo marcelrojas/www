@@ -108,7 +108,7 @@
     unicode-bidi: isolate;
   }
 
-  nav, footer {
+  nav {
     user-select: none;
   }
 
