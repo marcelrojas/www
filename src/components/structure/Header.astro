@@ -1,17 +1,40 @@
 ---
 import Clock from '@components/decorators/Clock.astro';
 import NavBar from '@components/structure/NavBar.astro';
+import { LOCATION } from '@src/types/consts';
 ---
 
 <header id="header">
   <div class="content">
+    <a class="wordmark" href="/">www.marcelrojas.net</a>
+
+    <dl class="stats" aria-label="Status">
+      <div class="stat">
+        <dt>Location</dt>
+        <dd>{LOCATION}</dd>
+      </div>
+      <div class="stat">
+        <dt>Local time</dt>
+        <dd><Clock /></dd>
+      </div>
+
+      <!--
+        Two more slots the reference layout leaves room for (a status
+        line and a "site meta" readout, e.g. last updated / build info).
+        Add them the same way once the copy is decided:
+
+        <div class="stat">
+          <dt>Status</dt>
+          <dd>Open to new work</dd>
+        </div>
+        <div class="stat">
+          <dt>Updated</dt>
+          <dd>Aug 2026</dd>
+        </div>
+      -->
+    </dl>
+
     <NavBar />
-
-    <a class="wordmark">www.marcelrojas.net</a>
-
-    <div class="gmt">
-      <Clock />
-    </div>
   </div>
 </header>
 
@@ -24,23 +47,21 @@ import NavBar from '@components/structure/NavBar.astro';
       padding-right: calc(var(--spacing-sair) + 0px);
       user-select: none;
       background-color: var(--sk-color-yellow-digital);
-  
+
       & > div.content {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-        justify-items: stretch;
-        align-items: stretch;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
         justify-content: space-between;
-        grid-template-areas: "a a" "b c";
+        column-gap: 32px;
+        row-gap: 8px;
         padding-inline: 40px;
-        height: 48px;
+        padding-block: 12px;
+        min-height: 48px;
 
         & > a.wordmark {
-          grid-area: a;
-          width: stretch;
           display: inline-flex;
-          align-self: center;
+          align-items: center;
           font-family: var(--font-family-mono);
           font-feature-settings: "zero", "tnum";
           font-variant-numeric: tabular-nums;
@@ -52,13 +73,56 @@ import NavBar from '@components/structure/NavBar.astro';
           white-space: pre;
         }
 
-        & > div.gmt {
-          grid-area: b;
+        & > dl.stats {
           display: flex;
+          flex-wrap: wrap;
           align-items: center;
-          justify-content: flex-start;
-          height: stretch;
-          width: stretch;
+          column-gap: 24px;
+          row-gap: 4px;
+          margin: 0;
+          margin-inline-end: auto;
+
+          & > div.stat {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            font-family: var(--font-family-mono);
+            font-size: var(--font-size-12);
+            letter-spacing: var(--font-tracking-wide);
+            line-height: var(--font-leading-normal);
+            text-transform: uppercase;
+            white-space: pre;
+
+            & > dt {
+              opacity: 0.65;
+              font-weight: var(--font-weight-regular);
+            }
+
+            & > dd {
+              margin: 0;
+              font-weight: var(--font-weight-semibold);
+              font-variant-numeric: tabular-nums;
+            }
+          }
+        }
+      }
+
+      @media screen and (width <= 860px) {
+        & > div.content > dl.stats > div.stat:first-child {
+          display: none;
+        }
+      }
+
+      @media screen and (width <= 560px) {
+        & > div.content {
+          justify-content: center;
+
+          & > dl.stats {
+            order: 3;
+            width: 100%;
+            justify-content: center;
+            margin-inline-end: 0;
+          }
         }
       }
     }
