@@ -40,6 +40,7 @@ export const REFERRAL_AMAZON_AFFILIATE = 'https://amazon.com/marcelrojas';
 
 export const EMAIL = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20=';
 export const PHONE_NUMBER = '+58412';
+export const LOCATION = 'Anzoátegui, Venezuela';
 
 export const COPYRIGHT_NAME = 'Marcel Rojas';
 export const COPYRIGHT_YEAR = new Date().getFullYear();
