@@ -20,10 +20,10 @@
       outline: none;
     }
 
-    &:focus, &:focus-visible {
+    &:is(:focus, :focus-visible) {
       width: auto;
       height: auto;
-      margin: 0;
+      margin: unset;
       overflow: visible;
       clip: auto;
       clip-path: none;
@@ -36,12 +36,16 @@
 
       /* Visual styles */
       padding: 0.35em 0.45em;
-      background-color: #fff;
-      color: #0b0c0c;
-      font-weight: var(--font-weight-medium);
-      text-decoration: none;
+      background-color: var(--);
       outline: 3px solid #0b0c0c;
       outline-offset: 2px;
+
+      & > a {
+        font-weight: var(--font-weight-medium);
+        text-transform: uppercase;
+        text-decoration: none;
+        color: var(--sk-color-yellow-digital);
+      }
     }
   }
 </style>

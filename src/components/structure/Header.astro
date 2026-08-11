@@ -5,20 +5,13 @@ import NavBar from '@components/structure/NavBar.astro';
 
 <header id="header">
   <div class="content">
-    <span class="wordmark">
-      <span>M</span>
-      <span>a</span>
-      <span>rc</span>
-      <span>el</span>
-      <span>Ro</span>
-      <span>jas</span>
-    </span>
+    <NavBar />
+
+    <a class="wordmark">www.marcelrojas.net</a>
 
     <div class="gmt">
       <Clock />
     </div>
-
-    <NavBar />
   </div>
 </header>
 
@@ -30,24 +23,29 @@ import NavBar from '@components/structure/NavBar.astro';
       padding-left: calc(var(--spacing-sail) + 0px);
       padding-right: calc(var(--spacing-sair) + 0px);
       user-select: none;
+      background-color: var(--sk-color-yellow-digital);
   
       & > div.content {
-        display: flex;
-        align-items: self-start;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        justify-items: stretch;
+        align-items: stretch;
         justify-content: space-between;
+        grid-template-areas: "a a" "b c";
         padding-inline: 40px;
         height: 48px;
 
-        span.wordmark {
+        & > a.wordmark {
+          grid-area: a;
           width: stretch;
           display: inline-flex;
-          justify-content: space-between;
           align-self: center;
           font-family: var(--font-family-mono);
           font-feature-settings: "zero", "tnum";
           font-variant-numeric: tabular-nums;
           font-size: var(--font-size-12);
-          font-weight: var(--font-weight-regular);
+          font-weight: var(--font-weight-semibold);
           letter-spacing: var(--font-tracking-wide);
           line-height: var(--font-leading-normal);
           text-transform: uppercase;
@@ -55,12 +53,12 @@ import NavBar from '@components/structure/NavBar.astro';
         }
 
         & > div.gmt {
+          grid-area: b;
           display: flex;
           align-items: center;
           justify-content: flex-start;
           height: stretch;
           width: stretch;
-          padding-left: 16px;
         }
       }
     }
