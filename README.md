@@ -49,6 +49,16 @@ marcelrojas/www
 │   ├── layouts/              # Master page templates (Main Layout, BlogPost, Error)
 │   ├── lib/                  # Isolated JS/TS utilities and functions
 │   ├── pages/                # File-based routing (Static pages, RSS, 404)
+│   │   ├── index.astro                  <- marcelrojas.net and www.marcelrojas.net
+│   │   ├── about.astro
+│   │   ├── subdomains/       # 
+│   │   │   ├── links/
+│   │   │   │   ├── index.astro          <- links.marcelrojas.net/
+│   │   │   │   └── [slug].astro         <- links.marcelrojas.net/:slug
+│   │   │   └── music/
+│   │   │       ├── index.astro          <- music.marcelrojas.net/
+│   │   │       └── [slug].astro         <- music.marcelrojas.net/:slug
+|   |   └── 404.astro
 │   ├── scripts/              # Client-side logic (JSON-LD, Standby, etc.)
 │   ├── styles/               # CSS Design System
 │   │   ├── global.css        # Resets and global utilities

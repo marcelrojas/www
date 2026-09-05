@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import Head from '@components/structure/Head.astro';
 import SkipLinks from '@components/structure/SkipLinks.astro';
 import Header from '@components/structure/Header.astro';
+import ArticleFooter from '@components/structure/ArticleFooter';
 import Footer from '@components/structure/Footer.astro';
 import FormattedDate from '@components/FormattedDate.astro';
 import { Image } from 'astro:assets';
@@ -73,48 +74,250 @@ const { title, description, lang = 'en', pubDate, updatedDate, heroImage } = Ast
       width: calc(100% - 2em);
       max-width: 100%
     }
+
     .hero-media {
       width: 100%;
+
       & img {
         display: block
       }
     }
+
     .prose {
       width: 720px;
       max-width: calc(100% - 2em);
       margin: auto;
       padding: 1em
     }
+
     .header {
       margin-bottom: 1em;
       padding: 1em 0;
       text-align: center;
       line-height: 1
     }
+
     .date {
       margin-bottom: 0.5em
     }
+
     .last-updated {
       font-style: italic
     }
+
     p {
       margin-bottom: 1em
     }
+
     .prose p {
       margin-bottom: 2em
     }
   }
+
   section {
     page-break-after: always;
     break-after: page
   }
+
   @page {
     size: landscape;
     margin: 2cm
   }
+
   @media print {
     button {
       display: none
+    }
+  }
+</style>
+
+
+<article>
+  <header class="naming-structure">
+    <span class="topic-tag">Askul</span>
+    <h1 class="title">{title}</h1>
+    <p class="title-ja" lang="ja">
+      {nameJa}{attributeJa && <span class="attribute">・{attributeJa}</span>}
+    </p>
+    <div class="spec-inline" lang="ja">
+      <span class="attribute-spec">{specs.packaging}</span>
+      <span class="measurements">{specs.units}・{specs.volume}</span>
+    </div>
+  </header>
+
+  <section class="info-block">
+    <div class="block-row id-row">
+      <span class="article-code" aria-label={`Código de artículo: ${articleNumber}`}>{articleNumber}</span>
+      <dl class="meta-data">
+        <dt class="sr-only">Cantidad y Descripción</dt>
+        <dd class="meta-quantity"></dd>
+        <dd class="meta-desc"></dd>
+      </dl>
+    </div>
+
+    <div class="block-row pictogram-row" role="group" aria-label="Símbolos de manejo y especificación">
+      <div class="pictogram-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+        </svg>
+      </div>
+
+      <div class="pictogram-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <polyline points="18 15 12 9 6 15"/>
+          <line x1="12" y1="9" x2="12" y2="21"/>
+        </svg>
+      </div>
+
+      <div class="pictogram-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+      </div>
+
+      <div class="pictogram-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
+        </svg>
+      </div>
+    </div>
+
+    <ArticleFooter />
+  </section>
+</article>
+
+<style>
+  @layer components {
+    article {
+      display: grid;
+      gap: 2.5rem;
+      max-inline-size: 720px;
+      padding: 2rem;
+      background-color: var(--color-canvas);
+      color: var(--color-surface);
+      letter-spacing: var(--type-tracking);
+      line-height: var(--type-leading);
+      font-weight: var(--type-weight);
+    }
+
+    /* Tipografía Estructurada (Naming Structure) */
+    .naming-structure {
+      display: grid;
+      gap: 0.5rem;
+      text-align: start;
+
+      .brand-tag {
+        font-size: var(--scale-3);
+        text-transform: capitalize;
+      }
+
+      .title-en {
+        font-size: clamp(var(--scale-3), 5vw, var(--scale-4));
+        text-wrap: balance;
+      }
+
+      .title-ja, .spec-inline {
+        font-family: var(--font-cjk);
+        /* Reducción proporcional óptica del 85% para caracteres japoneses */
+        font-size: calc(var(--scale-3) * 0.85);
+      }
+
+      .spec-inline {
+        font-size: calc(var(--scale-3) * 0.95);
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+    }
+
+    /* Bloque de Información Cuadriculado (Information Block Structure) */
+    .info-block {
+      border: var(--rule-solid);
+      display: grid;
+      grid-template-rows: auto auto auto;
+
+      .block-row {
+        display: grid;
+        border-block-end: var(--rule-solid);
+      }
+
+      .id-row {
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        gap: 1.5rem;
+
+        .article-code {
+          font-size: var(--scale-3);
+          font-variant-numeric: tabular-nums;
+        }
+
+        .meta-data {
+          font-size: var(--scale-1);
+          text-align: start;
+          text-transform: uppercase;
+        }
+      }
+
+      .pictogram-row {
+        grid-template-columns: repeat(4, 1fr);
+
+        .pictogram-cell {
+          padding: 0.75rem;
+          display: grid;
+          place-items: center;
+          border-inline-end: var(--rule-solid);
+
+          &:last-child {
+            border-inline-end: none;
+          }
+
+          svg {
+            inline-size: 2rem;
+            block-size: 2rem;
+          }
+        }
+      }
+
+      .barcode-area {
+        padding: 0.75rem 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+
+        .barcode-graphic {
+          block-size: 2rem;
+          background: repeating-linear-gradient(
+            to right,
+            var(--color-surface) 0px,
+            var(--color-surface) 2px,
+            transparent 2px,
+            transparent 4px,
+            var(--color-surface) 4px,
+            var(--color-surface) 7px,
+            transparent 7px,
+            transparent 9px
+          );
+        }
+
+        .barcode-value {
+          font-size: var(--scale-1);
+          font-variant-numeric: tabular-nums;
+          letter-spacing: 0.05em;
+        }
+      }
+    }
+
+    .sr-only {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
   }
 </style>

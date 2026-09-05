@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-@layer reset, utility, base, layout, component, page, motion, print;
-
 @layer reset {
   *, *:is(::before, ::after, ::backdrop) {
     box-sizing: border-box;
@@ -15,7 +13,7 @@
   }
 }
 
-@layer base {
+@layer layout {
   :host, html, body, div, table, ul, ol, form, input, select, textarea, p, span, svg, img {
     box-sizing: content-box;
     font-kerning: auto;
