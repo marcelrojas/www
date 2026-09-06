@@ -43,6 +43,8 @@ marcelrojas/www
 │   │   ├── decorators/       # Purely visual components (Grain, Halftone, Clock)
 │   │   └── structure/        # Structural components (Header, Footer, Head, NavBar)
 │   ├── content/              # Content collections (Markdown / MDX)
+│   │   ├── en/               # 
+│   │   └── es/               # 
 │   │   ├── showcase/         # Portfolio and work entries
 │   │   └── weblog/           # Blog articles
 │   ├── data/                 # Pure JSON for static data

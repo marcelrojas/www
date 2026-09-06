@@ -16,8 +16,6 @@ export const SOCIAL_ARENA = 'https://www.are.na/marcel-rojas/channels';
 export const SOCIAL_TWITCH = 'https://www.twitch.tv/whyismarcel';
 export const SOCIAL_TIKTOK = 'https://www.tiktok.com/@whyismarcel';
 export const SOCIAL_CONTRA = 'https://contra.com/marcelrojas';
-export const SOCIAL_UPWORK = 'https://www.upwork.com/';
-export const SOCIAL_FIVERR = 'https://www.fiverr.com/sellers/whyismarcel/';
 export const SOCIAL_APPLE_MUSIC = 'https://music.apple.com/us/profile/marcel-rojas';
 export const SOCIAL_TIDAL = 'https://tidal.com/@marcelrojas';
 export const SOCIAL_SOUNDCLOUD = 'https://soundcloud.com';
@@ -31,15 +29,18 @@ export const SOCIAL_KOFi = 'https://ko-fi.com/marcelrojas';
 
 export const REFERRAL_WARP = 'https://app.warp.dev/referral/9NPP8M';
 export const REFERRAL_CAL = 'https://refer.cal.com/marcelrojas';
-export const REFERRAL_FIVERR = 'https://www.fiverr.com/pe/YR1NmPq';
 export const REFERRAL_TALLY = 'https://tally.cello.so/agmjIvCHioz';
 export const REFERRAL_TYPEFORM = 'https://typeform.cello.so/xpN7nEkElze';
 export const REFERRAL_RAYCAST = 'https://www.raycast.com/marcelrojas/invite';
 export const REFERRAL_AIRTM = 'https://app.airtm-2.com/ivt/marcelrojas';
 export const REFERRAL_AMAZON_AFFILIATE = 'https://amazon.com/marcelrojas';
+export const REFERRAL_OKX = 'https://okx.com/join/58598721';
+export const REFERRAL_BINANCE = 'https://www.binance.com/activity/referral-entry/CPA?ref=CPA_00TB448YHP';
+export const REFERRAL_BYBIT = 'https://www.bybit.com/invite?ref=WGA6A03&medium=referral&utm_campaign=evergreen&share_to=link';
+export const REFERRAL_ = '';
 
 export const EMAIL = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20=';
-export const PHONE_NUMBER = '+58412';
+export const PHONE_NUMBER = '+584120107800'
 export const LOCATION = 'Anzoátegui, Venezuela';
 
 export const COPYRIGHT_NAME = 'Marcel Rojas';
