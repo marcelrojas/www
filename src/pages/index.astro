@@ -3,15 +3,16 @@ import Layout from '@layouts/Layout.astro';
 import PageHeader from '@components/structure/PageHeader.astro';
 import Anchor from '@components/Anchor.astro';
 import Button from '@components/Button.astro';
-import { SITE_TITLE, SITE_DESCRIPTION, SOCIAL_LINKEDIN } from '@src/types/consts';
+import { SITE_TITLE, SOCIAL_LINKEDIN } from '@src/types/consts';
 
 const {
   title = 'About',
   screen_title = 'About',
+  description = 'An overview of who I am,  my career and technical contributions. I’m a self-taught web and software developer, designer and network engineer from Venezuela.',
 } = Astro.props;
 ---
 
-<Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<Layout title={SITE_TITLE} description={description}>
   <PageHeader screen_title={screen_title} />
 
   <section class="intro-section">

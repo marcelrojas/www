@@ -2,19 +2,19 @@
 import type { HTMLAttributes } from 'astro/types';
 
 interface Props extends HTMLAttributes<'a'> {
-  variant?: 'gui1' | 'gui2' | 'gui3';
+  href: string;
   action?: 'neutral' | 'cta';
   size?: 'small' | 'medium' | 'large';
-  isActive?: boolean;
 }
 
 const {
   href,
+  target,
+  rel,
+  aria-current,
   class: className,
-  variant,
-  action = 'neutral',
-  size = 'medium',
-  isActive: forceActive,
+  action,
+  size,
   ...props
 } = Astro.props;
 
@@ -36,31 +36,30 @@ if (isCurrentlyActive === undefined && href) {
   isCurrentlyActive = false; 
 }
 
-const isExternal = href?.toString().startsWith('http');
-const target = isExternal ? '_blank' : props.target;
-const rel = isExternal ? 'noopener noreferrer' : props.rel;
+const isHash = href.startsWith("#");
+const isInternal = href.startsWith("/");
+const isExternal = !isHash && !isInternal;
+
+const computedTarget = target ?? (isExternal ? "_blank" : undefined);
+const computedRel = rel ?? (isExternal ? "noopener noreferrer" : undefined);
 
 const classes = [
   className,
   'anchor',
-  variant ? `variant-${variant}` : '',
   `action-${action}`,
   `size-${size}`,
-  isCurrentlyActive ? 'is-active' : ''
 ].filter(Boolean).join(' ');
 ---
 
 <a
-  {...props}
   href={href}
+  target={computedTarget}
+  rel={computedRel}
+  aria-current={isCurrent ? 'page' : undefined}
   class={classes}
-  target={target}
-  rel={rel}
-  aria-current={isCurrentlyActive ? 'page' : undefined}
   data-astro-prefetch={isExternal ? 'false' : 'viewport'}
->
-  <slot />
-</a>
+  {...props}
+><slot /></a>
 
 <style is:global>
   @layer component {
@@ -89,19 +88,8 @@ const classes = [
 
       }
 
-      &.variant-gui1 {
-        font-weight: var(--font-weight-regular);
-        text-transform: uppercase;
-      }
+      &[aria-pressed="true"] {
 
-      &.variant-gui2 {
-        font-weight: var(--font-weight-medium);
-        text-transform: uppercase;
-      }
-
-      &.variant-gui3 {
-        font-weight: var(--font-weight-medium);
-        text-transform: lowercase;
       }
 
       &.action-neutral {
@@ -165,14 +153,6 @@ const classes = [
         & svg {
           width: 32px;
           height: 32px;
-        }
-      }
-
-      &[role="button"] {
-        border-radius: 32px;
-
-        &[aria-pressed="true"] {
-
         }
       }
     }

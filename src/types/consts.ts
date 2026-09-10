@@ -1,8 +1,7 @@
 export const SITE_TITLE = 'Marcel Rojas';
-export const SITE_DESCRIPTION = 'I’m a self-taught front-end developer and designer from Venezuela, who likes building simple, practical products. I focus on what works, stay consistent, and stick to the plan.';
 export const SITE_LOCALE = 'en-US';
-export const SITE_AUTHOR = 'Marcel Rojas';
-export const SITE_KEYWORDS = ['Marcel Rojas', 'Marcel', 'Rojas', 'marcelrojas', 'marcel rojas', 'front-end developer', 'designer', 'Venezuela'];
+export const SITE_AUTHOR = 'Juan Marcel Rojas Hernández';
+export const SITE_KEYWORDS = ['Marcel Rojas', 'marcelrojas', 'marcel rojas', 'electronics engineer', 'hartware technician', 'network engineer', 'software developer', 'web developer', 'back-end developer', 'front-end developer', 'designer', 'Venezuela'];
 
 export const SOCIAL_X = 'https://x.com/whyismarcel';
 export const SOCIAL_INSTAGRAM = 'https://www.instagram.com/whyismarcel/';

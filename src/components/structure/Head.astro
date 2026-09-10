@@ -1,18 +1,20 @@
 ---
 import { ClientRouter } from 'astro:transitions';
-import { SITE_TITLE } from '@src/types/consts';
+import { SITE_TITLE, SITE_AUTHOR, SITE_KEYWORDS } from '@src/types/consts';
+
 import '@styles/variables.css';
 import '@styles/global.css';
 
 // Tipado más robusto para imágenes (soporta importación local o URL externa)
 import type { ImageMetadata } from 'astro';
+import Analytics from '@components/Analytics.astro'
 import Schema from '@components/Schema.astro';
 
 interface Props {
   title: string;
   description: string;
   image?: ImageMetadata | string;
-  lang?: string;
+  lang: string;
 }
 
 const FallbackImage = '/og.png';
@@ -26,7 +28,6 @@ const {
 const pathname = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/$/, '');
 const canonicalURL = new URL(pathname, Astro.site);
 
-// Lógica para la imagen Open Graph. Si es una imagen local (ImageMetadata), usar .src; si es string, usarlo directo.
 const imageSrc = typeof image === 'string' ? image : image.src;
 const ogImageURL = new URL(imageSrc, Astro.site);
 ---
@@ -38,7 +39,7 @@ const ogImageURL = new URL(imageSrc, Astro.site);
   <meta name="title" content={title} />
   <meta name="description" content={description} />
   <meta name="generator" content={Astro.generator} />
-  <meta name="author" content="Marcel Rojas" />
+  <meta name="author" content={SITE_AUTHOR} />
 
   <meta name="keywords" content="marcelrojas, whyismarcel, Marcel Rojas, Juan Marcel Rojas Hernández, web developer, designer, maketing specialist, software engineering, Venezuela" />
 
@@ -79,20 +80,7 @@ const ogImageURL = new URL(imageSrc, Astro.site);
   <meta property="twitter:description" content={description} />
   <meta property="twitter:image" content={ogImageURL} />
 
-  <script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-42TF8GHE8N"></script>
-  <script type="text/partytown">
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-42TF8GHE8N');
-
-    // View Transitions integration
-    document.addEventListener('astro:page-load', () => {
-      gtag('config', 'G-42TF8GHE8N', {
-        page_path: window.location.pathname,
-      });
-    });
-  </script>
+  <Analytics />
 
   <script defer src="/script.js"></script>
   <ClientRouter fallback="animate" />
