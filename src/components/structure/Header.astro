@@ -1,4 +1,5 @@
 ---
+import Anchor from '@components/Anchor.astro';
 import Clock from '@components/decorators/Clock.astro';
 import NavBar from '@components/structure/NavBar.astro';
 import { LOCATION } from '@src/types/consts';
@@ -6,7 +7,7 @@ import { LOCATION } from '@src/types/consts';
 
 <header id="header">
   <div class="content">
-    <a class="wordmark" href="/">www.marcelrojas.net</a>
+    <Anchor class="wordmark" href="/">www.marcelrojas.net</Anchor>
 
     <dl class="stats" aria-label="Status">
       <div class="stat">

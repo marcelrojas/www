@@ -15,16 +15,16 @@ const { encEmail = EMAIL } = Astro.props;
       <Button id="clipboard-clipper" class="enc-email" type="button" data-hex={encEmail} aria-label="Copy email address">Copy my email</Button>
       <ul>
         <li>
-          <a href={SOCIAL_X} target="_blank" rel="noopener noreferrer" aria-label={`Visit my X profile`}>X</a>
+          <Anchor href={SOCIAL_X} target="_blank" rel="noopener noreferrer" aria-label={`Visit my X profile`}>X</Anchor>
         </li>
         <li>
-          <a href={SOCIAL_INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label={`Visit my Instagram profile`}>Instagram</a>
+          <Anchor href={SOCIAL_INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label={`Visit my Instagram profile`}>Instagram</Anchor>
         </li>
         <li>
-          <a href={SOCIAL_YOUTUBE} target="_blank" rel="noopener noreferrer" aria-label={`Visit my YouTube profile`}>YouTube</a>
+          <Anchor href={SOCIAL_YOUTUBE} target="_blank" rel="noopener noreferrer" aria-label={`Visit my YouTube profile`}>YouTube</Anchor>
         </li>
         <li>
-          <a href={SOCIAL_GITHUB} target="_blank" rel="noopener noreferrer" aria-label={`Visit my GitHub profile`}>GitHub</a>
+          <Anchor href={SOCIAL_GITHUB} target="_blank" rel="noopener noreferrer" aria-label={`Visit my GitHub profile`}>GitHub</Anchor>
         </li>
       </ul>
     </nav>

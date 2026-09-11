@@ -22,9 +22,12 @@ const isHash = href.startsWith('#');
 const isInternal = href.startsWith('/');
 const isExternal = href.startsWith('http://') || href.startsWith('https://') || href.startsWith('//');
 
+const normalize = (path: string) => (path === '/' ? path : path.replace(/\/$/, ''));
+const isCurrentPage = isInternal && normalize(Astro.url.pathname) === normalize(href.split(/[?#]/)[0]);
+
 const computedTarget = target ?? (isExternal ? '_blank' : undefined);
 const computedRel = rel ?? (isExternal ? 'noopener noreferrer' : undefined);
-const computedAriaCurrent = ariaCurrentProp ?? (isCurrentlyActive ? 'page' : undefined);
+const computedAriaCurrent = ariaCurrentProp ?? (isCurrentPage ? 'page' : undefined);
 const prefetch = !isExternal && !isHash ? 'viewport' : undefined;
 
 const classes = [
