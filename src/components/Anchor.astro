@@ -11,51 +11,52 @@ const {
   href,
   target,
   rel,
-  'aria-current',
+  'aria-current': ariaCurrentProp,
   class: className,
   action,
   size,
   ...props
 } = Astro.props;
 
+const isHash = href.startsWith('#');
+const isInternal = href.startsWith('/');
+const isExternal = href.startsWith('http://') || ref.startsWith('https://') || ref.startsWith('//');;
+
 let isCurrentlyActive = forceActive;
 
-if (isCurrentlyActive === undefined && href) {
+if (isCurrentlyActive === undefined && href && !isHash && !isExternal) {
   try {
-    const targetUrl = new URL(href.toString(), Astro.url);
+    const targetUrl = new URL(href, Astro.url);
     const targetPath = targetUrl.pathname.replace(/\/$/, '');
     const currentPath = Astro.url.pathname.replace(/\/$/, '');
 
-    isCurrentlyActive = 
-      targetPath === currentPath || 
-      (targetPath !== '' && currentPath.startsWith(targetPath + '/'));
-  } catch (e) {
+    isCurrentlyActive =
+      targetPath === currentPath ||
+      (targetPath !== '' && currentPath.startsWith(`${targetPath}/`));
+  } catch {
     isCurrentlyActive = false;
   }
 } else if (isCurrentlyActive === undefined) {
-  isCurrentlyActive = false; 
+  isCurrentlyActive = false;
 }
-
-const isHash = href.startsWith('#');
-const isInternal = href.startsWith('/');
-const isExternal = !isHash && !isInternal;
 
 const computedTarget = target ?? (isExternal ? '_blank' : undefined);
 const computedRel = rel ?? (isExternal ? 'noopener noreferrer' : undefined);
+const computedAriaCurrent = ariaCurrentProp ?? (isCurrentlyActive ? 'page' : undefined);
+const prefetch = !isExternal && !isHash ? 'viewport' : undefined;
 
 const classes = [
   className,
-  'anchor',
   `action-${action}`,
   `size-${size}`,
-].filter(Boolean).join(' ');
+].join(' ');
 ---
 
 <a
   href={href}
   target={computedTarget}
   rel={computedRel}
-  aria-current={isCurrent ? 'page' : undefined}
+  aria-current={computedAriaCurrent}
   class={classes}
   data-astro-prefetch={isExternal ? 'false' : 'viewport'}
   {...props}
@@ -63,7 +64,7 @@ const classes = [
 
 <style is:global>
   @layer component {
-    :is(a, a[role="button"]).anchor {
+    :is(a, a[role="button"]) {
       display: inline-flex;
       flex-direction: row;
       align-items: center;

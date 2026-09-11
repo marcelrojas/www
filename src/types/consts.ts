@@ -25,6 +25,7 @@ export const SOCIAL_BANDCAMP_ARTIST = 'https://marcelrojas.bandcamp.com/';
 export const SOCIAL_DISCOGS = 'https://www.discogs.com/user/whyismarcel';
 export const SOCIAL_GOODREADS = 'https://www.goodreads.com/user/show/161191105-marcel-rojas';
 export const SOCIAL_KOFi = 'https://ko-fi.com/marcelrojas';
+export const SOCIAL_CREDLY = 'https://www.credly.com/users/marcelrojas';
 
 export const REFERRAL_WARP = 'https://app.warp.dev/referral/9NPP8M';
 export const REFERRAL_CAL = 'https://refer.cal.com/marcelrojas';
