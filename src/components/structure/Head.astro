@@ -7,7 +7,6 @@ import '@styles/global.css';
 
 // Tipado más robusto para imágenes (soporta importación local o URL externa)
 import type { ImageMetadata } from 'astro';
-import Analytics from '@components/Analytics.astro';
 import Schema from '@components/Schema.astro';
 
 interface Props {
@@ -80,7 +79,19 @@ const ogImageURL = new URL(imageSrc, Astro.site);
   <meta property="twitter:description" content={description} />
   <meta property="twitter:image" content={ogImageURL} />
 
-  <Analytics />
+  <script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-42TF8GHE8N"></script>
+  <script type="text/partytown">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-42TF8GHE8N');
+
+  document.addEventListener('astro:page-load', () => {
+    gtag('config', 'G-42TF8GHE8N', {
+      page_path: window.location.pathname,
+    });
+  });
+  </script>
 
   <script defer src="/script.js"></script>
   <ClientRouter fallback="animate" />
