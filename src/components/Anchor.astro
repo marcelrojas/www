@@ -20,7 +20,7 @@ const {
 
 const isHash = href.startsWith('#');
 const isInternal = href.startsWith('/');
-const isExternal = href.startsWith('http://') || ref.startsWith('https://') || ref.startsWith('//');;
+const isExternal = href.startsWith('http://') || href.startsWith('https://') || href.startsWith('//');
 
 let isCurrentlyActive = forceActive;
 
