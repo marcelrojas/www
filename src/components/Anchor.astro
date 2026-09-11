@@ -5,7 +5,6 @@ interface Props extends HTMLAttributes<'a'> {
   href: string;
   action?: 'neutral' | 'cta';
   size?: 'small' | 'medium' | 'large';
-  forceActive?: boolean;
 }
 
 const {
@@ -22,24 +21,6 @@ const {
 const isHash = href.startsWith('#');
 const isInternal = href.startsWith('/');
 const isExternal = href.startsWith('http://') || href.startsWith('https://') || href.startsWith('//');
-
-let isCurrentlyActive = forceActive;
-
-if (isCurrentlyActive === undefined && href && !isHash && !isExternal) {
-  try {
-    const targetUrl = new URL(href, Astro.url);
-    const targetPath = targetUrl.pathname.replace(/\/$/, '');
-    const currentPath = Astro.url.pathname.replace(/\/$/, '');
-
-    isCurrentlyActive =
-      targetPath === currentPath ||
-      (targetPath !== '' && currentPath.startsWith(`${targetPath}/`));
-  } catch {
-    isCurrentlyActive = false;
-  }
-} else if (isCurrentlyActive === undefined) {
-  isCurrentlyActive = false;
-}
 
 const computedTarget = target ?? (isExternal ? '_blank' : undefined);
 const computedRel = rel ?? (isExternal ? 'noopener noreferrer' : undefined);
