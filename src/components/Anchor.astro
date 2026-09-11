@@ -11,7 +11,7 @@ const {
   href,
   target,
   rel,
-  aria-current,
+  'aria-current',
   class: className,
   action,
   size,
@@ -36,12 +36,12 @@ if (isCurrentlyActive === undefined && href) {
   isCurrentlyActive = false; 
 }
 
-const isHash = href.startsWith("#");
-const isInternal = href.startsWith("/");
+const isHash = href.startsWith('#');
+const isInternal = href.startsWith('/');
 const isExternal = !isHash && !isInternal;
 
-const computedTarget = target ?? (isExternal ? "_blank" : undefined);
-const computedRel = rel ?? (isExternal ? "noopener noreferrer" : undefined);
+const computedTarget = target ?? (isExternal ? '_blank' : undefined);
+const computedRel = rel ?? (isExternal ? 'noopener noreferrer' : undefined);
 
 const classes = [
   className,
