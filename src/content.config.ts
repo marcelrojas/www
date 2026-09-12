@@ -10,6 +10,13 @@ const weblog = defineCollection({
     updatedDate: z.coerce.date().optional(),
     heroImage: image().optional(),
     category: z.string().optional(),
+    lang: z.enum(['en', 'es']).default('en'),
+    editions: z.array(z.object({
+      lang: z.string(),
+      title: z.string(),
+      url: z.string(),
+      translatedBy: z.string().optional(),
+    })).optional(),
   }),
 });
 

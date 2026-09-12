@@ -3,6 +3,14 @@ title: 'How to optimize Astro for technical SEO'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Dec 20 2025'
 heroImage: '../../assets/blog-placeholder-4.jpg'
+editions:
+  - lang: es
+    title: "Cómo optimicé Astro para SEO técnico"
+    url: "/es/resources/how-to-optimize-astro-for-technical-seo"
+  - lang: ja
+    title: "Astroの技術的SEO最適化"
+    url: "https://alguien-mas.example/traduccion-japonesa"
+    translatedBy: "Nombre del traductor"
 ---
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
 

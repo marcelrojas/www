@@ -58,6 +58,16 @@ const { title, description, lang = 'en', pubDate, updatedDate, heroImage } = Ast
             </div>
             <h1>{title}</h1>
             <hr />
+            {editions.length > 0 && (
+              <ul class="editions" aria-label="Available in other languages">
+                {editions.map((edition) => (
+                  <li>
+                    <Anchor href={edition.url} size="small">{edition.lang.toUpperCase()} — {edition.title}</Anchor>
+                    {edition.translatedBy && <span class="translator">· trad. {edition.translatedBy}</span>}
+                  </li>
+                ))}
+              </ul>
+            )}
           </header>
           <slot />
         </div>
@@ -132,61 +142,6 @@ const { title, description, lang = 'en', pubDate, updatedDate, heroImage } = Ast
     }
   }
 </style>
-
-
-<article>
-  <header class="naming-structure">
-    <span class="topic-tag">Askul</span>
-    <h1 class="title">{title}</h1>
-    <p class="title-ja" lang="ja">
-      {nameJa}{attributeJa && <span class="attribute">・{attributeJa}</span>}
-    </p>
-    <div class="spec-inline" lang="ja">
-      <span class="attribute-spec">{specs.packaging}</span>
-      <span class="measurements">{specs.units}・{specs.volume}</span>
-    </div>
-  </header>
-
-  <section class="info-block">
-    <div class="block-row id-row">
-      <span class="article-code" aria-label={`Código de artículo: ${articleNumber}`}>{articleNumber}</span>
-      <dl class="meta-data">
-        <dt class="sr-only">Cantidad y Descripción</dt>
-        <dd class="meta-quantity"></dd>
-        <dd class="meta-desc"></dd>
-      </dl>
-    </div>
-
-    <div class="block-row pictogram-row" role="group" aria-label="Símbolos de manejo y especificación">
-      <div class="pictogram-cell">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-        </svg>
-      </div>
-
-      <div class="pictogram-cell">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <polyline points="18 15 12 9 6 15"/>
-          <line x1="12" y1="9" x2="12" y2="21"/>
-        </svg>
-      </div>
-
-      <div class="pictogram-cell">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-        </svg>
-      </div>
-
-      <div class="pictogram-cell">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
-        </svg>
-      </div>
-    </div>
-
-    <ArticleFooter />
-  </section>
-</article>
 
 <style>
   @layer components {
