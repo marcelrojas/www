@@ -30,7 +30,7 @@ export interface TransitionDirectionalAnimations {
 
 type Props = CollectionEntry<'weblog'>['data'];
 
-const { title, description, lang = 'en', pubDate, updatedDate, heroImage, editions, } = Astro.props;
+const { title, description, lang = 'en', pubDate, updatedDate, heroImage, editions = [] } = Astro.props;
 ---
 
 <!doctype html>
@@ -72,10 +72,11 @@ const { title, description, lang = 'en', pubDate, updatedDate, heroImage, editio
           </header>
           <slot />
         </div>
+        <ArticleFooter />
       </article>
     </main>
 
-    <Footer />
+    
   </body>
 </html>
 
@@ -125,6 +126,34 @@ const { title, description, lang = 'en', pubDate, updatedDate, heroImage, editio
     }
   }
 
+  .editions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      column-gap: 1.5em;
+      row-gap: 0.5em;
+      margin-block-start: 0.5em;
+      padding: 0;
+      list-style: none;
+      font-family: var(--font-family-mono);
+      font-size: var(--font-size-12);
+      letter-spacing: var(--font-tracking-wide);
+      text-transform: uppercase;
+    }
+
+    .editions li {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+    }
+
+    .editions .translator {
+      text-transform: none;
+      letter-spacing: normal;
+      opacity: 0.6;
+    }
+  }
+
   section {
     page-break-after: always;
     break-after: page
@@ -140,9 +169,10 @@ const { title, description, lang = 'en', pubDate, updatedDate, heroImage, editio
       display: none
     }
   }
-</style>
 
-<style>
+
+
+
   @layer components {
     article {
       display: grid;
