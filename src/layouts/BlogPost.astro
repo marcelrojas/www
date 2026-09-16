@@ -76,7 +76,7 @@ const { title, description, lang = 'en', pubDate, updatedDate, heroImage, editio
       </article>
     </main>
 
-    
+    <Footer />
   </body>
 </html>
 
@@ -124,9 +124,8 @@ const { title, description, lang = 'en', pubDate, updatedDate, heroImage, editio
     .prose p {
       margin-bottom: 2em
     }
-  }
 
-  .editions {
+    .editions {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -139,18 +138,18 @@ const { title, description, lang = 'en', pubDate, updatedDate, heroImage, editio
       font-size: var(--font-size-12);
       letter-spacing: var(--font-tracking-wide);
       text-transform: uppercase;
-    }
+    
+      & li {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5em;
+      }
 
-    .editions li {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5em;
-    }
-
-    .editions .translator {
-      text-transform: none;
-      letter-spacing: normal;
-      opacity: 0.6;
+      & .translator {
+        text-transform: none;
+        letter-spacing: normal;
+        opacity: 0.6;
+      }
     }
   }
 
