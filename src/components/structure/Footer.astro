@@ -1,5 +1,4 @@
 ---
-import Grain from '@components/decorators/Grain.astro';
 import Anchor from '@components/Anchor.astro';
 import Button from '@components/Button.astro';
 import { SOCIAL_X, SOCIAL_INSTAGRAM, SOCIAL_YOUTUBE, SOCIAL_GITHUB, EMAIL, COPYRIGHT_NAME, COPYRIGHT_YEAR } from '@src/types/consts';
@@ -9,7 +8,6 @@ const { encEmail = EMAIL } = Astro.props;
 
 <footer id="footer" aria-label="Site footer" tabindex="-1">
   <div class="content">
-    <Grain />
 
     <nav class="contact" aria-label="Find me on the web">
       <Button id="clipboard-clipper" class="enc-email" type="button" data-hex={encEmail} aria-label="Copy email address">Copy my email</Button>

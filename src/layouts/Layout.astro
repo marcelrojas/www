@@ -3,6 +3,7 @@ import Head from '@components/structure/Head.astro';
 import SkipLinks from '@components/structure/SkipLinks.astro';
 import Header from '@components/structure/Header.astro';
 import Footer from '@components/structure/Footer.astro';
+import Grain from '@components/decorators/Grain.astro';
 
 export interface TransitionAnimation {
   name: string;
@@ -44,5 +45,6 @@ const { title, description, lang = 'en' } = Astro.props;
     </main>
 
     <Footer />
+    <Grain />
   </body>
 </html>
