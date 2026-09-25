@@ -23,7 +23,7 @@
       "@data/*": ["./src/data/*"],
       "@layouts/*": ["./src/layouts/*"],
       "@pages/*": ["./src/pages/*"],
-      "@scripts/*": ["./src/scripts/*"],
+      "@lib/*": ["./src/lib/*"],
       "@styles/*": ["./src/styles/*"]
     }
   }
