@@ -10,7 +10,7 @@ const { encEmail = EMAIL } = Astro.props;
   <div class="content">
 
     <nav class="contact" aria-label="Find me on the web">
-      <Button id="clipboard-clipper" class="enc-email" type="button" data-hex={encEmail} aria-label="Copy email address">Copy my email</Button>
+      <Button id="clipboard-clipper" class="enc-email" type="button" data-enc={encEmail} aria-label="Copy email address">Copy my email</Button>
       <ul>
         <li>
           <Anchor href={SOCIAL_X} target="_blank" rel="noopener noreferrer" aria-label={`Visit my X profile`}>X</Anchor>

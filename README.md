@@ -57,9 +57,9 @@ marcelrojas/www
 │   │   │   ├── links/
 │   │   │   │   ├── index.astro          <- links.marcelrojas.net/
 │   │   │   │   └── [slug].astro         <- links.marcelrojas.net/:slug
-│   │   │   └── music/
-│   │   │       ├── index.astro          <- music.marcelrojas.net/
-│   │   │       └── [slug].astro         <- music.marcelrojas.net/:slug
+│   │   │   └── sound/
+│   │   │       ├── index.astro          <- sound.marcelrojas.net/
+│   │   │       └── [slug].astro         <- sound.marcelrojas.net/:slug
 |   |   └── 404.astro
 │   ├── scripts/              # Client-side logic (JSON-LD, Standby, etc.)
 │   ├── styles/               # CSS Design System
