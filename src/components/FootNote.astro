@@ -1,0 +1,25 @@
+---
+import A from "./A.astro";
+import P from "./P.astro";
+
+interface Props {
+  id: string | number;
+  class?: string;
+}
+
+const { id, class: className } = Astro.props;
+---
+
+<P class={className}>
+  {id}.{" "}
+  <A
+    href={`#s${id}`}
+    id={`f${id}`}
+    role="doc-backlink"
+    aria-label={`Back to reference ${id}`}
+    class=""
+  >
+    ^
+  </A>{" "}
+  <slot />
+</P>

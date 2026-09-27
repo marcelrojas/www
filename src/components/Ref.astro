@@ -1,0 +1,16 @@
+---
+interface Props {
+  id: string | number;
+  class?: string;
+}
+
+const { id, class: className } = Astro.props;
+---
+
+<a
+  href={`#f${id}`}
+  id={`s${id}`}
+  role="doc-noteref"
+  aria-label={`Footnote ${id}`}
+  class:list={[className]}
+>[{id}]</a>
