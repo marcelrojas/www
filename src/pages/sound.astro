@@ -7,7 +7,7 @@ import TableOfContents from '@components/TableOfContents.astro';
 const {
   title = 'Sound',
   screen_title = 'Sound',
-  description = 'Learn how to improve your skills and become who you want to be. Explore my resources for guides, tutorials, and tools to help you succeed.',
+  description = 'Marcel Rojas as a musician and composer — releases, sound work, and where to listen.',
 } = Astro.props;
 ---
 
@@ -15,7 +15,7 @@ const {
 
   <PageHeader screen_title={screen_title} />
 
-  <section class="product-showcase">
+  <section class="showcase">
     <h2>Featured products</h2>
 
     <div class="collection-module">
@@ -50,7 +50,7 @@ const {
 </Layout>
 
 <style is:global>
-  section.product-showcase {
+  section.showcase {
 
     & > .collection-module {
       display: flex;
