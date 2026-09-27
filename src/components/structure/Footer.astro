@@ -13,16 +13,16 @@ const { encEmail = EMAIL } = Astro.props;
       <Button id="clipboard-clipper" class="enc-email" type="button" data-enc={encEmail} aria-label="Copy email address">Copy my email</Button>
       <ul>
         <li>
-          <Anchor href={SOCIAL_X} target="_blank" rel="noopener noreferrer" aria-label={`Visit my X profile`}>X</Anchor>
+          <Anchor href={SOCIAL_X} aria-label={`Visit my X profile`}>X</Anchor>
         </li>
         <li>
-          <Anchor href={SOCIAL_INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label={`Visit my Instagram profile`}>Instagram</Anchor>
+          <Anchor href={SOCIAL_INSTAGRAM} aria-label={`Visit my Instagram profile`}>Instagram</Anchor>
         </li>
         <li>
-          <Anchor href={SOCIAL_YOUTUBE} target="_blank" rel="noopener noreferrer" aria-label={`Visit my YouTube profile`}>YouTube</Anchor>
+          <Anchor href={SOCIAL_YOUTUBE} aria-label={`Visit my YouTube profile`}>YouTube</Anchor>
         </li>
         <li>
-          <Anchor href={SOCIAL_GITHUB} target="_blank" rel="noopener noreferrer" aria-label={`Visit my GitHub profile`}>GitHub</Anchor>
+          <Anchor href={SOCIAL_GITHUB} aria-label={`Visit my GitHub profile`}>GitHub</Anchor>
         </li>
       </ul>
     </nav>
@@ -70,7 +70,7 @@ const { encEmail = EMAIL } = Astro.props;
         & a {
 
           &:hover {
-            opacity: 1;
+            
           }
 
           &:focus-visible {
@@ -126,5 +126,5 @@ const { encEmail = EMAIL } = Astro.props;
 </style>
 
 <script>
-  import "@lib/encEmail.js";
+  import "@lib/encEmail.ts";
 </script>

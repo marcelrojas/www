@@ -52,7 +52,16 @@ function initEncryptedEmail() {
     const email = atob(encoded);
 
     btn.addEventListener('click', async (e) => {
+      try {
+        await navigator.clipboard.writeText(email);
+        btn.setAttribute('aria-label', 'Email copiado');
+      } catch {
+        window.location.href = `mailto:${email}`;
+      }
+
       e.preventDefault();
+
+      
 
       const originalText = btn.textContent;
       btn.textContent = 'Copied!';
