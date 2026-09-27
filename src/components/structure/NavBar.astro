@@ -4,6 +4,7 @@ import Anchor from '@components/Anchor.astro';
 const anchors = [
   { href: "/", text: "About" },
   { href: "/showcase", text: "Showcase" },
+  { href: "/weblog", text: "Weblog" },
   { href: "/resources", text: "Resources" },
 ];
 ---
@@ -29,7 +30,7 @@ const anchors = [
 
       & > ul {
         display: flex;
-        flex-flow: row;
+        flex-flow: column;
         align-items: center;
         height: stretch;
 
