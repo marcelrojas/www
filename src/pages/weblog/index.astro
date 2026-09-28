@@ -2,20 +2,12 @@
 import { getCollection, getEntry } from 'astro:content';
 import { Image } from 'astro:assets';
 import Layout from '@layouts/Layout.astro';
-import PageHeader from '@components/structure/PageHeader.astro';
 import Anchor from '@components/Anchor.astro';
-import FormattedDate from '@components/FormattedDate.astro';
-import Pagination from '@components/Pagination.astro';
-import featured from '@data/featured.json';
-
-const posts = (await getCollection('weblog')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
 
 const {
   title = 'Weblog',
   screen_title = 'Weblog',
-  description = 'houghts on code, design, audio engineering, and everything I\'m passionate about — my own writing, plus features published elsewhere.',
+  description = 'Thoughts on code, design, audio engineering, and everything I\'m passionate about — my own writing, plus features published elsewhere.',
 } = Astro.props;
 ---
 
