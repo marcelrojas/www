@@ -1,0 +1,207 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Anchor from '@components/Anchor.astro';
+import PageHeader from '@components/structure/PageHeader.astro';
+import TableOfContents from '@components/TableOfContents.astro';
+
+const {
+  title = 'Curriculum Vitae',
+  screen_title = 'Curriculum Vitae',
+  description = 'Marcel Rojas as a musician and composer — releases, sound work, and where to listen.',
+} = Astro.props;
+---
+
+<Layout title={title} description={description}>
+
+  <PageHeader screen_title={screen_title} />
+
+  <div class="cv-wrapper">
+
+    <header>
+      <div class="image-box-container">
+        <span class="professional-focus" aria-label="Professional focus"></span>
+        <div class="image-box" aria-label="Profile photo placeholder">
+          <img src="" class="profile-picture" />
+        </div>
+      </div>
+      <h1>Marcel Rojas <svg></svg></h1>
+    </header>
+
+    <main>
+      <div class="left-column">
+        <h2>Experience</h2>
+        <ul class="credit-list">
+          <li class="credit-item">
+            <span class="credit-title">Senior Developer</span>
+            <span class="credit-value">NIGHT CITY CORP.</span>
+          </li>
+          <li class="credit-sub-item">
+            <span class="credit-sub-title">Location:</span><span class="credit-sub-value">ARASAKA TOWER</span>
+            <span class="credit-sub-title">Period:</span><span class="credit-sub-value">JAN 2026 - PRES.</span>
+          </li>
+                    
+          <li class="credit-item">
+            <span class="credit-title">Junior Developer</span>
+            <span class="credit-value">WATSON TECH SOLUTIONS</span>
+          </li>
+          <li class="credit-sub-item">
+            <span class="credit-sub-title">Location:</span><span class="credit-sub-value">WATson DISTRICT</span>
+            <span class="credit-sub-title">Period:</span><span class="credit-sub-value">JUN 2026 - DEC 2026</span>
+          </li>
+                    
+          <li class="credit-item">
+            <span class="credit-title">Administrator Intern</span>
+            <span class="credit-value">PDVSA</span>
+          </li>
+          <li class="credit-sub-item">
+            <span class="credit-sub-title">Period:</span><span class="credit-sub-value">SUMMER 2026</span>
+          </li>
+        </ul>
+
+        <h2>Education</h2>
+        <ul class="credit-list">
+          <li class="credit-item">
+            <span class="credit-title">M.Sc. Cyber-Neural Networks</span>
+            <span class="credit-value">NIGHT CITY INSTITUTE OF TECHNOLOGY</span>
+          </li>
+          <li class="credit-sub-item">
+            <span class="credit-sub-title">Graduation:</span><span class="credit-sub-value">2026</span>
+            <span class="credit-sub-title">Focus:</span><span class="credit-sub-value">AI Ethics & Interface Design</span>
+          </li>
+
+          <li class="credit-item">
+            <span class="credit-title">Técnico Superior Universitario (TSU) en Administración</span>
+            <span class="credit-value">Universidad Politécnica Territorial José Antonio Anzoátegui (UPTJAA)</span>
+          </li>
+          <li class="credit-sub-item">
+            <span class="credit-sub-title">Graduation:</span><span class="credit-sub-value">2026</span>
+          </li>
+        </ul>
+                
+        <h2>Key Skills</h2>
+        <ul class="credit-list">
+          <li class="credit-item">
+            <span class="credit-title">Computer Languages</span>
+            <span class="credit-value">C++, Python, Rust, Bash, Ruby, LUA, JavaScript, CSS, HTML</span>
+          </li>
+          <li class="credit-item">
+            <span class="credit-title">Core Competencies</span>
+            <span class="credit-value">CYBER-DECK ARCHITECTURE & NEURAL INTERFACE OPTIMIZATION, Computer Graphics, UX & UI, SEO & GEO, Music Composition, Technical Writing</span>
+          </li>
+          <li class="credit-item">
+            <span class="credit-title">Tools</span>
+            <span class="credit-value">NANO-CODE DEBUGGER, AI MODEL DEPLOYER, Figma, GIMP</span>
+          </li>
+        </ul>
+      </div>
+
+      <aside class="right-column">
+        <section class="contact-info">
+          <h3 class="sr-only">Contact Information</h3>
+          <address>
+            <dl>
+              <dt>Location:</dt>
+              <dd>Anzoátegui, Venezuela</dd>
+              <dt>E-mail:</dt>
+              <dd><a href="mailto:marcelrojas2k@gmail.com">marcelrojas2k@gmail.com</a></dd>
+              <dt>Work Phone:</dt>
+              <dd><a href="tel:+580107800">0412 0107800</a></dd>
+              <dt></dt>
+              <dd></dd>
+            </dl>
+            <a href="https://marcelrojas.net">marcelrojas.net</a>
+          </address>
+
+          <h3 class="sr-only">Comm Links</h3>
+          <ul class="social-links">
+            <li>
+              <svg width="14" height="14" aria-hidden="true"></svg>
+              <a href="https://www.instagram.com/whyismarcel/" aria-label="Facebook Profile">Instagram.com/whyismarcel</a>
+            </li>
+            <li>
+              <svg width="14" height="14" aria-hidden="true"></svg>
+              <a href="https://x.com/whyismarcel" aria-label="X Profile">X.com/whyismarcel</a>
+            </li>
+            <li>
+              <svg width="14" height="14" aria-hidden="true"></svg>
+              <a href="https://github.com/marcelrojas" aria-label="GitHub Profile">Github.com/marcelrojas</a>
+            </li>
+            <li>
+              <svg width="14" height="14" aria-hidden="true"></svg>
+              <a href="https://www.linkedin.com/in/whyismarcel" aria-label="LinkedIn Profile">Linkedin.com/in/whyismarcel</a>
+            </li>
+          </ul>
+        </section>
+  
+        <section>
+          <h3 class="sr-only">Professional Profile</h3>
+          <p><b>Results-oriented engineer</b> specializing in cyber-neural network integration and core architecture for data-intensive systems in Night City. Certified in secure code practices for Arasaka and Militech protocols. Actively seeking to leverage experience in netrunning and interface design for large-scale operations. Names, corporations, projects, and incidents mentioned herein are for professional profiling and any resemblance to actual persons (living or dead) or events is coincident. Imprint status is functional.</p>
+        </section>
+                
+        <section>
+          <h3>Certifications</h3>
+          <ul class="credit-list">
+            <li class="credit-item">
+              <span class="credit-title">ARASAKA CERTIFIED NETRUNNER</span>
+              <span class="credit-value">LEVEL 4 SECURITY</span>
+            </li>
+            <li class="credit-item">
+              <span class="credit-title">MILITECH AI SAFETY CERT.</span>
+              <span class="credit-value">VERSION 2076</span>
+            </li>
+            <li class="credit-item">
+              <span class="credit-title">Cisco Certified Network Professional (CCNP)</span>
+              <span class="credit-value">Cisco Networking Academy - Issued Sep 2026</span>
+            </li>
+            <li class="credit-item">
+              <span class="credit-title">Computer Hardware Basics</span>
+              <span class="credit-value">Cisco Networking Academy - Issued Sep 2026</span>
+            </li>
+            <li class="credit-item">
+              <span class="credit-title">Google AI Professional Certificate</span>
+              <span class="credit-value">Coursera - Issued Sep 2026</span>
+            </li>
+            <li class="credit-item">
+              <span class="credit-title">Linux Foundation Certified System Administrator (LFCS)</span>
+              <span class="credit-value">The Linux Foundation - Issued Sep 2026</span>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Publications</h3>
+          <ul>
+            <li class="post-item">
+              <span class="post-title">CSS-Tricks</span>
+              <a class="post-value" href="https://css-tricks.com/author/marcelrojas">css-tricks.com/author/marcelrojas</a>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Languages</h3>
+          <dl>
+            <dt>Spanish</dt>
+            <dd>(Native or Bilingual)</dd>
+            <dt>English</dt>
+            <dd>(Professional Working)</dd>
+            <dt>Japanese</dt>
+            <dd>(Elementary)</dd>
+            <dt>Polish</dt>
+            <dd>(Elementary)</dd>
+          </dl>
+        </section>
+      </aside>
+    </main>
+
+    <footer>
+      <span class="destination" aria-label="Current CV destined to OneLink">OneLink</span>
+      <span class="destination-email" aria-label="Destinaton e-mail">Net e-mail :: [reclutamiento@onelink.net.ve]</span>
+    </footer>
+  </div>
+
+</Layout>
+
+<style is:global>
+
+</style>
