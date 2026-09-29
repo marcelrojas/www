@@ -3,6 +3,7 @@ import Head from '@components/structure/Head.astro';
 import SkipLinks from '@components/structure/SkipLinks.astro';
 import LangPicker from '@components/LangPicker.astro';
 import Header from '@components/structure/Header.astro';
+inport Ribbon from '@components/Ribbon.astro';
 import Footer from '@components/structure/Footer.astro';
 import Grain from '@components/decorators/Grain.astro';
 
@@ -41,6 +42,7 @@ const { title, description, lang = 'en' } = Astro.props;
     <SkipLinks />
     <LangPicker />
     <Header />
+    <Ribbon />
 
     <main id="main" tabindex="-1">
       <slot />

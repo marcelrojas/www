@@ -11,7 +11,7 @@ export default {
     if (!prefix) return env.ASSETS.fetch(request);
 
     const rewritten = new URL(url);
-    rewritten.pathname = prefix + (url.pathname === '/' ? '/' : url.pathname);
+    rewritten.pathname = url.pathname === '/' ? prefix : prefix + url.pathname;
     return env.ASSETS.fetch(new Request(rewritten, request));
   },
-};
+};.

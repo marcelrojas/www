@@ -1,14 +1,57 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import Anchor from '@components/Anchor.astro';
 
+interface Edition {
+  lang: string;
+  url: string;
+}
+
+interface Props {
+  editions?: Edition[];
+  isPost?: boolean;
+}
+
+const { editions = [], isPost = false } = Astro.props;
+
+const LOCALES = [
+  { code: 'en', label: 'English' },
+  { code: 'es', label: 'Español' },
+  { code: 'ja', label: '日本語' },
+] as const;
+
+const currentLocale = Astro.currentLocale ?? 'en';
+const path = Astro.url.pathname.replace(/^\/(es|ja)(?=\/|$)/, '') || '/';
+
+function hrefFor(code: string) {
+  if (isPost) {
+    const edition = editions.find((e) => e.lang === code);
+    return edition ? edition.url : getRelativeLocaleUrl(code, '/weblog');
+  }
+  return getRelativeLocaleUrl(code, path);
+}
 ---
 
-<nav id="langpicker">
-
+<nav aria-label="Language switcher" id="lang-picker">
+  <ul>
+    {LOCALES.map(({ code, label }) => (
+      <li>
+        <Anchor
+          href={hrefFor(code)}
+          lang={code}
+          hreflang={code}
+          aria-current={code === currentLocale ? 'true' : undefined}
+        >
+          {label}
+        </a>
+      </li>
+    ))}
+  </ul>
 </nav>
 
 <style is:global>
   @layer component {
-    nav#langpicker {
+    nav#lang-picker {
       
     }
   }
