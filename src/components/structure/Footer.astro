@@ -53,6 +53,9 @@ const { encEmail = EMAIL } = Astro.props;
     footer#footer {
       contain: layout paint;
       content-visibility: auto;
+      position: sticky;
+      bottom: 0;
+      z-index: var(--z-negative);
       pointer-events: none;
       user-select: none;
 

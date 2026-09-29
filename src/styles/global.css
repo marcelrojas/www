@@ -103,6 +103,7 @@
     display: block;
     position: relative;
     inset: 0;
+    background-color: var(--fill-bg);
     unicode-bidi: isolate;
   }
 
