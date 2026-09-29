@@ -5,16 +5,16 @@
 <style is:global>
   @layer component {
     grain-overlay {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
+      width: 100dvw;
+      height: 100dvh;
       z-index: 1;
       display: block;
       pointer-events: none;
 
-      & canvas {
+      & > canvas {
         width: 100%;
         height: 100%;
         display: block;
@@ -127,7 +127,6 @@
     }
   }
 
-  // Get the Custom Element. Validation prevent errors on View Transitions
   if (!customElements.get('grain-overlay')) {
     customElements.define('grain-overlay', GrainOverlay);
   }
