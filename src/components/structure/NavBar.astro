@@ -13,7 +13,7 @@ const anchors = [
   <ul>
     {anchors.map(link => (
       <li>
-        <Anchor size="small" href={link.href}>{link.text}</Anchor>
+        <Anchor href={link.href}>{link.text}</Anchor>
       </li>
     ))}
   </ul>
@@ -37,6 +37,7 @@ const anchors = [
 
           & > a {
             font-family: var(--font-family-sans);
+            font-size: var(--font-size-18);
             line-height: var(--font-leading-normal);
           }
         }

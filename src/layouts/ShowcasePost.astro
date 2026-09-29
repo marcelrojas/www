@@ -1,12 +1,12 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
 import Layout from '@layouts/Layout.astro';
 import FormattedDate from '@components/FormattedDate.astro';
-import { Image } from 'astro:assets';
 
 type Props = CollectionEntry<'showcase'>['data'];
 
-const { title, description, lang = 'en', pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, lang, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
 <Layout title={title} description={description} lang={lang}>
@@ -36,7 +36,7 @@ const { title, description, lang = 'en', pubDate, updatedDate, heroImage } = Ast
 
 <style is:global>
   @layer layout {
-    main#blogpost {
+    article#blogpost {
       width: calc(100% - 2em);
       max-width: 100%
     }

@@ -1,6 +1,6 @@
 Building better business with an individual approach to each client with a wide range of services.
 
---
+```css
 div.content {
   position: relative;
   display: flex;
@@ -23,4 +23,4 @@ div.content {
   & > :nth-child(2) { grid-area: b; }
   & > :nth-child(3) { grid-area: c; }
 }
---
+```

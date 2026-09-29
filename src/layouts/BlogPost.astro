@@ -8,7 +8,7 @@ import { Image } from 'astro:assets';
 
 type Props = CollectionEntry<'weblog'>['data'];
 
-const { title, description, lang = 'en', pubDate, updatedDate, heroImage, editions = [] } = Astro.props;
+const { title, description, lang, pubDate, updatedDate, heroImage, editions = [] } = Astro.props;
 ---
 
 <Layout title={title} description={description} lang={lang}>
