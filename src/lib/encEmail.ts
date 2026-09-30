@@ -46,10 +46,15 @@ function initEncryptedEmail() {
   const buttons = document.querySelectorAll('.enc-email');
 
   buttons.forEach(btn => {
-    const hex = btn.getAttribute('data-enc');
+    const encoded = btn.getAttribute('data-enc');
     if (!encoded) return;
 
-    const email = atob(encoded);
+    let email = '';
+    try {
+      email = atob(encoded);
+    } catch {
+      return;
+    }
 
     btn.addEventListener('click', async (e) => {
       try {
