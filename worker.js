@@ -14,4 +14,4 @@ export default {
     rewritten.pathname = url.pathname === '/' ? prefix : prefix + url.pathname;
     return env.ASSETS.fetch(new Request(rewritten, request));
   },
-};.
+};

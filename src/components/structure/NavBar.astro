@@ -4,10 +4,10 @@ const t = useTranslations(Astro.currentLocale);
 import Anchor from '@components/Anchor.astro';
 
 const anchors = [
-  { href: "/", text: "About" },
-  { href: "/showcase", text: "Showcase" },
-  { href: "/weblog", text: "Weblog" },
-  { href: "/resources", text: "Resources" },
+  { href: "/", key: "About" },
+  { href: "/showcase", key: "Showcase" },
+  { href: "/weblog", key: "Weblog" },
+  { href: "/resources", key: "Resources" },
 ];
 ---
 
@@ -15,7 +15,7 @@ const anchors = [
   <ul>
     {anchors.map(link => (
       <li>
-        <Anchor href={link.href}>{link.text}</Anchor>
+        <Anchor href={link.href}>{t(link.key)}</Anchor>
       </li>
     ))}
   </ul>
