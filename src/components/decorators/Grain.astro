@@ -36,25 +36,32 @@
       this.patternCanvas = document.createElement('canvas');
       this.patternCtx = this.patternCanvas.getContext('2d');
       this.patternData = null;
+      this.pattern = null;
       this.frameId = null;
       this.observer = null;
+      this.lastFrameTime = 0;
+      this.fpsInterval = 1000 / 24; // 24 FPS is visually indistinguishable for grain animation while saving ~60-80% CPU/GPU work
+      this.isIntersecting = false;
 
       // prevent memory-leaks
       this.animate = this.animate.bind(this);
       this.onResize = this.resize.bind(this);
+      this.onVisibilityChange = this.onVisibilityChange.bind(this);
     }
 
     // connectedCallback is native on Web Components and get triggered when the Element enter DOM
     connectedCallback() {
-      if (!this.canvas) return;
+      if (!this.canvas || !this.ctx) return;
 
       window.addEventListener('resize', this.onResize);
+      document.addEventListener('visibilitychange', this.onVisibilityChange);
       this.resize();
       this.createPattern();
 
       this.observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+          this.isIntersecting = entry.isIntersecting;
+          if (this.isIntersecting && !document.hidden) {
             this.start();
           } else {
             this.stop();
@@ -69,12 +76,22 @@
     disconnectedCallback() {
       this.stop();
       window.removeEventListener('resize', this.onResize);
+      document.removeEventListener('visibilitychange', this.onVisibilityChange);
       if (this.observer) this.observer.disconnect();
     }
 
+    onVisibilityChange() {
+      if (document.hidden) {
+        this.stop();
+      } else if (this.isIntersecting) {
+        this.start();
+      }
+    }
+
     start() {
-      if (!this.frameId) {
-        this.animate();
+      if (!this.frameId && !document.hidden && this.isIntersecting) {
+        this.lastFrameTime = performance.now() - this.fpsInterval;
+        this.animate(performance.now());
       }
     }
 
@@ -86,11 +103,16 @@
     }
 
     resize() {
+      if (!this.canvas) return;
       this.canvas.width = this.clientWidth * window.devicePixelRatio;
       this.canvas.height = this.clientHeight * window.devicePixelRatio;
+      if (this.patternCanvas && this.ctx) {
+        this.pattern = this.ctx.createPattern(this.patternCanvas, 'repeat');
+      }
     }
 
     createPattern() {
+      if (!this.patternCtx || !this.ctx) return;
       this.patternCanvas.width = this.patternSize;
       this.patternCanvas.height = this.patternSize;
       this.patternData = this.patternCtx.createImageData(this.patternSize, this.patternSize);
@@ -107,9 +129,21 @@
       }
 
       this.patternCtx.putImageData(this.patternData, 0, 0);
+      // Cache CanvasPattern object to eliminate allocations on every frame
+      this.pattern = this.ctx.createPattern(this.patternCanvas, 'repeat');
     }
 
-    animate() {
+    animate(now) {
+      this.frameId = window.requestAnimationFrame(this.animate);
+
+      // Throttle grain rendering to ~24 FPS to avoid wasteful 60Hz/120Hz continuous redraws
+      const elapsed = now - this.lastFrameTime;
+      if (elapsed < this.fpsInterval) return;
+
+      this.lastFrameTime = now - (elapsed % this.fpsInterval);
+
+      if (!this.ctx || !this.pattern) return;
+
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
       const x = Math.random() * this.patternSize;
@@ -118,12 +152,10 @@
       this.ctx.save();
       this.ctx.translate(x, y);
 
-      this.ctx.fillStyle = this.ctx.createPattern(this.patternCanvas, 'repeat');
+      this.ctx.fillStyle = this.pattern;
       this.ctx.fillRect(-x, -y, this.canvas.width + x, this.canvas.height + y);
 
       this.ctx.restore();
-
-      this.frameId = window.requestAnimationFrame(this.animate);
     }
   }
 
