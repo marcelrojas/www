@@ -66,18 +66,3 @@ export function generateFaqJsonLd(faqs) {
 
   return `<script type="application/ld+json">${JSON.stringify(jsonData)}</script>`;
 }
-
-export function generateBreadcrumbJsonLd(items) {
-  const jsonData = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": items.map((item, index) => ({
-      "@type": "ListItem",
-      "position": index + 1,
-      "name": item.name,
-      "item": item.url
-    }))
-  };
-
-  return `<script type="application/ld+json">${JSON.stringify(jsonData)}</script>`;
-}
