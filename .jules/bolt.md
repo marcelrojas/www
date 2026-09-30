@@ -1,0 +1,3 @@
+## 2026-03-30 - Grain Canvas Animation Throttle & Pattern Caching
+**Learning:** Canvas animation components running on `requestAnimationFrame` at monitor refresh rate (60Hz–120Hz+) create continuous CPU/GPU load even when constant high frame rates add no visual benefit. Caching `CanvasPattern` avoids garbage collection overhead, throttling to ~24 FPS reduces draw calls by 60-80%, and listening to `visibilitychange` stops execution when the document is hidden.
+**Action:** For canvas overlay or background animation components, always cache pattern objects, cap execution FPS, and pause rendering on document `visibilitychange`.

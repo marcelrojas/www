@@ -22,6 +22,40 @@
     "category": {
       "type": "string"
     },
+    "lang": {
+      "default": "en",
+      "type": "string",
+      "enum": [
+        "en",
+        "es",
+        "ja"
+      ]
+    },
+    "editions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "lang": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "translatedBy": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "lang",
+          "title",
+          "url"
+        ]
+      }
+    },
     "$schema": {
       "type": "string"
     }
