@@ -29,12 +29,6 @@ const computedTarget = target ?? (isExternal ? '_blank' : undefined);
 const computedRel = rel ?? (isExternal ? 'noopener noreferrer' : undefined);
 const computedAriaCurrent = ariaCurrentProp ?? (isCurrentPage ? 'page' : undefined);
 const prefetch = !isExternal && !isHash ? 'viewport' : undefined;
-
-const classes = [
-  className,
-  `action-${action}`,
-  `size-${size}`,
-].join(' ');
 ---
 
 <a
@@ -42,7 +36,7 @@ const classes = [
   target={computedTarget}
   rel={computedRel}
   aria-current={computedAriaCurrent}
-  class={classes}
+  class:list={[className, action && `action-${action}`, size && `size-${size}`]}
   data-astro-prefetch={isExternal ? 'false' : 'viewport'}
   {...props}
 ><slot /></a>
