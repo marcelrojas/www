@@ -9,6 +9,7 @@ function initInfoSystem() {
   if (!footerToggleBtn || !footer) return;
 
   const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+  let cachedFocusableElements = [];
 
   function getFocusableElements() {
     const footerElements = Array.from(footer.querySelectorAll(focusableSelectors));
@@ -26,11 +27,10 @@ function initInfoSystem() {
     }
 
     if (e.key === 'Tab') {
-      const focusable = getFocusableElements();
-      if (focusable.length === 0) return;
+      if (cachedFocusableElements.length === 0) return;
 
-      const firstElement = focusable[0];
-      const lastElement = focusable[focusable.length - 1];
+      const firstElement = cachedFocusableElements[0];
+      const lastElement = cachedFocusableElements[cachedFocusableElements.length - 1];
 
       if (e.shiftKey) { // Shift + Tab
         if (document.activeElement === firstElement) {
@@ -55,9 +55,9 @@ function initInfoSystem() {
       footerToggleBtn.setAttribute('aria-expanded', 'true');
       body.style.overflow = 'hidden';
 
-      const focusable = getFocusableElements();
-      if (focusable.length > 1) {
-        focusable[1].focus();
+      cachedFocusableElements = getFocusableElements();
+      if (cachedFocusableElements.length > 1) {
+        cachedFocusableElements[1].focus();
       } else {
         footer.focus();
       }
@@ -70,6 +70,7 @@ function initInfoSystem() {
       body.classList.remove('footer-open');
       footerToggleBtn.setAttribute('aria-expanded', 'false');
       body.style.overflow = '';
+      cachedFocusableElements = [];
 
       if (isKeydownListenerActive) {
         document.removeEventListener('keydown', handleKeydown);
