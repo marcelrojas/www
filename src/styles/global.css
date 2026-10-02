@@ -981,6 +981,8 @@ object {
 }
 
 iframe, portal {
+  width: 100%;
+  frame-sizing: content-height;
   border: none;
 }
 
