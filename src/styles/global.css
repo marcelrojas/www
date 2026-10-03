@@ -103,7 +103,8 @@
     display: block;
     position: relative;
     inset: 0;
-    background-color: var(--fill-bg);
+    padding-bottom: var(--spacing-7);
+    background-color: var(--fill-bg, white);
     unicode-bidi: isolate;
   }
 
