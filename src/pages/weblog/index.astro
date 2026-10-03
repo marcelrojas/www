@@ -8,9 +8,24 @@ import FormattedDate from '@components/FormattedDate.astro';
 import Pagination from '@components/Pagination.astro';
 import featured from '@data/featured.json';
 
-const posts = (await getCollection('weblog')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const posts = (await getCollection('weblog')).map(post => ({
+  title: post.data.title,
+  description: post.data.description,
+  date: post.data.pubDate,
+  href: `/weblog/${post.id}`,
+  external: false,
+}));
+
+const external = Object.values(featured).map(item => ({
+  title: item.title,
+  description: `Published by ${item.publisher}`,
+  date: new Date(item.pubDate),
+  href: item.url,
+  external: true,
+}));
+
+const timeline = [...posts, ...external].sort((a, b) => b.date - a.date);
+const byYear = Object.groupBy(timeline, item => item.date.getFullYear());
 
 const {
   title = 'Weblog',
@@ -26,42 +41,25 @@ const {
     <div class="content">
 
       <p>Thoughts on code, design, and my passion for everything. Latest posts and updates.</p>
-
-      {
-        posts.map(post => (
-          <article class="post-item">
-            <a href={`/weblog/${post.id}`}>
-              <h2>{post.data.title}</h2>
-              <p class="summary">{post.data.description}</p>
-              <div class="metadata">
-                <FormattedDate date={post.data.pubDate} />
-                <span class="category">{post.data.category}</span>
-              </div>
-            </a>
-          </article>
-        ))
-      }
+      
+      {Object.entries(byYear).map(([year, items]) => (
+        <section aria-labelledby={`year-${year}`}>
+          <h2 id={`year-${year}`}>{year}</h2>
+          
+          {items.map(item => (
+            <article class="post-item">
+              <a href={item.href} target={item.external ? '_blank' : undefined} rel={item.external ? 'noopener noreferrer' : undefined}>
+                <h3>{item.title}</h3>
+                {item.description && <p class="summary">{item.description}</p>}
+                <FormattedDate date={item.date} />
+                {item.external && <span class="badge">Externo</span>}
+              </a>
+            </article>
+          ))}
+        </section>
+      ))}
+      
     </div>
-
-    <section id="section-featured" role="feed" aria-busy="false" aria-label="List of articles and publications">
-      <div class="content">
-        <h3>As featured in</h3>
-
-        <div>
-          {
-            Object.values(featured).map((featured) => (
-              <article>
-                <h2 class="headline">
-                  <a href={featured.url} target="_blank" rel="noopener noreferrer">{featured.title}</a>
-                </h2>
-                <cite class="publisher">Published by: <a href={featured.url} target="_blank" rel="noopener noreferrer">{featured.publisher}</a></cite>
-              </article>
-            ))
-          }
-        </div>
-
-      </div>
-    </section>
 
     <figure>
       <picture>
@@ -75,6 +73,7 @@ const {
         </div>
       </figcaption>
     </figure>
+    
   </section>
 </Layout>
 
