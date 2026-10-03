@@ -24,8 +24,13 @@ const {
   lang = 'en_US'
 } = Astro.props;
 
-const pathname = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/$/, '');
+const pathname = Astro.url.pathname
+  .replace(/^\/index\.html$/, '/')
+  .replace(/\.html$/, '');
 const canonicalURL = new URL(pathname, Astro.site);
+const localeMatch = pathname.match(/^\/(es|ja)(\/.*)?$/);
+const basePath = localeMatch ? (localeMatch[2] || '/') : pathname;
+const esPath = basePath === '/' ? '/es' : `/es${basePath}`;
 
 const imageSrc = typeof image === 'string' ? image : image.src;
 const ogImageURL = new URL(imageSrc, Astro.site);
@@ -46,6 +51,10 @@ const ogImageURL = new URL(imageSrc, Astro.site);
   <link rel="preload" href="/fonts/GeistMono.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 
   <link rel="canonical" href={canonicalURL} />
+  <link rel="alternate" hreflang="en" href={new URL(basePath, Astro.site)} />
+  <link rel="alternate" hreflang="es" href={new URL(basePath, Astro.site)} />
+  <link rel="alternate" hreflang="ja" href={new URL(basePath, Astro.site)} />
+  <link rel="alternate" hreflang="x-default" href={new URL(basePath, Astro.site)} />
 
   <link rel="icon" type="image/svg+xml" sizes="any" href="/favicon.svg" />
   <link rel="icon" type="image/x-icon" sizes="32x32" href="/favicon.ico" />
