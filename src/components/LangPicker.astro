@@ -53,6 +53,12 @@ function hrefFor(code: string) {
   @layer component {
     nav#lang-picker {
       
+      & ul {
+        display: flex;
+        & a {
+          font-size: var(--font-size-12);
+        }
+      }
     }
   }
 </style>
