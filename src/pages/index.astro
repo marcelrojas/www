@@ -24,8 +24,8 @@ const {
         <span class="sr-only">.</span>
       </p>
       <div class="actions">
-        <Anchor size="small" href="https://tally.com/marcelrojas/" target="_blank" rel="noopener noreferrer" class="badge audio_trigger">Fill form</Anchor>
-        <Anchor size="small" href="https://contra.com/marcelrojas" target="_blank" rel="noopener noreferrer" class="badge audio_trigger">Explore my services on Contra</Anchor>
+        <Anchor href="https://tally.com/marcelrojas/" class="badge audio_trigger">Jump to fill my form</Anchor>
+        <Anchor href="https://contra.com/marcelrojas" class="badge audio_trigger">Explore my services on Contra</Anchor>
         <Button as="button" wide="fit" command="show-modal" commandfor="cvDialog" class="audio_trigger">Review full CV</Button>
       </div>
     </div>
@@ -53,7 +53,7 @@ const {
           </span>
         </div>
 
-        <Anchor size="medium" href="/services">Know them all</Anchor>
+        <Anchor href="/services">Know all my services and how I work</Anchor>
       </nav>
     </div>
   </section>
@@ -64,7 +64,7 @@ const {
         <h3 id="cv-name">Marcel Rojas</h3>
         <p id="cv-role" class="role">Web Developer, UI/UX Designer, Administrator, OpenSource Maker</p>
         <address class="contact-info">
-          <span>Anzoátegui, Venezuela</span> • <a href={SOCIAL_LINKEDIN} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <span>Anzoátegui, Venezuela</span> • <Anchor href={SOCIAL_LINKEDIN}>LinkedIn</Anchor>
         </address>
       </header>
 
