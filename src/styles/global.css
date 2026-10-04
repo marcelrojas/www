@@ -105,7 +105,7 @@
     position: relative;
     inset: 0;
     padding-bottom: var(--spacing-07);
-    background-color: var(--fill-bg, white);
+    background-color: var(--background-primary);
     unicode-bidi: isolate;
   }
 

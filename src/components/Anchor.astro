@@ -41,7 +41,7 @@ const prefetch = !isExternal && !isHash ? 'viewport' : undefined;
   {...props}
 ><slot /></a>
 
-<style is:global>
+<style>
   @layer component {
     :is(a, a[role="button"]) {
       display: inline-flex;
