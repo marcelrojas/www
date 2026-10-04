@@ -61,7 +61,7 @@ const {
       
     </div>
 
-    <figure>
+    <figure class="event">
       <picture>
         <img src="" alt="" />
       </picture>
@@ -92,6 +92,8 @@ const {
       padding-inline-end: calc(var(--spacing-sar) + var(--spacing-06));
       margin-left: auto;
       margin-right: auto;
+      overflow-wrap: break-word;
+      text-wrap: pretty;
       
       & > p {
         
@@ -108,7 +110,6 @@ const {
           position: relative;
           overflow: hidden;
           user-select: none;
-          background-color: var(--background-secondary);
           will-change: transform;
           
           @starting-style {
@@ -173,30 +174,6 @@ const {
       & > :nth-child(3) { grid-area: c; }
       & > :nth-child(4) { grid-area: d; }
       & > :nth-child(5) { grid-area: e; }
-    }
-  }
-
-  section#section-featured {
-    position: relative;
-    padding-top: var(--spacing-11);
-    padding-bottom: var(--spacing-11);
-
-    & > div.content {
-      max-width: 980px;
-      padding-inline-start: calc(var(--spacing-sal) + 22px);
-      padding-inline-end: calc(var(--spacing-sar) + 22px);
-      margin-left: auto;
-      margin-right: auto;
-      overflow-wrap: break-word;
-      text-wrap: pretty;
-
-      & > div {
-        padding: var(--spacing-03);
-        gap: var(--spacing-03);
-        display: flex;
-        flex-direction: column;
-        background-color: var(--sk-color-fill-);
-      }
     }
   }
 </style>
