@@ -40,7 +40,7 @@ const {
   <section id="post-list" role="feed" aria-busy="false" aria-label="List of blog articles">
     <div class="content">
 
-      <p>Thoughts on code, design, and my passion for everything. Latest posts and updates.</p>
+      <p>{description}</p>
       
       {Object.entries(byYear).map(([year, items]) => (
         <section aria-labelledby={`year-${year}`}>

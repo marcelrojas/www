@@ -69,7 +69,8 @@
   body {
     display: block;
     position: relative;
-    min-width: 320px;
+    min-width: 100dvw;
+    min-height: 100dvh;
     overflow-wrap: break-word;
 
     & ::-webkit-scrollbar {
