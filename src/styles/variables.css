@@ -15,7 +15,9 @@
 @layer tokens {
   :root {
     color-scheme: light dark;
-
+    
+    --sk-color-white: oklch(98% 0.003 90);
+    --sk-color-black: oklch(9% 0.006 250);
     --sk-color-red-violet: oklch(0.55335 0.2217 349.67);
     --sk-color-yellow-digital: oklch(86.055 0.17305 91.942);
     --sk-color-powder-blue: oklch(0.90293 0.06231 187.421);
@@ -219,6 +221,9 @@
 @layer tokens.semantic {
   :root {
     --globalnav-collective-height: var(--globalnav-height);
+    
+    --background-primary: light-dark(var(--sk-color-white), var(--sk-color-black));
+    --text-primary: light-dark(var(--sk-color-black), var(--sk-color-white));
 
     --sk-body-text-color: rgb(29, 29, 31);
     --sk-headline-text-color: rgb(29, 29, 31);
