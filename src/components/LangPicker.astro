@@ -52,13 +52,30 @@ function hrefFor(code: string) {
 <style is:global>
   @layer component {
     nav#lang-picker {
+      font-family: var(--font-family-mono);
       
       & > ul {
         display: flex;
-        gap: var(--spacing-02);
         
         & a {
+          padding-inline: var(--spacing-02);
           font-size: var(--font-size-12);
+          
+          &:not([aria-current="page"]) {
+            background-color: var(--);
+          }
+          
+          &[aria-current="page"] {
+            background-color: var(--);
+            
+            &::before {
+              content: "<";
+            }
+            
+            &::after {
+              content: ">";
+            }
+          }
         }
       }
     }
