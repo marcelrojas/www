@@ -18,6 +18,11 @@
     
     --sk-color-white: oklch(98% 0.003 90);
     --sk-color-black: oklch(9% 0.006 250);
+    --sk-color-magenta: oklch(62% 0.28 340);
+    --sk-color-teal: oklch(68% 0.13 190);
+    --sk-color-terminal-green: oklch(72% 0.19 145);
+    --sk-color-red: oklch(60% 0.22 25);
+    
     --sk-color-red-violet: oklch(0.55335 0.2217 349.67);
     --sk-color-yellow-digital: oklch(86.055 0.17305 91.942);
     --sk-color-powder-blue: oklch(0.90293 0.06231 187.421);
@@ -25,14 +30,14 @@
     --sk-color-soft-orange: oklch(0.75 0.15 55);
     --sk-color-internet-blue: oklch(0.52617 0.26402 263.603);
     --sk-color-deep-yellow: oklch(0.81453 0.16585 79.812);
-    --sk-color-off-white: #F8F8E0;
-    --sk-color-water-blue: #1098D0;
-    --sk-color-dirty-yellow: #D8C800;
-    --sk-color-light-gray: #D8D8D8;
-    --sk-color-charcoal: #203028;
-    --sk-color-dark-magenta: #900858;
-    --sk-color-red-purple: #780848;
-    --sk-color-red-valve: #f74843;
+    --sk-color-off-white: hsl(60, 63%, 93%);
+    --sk-color-water-blue: hsl(198, 86%, 44%);
+    --sk-color-dirty-yellow: hsl(56, 100%, 42%);
+    --sk-color-light-gray: hsl(0, 0%, 85%);
+    --sk-color-charcoal: hsl(150, 20%, 16%);
+    --sk-color-dark-magenta: hsl(325, 89%, 30%);
+    --sk-color-red-purple: hsl(326, 87%, 25%);
+    --sk-color-red-valve: hsl(2, 92%, 62%);
 
     --font-family-fallback: -apple-system, system, system-ui, sans-serif, arial;
     --font-family-sans: 'InterVariable', 'Inter', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -224,6 +229,34 @@
     
     --background-primary: light-dark(var(--sk-color-white), var(--sk-color-black));
     --text-primary: light-dark(var(--sk-color-black), var(--sk-color-white));
+    
+    
+    /* Texto */
+    --text-primary: light-dark(var(--sk-color-black), var(--sk-color-white));
+    --text-secondary: color-mix(in oklch, var(--text-primary) 65%, transparent);
+
+    /* Fondo */
+    --background-primary: light-dark(var(--sk-color-white), var(--sk-color-black));
+    --background-secondary: color-mix(in oklch, var(--background-primary) 94%, var(--text-primary) 6%);
+    --background-tertiary: color-mix(in oklch, var(--background-primary) 88%, var(--text-primary) 12%);
+
+    /* Glyph — rol, no color */
+    --glyph-accent: var(--sk-color-magenta);
+    --glyph-info: var(--sk-color-teal);
+    --glyph-success: var(--sk-color-terminal-green);
+    --glyph-danger: var(--sk-color-red);
+
+    /* Interactivo */
+    --link-color: var(--glyph-accent);
+    --focus-color: var(--glyph-accent);
+    --focus-color-alt: rgb(0, 0, 0);
+
+    /* Separadores */
+    --separator-opaque: light-dark(
+      color-mix(in oklch, var(--sk-color-black) 12%, var(--sk-color-white)),
+      color-mix(in oklch, var(--sk-color-white) 18%, var(--sk-color-black))
+    );
+    --separator-translucent: color-mix(in oklch, var(--text-primary) 15%, transparent);
 
     --sk-body-text-color: rgb(29, 29, 31);
     --sk-headline-text-color: rgb(29, 29, 31);
@@ -235,10 +268,10 @@
     --sk-headline-plus-headline-margin: 0.4em;
     --sk-paragraph-plus-headline-margin: 1.6em;
 
-    --sk-glyph-blue: rgb(0, 102, 204);
-    --sk-glyph-orange: rgb(182, 68, 0);
-    --sk-glyph-green: rgb(0, 128, 9);
-    --sk-glyph-red: rgb(227, 0, 0);
+    --glyph-blue: rgb(0, 102, 204);
+    --glyph-orange: rgb(182, 68, 0);
+    --glyph-green: rgb(0, 128, 9);
+    --glyph-red: rgb(227, 0, 0);
 
     --sk-fill: rgb(255, 255, 255);
     --sk-fill-secondary: rgb(250, 250, 252);
@@ -246,34 +279,17 @@
     --sk-fill-gray: rgb(29, 29, 31);
     --sk-fill-gray-alpha: rgba(0, 0, 0, 0.88);
 
-    --sk-focus-color: #0071e3;
-    --sk-focus-color-alt: rgb(0, 0, 0);
-    --sk-focus-inset: 0px;
-    --sk-focus-offset: 1px;
-    --sk-focus-offset-container: 3px;
+    --focus-inset: 0px;
+    --focus-offset: 1px;
+    --focus-offset-container: 3px;
 
-    --sk-body-link-color: rgb(0, 102, 204);
-    --sk-link-disabled-opacity: 0.42;
+    --body-link-color: rgb(0, 102, 204);
+    --link-disabled-opacity: 0.42;
   }
 
   @media only screen and (max-width: 833px) {
     :root {
       --globalnav-height: 48px;
-    }
-  }
-
-  @media screen and (prefers-color-scheme: light) {
-    :root {
-
-      /*
-       * Alias token and component-specific token.
-       */
-    }
-  }
-
-  @media screen and (prefers-color-scheme: dark) {
-    :root {
-
     }
   }
 }
