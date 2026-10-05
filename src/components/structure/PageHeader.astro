@@ -2,8 +2,8 @@
 const { screen_title } = Astro.props;
 ---
 
-<div id="PageHeader" class="sr-only">
-  <h1>{screen_title}</h1>
+<div id="PageHeader">
+  <h1 class="sr-only">{screen_title}</h1>
 </div>
 
 <style>
@@ -31,6 +31,13 @@ const { screen_title } = Astro.props;
       @media screen and (width > 480px) {
         --font-size: var(--font-size-24);
       }
+    }
+    
+    & > p {
+      text-transform: uppercase;
+      text-align: center;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
     }
   }
 </style>
