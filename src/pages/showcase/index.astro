@@ -1,7 +1,13 @@
 ---
+import { getCollection, getEntry } from 'astro:content';
+import { Image } from 'astro:assets';
 import Layout from '@layouts/Layout.astro';
 import PageHeader from '@components/structure/PageHeader.astro';
-import FAMGallery from '@components/structure/FAMGallery.astro';
+import FormattedDate from '@components/FormattedDate.astro';
+
+const posts = (await getCollection('showcase')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
 
 const {
   title = 'Showcase',
@@ -12,12 +18,99 @@ const {
 
 <Layout title={title} description={description}>
   <PageHeader screen_title={screen_title} />
-  <FAMGallery />
+  
+  <section id="fam-gallery" role="feed" aria-busy="false" aria-label="Gallery of project showcases">
+    <div class="content stage" role="marquee">
+      {
+        posts.map(post => (
+          <article class="item" aria-hidden="true" tabindex="-1">
+            <div class="background">
+              <figure class="media album-art" aria-hidden="true">
+                {post.data.heroImage && (
+                  <Image width={720} height={360} src={post.data.heroImage} loading="eager" decoding="async" fetchpriority="auto" alt={post.data.description} />
+                )}
+              </figure>
+            </div>
+            <a class="overlay" href={`/showcase/${post.id}`}>
+              <span class="headline">{post.data.title}</span>
+              <FormattedDate date={post.data.pubDate} />
+              <span class="cta">Open</span>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
 </Layout>
 
-<style is:global>
-  .fam-gallery {
+<style>
+  section#fam-gallery {
+    position: relative;
+    padding-inline: var(--spacing-11);
     background-color: oklch(67.074% 0.19862 337.481);
     background-color: oklch(30.604% 0.11201 257.745);
+    
+    & > div.content.stage {
+      display: flex;
+      flex-direction: row;
+      max-width: 980px;
+      width: 100%;
+      padding-inline-start: calc(var(--r-sk-sail) + 22px);
+      padding-inline-end: calc(var(--r-sk-sair) + 22px);
+      margin-left: auto;
+      margin-right: auto;
+      perspective: 1200px;
+      overflow: scroll hidden;
+      
+      & > article.item {
+        display: flex;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 2/1;
+        overflow: hidden;
+        background-color: var(--background-primary);
+        will-change: opacity, transform;
+        user-select: none;
+        
+        & > div.background {
+          position: absolute;
+          inset: 0;
+          
+          & > figure.media.album-art {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            
+            & > img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              object-position: center
+            }
+          }
+        }
+        
+        & > a.overlay {
+          position: absolute;
+          left: var(--spacing-03);
+          right: var(--spacing-03);
+          bottom: var(--spacing-03);
+          z-index: 1;
+          padding: var(--spacing-04);
+          display: flex;
+          flex-direction: column;
+          
+          & > span.headline {
+            font-size: var(--font-size-20);
+            font-weight: var(--font-weight-bold);
+            line-height: 120%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: var(--text-primary);
+          }
+        }
+      }
+    }
   }
 </style>
