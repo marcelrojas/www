@@ -517,6 +517,10 @@
   .theme-dark {
 
   }
+  
+  .content {
+    position: relative;
+  }
 }
 
 :is(audio, video) {
