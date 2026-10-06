@@ -69,6 +69,7 @@ const {
       margin-right: auto;
       perspective: 1200px;
       overflow: scroll hidden;
+      scroll-snap-type: x proximity;
       
       & ::-webkit-scrollbar {
         display: none;
@@ -85,6 +86,7 @@ const {
         background-color: var(--background-primary);
         will-change: opacity, transform;
         user-select: none;
+        scroll-snap-align: center;
         
         & > div.background {
           position: absolute;
