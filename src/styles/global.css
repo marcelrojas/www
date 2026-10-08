@@ -28,8 +28,6 @@
   }
 
   html {
-    overflow-x: hidden;
-    height: 100%;
     block-size: auto;
     font-family: var(--font-family-fallback);
     font-feature-settings: 'case', 'ss01', 'ss03';
@@ -56,21 +54,19 @@
     accent-color: var(--accent);
     background-color: var(--background-primary);
     -webkit-tap-highlight-color: transparent;
-  }
-
-  html:not([dir=rtl]) {
-    --r-sk-start: left;
-    --r-sk-end: right;
-    --r-sk-safe-area-inset-start: env(safe-area-inset-left);
-    --r-sk-safe-area-inset-end: env(safe-area-inset-right);
-    --r-sk-logical-factor: 1;
+    
+    &:not([dir=rtl]) {
+      --r-sk-start: left;
+      --r-sk-end: right;
+      --r-sk-safe-area-inset-start: env(safe-area-inset-left);
+      --r-sk-safe-area-inset-end: env(safe-area-inset-right);
+      --r-sk-logical-factor: 1;
+    }
   }
 
   body {
     display: block;
     position: relative;
-    min-width: 100dvw;
-    min-height: 100dvh;
     overflow-wrap: break-word;
     color: var(--text-primary);
 

@@ -52,3 +52,21 @@ const { title, description, lang } = Astro.props;
     <Grain />
   </body>
 </html>
+
+<style>
+  html, body {
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .shell {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100dvh;
+    
+    & > main {
+      overflow-y: auto;
+      min-height: 0;
+    }
+  }
+</style>

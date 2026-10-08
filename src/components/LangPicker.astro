@@ -60,13 +60,14 @@ function hrefFor(code: string) {
         & a {
           padding-inline: var(--spacing-02);
           font-size: var(--font-size-12);
+          line-heigth: var(--);
           
           &:not([aria-current="page"]) {
-            background-color: var(--);
+            background-color: var(--backgroud-primary);
           }
           
           &[aria-current="page"] {
-            background-color: var(--);
+            background-color: var(--background-secondary);
             
             &::before {
               content: "<";

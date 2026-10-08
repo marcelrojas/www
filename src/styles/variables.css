@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-@layer reset, tokens, tokens.semantic, layout, utility, components, motion, print;
+@layer reset, tokens, tokens.semantic, layout, utility, component, motion, print;
 
 /*
  * Base token in raw format.
@@ -144,12 +144,13 @@
     --border-width-x2: 2px;
     --border-width-x4: 4px;
 
-    --aspect-anamophic: 2.39/1;
-    --aspect-univisium: 2/1;
-    --aspect-widescreen: 16/9;
-    --aspect-landscape: 3/2;
-    --aspect-portrait: 2/3;
+    --aspect-anamophic: 2.39 / 1;
+    --aspect-univisium: 2 / 1;
+    --aspect-widescreen: 16 / 9;
+    --aspect-landscape: 3 / 2;
+    --aspect-portrait: 2 / 3;
     --aspect-square: 1;
+    --aspect-: 3 / 4;
 
     --breakpoint-sm: 320px;
     --breakpoint-md: 672px;
