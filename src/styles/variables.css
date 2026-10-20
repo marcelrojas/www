@@ -14,10 +14,16 @@
     
     --sk-color-white: oklch(98% 0.003 90);
     --sk-color-black: oklch(9% 0.006 250);
+    --sk-color-ink: #090909;
+    --sk-color-paper: #F7F7F7;
     --sk-color-magenta: oklch(62% 0.28 340);
     --sk-color-teal: oklch(68% 0.13 190);
     --sk-color-terminal-green: oklch(72% 0.19 145);
     --sk-color-red: oklch(60% 0.22 25);
+    
+    --sk-color-display: #F5F5F5;
+    --sk-color-body: #4E4E4E;
+    --sk-color-rule: #B1B1B1;
     
     --sk-color-red-violet: oklch(0.55335 0.2217 349.67);
     --sk-color-yellow-digital: oklch(86.055 0.17305 91.942);
@@ -228,7 +234,7 @@
     --text-secondary: color-mix(in oklch, var(--text-primary) 65%, transparent);
 
     /* Fondo */
-    --background-primary: light-dark(var(--sk-color-white), var(--sk-color-black));
+    --background-primary: light-dark(var(--sk-color-paper), var(--sk-color-ink));
     --background-secondary: color-mix(in oklch, var(--background-primary) 94%, var(--text-primary) 6%);
     --background-tertiary: color-mix(in oklch, var(--background-primary) 88%, var(--text-primary) 12%);
 
