@@ -3,7 +3,6 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import partytown from '@astrojs/partytown';
-import vesper from './src/data/vesper.json';
 
 // https://astro.build/config
 export default defineConfig({
@@ -63,10 +62,4 @@ export default defineConfig({
       },
     }),
   ],
-
-  markdown: {
-    shikiConfig: {
-      theme: vesper,
-    },
-  },
 });
