@@ -1,5 +1,3 @@
-Building better business with an individual approach to each client with a wide range of services.
-
 ```css
 div.content {
   position: relative;

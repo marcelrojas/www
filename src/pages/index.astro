@@ -3,7 +3,9 @@ import Layout from '@layouts/Layout.astro';
 import PageHeader from '@components/structure/PageHeader.astro';
 import Anchor from '@components/Anchor.astro';
 import Button from '@components/Button.astro';
-import { SITE_TITLE, SOCIAL_LINKEDIN } from '@src/types/consts';
+import { SITE_TITLE,EMAIL, SOCIAL_LINKEDIN } from '@src/types/consts';
+
+const { encEmail = EMAIL } = Astro.props;
 
 const {
   title = 'About',
@@ -15,8 +17,48 @@ const {
 <Layout title={SITE_TITLE} description={description}>
   <PageHeader screen_title={screen_title} />
 
-  <section class="intro-section">
-    <h2 class="sr-only">About Me</h2>
+  <section aria-labelledby="about-heading" class="dotted-divider">
+    <h2 id="about-heading" class="section-heading">About</h2>
+    <p>MARCELROJAS.NET is the online portfolio of Marcel Rojas, multidiciplinary freelance designer and web developer.</p>
+    <dl>
+      <dt>Site URL</dt>
+      <dd><a href="/">www.marcelrojas.net</a></dd>
+      <dt>E-mail</dt>
+      <dd><Button id="clipboard-clipper" class="enc-email" type="button" data-enc={encEmail} aria-label="Copy email address">Copy my email</Button></dd>
+      <dt>Weblog</dt>
+      <dd><a href="/blog">marcelrojas.net/blog</a></dd>
+      <dt>Music</dt>
+      <dd><a href="/sound">marcelrojas.net/sound</a></dd>
+      <dt>Curriculum</dt>
+      <dd><Button as="button" wide="fit" command="show-modal" commandfor="cvDialog" class="audio_trigger">Review full CV</Button></dd>
+    </dl>
+  </section>
+
+  <section aria-labelledby="contact-heading" class="dotted-divider">
+    <h2 id="contact-heading" class="section-heading">Contact</h2>
+    <p>
+      Please send your message.<br />
+      You must input your name and mail address.
+    </p>
+    <a href="mailto:marcelrojas2k@gmail.com" class="email-badge" aria-label="Send email to marcelrojas2k@gmail.com">
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+        <rect x="0.5" y="0.5" width="13" height="9" stroke="currentColor" />
+        <path d="M1 1L7 5.5L13 1" stroke="currentColor" />
+      </svg>
+      <span>marcelrojas2k@gmail.com</span>
+    </a>
+  </section>
+
+  <aside aria-label="System requirements" class="dotted-divider">
+    <p>
+      This site requires a good eye or genuine heart to be enjoyed.<br />
+      You can download Flash Player 9 for free <a href="#ayk">here</a>.
+    </p>
+  </aside>
+
+  <section aria-labelledby="services-heading" class="column-services">
+    <h2 id="services-heading" class="section-heading dotted-divider">Services</h2>
+
     <div aria-label="My purpose">
       <p>
         <span aria-hidden="true" class="sr-only">To ship apps and websites</span>
@@ -26,7 +68,6 @@ const {
       <div class="actions">
         <Anchor href="https://tally.com/marcelrojas/" class="badge audio_trigger">Jump to fill my form</Anchor>
         <Anchor href="https://contra.com/marcelrojas" class="badge audio_trigger">Explore my services on Contra</Anchor>
-        <Button as="button" wide="fit" command="show-modal" commandfor="cvDialog" class="audio_trigger">Review full CV</Button>
       </div>
     </div>
 
@@ -56,6 +97,91 @@ const {
         <Anchor href="/services">Know all my services and how I work</Anchor>
       </nav>
     </div>
+  </section>
+
+  <section aria-labelledby="portfolio-heading" class="column-portfolio">
+    <h2 id="portfolio-heading" class="section-heading dotted-divider">Portfolio</h2>
+
+    <a
+      href="/portfolio"
+      id="portfolio-2007"
+      class="portfolio-card"
+      aria-label="Enter Portfolio 2007 - Character design showcase"
+    >
+      <svg
+        class="card-artwork"
+        viewBox="0 0 220 265"
+        role="img"
+        aria-labelledby="card-svg-title card-svg-desc"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <title id="card-svg-title">Enter Portfolio 2007</title>
+        <desc id="card-svg-desc">Illustration of dark round creatures with glowing blue mouths inside a framed card.</desc>
+
+        <defs>
+          <pattern id="diag-stripes" width="6" height="6" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="0" x2="0" y2="6" stroke="oklab(0.90 0 0)" stroke-width="2" />
+          </pattern>
+          <radialGradient id="creature-grad" cx="35%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="oklab(0.32 -0.01 -0.04)" />
+            <stop offset="65%" stop-color="oklab(0.16 -0.01 -0.02)" />
+            <stop offset="100%" stop-color="oklab(0.08 0 0)" />
+          </radialGradient>
+          <clipPath id="card-clip">
+            <rect x="0" y="0" width="220" height="265" rx="4" />
+          </clipPath>
+        </defs>
+
+        <g clip-path="url(#card-clip)">
+          <!-- Fondo rayado superior izquierdo -->
+          <rect width="220" height="265" fill="oklab(0.97 0 0)" />
+          <rect width="220" height="140" fill="url(#diag-stripes)" />
+
+          <!-- Criatura superior derecha -->
+          <circle cx="195" cy="35" r="46" fill="url(#creature-grad)" />
+
+          <!-- Criatura central superior con antenas -->
+          <path d="M90 18 L82 6 M98 16 L96 3" stroke="oklab(0.18 0 0)" stroke-width="4" stroke-linecap="round" />
+          <circle cx="115" cy="72" r="56" fill="url(#creature-grad)" />
+          <!-- Ojos y boca azul -->
+          <circle cx="96" cy="36" r="2.8" fill="white" />
+          <circle cx="122" cy="42" r="2.8" fill="white" />
+          <rect x="98" y="45" width="18" height="10" rx="5" fill="var(--color-text-accent)" />
+          <path d="M101 49h12" stroke="white" stroke-width="2" stroke-dasharray="2 2" />
+
+          <!-- Criatura izquierda -->
+          <circle cx="22" cy="135" r="52" fill="url(#creature-grad)" />
+          <circle cx="14" cy="98" r="2.5" fill="white" />
+          <circle cx="38" cy="100" r="2.5" fill="white" />
+          <rect x="18" y="106" width="16" height="9" rx="4.5" fill="var(--color-text-accent)" />
+          <path d="M21 110h10" stroke="white" stroke-width="1.8" stroke-dasharray="2 2" />
+
+          <!-- Criatura derecha media -->
+          <circle cx="192" cy="132" r="58" fill="url(#creature-grad)" />
+          <circle cx="176" cy="96" r="2.8" fill="white" />
+          <circle cx="204" cy="88" r="2.8" fill="white" />
+          <rect x="186" y="98" width="17" height="10" rx="5" fill="var(--color-text-accent)" />
+
+          <!-- Criatura central protagonista -->
+          <circle cx="112" cy="155" r="58" fill="url(#creature-grad)" />
+          <circle cx="92" cy="112" r="2.8" fill="white" />
+          <circle cx="120" cy="112" r="2.8" fill="white" />
+          <rect x="96" y="118" width="20" height="11" rx="5.5" fill="var(--color-text-accent)" />
+          <path d="M99 123h14" stroke="white" stroke-width="2" stroke-dasharray="2 2" />
+
+          <!-- Base oscura tipográfica -->
+          <rect x="0" y="185" width="220" height="80" fill="var(--color-card-dark)" />
+          <text x="12" y="232" fill="var(--color-text-inverse)" font-family="var(--font-sans)" font-weight="800" font-size="18" letter-spacing="0.5">
+            ENTER
+          </text>
+          <text x="12" y="253" fill="var(--color-text-inverse)" font-family="var(--font-sans)" font-weight="800" font-size="18" letter-spacing="0.5">
+            PORTFOLIO <tspan fill="var(--color-text-accent)">2007</tspan>
+          </text>
+        </g>
+      </svg>
+    </a>
+
+    <Anchor href="#past-portfolio" class="archive-link">PAST PORTFOLIO FROM 2005-2006</Anchor>
   </section>
 
   <dialog id="cvDialog" aria-labelledby="cv-name" aria-describedby="cv-role">
@@ -100,7 +226,6 @@ const {
       </div>
 
       <footer class="cv-footer">
-        <Anchor size="medium" href="/" target="_blank" rel="noopener noreferrer">Talk to Me</Anchor>
         <Button as="button" wide="fit" commandfor="cvDialog" command="close">Close CV</Button>
       </footer>
     </article>
@@ -219,6 +344,147 @@ const {
 
     @media screen and (width <= 1024px) {
 
+    }
+  }
+
+  @layer components {
+    .section-heading {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--color-text-accent);
+      text-transform: uppercase;
+      margin-block-end: var(--space-sm);
+
+      &::before {
+        content: "+";
+        margin-inline-end: 0.15rem;
+      }
+    }
+
+    .dotted-divider {
+      border-block-end: 1px dotted var(--color-border-dotted);
+      padding-block-end: var(--space-md);
+      margin-block-end: var(--space-md);
+    }
+
+    .brand-header {
+      & .logo-svg {
+        inline-size: 100%;
+        max-inline-size: 11.5rem;
+        block-size: auto;
+        display: block;
+        margin-block-end: var(--space-xs);
+      }
+
+      & .brand-subtitle {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        color: var(--color-text-accent);
+        text-transform: uppercase;
+      }
+
+      & .brand-meta {
+        font-size: 0.68rem;
+        color: var(--color-text-secondary);
+      }
+    }
+
+    a.portfolio-card {
+      background: var(--color-card-frame);
+      border: 1px solid var(--color-border-card);
+      border-radius: 0.35rem;
+      padding: 0.35rem;
+      box-shadow: 0 2px 6px oklab(0.18 0 0 / 0.06);
+      display: block;
+      transition: transform 200ms ease, box-shadow 200ms ease;
+
+      &:hover, &:focus-visible {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 14px oklab(0.18 0 0 / 0.12);
+        text-decoration: none;
+      }
+
+      & .card-artwork {
+        inline-size: 100%;
+        block-size: auto;
+        display: block;
+        border-radius: 0.2rem;
+      }
+    }
+
+    a.archive-link {
+      display: inline-block;
+      margin-block-start: var(--space-sm);
+      font-size: 0.65rem;
+      letter-spacing: 0.03em;
+      color: var(--color-text-accent);
+      border-block-start: 1px dotted var(--color-border-dotted);
+      padding-block-start: var(--space-sm);
+      inline-size: 100%;
+    }
+
+    .email-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-block-start: var(--space-sm);
+      font-size: 0.7rem;
+    }
+  }
+
+  @layer layout {
+    .tarnica-grid {
+      position: relative;
+      z-index: 10;
+      display: grid;
+      gap: var(--space-xl);
+      padding: var(--space-xl);
+      max-inline-size: 86rem;
+
+      /* 1. Dimensión Pequeña (< 48rem / 768px) + Orientación */
+      @media only screen and (width < 48rem) and (orientation: portrait) {
+        grid-template-columns: 1fr;
+        padding: var(--space-md);
+        padding-block-end: 18rem;
+      }
+
+      @media only screen and (width < 48rem) and (orientation: landscape) {
+        grid-template-columns: repeat(2, 1fr);
+        padding: var(--space-md);
+        padding-block-end: 14rem;
+      }
+
+      /* 2. Dimensión Media (48rem a 64rem / 768px - 1024px) + Orientación */
+      @media only screen and (48rem <= width < 64rem) and (orientation: portrait) {
+        grid-template-columns: 14rem 1fr;
+        padding: var(--space-lg);
+        padding-block-end: 20rem;
+      }
+
+      @media only screen and (48rem <= width < 64rem) and (orientation: landscape) {
+        grid-template-columns: 13.5rem 14.5rem 15rem;
+        gap: var(--space-lg);
+        padding: var(--space-lg);
+        padding-block-end: 16rem;
+      }
+
+      /* 3. Dimensión Grande (>= 64rem / 1024px) + Orientación */
+      @media only screen and (width >= 64rem) and (orientation: landscape) {
+        grid-template-columns: 13.5rem 14.5rem 15.5rem;
+        gap: 2.25rem;
+        padding-block-start: 2rem;
+        padding-inline-start: 1.75rem;
+        padding-block-end: 22rem;
+      }
+
+      @media only screen and (width >= 64rem) and (orientation: portrait) {
+        grid-template-columns: repeat(3, minmax(13rem, 16rem));
+        gap: var(--space-lg);
+        padding: var(--space-xl);
+        padding-block-end: 24rem;
+      }
     }
   }
 </style>

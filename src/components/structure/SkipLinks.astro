@@ -14,6 +14,7 @@ import Anchor from '@components/Anchor.astro';
     height: 1px;
     padding: 0;
     margin: -1px;
+    z-index: 100;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     clip-path: inset(50%);
@@ -40,7 +41,7 @@ import Anchor from '@components/Anchor.astro';
 
       /* Visual styles */
       padding: 0.35em 0.45em;
-      background-color: var(--);
+      background: var(--color-card-dark);
       outline: 3px solid #0b0c0c;
       outline-offset: 2px;
 
@@ -49,6 +50,7 @@ import Anchor from '@components/Anchor.astro';
         text-transform: uppercase;
         text-decoration: none;
         color: var(--sk-color-yellow-digital);
+        color: var(--color-text-inverse);
       }
     }
   }

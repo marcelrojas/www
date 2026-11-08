@@ -1,16 +1,32 @@
 @charset "UTF-8";
 
-@layer reset, tokens, tokens.semantic, layout, utility, component, motion, print;
+@layer reset, tokens, base, layout, components, motion, utilities, print;
 
 /*
  * Base token in raw format.
  * Global token properties with value.
- * Prefix sk- for 'StyleKit' or 'SystemKit'.
+ * Prefix sk- stand for 'StyleKit'.
  */
-
 @layer tokens {
   :root {
     color-scheme: light dark;
+
+    /* Surface Colors */
+    --color-bg-primary: oklab(0.965 -0.002 0.004);
+    --color-bg-grain: oklab(0.880 0.000 0.000);
+    --color-card-frame: oklab(0.995 0.000 0.000);
+    --color-card-dark: oklab(0.145 -0.005 -0.015);
+
+    /* Text Colors */
+    --color-text-primary: oklab(0.180 0.000 0.000);
+    --color-text-secondary: oklab(0.450 -0.005 -0.010);
+    --color-text-muted: oklab(0.620 -0.004 -0.008);
+    --color-text-accent: oklab(0.620 -0.065 -0.115);
+    --color-text-inverse: oklab(0.985 0.000 0.000);
+
+    /* Borders & Accents */
+    --color-border-dotted: oklab(0.780 -0.005 -0.010);
+    --color-border-card: oklab(0.860 -0.003 -0.005);
     
     --sk-color-white: oklch(98% 0.003 90);
     --sk-color-black: oklch(9% 0.006 250);
@@ -41,17 +57,14 @@
     --sk-color-red-purple: hsl(326, 87%, 25%);
     --sk-color-red-valve: hsl(2, 92%, 62%);
 
-    --font-family-fallback: -apple-system, system, system-ui, sans-serif, arial;
+    /* Typography & Spacing */
+    --font-family-fallback: -apple-system, system, system-ui, BlinkMacSystemFont, sans-serif, arial;
     --font-family-sans: 'InterVariable', 'Inter', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-family-display: 'InterDisplay';
     --font-family-serif: 'TrajanPro', ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
     --font-family-mono: 'GeistMono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-
     --font-style-roman: normal;
     --font-style-italic: italic;
-
-    --font-feature-settings: "liga" 1, "calt" 1; /* Fix for Chrome */
-
     --font-size-base: 16px;
     --font-size-12: 0.75rem;
     --font-size-14: 0.875rem;
@@ -70,7 +83,6 @@
     --font-size-76: 4.75rem;
     --font-size-84: 5.25rem;
     --font-size-92: 5.75rem;
-
     --font-weight-thin: 100;
     --font-weight-ultralight: 200;
     --font-weight-light: 300;
@@ -80,7 +92,6 @@
     --font-weight-bold: 700;
     --font-weight-ultrabold: 800;
     --font-weight-black: 900;
-
     --font-leading-tightest: 0.86;
     --font-leading-normal: 1;
     --font-leading-very-compact: 1.1;
@@ -89,7 +100,6 @@
     --font-leading-common: 1.5;
     --font-leading-relaxed: 1.75;
     --font-leading-loose: 2;
-
     --font-tracking-tightest: -0.2em;
     --font-tracking-tighter: -0.16em;
     --font-tracking-tight: -0.12em;
@@ -99,7 +109,6 @@
     --font-tracking-wide: 0.04em;
     --font-tracking-wider: 0.08em;
     --font-tracking-widest: 0.12em;
-
     --r-sk-sait: env(safe-area-inset-top, 0px);
     --r-sk-sair: env(safe-area-inset-right, 0px);
     --r-sk-saib: env(safe-area-inset-bottom, 0px);
@@ -117,7 +126,6 @@
     --spacing-11: 80px;
     --spacing-12: 96px;
     --spacing-13: 160px;
-
     --space-01: 0.25rem;
     --space-02: 0.5rem;
     --space-04: 1rem;
@@ -178,6 +186,7 @@
     --brightness-med: brightness(.7);
     --brightness-max: brightness(1);
 
+    /* Motion and Transitions */
     --ease-default: cubic-bezier(0.25, 0.1, 0.25, 1);
     --in-1: cubic-bezier(0.47, 0, 0.745, 0.715);
     --out-1: cubic-bezier(0.39, 0.575, 0.565, 1);
@@ -197,23 +206,19 @@
     --in-6: cubic-bezier(0.95, 0.05, 0.795, 0.035);
     --out-6: cubic-bezier(0.19, 1, 0.22, 1);
     --in-out-6: cubic-bezier(1, 0, 0, 1);
-
     --easing-ease-out: cubic-bezier(0, 0, 0.40, 1);
     --easing-ease-in: cubic-bezier(0.50, 0, 1, 1);
     --easing-ease-in-out: cubic-bezier(0.45, 0, 0.40, 1);
-
     --duration-micro-x1: 100ms;
     --duration-micro-x2: 160ms;
     --duration-micro-x3: 190ms;
     --duration-micro-x4: 220ms;
-
     --duration-macro-x1: 250ms;
     --duration-macro-x2: 300ms;
     --duration-macro-x3: 350ms;
     --duration-macro-x4: 400ms;
     --duration-macro-x5: 450ms;
     --duration-macro-x6: 500ms;
-
     --page-rendered-wait: var(--duration-micro-x2);
     --page-transition-time: var(--duration-micro-x3);
     --slider-transition-time: var(--duration-macro-x3);
@@ -225,15 +230,11 @@
 
 @layer tokens.semantic {
   :root {
-    --globalnav-collective-height: var(--globalnav-height);
-    --global-scrollbar-buffer: 15px;
-    --header-height: 64px;
-    
-    /* Texto */
+    /* Text */
     --text-primary: light-dark(var(--sk-color-black), var(--sk-color-white));
     --text-secondary: color-mix(in oklch, var(--text-primary) 65%, transparent);
 
-    /* Fondo */
+    /* Background */
     --background-primary: light-dark(var(--sk-color-paper), var(--sk-color-ink));
     --background-secondary: color-mix(in oklch, var(--background-primary) 94%, var(--text-primary) 6%);
     --background-tertiary: color-mix(in oklch, var(--background-primary) 88%, var(--text-primary) 12%);
@@ -244,12 +245,12 @@
     --glyph-success: var(--sk-color-terminal-green);
     --glyph-danger: var(--sk-color-red);
 
-    /* Interactivo */
+    /* Interactive */
     --link-color: var(--glyph-accent);
     --focus-color: var(--glyph-accent);
     --focus-color-alt: rgb(0, 0, 0);
 
-    /* Separadores */
+    /* Separadors */
     --separator-opaque: light-dark(
       color-mix(in oklch, var(--sk-color-black) 12%, var(--sk-color-white)),
       color-mix(in oklch, var(--sk-color-white) 18%, var(--sk-color-black))
@@ -283,23 +284,13 @@
 
     --body-link-color: rgb(0, 102, 204);
     --link-disabled-opacity: 0.42;
-  }
 
-  @media only screen and (max-width: 833px) {
-    :root {
-      --globalnav-height: 48px;
+    @media (prefers-reduced-transparency: no-preference) {
+
     }
-  }
-}
 
-@media (prefers-reduced-transparency: no-preference) {
-  :root {
-
-  }
-}
-
-@media (prefers-reduced-transparency: reduce) {
-  :root {
-    --separator-translucent: var(--separator-opaque);
+    @media (prefers-reduced-transparency: reduce) {
+      --separator-translucent: var(--separator-opaque);
+    }
   }
 }

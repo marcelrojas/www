@@ -2,8 +2,6 @@
 import { SITE_TITLE } from '@src/types/consts';
 
 const siteUrl = "https://marcelrojas.net";
-const personName = "Marcel Rojas";
-const twitterHandle = "whyismarcel";
 
 const schema = JSON.stringify({
   "@context": "https://schema.org",
@@ -11,7 +9,7 @@ const schema = JSON.stringify({
     {
       "@type": "Person",
       "@id": `${siteUrl}/#identity`,
-      "name": personName,
+      "name": "Marcel Rojas",
       "url": siteUrl,
       "jobTitle": "Full Stack Web Developer & Designer",
       "description": "Desarrollador web Full Stack y diseñador orientado a la arquitectura JAMstack.",
@@ -23,14 +21,14 @@ const schema = JSON.stringify({
       },
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Barcelona",
+        "addressLocality": "Lechería",
         "addressRegion": "Anzoátegui",
         "addressCountry": "VE"
       },
       "sameAs": [
-        `https://x.com/${twitterHandle}`,
+        "https://x.com/whyismarcel",
         "https://github.com/marcelrojas",
-        "https://www.linkedin.com/in/marcelrojas/",
+        "https://www.linkedin.com/in/whyismarcel/",
         "https://contra.com/marcelrojas",
         "https://www.behance.net/marcelrojas",
         "https://dribbble.com/marcelrojas"

@@ -1,19 +1,15 @@
 ---
 import Anchor from '@components/Anchor.astro';
 import Button from '@components/Button.astro';
-import { SOCIAL_X, SOCIAL_INSTAGRAM, SOCIAL_YOUTUBE, SOCIAL_GITHUB, EMAIL, COPYRIGHT_NAME, COPYRIGHT_YEAR } from '@src/types/consts';
-
-const { encEmail = EMAIL } = Astro.props;
+import { SOCIAL_X, SOCIAL_INSTAGRAM, SOCIAL_YOUTUBE, SOCIAL_GITHUB, COPYRIGHT_NAME, COPYRIGHT_YEAR } from '@src/types/consts';
 ---
 
 <footer id="footer" aria-label="Site footer" tabindex="-1">
   <div class="content">
-
     <nav class="contact" aria-label="Find me on the web">
-      <Button id="clipboard-clipper" class="enc-email" type="button" data-enc={encEmail} aria-label="Copy email address">Copy my email</Button>
       <ul>
         <li>
-          <Anchor href={SOCIAL_X} aria-label={`Visit my Twitter profile`}>Twitter</Anchor>
+          <Anchor href={SOCIAL_TWITTER} aria-label={`Visit my Twitter profile`}>Twitter</Anchor>
         </li>
         <li>
           <Anchor href={SOCIAL_INSTAGRAM} aria-label={`Visit my Instagram profile`}>Instagram</Anchor>
@@ -44,7 +40,6 @@ const { encEmail = EMAIL } = Astro.props;
 
       <small class="copyright">&copy; {COPYRIGHT_YEAR} {COPYRIGHT_NAME}. All rights reserved.</small>
     </div>
-    
   </div>
 </footer>
 
@@ -53,10 +48,10 @@ const { encEmail = EMAIL } = Astro.props;
     footer#footer {
       contain: layout paint;
       content-visibility: auto;
-      z-index: var(--z-negative);
+      /*z-index: var(--z-negative);*/
       user-select: none;
-      position: sticky;
-      bottom: 0;
+      /*position: sticky;
+      bottom: 0;*/
 
       & > div.content {
         display: flex;

@@ -11,9 +11,13 @@
     margin: unset;
     padding: unset;
   }
+
+  button, textarea, input, form, fieldset, label, dialog {
+    border: unset;
+  }
 }
 
-@layer layout {
+@layer base {
   :host, html, body, div, table, ul, ol, form, input, select, textarea, p, span, svg, img {
     box-sizing: content-box;
     font-kerning: auto;
@@ -21,10 +25,6 @@
     word-wrap: normal;
     outline: 0;
     -webkit-text-size-adjust: 100%;
-  }
-
-  button, textarea, input, form, fieldset, label, dialog {
-    border: unset;
   }
 
   html {
@@ -65,10 +65,18 @@
   }
 
   body {
-    display: block;
+    --global-scrollbar-buffer: 15px;
+    min-height: 100dvh;
     position: relative;
+    display: block;
     overflow-wrap: break-word;
     color: var(--text-primary);
+    background-image: radial-gradient(
+      circle at 15% 15%,
+      oklab(0.99 0 0) 0%,
+      var(--color-bg-primary) 65%,
+      var(--color-bg-grain) 100%
+    );
 
     & ::-webkit-scrollbar {
       display: none;
@@ -96,6 +104,171 @@
     }
   }
 
+  a {
+    z-index: 0;
+    overflow: hidden;
+    letter-spacing: inherit;
+    text-decoration-color: currentcolor;
+    text-decoration-thickness: .1em;
+    text-decoration-skip: none;
+    text-decoration-skip-ink: all;
+    -webkit-font-smoothing: subpixel-antialiased;
+    backface-visibility: hidden;
+    touch-action: manipulation;
+
+    &:hover, &:focus-visible {
+      outline: 2px solid var(--color-text-accent);
+      outline-offset: 2px;
+    }
+
+    &:link {
+      
+    }
+
+    &:visited {
+      color: var(--accent-visited);
+    }
+
+    &:any-link {
+      cursor: pointer;
+      pointer-events: auto;
+      text-decoration-line: unset;
+      text-underline-offset: 1px;
+      filter: unset;
+      opacity: unset;
+    }
+
+    &:local-link {
+      
+    }
+
+    &[aria-disabled="true"] {
+      cursor: not-allowed;
+      pointer-events: none;
+      filter: grayscale(40%);
+      opacity: .7;
+    }
+
+    &[aria-current="page"] {
+      cursor: default;
+      pointer-events: none;
+    }
+
+    &:is([target="_blank"], [rel="external"]) {
+      cursor: alias;
+    }
+
+    &[rel="tag"] {
+
+    }
+
+    &:not(.anchor) {
+      color: var(--);
+    }
+  }
+
+  dl {
+    display: grid;
+    grid-template-columns: 4.5rem 1fr;
+    row-gap: var(--space-xs);
+    margin-block-start: var(--space-sm);
+
+    & dt {
+      font-weight: 600;
+      color: var(--color-text-primary);
+    }
+    & dd {
+      color: var(--color-text-secondary);
+      & a {
+        color: inherit;
+      }
+    }
+  }
+
+  @media screen and (forced-colors: active) {
+    * { forced-color-adjust: auto; }
+  }
+
+  @media (scripting: enabled) {
+    .scripting { display: none; }
+  }
+
+  @media (scripting: none) {
+    .scripting { display: block; color: var(--color-warning); }
+  }
+
+  /* --- Fonts --- */
+  @font-face {
+    font-family: 'InterVariable';
+    font-style: normal;
+    font-weight: 100 900;
+    font-feature-settings: 'liga' 1, 'calt' 1;
+    font-synthesis: none;
+    font-display: swap;
+    src: local('Inter'), url('/fonts/InterVariable.woff2') format('woff2') tech('variations'), url('/fonts/InterVariable.woff2') format('woff2-variations');
+  }
+
+  @font-face {
+    font-family: 'InterVariable';
+    font-style: italic;
+    font-weight: 100 900;
+    font-feature-settings: 'liga' 1, 'calt' 1;
+    font-synthesis: none;
+    font-display: swap;
+    src: local('InterVariable-Italic'), url('/fonts/InterVariable-Italic.woff2') format('woff2') tech('variations'), url('/fonts/InterVariable-Italic.woff2') format('woff2-variations');
+  }
+
+  @font-face {
+    font-family: 'GeistMono';
+    font-style: normal;
+    font-weight: 45 920;
+    font-synthesis: none;
+    font-display: swap;
+    src: local('GeistMono'), url('/fonts/GeistMono.woff2') format('woff2') tech('variations'), url('/fonts/GeistMono.woff2') format('woff2-variations');
+  }
+
+  @font-face {
+    font-family: 'GeistMono';
+    font-style: italic;
+    font-weight: 45 920;
+    font-synthesis: none;
+    font-display: swap;
+    src: local('GeistMono-Italic'), url('/fonts/GeistMono-Italic.woff2') format('woff2') tech('variations'), url('/fonts/GeistMono-Italic.woff2') format('woff2-variations');
+  }
+
+  @font-feature-values InterVariable {
+    @character-variant {
+      cv01: 1; cv02: 2; cv03: 3; cv04: 4; cv05: 5; cv06: 6; cv07: 7; cv08: 8;
+      cv09: 9; cv10: 10; cv11: 11; cv12: 12; cv13: 13;
+      alt-1:            1;
+      alt-3:            9;
+      open-4:           2;
+      open-6:           3;
+      open-9:           4;
+      lc-l-with-tail:   5;
+      simplified-u:     6;
+      alt-double-s:     7;
+      uc-i-with-serif:  8;
+      uc-g-with-spur:  10;
+      single-story-a:  11;
+      compact-lc-f:    12;
+      compact-lc-t:    13;
+    }
+    @styleset {
+      ss01: 1; ss02: 2; ss03: 3; ss04: 4; ss05: 5; ss06: 6; ss07: 7; ss08: 8;
+      open-digits: 1;
+      disambiguation: 2;
+      disambiguation-except-zero: 4;
+      round-quotes-and-commas: 3;
+      square-punctuation: 7;
+      square-quotes: 8;
+      circled-characters: 5;
+      squared-characters: 6;
+    }
+  }
+}
+
+@layer layout {
   main {
     display: block;
     position: relative;
@@ -182,64 +355,6 @@
 
   :focus, :focus-visible, :focus-within {
     outline: unset;
-  }
-
-  a {
-    z-index: 0;
-    overflow: hidden;
-    letter-spacing: inherit;
-    text-decoration-color: currentcolor;
-    text-decoration-thickness: .1em;
-    text-decoration-skip: none;
-    text-decoration-skip-ink: all;
-    -webkit-font-smoothing: subpixel-antialiased;
-    backface-visibility: hidden;
-    touch-action: manipulation;
-
-    &:link {
-      
-    }
-
-    &:visited {
-      color: var(--accent-visited);
-    }
-
-    &:any-link {
-      cursor: pointer;
-      pointer-events: auto;
-      text-decoration-line: unset;
-      text-underline-offset: 1px;
-      filter: unset;
-      opacity: unset;
-    }
-
-    &:local-link {
-      
-    }
-
-    &[aria-disabled="true"] {
-      cursor: not-allowed;
-      pointer-events: none;
-      filter: grayscale(40%);
-      opacity: .7;
-    }
-
-    &[aria-current="page"] {
-      cursor: default;
-      pointer-events: none;
-    }
-
-    &:is([target="_blank"], [rel="external"]) {
-      cursor: alias;
-    }
-
-    &[rel="tag"] {
-
-    }
-
-    &:not(.anchor) {
-      color: var(--);
-    }
   }
 
   :target {
@@ -361,88 +476,6 @@
     }
   }
 
-  @media screen and (forced-colors: active) {
-    * { forced-color-adjust: auto; }
-  }
-
-  @media (scripting: enabled) {
-    .scripting { display: none; }
-  }
-
-  @media (scripting: none) {
-    .scripting { display: block; color: var(--color-warning); }
-  }
-
-  /* --- Fonts --- */
-  @font-face {
-    font-family: 'InterVariable';
-    font-style: normal;
-    font-weight: 100 900;
-    font-feature-settings: 'liga' 1, 'calt' 1;
-    font-synthesis: none;
-    font-display: swap;
-    src: local('Inter'), url('/fonts/InterVariable.woff2') format('woff2') tech('variations'), url('/fonts/InterVariable.woff2') format('woff2-variations');
-  }
-
-  @font-face {
-    font-family: 'InterVariable';
-    font-style: italic;
-    font-weight: 100 900;
-    font-feature-settings: 'liga' 1, 'calt' 1;
-    font-synthesis: none;
-    font-display: swap;
-    src: local('InterVariable-Italic'), url('/fonts/InterVariable-Italic.woff2') format('woff2') tech('variations'), url('/fonts/InterVariable-Italic.woff2') format('woff2-variations');
-  }
-
-  @font-face {
-    font-family: 'GeistMono';
-    font-style: normal;
-    font-weight: 45 920;
-    font-synthesis: none;
-    font-display: swap;
-    src: local('GeistMono'), url('/fonts/GeistMono.woff2') format('woff2') tech('variations'), url('/fonts/GeistMono.woff2') format('woff2-variations');
-  }
-
-  @font-face {
-    font-family: 'GeistMono';
-    font-style: italic;
-    font-weight: 45 920;
-    font-synthesis: none;
-    font-display: swap;
-    src: local('GeistMono-Italic'), url('/fonts/GeistMono-Italic.woff2') format('woff2') tech('variations'), url('/fonts/GeistMono-Italic.woff2') format('woff2-variations');
-  }
-
-  @font-feature-values InterVariable {
-    @character-variant {
-      cv01: 1; cv02: 2; cv03: 3; cv04: 4; cv05: 5; cv06: 6; cv07: 7; cv08: 8;
-      cv09: 9; cv10: 10; cv11: 11; cv12: 12; cv13: 13;
-      alt-1:            1;
-      alt-3:            9;
-      open-4:           2;
-      open-6:           3;
-      open-9:           4;
-      lc-l-with-tail:   5;
-      simplified-u:     6;
-      alt-double-s:     7;
-      uc-i-with-serif:  8;
-      uc-g-with-spur:  10;
-      single-story-a:  11;
-      compact-lc-f:    12;
-      compact-lc-t:    13;
-    }
-    @styleset {
-      ss01: 1; ss02: 2; ss03: 3; ss04: 4; ss05: 5; ss06: 6; ss07: 7; ss08: 8;
-      open-digits: 1;
-      disambiguation: 2;
-      disambiguation-except-zero: 4;
-      round-quotes-and-commas: 3;
-      square-punctuation: 7;
-      square-quotes: 8;
-      circled-characters: 5;
-      squared-characters: 6;
-    }
-  }
-
   .markdown-body :where(h2, h3, h4, h5, h6) a {
     text-decoration: none;
     color: inherit;
@@ -478,9 +511,7 @@
   .violator {
 
   }
-}
 
-@layer utility {
   .sr-only {
     position: absolute !important;
     width: 1px;
@@ -494,7 +525,7 @@
     border: 0;
   }
 
-  .display-none {
+  .hidden {
     display: none;
   }
 
@@ -516,6 +547,143 @@
   
   .content {
     position: relative;
+  }
+
+  .skip-link {
+    position: absolute;
+    inset-block-start: -3rem;
+    inset-inline-start: var(--space-md);
+    background: var(--color-card-dark);
+    color: var(--color-text-inverse);
+    padding: var(--space-sm) var(--space-md);
+    z-index: 100;
+
+    &:focus {
+      inset-block-start: var(--space-sm);
+    }
+  }
+}
+
+@layer components {
+  h2.section-heading {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--color-text-accent);
+    text-transform: uppercase;
+    margin-block-end: var(--space-sm);
+
+    &::before {
+      content: "+";
+      margin-inline-end: 0.15rem;
+    }
+  }
+
+  .dotted-divider {
+    border-block-end: 1px dotted var(--color-border-dotted);
+    padding-block-end: var(--space-md);
+    margin-block-end: var(--space-md);
+  }
+
+  .brand-header {
+    & .logo-svg {
+      inline-size: 100%;
+      max-inline-size: 11.5rem;
+      block-size: auto;
+      display: block;
+      margin-block-end: var(--space-xs);
+    }
+
+    & .brand-subtitle {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--color-text-accent);
+      text-transform: uppercase;
+    }
+
+    & .brand-meta {
+      font-size: 0.68rem;
+      color: var(--color-text-secondary);
+    }
+  }
+
+  .news-list {
+    list-style: none;
+
+    & .news-item {
+      border-block-end: 1px dotted var(--color-border-dotted);
+      padding-block: var(--space-sm);
+
+      &:first-child {
+        padding-block-start: 0;
+      }
+
+      & time {
+        display: block;
+        font-size: 0.68rem;
+        color: var(--color-text-accent);
+      }
+
+      & strong {
+        display: block;
+        font-size: 0.75rem;
+        color: var(--color-text-primary);
+        margin-block: 0.1rem;
+      }
+
+      & p {
+        font-size: 0.68rem;
+        color: var(--color-text-muted);
+      }
+    }
+  }
+
+  .portfolio-card {
+    background: var(--color-card-frame);
+    border: 1px solid var(--color-border-card);
+    border-radius: 0.35rem;
+    padding: 0.35rem;
+    box-shadow: 0 2px 6px oklab(0.18 0 0 / 0.06);
+    display: block;
+    transition: transform 200ms ease, box-shadow 200ms ease;
+
+    &:hover, &:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px oklab(0.18 0 0 / 0.12);
+      text-decoration: none;
+    }
+
+    & .card-artwork {
+      inline-size: 100%;
+      block-size: auto;
+      display: block;
+      border-radius: 0.2rem;
+    }
+  }
+
+  .archive-link {
+    display: inline-block;
+    margin-block-start: var(--space-sm);
+    font-size: 0.65rem;
+    letter-spacing: 0.03em;
+    color: var(--color-text-accent);
+    border-block-start: 1px dotted var(--color-border-dotted);
+    padding-block-start: var(--space-sm);
+    inline-size: 100%;
+
+    &::before {
+      content: "//";
+      margin-inline-end: 0.15rem;
+    }
+  }
+
+  .email-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-block-start: var(--space-sm);
+    font-size: 0.7rem;
   }
 }
 
@@ -1160,7 +1328,7 @@ blockquote {
 
 hr {
   border: none;
-  border-top: 1px solid var(--gray-light);
+  border-top: 1px solid var(--separator);
 }
 
 /* Show hover only on supported devices */
@@ -1382,11 +1550,6 @@ hr {
     }
   }
 }
-
-/* ==========================================================
- *  WIPEOUT 3 STYLE PAGE TRANSITIONS (V3: Fade-out to Hard-cut)
- *  Basado en el segmento 'Ship Select' -> 'Loading Metro Park'
- * ========================================================= */
 
 @keyframes wipeout-fade-out {
   from { opacity: 1; }

@@ -9,8 +9,8 @@ const editionsSchema = z.array(z.object({
   translatedBy: z.string().optional(),
 })).optional();
 
-const weblog = defineCollection({
-  loader: glob({ pattern: ['*.md', '*.mdx'], base: './src/content/weblog' }),
+const blog = defineCollection({
+  loader: glob({ pattern: ['*.md', '*.mdx'], base: './src/content/blog' }),
   schema: ({ image }) => z.object({
     title: z.string(),
     description: z.string(),
@@ -23,8 +23,8 @@ const weblog = defineCollection({
   }),
 });
 
-const showcase = defineCollection({
-  loader: glob({ pattern: ['*.md', '*.mdx'], base: './src/content/showcase' }),
+const portfolio = defineCollection({
+  loader: glob({ pattern: ['*.md', '*.mdx'], base: './src/content/portfolio' }),
   schema: ({ image }) => z.object({
     title: z.string(),
     description: z.string(),
@@ -37,4 +37,4 @@ const showcase = defineCollection({
   }),
 });
 
-export const collections = { weblog, showcase };
+export const collections = { blog, portfolio };
