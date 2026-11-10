@@ -3,18 +3,26 @@ import Layout from '@layouts/Layout.astro';
 import PageHeader from '@components/structure/PageHeader.astro';
 import Anchor from '@components/Anchor.astro';
 import Button from '@components/Button.astro';
-import { SITE_TITLE,EMAIL, SOCIAL_LINKEDIN } from '@src/types/consts';
+import {
+  SITE_TITLE,
+  EMAIL,
+  SOCIAL_LINKEDIN,
+  SOCIAL_CONTRA,
+  SOCIAL_GITHUB,
+  SOCIAL_CSS_TRICKS,
+  BOOKING_CAL,
+} from '@src/types/consts';
 
 const { encEmail = EMAIL } = Astro.props;
 
 const {
-  title = 'About',
+  encEmail = EMAIL,
   screen_title = 'About',
-  description = 'An overview of who I am,  my career and technical contributions. I’m a self-taught web and software developer, designer and network engineer from Venezuela.',
+  description = 'Multidisciplinary Design Engineer, Full-Stack & Systems Developer, Hardware & Network Technician, Audio Producer, and Business Administrator based in Anzoátegui, Venezuela.',
 } = Astro.props;
 ---
 
-<Layout title={SITE_TITLE} description={description}>
+<Layout title={`${SITE_TITLE} — Design Engineer, Systems Developer & Administrator`} description={description}>
   <PageHeader screen_title={screen_title} />
 
   <section aria-labelledby="about-heading" class="dotted-divider">
@@ -226,16 +234,17 @@ const {
       </div>
 
       <footer class="cv-footer">
-        <Button as="button" wide="fit" commandfor="cvDialog" command="close">Close CV</Button>
+        <Anchor href="/cv">Open printable CV page</Anchor>
+        <Button as="button" commandfor="cvDialog" command="close">Close CV</Button>
       </footer>
     </article>
   </dialog>
 
-  <audio loop src="/audio/beats.aac" class="display-none"></audio>
+  <audio class="hidden" loop src="/audio/beats.aac"></audio>
 </Layout>
 
 <style>
-  @layer page {
+  @layer components {
     section.intro-section {
       padding: 2rem 0;
 

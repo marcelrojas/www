@@ -1,46 +1,43 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
 import Anchor from '@components/Anchor.astro';
-
-interface Edition {
-  lang: string;
-  url: string;
-}
+import { languages } from '@src/i18n/ui';
+import { getLangFromUrl, useTranslatedPath, type Locale } from '@src/i18n/useTranslations';
 
 interface Props {
-  editions?: Edition[];
+  editions?: Array<{ lang: string; title: string; url: string }>;
   isPost?: boolean;
 }
 
 const { editions = [], isPost = false } = Astro.props;
+const currentLocale = (Astro.currentLocale as Locale | undefined) ?? getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(currentLocale);
 
-const LOCALES = [
-  { code: 'en', label: 'English' },
-  { code: 'es', label: 'Español' },
-  { code: 'ja', label: '日本語' },
-] as const;
+// Strip active locale prefix (/es) and any trailing .html from pathname
+const basePath =
+  Astro.url.pathname
+    .replace(/^\/es(?=\/|$)/, '')
+    .replace(/\/index\.html$/, '')
+    .replace(/\.html$/, '') || '/';
 
-const currentLocale = Astro.currentLocale ?? 'en';
-const path = Astro.url.pathname.replace(/^\/(es|ja)(?=\/|$)/, '') || '/';
-
-function hrefFor(code: string) {
+function hrefFor(code: Locale): string {
   if (isPost) {
     const edition = editions.find((e) => e.lang === code);
-    return edition ? edition.url : getRelativeLocaleUrl(code, '/weblog');
+    if (edition) return edition.url;
+    return translatePath('/blog', code);
   }
-  return getRelativeLocaleUrl(code, path);
+  return translatePath(basePath, code);
 }
 ---
 
 <nav aria-label="Language switcher" id="lang-picker">
   <ul>
-    {LOCALES.map(({ code, label }) => (
+    {(Object.entries(languages) as Array<[Locale, string]>).map(([code, label]) => (
       <li>
         <Anchor
           href={hrefFor(code)}
           lang={code}
           hreflang={code}
-          aria-current={code === currentLocale ? 'true' : undefined}
+          aria-current={code === currentLocale ? 'page' : undefined}
         >
           {label}
         </Anchor>
@@ -50,31 +47,38 @@ function hrefFor(code: string) {
 </nav>
 
 <style is:global>
-  @layer component {
+  @layer components {
     nav#lang-picker {
       font-family: var(--font-family-sans);
-      
+
       & > ul {
         display: flex;
-        
+        gap: var(--spacing-02, 8px);
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
         & a {
-          padding-inline: var(--spacing-02);
-          font-size: var(--font-size-12);
-          line-heigth: var(--font-leading-normal);
-          
-          &:not([aria-current="page"]) {
-            background-color: var(--backgroud-primary);
+          padding-inline: var(--spacing-02, 8px);
+          font-size: var(--font-size-12, 0.75rem);
+          line-height: var(--font-leading-normal, 1.5);
+          text-decoration: none;
+
+          &:not([aria-current='page']) {
+            background-color: var(--background-primary);
+            opacity: 0.75;
           }
-          
-          &[aria-current="page"] {
+
+          &[aria-current='page'] {
             background-color: var(--background-secondary);
-            
+            font-weight: var(--font-weight-semibold, 600);
+
             &::before {
-              content: "<";
+              content: '<';
             }
-            
+
             &::after {
-              content: ">";
+              content: '>';
             }
           }
         }

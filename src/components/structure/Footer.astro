@@ -1,7 +1,22 @@
 ---
 import Anchor from '@components/Anchor.astro';
 import Button from '@components/Button.astro';
-import { SOCIAL_TWITTER, SOCIAL_INSTAGRAM, SOCIAL_YOUTUBE, SOCIAL_GITHUB, COPYRIGHT_NAME, COPYRIGHT_YEAR } from '@src/types/consts';
+import {
+  EMAIL,
+  SOCIAL_TWITTER,
+  SOCIAL_INSTAGRAM,
+  SOCIAL_YOUTUBE,
+  SOCIAL_GITHUB,
+  SOCIAL_LINKEDIN,
+  SOCIAL_CONTRA,
+  COPYRIGHT_NAME,
+  COPYRIGHT_YEAR,
+} from '@src/types/consts';
+import { useTranslations, useTranslatedPath } from '@src/i18n/useTranslations';
+
+const locale = Astro.currentLocale ?? 'en';
+const t = useTranslations(locale);
+const translatePath = useTranslatedPath(locale);
 ---
 
 <footer id="footer" aria-label="Site footer" tabindex="-1">
@@ -27,13 +42,13 @@ import { SOCIAL_TWITTER, SOCIAL_INSTAGRAM, SOCIAL_YOUTUBE, SOCIAL_GITHUB, COPYRI
       <nav aria-label="Legal">
         <ul>
           <li>
-            <Anchor href="/colophon">Colophon</Anchor>
+            <Anchor href={translatePath('/colophon')}>{t('footer.colophon')}</Anchor>
           </li>
           <li>
-            <Anchor href="/impressum">Impressum</Anchor>
+            <Anchor href={translatePath('/impressum')}>{t('footer.impressum')}</Anchor>
           </li>
           <li>
-            <Anchor href="/privacy-policy">Privacy Policy</Anchor>
+            <Anchor rel="privacy-policy" href={translatePath('/privacy-policy')}>{t('footer.privacy')}</Anchor>
           </li>
         </ul>
       </nav>
@@ -123,5 +138,5 @@ import { SOCIAL_TWITTER, SOCIAL_INSTAGRAM, SOCIAL_YOUTUBE, SOCIAL_GITHUB, COPYRI
 </style>
 
 <script>
-  import "@lib/encEmail.ts";
+  import '@src/lib/encEmail';
 </script>

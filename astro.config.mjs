@@ -18,7 +18,7 @@ export default defineConfig({
 
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'es', 'ja'],
+    locales: ['en', 'es'],
     routing: {
       fallbackType: 'rewrite',
       prefixDefaultLocale: false
@@ -53,8 +53,13 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
-    // Opcional: Configurar el sitemap para respetar el 'trailingSlash: never'
-    // Aunque el plugin suele leer la config de Astro automáticamente.
+      i18n: {
+        defaultLocale: 'en',
+        locales: {
+          en: 'en-US',
+          es: 'es-VE',
+        },
+      },
     }),
     partytown({
       config: {

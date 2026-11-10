@@ -1,45 +1,66 @@
 ---
-import { useTranslations } from '@src/i18n/useTranslations';
-const t = useTranslations(Astro.currentLocale);
 import Anchor from '@components/Anchor.astro';
+import { useTranslations, useTranslatedPath, type UIKey } from '@src/i18n/useTranslations';
 
-const anchors = [
+const locale = Astro.currentLocale ?? 'en';
+const t = useTranslations(locale);
+const translatePath = useTranslatedPath(locale);
+
+const anchors: Array<{ href: string; key: UIKey }> = [
   { href: '/', key: 'nav.about' },
+  { href: '/services', key: 'nav.services' },
   { href: '/resources', key: 'nav.resources' },
 ];
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
 <nav id="haptic-nav" class="navbar" aria-label="Main">
   <ul>
-    {anchors.map(link => (
-      <li>
-        <Anchor href={link.href}>{t(link.key)}</Anchor>
-      </li>
-    ))}
+    {anchors.map((link) => {
+      const localizedHref = translatePath(link.href);
+      const isActive =
+        currentPath === localizedHref ||
+        (link.href !== '/' && currentPath.startsWith(localizedHref));
+      return (
+        <li>
+          <Anchor href={localizedHref} aria-current={isActive ? 'page' : undefined}>
+            {t(link.key)}
+          </Anchor>
+        </li>
+      );
+    })}
   </ul>
 </nav>
 
 <style is:global>
-  @layer component {
+  @layer components {
     nav.navbar {
       display: flex;
       align-items: center;
-      height: stretch;
-      width: stretch;
 
       & > ul {
         display: flex;
-        flex-flow: column;
-        height: stretch;
+        flex-wrap: wrap;
+        gap: var(--spacing-03, 12px);
+        list-style: none;
+        margin: 0;
+        padding: 0;
 
         & > li {
           width: fit-content;
 
           & > a {
-            padding-inline: var(--spacing-02);
+            padding-inline: var(--spacing-02, 8px);
             font-family: var(--font-family-sans);
-            font-size: var(--font-size-18);
-            line-height: var(--font-leading-normal);
+            font-size: var(--font-size-14, 0.875rem);
+            line-height: var(--font-leading-normal, 1.5);
+
+            &[aria-current='page'] {
+              font-weight: var(--font-weight-semibold, 600);
+              text-decoration: underline;
+              text-underline-offset: 4px;
+            }
           }
         }
       }

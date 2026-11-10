@@ -1,7 +1,30 @@
 export const SITE_TITLE = 'Marcel Rojas';
+export const SITE_DESCRIPTION = 'Multidisciplinary Design Engineer, Full-Stack & Systems Developer, Hardware & Network Technician, Audio Producer, and Business Administrator based in Anzoátegui, Venezuela.';
 export const SITE_LOCALE = 'en-US';
 export const SITE_AUTHOR = 'Juan Marcel Rojas Hernández';
-export const SITE_KEYWORDS = ['Marcel Rojas', 'marcelrojas', 'marcel rojas', 'electronics engineer', 'hartware technician', 'network engineer', 'software developer', 'web developer', 'back-end developer', 'front-end developer', 'designer', 'Venezuela'];
+export const SITE_KEYWORDS = [
+  'Marcel Rojas',
+  'Juan Marcel Rojas Hernández',
+  'whyismarcel',
+  'marcelrojas',
+  'Design Engineer',
+  'Frontend Developer',
+  'UI/UX Designer',
+  'Systems Programming',
+  'Hardware Engineering',
+  'Network Administration',
+  'Audio Engineering',
+  'Mind the Sound',
+  'FixMasters Engineering',
+  'Business Administration',
+  'Operations Management',
+  'Anzoátegui',
+  'Venezuela',
+];
+
+export const LOCATION = 'Anzoátegui, Venezuela';
+export const EMAIL = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20=';
+export const PHONE_NUMBER = '+58 412-0107800';
 
 export const SOCIAL_TWITTER = 'https://x.com/whyismarcel';
 export const SOCIAL_INSTAGRAM = 'https://www.instagram.com/whyismarcel/';
@@ -38,10 +61,6 @@ export const REFERRAL_OKX = 'https://okx.com/join/58598721';
 export const REFERRAL_BINANCE = 'https://www.binance.com/activity/referral-entry/CPA?ref=CPA_00TB448YHP';
 export const REFERRAL_BYBIT = 'https://www.bybit.com/invite?ref=WGA6A03&medium=referral&utm_campaign=evergreen&share_to=link';
 export const REFERRAL_ = '';
-
-export const EMAIL = 'bWFyY2Vscm9qYXMya0BnbWFpbC5jb20=';
-export const PHONE_NUMBER = '+584120107800'
-export const LOCATION = 'Anzoátegui, Venezuela';
 
 export const COPYRIGHT_NAME = 'Marcel Rojas';
 export const COPYRIGHT_YEAR = new Date().getFullYear();
