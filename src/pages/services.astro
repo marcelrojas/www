@@ -3,22 +3,51 @@ import Layout from '@layouts/Layout.astro';
 import PageHeader from '@components/structure/PageHeader.astro';
 import FAQItem from '@components/FAQItem.astro';
 import Anchor from '@components/Anchor.astro';
+import {
+  SITE_TITLE,
+  EMAIL,
+  BOOKING_CAL,
+  SOCIAL_CONTRA,
+} from '@src/types/consts';
 
 const {
-  title = 'Services',
+  encEmail = EMAIL,
   screen_title = 'Services',
-  description = 'Explore the services I offer to help you succeed.',
+  description = 'Multidisciplinary consulting and execution across Web & Software Development, UI/UX & Design Systems, Computer Science, Hardware & Network Engineering, Audio Production, and Business Administration.',
 } = Astro.props;
+
+const faqs = [
+  {
+    question: 'How can one professional cover software, hardware, audio, and business administration?',
+    answer: 'Every discipline I practice reinforces the others: my computer science and electronics background lets me debug from physical circuits and TCP/IP packets up to Astro/React frontends, while my formal training in Business Administration (UPTJAA) ensures every technical decision aligns with budgets, inventories, and real operational workflows.',
+  },
+  {
+    question: 'How do we start a project and what is your typical process?',
+    answer: 'We start with a focused discovery session or asynchronous brief to define your objectives, constraints, and timeline. Within 24–48 hours, you receive a clear scope proposal with milestones and fixed or retainer pricing. Execution runs with transparent updates via GitHub, Linear/Notion, or your team’s preferred channel.',
+  },
+  {
+    question: 'Which services are available remotely vs. on-site?',
+    answer: 'All software engineering, UI/UX design systems, audio production, technical writing, and administrative/spreadsheet consulting are available 100% remotely worldwide. Physical hardware diagnostics, FTTH/LAN cabling, and on-site organizational audits are available across Barcelona, Lechería, Puerto La Cruz, and Guanta (Anzoátegui, Venezuela).',
+  },
+  {
+    question: 'How do payments and contracts work?',
+    answer: 'International clients can hire me commission-free with milestone escrow protection through Contra, or pay via international transfer, PayPal, Wally, or Binance. Local businesses in Venezuela can también pay via invoice in USD or Bolívares (BNC / Banesco / Pago Móvil).',
+  },
+  {
+    question: 'Can you integrate with an existing engineering, design, or operations team?',
+    answer: 'Yes. I regularly collaborate with product squads, agencies, and company directors—adopting your Git workflows (pnpm, TypeScript, PR reviews), Figma token libraries, or internal ERP/spreadsheet systems.',
+  },
+];
 ---
 
-<Layout title={title} description={description}>
+<Layout title={`${screen_title} — ${SITE_TITLE}`} description={description}>
   <PageHeader screen_title={screen_title} />
 
   <section aria-labelledby="services-heading">
     <div class="content">
       <h2 id="services-heading">Overview of services offered</h2>
 
-      <div class="collection--panel">
+      <div class="collection-panel">
         <article class="panel">
           <h3>Strategy</h3>
           <div class="content">
@@ -68,130 +97,137 @@ const {
     </div>
   </section>
 
-  <section aria-labelledby="pricing-heading">
-    <h2 id="pricing-heading">Packages & Pricing</h2>
-    <h2>Flexible, transparent pricing built around your needs</h2>
-    <p>I offer competitive pricing for my services. Please contact me for a detailed quote.</p>
+  <section id="section-pricing" aria-labelledby="pricing-heading">
+    <h2 id="pricing-heading" class="headline">Engagement Models &amp; Pricing</h2>
 
     <div class="cards">
       <article class="card">
-        <h3>You next?</h3>
-        <Anchor wide="fill" href="https://lemonsqueezy.com/" rel="noopener" style="background-color: oklch(56.347% 0.24089 260.834); border-radius: 30px;">Order - $150</Anchor>
+        <span class="tier-tag">Focused Sprint</span>
+        <h3 class="headline">Starter Package — From $150</h3>
+        <p>Ideal for landing pages, UI/UX or accessibility audits, custom Excel/Sheets models, Linux/network setups, or single-module deliverables.</p>
+        <Anchor wide="fill" href={SOCIAL_CONTRA}>
+          Order on Contra →
+        </Anchor>
       </article>
 
       <article class="card">
-        <h3>For a Squad?</h3>
-        <Anchor wide="fill" href="mailto:contact@marcelrojas.com?subject=Hey, I want to order for my entire team!" target="_blank" rel="noopener" style="background-color: oklch(92.494% 0.00011 271.152); border-radius: 30px;">Get quote</Anchor>
+        <span class="tier-tag">Bespoke Project</span>
+        <h3 class="headline">End-to-End Build — Custom Quote</h3>
+        <p>Full design systems, multi-page JAMstack sites, mobile apps, custom audio tooling, or organizational manuals (MOF) and process audits.</p>
+        <Anchor
+          wide="fill"
+          href={`mailto:${EMAIL}?subject=Project%20Inquiry%20—%20marcelrojas.net`}
+        >Request a detailed quote →</Anchor>
+      </article>
+
+      <article class="card">
+        <span class="tier-tag">Dedicated Partner</span>
+        <h3 class="headline">For a Squad or Company</h3>
+        <p>Ongoing fractional Design Engineering, systems/IT administration, or operational consulting integrated directly with your team.</p>
+        <Anchor wide="fill" href={BOOKING_CAL}>Book a discovery call →</Anchor>
       </article>
     </div>
 
     <div class="footer">
       <div class="payment-info">
-        <span>I offer a diverce variety of payment getways that adjust to the needs of my clients and the project itself.</span>
-        <span>Payments secured by Contra - <Anchor href="https://contra.com/marcelrojas">Contact me on Contra</Anchor>.</span>
+        <span>
+          Escrow &amp; milestone payments secured via{' '}
+          <Anchor href={SOCIAL_CONTRA}>
+            Contra
+          </Anchor>{' '}
+          or direct invoice (<Anchor href={`mailto:${EMAIL}`}>{EMAIL}</Anchor>).
+        </span>
       </div>
     </div>
   </section>
 
-  <section aria-labelledby="faq-heading">
+  <section id="section-faq" aria-labelledby="faq-heading">
     <div class="content">
-      <h2 id="faq-heading">How all this work</h2>
-      <p>Here are some frequently asked questions about my services.</p>
-
+      <h2 id="faq-heading" class="headline">How I Work — Frequently Asked Questions</h2>
       <ul>
-        <li>
-          <FAQItem question="What types of projects do you typically work on?" answer="I typically work on web development and design projects, ranging from small business websites to larger e-commerce platforms. I also take on UI/UX design projects and consulting engagements." />
-        </li>
-        <li>
-          <FAQItem question="What is your process for starting a new project?" answer="My process begins with an initial consultation to understand your needs and goals. From there, I create a proposal outlining the scope, timeline, and deliverables. Once approved, I move into the design and development phases, keeping you updated throughout." />
-        </li>
-        <li>
-          <FAQItem question="What are your rates for services?" answer="My rates vary depending on the scope and complexity of the project. I offer both fixed-price packages and hourly rates. Please contact me for a detailed quote based on your specific needs." />
-        </li>
-        <li>
-          <FAQItem question="Do you offer revisions during the design process?" answer="Yes, I include a set number of revisions in my design packages to ensure that the final product meets your expectations. Additional revisions can be accommodated for an extra fee." />
-        </li>
-        <li>
-          <FAQItem question="Can you work with existing websites?" answer="Absolutely! I can help with redesigning, optimizing, or adding new features to your existing website. I can also assist with migrating your site to a new platform if needed." />
-        </li>
-        <li>
-          <FAQItem question="What information do you need to get started?" answer="To get started, I typically need details about your business, target audience, project goals, and any specific features or design preferences you have in mind. The more information you can provide upfront, the better I can tailor my services to your needs." />
-        </li>
-        <li>
-          <FAQItem question="How do you ensure the quality of your work?" answer="I follow best practices in web development and design, including thorough testing across different devices and browsers. I also seek feedback from clients at various stages to ensure the project aligns with their vision and requirements." />
-        </li>
-        <li>
-          <FAQItem question="What if I need help after the project is completed?" answer="I offer ongoing support and maintenance packages to help you manage and update your website as needed. I'm also available for consultations if you have questions or need assistance with future projects." />
-        </li>
-        <li>
-          <FAQItem question="Do you provide training on how to manage my website?" answer="Yes, I can provide training sessions to help you understand how to manage and update your website. This can include tutorials on using content management systems, making basic updates, and best practices for website maintenance." />
-        </li>
-        <li>
-          <FAQItem question="What if I'm not satisfied with the final product?" answer="Client satisfaction is my top priority. I work closely with you throughout the project to ensure your vision is realized. If you're not satisfied with the final product, I will work with you to make necessary adjustments until we reach a solution that meets your expectations." />
-        </li>
-        <li>
-          <FAQItem question="How do you handle project deadlines?" answer="I set realistic deadlines based on the project scope and complexity. I communicate regularly with clients to provide updates on progress and address any potential delays promptly." />
-        </li>
-        <li>
-          <FAQItem question="Can you collaborate with my existing team?" answer="Yes, I am happy to collaborate with your existing team, whether they are designers, marketers, or other developers. Clear communication and teamwork are essential for the success of any project." />
-        </li>
-        <li>
-          <FAQItem question="What if I have a limited budget?" answer="I understand that budgets can vary, and I strive to offer flexible solutions that can accommodate different financial constraints. During our initial consultation, we can discuss your budget and explore options that deliver value without compromising quality." />
-        </li>
-        <li>
-          <FAQItem question="Do you provide custom designs or use templates?" answer="I specialize in creating custom designs tailored to your brand and audience. However, I can also work with templates if that aligns better with your budget and timeline." />
-        </li>
-        <li>
-          <FAQItem question="What technologies do you use for web development?" answer="I primarily use modern web technologies such as HTML5, CSS3, JavaScript, and frameworks like React or Astro. I also ensure that websites are optimized for performance and accessibility." />
-        </li>
-        <li>
-          <FAQItem question="How do you ensure my website is secure?" answer="I implement best practices for web security, including using HTTPS, keeping software and plugins up-to-date, and following secure coding standards. I also provide guidance on maintaining security post-launch." />
-        </li>
-        <li>
-          <FAQItem question="Can you integrate third-party services into my website?" answer="Yes, I can integrate various third-party services such as payment gateways, analytics tools, CRM systems, and more to enhance the functionality of your website." />
-        </li>
-        <li>
-          <FAQItem question="What services do you offer?" answer="I offer a range of services including web development, UI/UX design, and consulting to help businesses establish a strong online presence." />
-        </li>
-        <li>
-          <FAQItem question="How can I get a quote for my project?" answer="You can get a quote by contacting me through the contact form on my website or by joining the loop using the button above." />
-        </li>
-        <li>
-          <FAQItem question="Do you work with clients internationally?" answer="Yes, I work with clients from around the world. I am comfortable communicating and collaborating across different time zones to ensure a smooth project experience." />
-        </li>
-        <li>
-          <FAQItem question="What is your typical turnaround time for projects?" answer="Turnaround times vary depending on the scope and complexity of the project. I will provide an estimated timeline during our initial consultation." />
-        </li>
-        <li>
-          <FAQItem question="Can you help with website hosting and domain registration?" answer="Yes, I can assist you with choosing a hosting provider and registering a domain name as part of my services." />
-        </li>
-        <li>
-          <FAQItem question="What if I need additional features after the project is completed?" answer="I am available for future enhancements and feature additions. We can discuss your needs and I can provide a quote for any additional work required." />
-        </li>
-        <li>
-          <FAQItem question="How do you handle communication during the project?" answer="I maintain regular communication through email, video calls, and project management tools to keep you updated on progress and address any questions or concerns promptly." />
-        </li>
-        <li>
-          <FAQItem question="Do you offer discounts for non-profit organizations?" answer="Yes, I offer special rates for non-profit organizations. Please contact me to discuss your project and see how I can support your mission." />
-        </li>
-        <li>
-          <FAQItem question="Do you offer ongoing support after project completion?" answer="Yes, I offer ongoing support and maintenance packages to ensure your website remains up-to-date and secure." />
-        </li>
-        <li>
-          <FAQItem question="Can you help with content creation for my website?" answer="While my primary focus is on web development and design, I can provide guidance on content strategy and recommend professional content creators if needed." />
-        </li>
-        <li>
-          <FAQItem question="What if I need a website redesign?" answer="I offer website redesign services to help refresh and modernize your online presence. We can discuss your goals and create a plan to update your site effectively." />
-        </li>
-        <li>
-          <FAQItem question="Can you help with SEO and digital marketing?" answer="While my primary focus is on web development and design, I can provide basic SEO recommendations and refer you to trusted digital marketing professionals if needed." />
-        </li>
+        {faqs.map((faq) => (
+          <li>
+            <FAQItem question={faq.question} answer={faq.answer} />
+          </li>
+        ))}
       </ul>
     </div>
   </section>
 </Layout>
 
 <style>
+  .services-section,
+  section#section-pricing,
+  section#section-faq {
+    max-width: 1120px;
+    margin-inline: auto;
+    padding-inline: 40px;
+    padding-block: 48px;
+  }
+
+  .collection-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .panel {
+    padding: 28px;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    & .panel-title {
+      margin: 0;
+      font-size: var(--font-size-20);
+    }
+
+    & .panel-summary {
+      margin: 0;
+      font-size: var(--font-size-14);
+      opacity: 0.8;
+    }
+
+    & ul {
+      margin: 0;
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: var(--font-size-14);
+    }
+  }
+
+  section#section-pricing .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    width: 100%;
+    margin-block: 28px;
+  }
+
+  section#section-pricing .card {
+    padding: 28px;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .tier-tag {
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-12);
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+
+  
   section#section-pricing {
     align-items: center;
     display: flex;
@@ -263,9 +299,9 @@ const {
       width: 100%;
     }
   }
-</style>
 
-<style>
+
+
   section#section-services {
     & div.content {
       max-width: 1200px;
@@ -279,7 +315,7 @@ const {
         margin-top: 8px;
       }
 
-      & div.collection--panel {
+      & div.collection-panel {
         padding-top: 96px;
         padding-bottom: 96px;
         position: relative;
@@ -307,9 +343,9 @@ const {
       display: flex;
     }
   }
-</style>
 
-<style>
+
+
   section#section-faq {
     padding-block: var(--spacing-13);
 

@@ -2,7 +2,6 @@
 import Anchor from '@components/Anchor.astro';
 import Clock from '@components/decorators/Clock.astro';
 import NavBar from '@components/structure/NavBar.astro';
-import { LOCATION } from '@src/types/consts';
 import { useTranslations, useTranslatedPath } from '@src/i18n/useTranslations';
 
 const locale = Astro.currentLocale ?? 'en';
@@ -15,10 +14,6 @@ const translatePath = useTranslatedPath(locale);
     <Anchor class="wordmark" href={translatePath('/')}>www.marcelrojas.net</Anchor>
 
     <dl class="stats" aria-label="Status">
-      <div class="stat">
-        <dt>{t('header.location')}</dt>
-        <dd>{LOCATION}</dd>
-      </div>
       <div class="stat">
         <dt>{t('header.time')}</dt>
         <dd><Clock /></dd>
@@ -41,10 +36,9 @@ const translatePath = useTranslatedPath(locale);
         flex-wrap: wrap;
         align-items: center;
         gap: 16px;
-        border-bottom: var(--border-width-01, 1px) solid var(--border-color);
+        border-bottom: var(--border-width-01) solid var(--border-color);
         padding-inline: 40px;
         padding-block: 12px;
-        min-height: 48px;
 
         & > a.wordmark {
           display: inline-flex;
@@ -52,10 +46,10 @@ const translatePath = useTranslatedPath(locale);
           font-family: var(--font-family-mono);
           font-feature-settings: 'zero', 'tnum';
           font-variant-numeric: tabular-nums;
-          font-size: var(--font-size-12, 0.75rem);
-          font-weight: var(--font-weight-semibold, 600);
-          letter-spacing: var(--font-tracking-wide, 0.04em);
-          line-height: var(--font-leading-normal, 1.5);
+          font-size: var(--font-size-12);
+          font-weight: var(--font-weight-semibold);
+          letter-spacing: var(--font-tracking-wide);
+          line-height: var(--font-leading-normal);
           text-transform: uppercase;
           white-space: pre;
         }
@@ -74,20 +68,19 @@ const translatePath = useTranslatedPath(locale);
             align-items: baseline;
             gap: 6px;
             font-family: var(--font-family-mono);
-            font-size: var(--font-size-12, 0.75rem);
-            letter-spacing: var(--font-tracking-wide, 0.04em);
-            line-height: var(--font-leading-normal, 1.5);
+            font-size: var(--font-size-12);
+            letter-spacing: var(--font-tracking-wide);
+            line-height: var(--font-leading-normal);
             text-transform: uppercase;
             white-space: pre;
 
             & > dt {
               opacity: 0.65;
-              font-weight: var(--font-weight-regular, 400);
+              font-weight: var(--font-weight-regular);
             }
 
             & > dd {
-              margin: 0;
-              font-weight: var(--font-weight-semibold, 600);
+              font-weight: var(--font-weight-semibold);
               font-variant-numeric: tabular-nums;
             }
           }

@@ -6,11 +6,11 @@ import Button from '@components/Button.astro';
 import {
   SITE_TITLE,
   EMAIL,
+  BOOKING_CAL,
   SOCIAL_LINKEDIN,
   SOCIAL_CONTRA,
   SOCIAL_GITHUB,
-  SOCIAL_CSS_TRICKS,
-  BOOKING_CAL,
+  SOCIAL_CSS_TRICKS
 } from '@src/types/consts';
 
 const {
@@ -55,10 +55,19 @@ const {
     </a>
   </section>
 
+  <section class="actions">
+    <Anchor href="/services">Explore all my services &amp; how I work →</Anchor>
+    <Anchor href={SOCIAL_CONTRA}>Hire me on Contra</Anchor>
+    <Anchor href="https://tally.com/marcelrojas/" class="badge audio_trigger">Jump to fill my form</Anchor>
+    <Anchor href={BOOKING_CAL}>Book a discovery call</Anchor>
+    <Button id="openCvDialog" type="button">Review full CV</Button>
+    <Button class="enc-email" data-enc={encEmail} type="button">Copy my email</Button>
+  </section>
+
   <aside aria-label="System requirements" class="dotted-divider">
     <p>
       This site requires a good eye or genuine heart to be enjoyed.<br />
-      You can download Flash Player 9 for free <a href="#ayk">here</a>.
+      You can download Flash Player 9 for free <a href="#iyk">here</a>.
     </p>
   </aside>
 
@@ -71,10 +80,6 @@ const {
         <span aria-hidden="true">.</span>
         <span class="sr-only">.</span>
       </p>
-      <div class="actions">
-        <Anchor href="https://tally.com/marcelrojas/" class="badge audio_trigger">Jump to fill my form</Anchor>
-        <Anchor href="https://contra.com/marcelrojas" class="badge audio_trigger">Explore my services on Contra</Anchor>
-      </div>
     </div>
 
     <div>

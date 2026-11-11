@@ -22,13 +22,33 @@
     "category": {
       "type": "string"
     },
+    "role": {
+      "type": "string"
+    },
+    "stack": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "liveUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "repoUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "draft": {
+      "default": false,
+      "type": "boolean"
+    },
     "lang": {
       "default": "en",
       "type": "string",
       "enum": [
         "en",
-        "es",
-        "ja"
+        "es"
       ]
     },
     "editions": {
@@ -37,7 +57,11 @@
         "type": "object",
         "properties": {
           "lang": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "en",
+              "es"
+            ]
           },
           "title": {
             "type": "string"

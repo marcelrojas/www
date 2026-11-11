@@ -24,16 +24,16 @@ const translatePath = useTranslatedPath(locale);
     <nav class="contact" aria-label="Find me on the web">
       <ul>
         <li>
-          <Anchor href={SOCIAL_TWITTER} aria-label={`Visit my Twitter profile`}>Twitter</Anchor>
+          <Anchor href={SOCIAL_TWITTER}>Twitter</Anchor>
         </li>
         <li>
-          <Anchor href={SOCIAL_INSTAGRAM} aria-label={`Visit my Instagram profile`}>Instagram</Anchor>
+          <Anchor href={SOCIAL_INSTAGRAM}>Instagram</Anchor>
         </li>
         <li>
-          <Anchor href={SOCIAL_YOUTUBE} aria-label={`Visit my YouTube profile`}>YouTube</Anchor>
+          <Anchor href={SOCIAL_YOUTUBE}>YouTube</Anchor>
         </li>
         <li>
-          <Anchor href={SOCIAL_GITHUB} aria-label={`Visit my GitHub profile`}>GitHub</Anchor>
+          <Anchor href={SOCIAL_GITHUB}>GitHub</Anchor>
         </li>
       </ul>
     </nav>
@@ -53,13 +53,13 @@ const translatePath = useTranslatedPath(locale);
         </ul>
       </nav>
 
-      <small class="copyright">&copy; {COPYRIGHT_YEAR} {COPYRIGHT_NAME}. All rights reserved.</small>
+      <small class="copyright">&copy; {COPYRIGHT_YEAR} {COPYRIGHT_NAME}. {t('footer.rights')}</small>
     </div>
   </div>
 </footer>
 
 <style is:global>
-  @layer component {
+  @layer components {
     footer#footer {
       contain: layout paint;
       content-visibility: auto;

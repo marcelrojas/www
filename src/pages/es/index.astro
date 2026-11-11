@@ -1,4 +1,22 @@
 ---
+import Layout from '@layouts/Layout.astro';
+import PageHeader from '@components/structure/PageHeader.astro';
+import Anchor from '@components/Anchor.astro';
+import Button from '@components/Button.astro';
+import {
+  SITE_TITLE,
+  EMAIL,
+  SOCIAL_LINKEDIN,
+  SOCIAL_CONTRA,
+  SOCIAL_GITHUB,
+  SOCIAL_CSS_TRICKS,
+  BOOKING_CAL,
+} from '@src/types/consts';
 
+const {
+  encEmail = EMAIL,
+  screen_title = 'Sobre mí',
+  description = 'Ingeniero de Diseño, Desarrollador de Software y Sistemas, Técnico de Hardware y Redes, Productor de Audio y Administrador multidiciplinario en Anzoátegui, Venezuela.',
+} = Astro.props;
 ---
 
