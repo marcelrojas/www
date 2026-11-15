@@ -20,6 +20,12 @@ importers:
       '@astrojs/sitemap':
         specifier: 3.7.4
         version: 3.7.4
+      '@videojs/html':
+        specifier: ^10.4.0
+        version: 10.4.0(@videojs/hlsjs-video@10.4.0)(@videojs/mux-video@10.4.0)(react@19.3.1)
+      '@videojs/mux-video':
+        specifier: ^10.4.0
+        version: 10.4.0
       astro:
         specifier: 7.4.7
         version: 7.4.7(@types/node@24.13.5)(esbuild@0.28.2)(yaml@2.9.1)
@@ -733,6 +739,15 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
+  '@lit-labs/ssr-dom-shim@1.6.0':
+    resolution: {integrity: sha512-VHb0ALPMTlgKjM6yIxxoQNnpKyUKLD04VzeQdsiXkMqkvYlAHxq9glGLmgbb889/1GsohSOAjvQYoiBppXFqrQ==}
+
+  '@lit/context@1.1.6':
+    resolution: {integrity: sha512-M26qDE6UkQbZA2mQ3RjJ3Gzd8TxP+/0obMgE5HfkfLhEEyYE3Bui4A5XHiGPjy0MUGAyxB3QgVuw2ciS0kHn6A==}
+
+  '@lit/reactive-element@2.1.2':
+    resolution: {integrity: sha512-pbCDiVMnne1lYUIaYNN5wrwQXDtHaYtg7YEFPeW+hws6U47WeFvISGUWekPGKWOP1ygrs0ef0o1VJMk1exos5A==}
+
   '@napi-rs/wasm-runtime@1.2.6':
     resolution: {integrity: sha512-mRyDmEw9/fCDXCGfL1sbgIw/GUK0PVxRW4YwgPN61F3LQ+fSyoBFarJVzgGyhF6kRzEQZ0FejDqm4WLXSeqQmw==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=23.5.0}
@@ -995,6 +1010,16 @@ packages:
   '@shikijs/vscode-textmate@10.1.0':
     resolution: {integrity: sha512-cVBuhDQjBZaNMTwBquYfPydrUP+E3hE6oYGasx8h6ZrODIM7/r+gxLDXdd66oszbrggZHEntdE6j+5gYIVyMWQ==}
 
+  '@svta/cml-error-codes@0.1.2':
+    resolution: {integrity: sha512-q1xL8W9JR0Yj7h2kAyRWqb7iT7UlOb/rXMDSVpY5EcXUR5w0zHfl22YG4+dYVqtV9XpoIxhp+nXSqZkTo3TSTg==}
+    engines: {node: '>=20'}
+    peerDependencies:
+      '@svta/cml-utils': ^1.6.2
+
+  '@svta/cml-utils@1.7.0':
+    resolution: {integrity: sha512-NNa9v5CxrmULRAu5zx1ENHVwF4xKfclEdm+OmaIZDwoTNLVpf7JGgwbxkYsbRQYPCZrQTTLlR4sVjwgS6gcmug==}
+    engines: {node: '>=20'}
+
   '@tybys/wasm-util@0.10.4':
     resolution: {integrity: sha512-W3c4gRigFS0T/Ma4qIYF3GDAc5AQdHb1yL5znJT1Zv1YaD9Kitx656wBjvr19qbiosmZT8lWDM5BEMynUqX65A==}
 
@@ -1030,6 +1055,103 @@ packages:
 
   '@ungap/structured-clone@1.4.0':
     resolution: {integrity: sha512-1mEZtMKPM09vDmQt5y7YvmN2+DFTP7Tg0EWXdic8/C6VRnpb33e4ghisCIE3WZjsE2N8mf+QV1Zqh7ZFYLWInQ==}
+
+  '@videojs/core@10.4.0':
+    resolution: {integrity: sha512-uPBHrIpfQtsVGskChdJhF5ny38SvksBDFDm1z05DUucU9hgPwnirnSDCrTehyPC2wOb9NNlPdjCL0+Cud7uXYQ==}
+
+  '@videojs/element@10.4.0':
+    resolution: {integrity: sha512-VYMNCasyyFTbPA6Ny3tqyD2f493gIsOe/meCIJTlAAGL8ztadZMbhuOrwZ5K8RA60+CMz539qOiDq6cJUWdYlA==}
+
+  '@videojs/hlsjs-video@10.4.0':
+    resolution: {integrity: sha512-6Vlfi1eDgXqo2eSsg3hN4Um128kppIR+JhBCM/ycZ7cv4gtpDDJK1KObkoQUsuKc/trj4u3XVVzU5TnjWipeXA==}
+
+  '@videojs/html@10.4.0':
+    resolution: {integrity: sha512-BmVGe22mr7lxYKOAMFo1ikJ3qrflTfV7UX3sOgTiNF7X/g0UzTvQvkbwhhNOzFtqhWAFDtol2equ/1SimeoHJQ==}
+    peerDependencies:
+      '@videojs/cloudflare-video': 10.4.0
+      '@videojs/dailymotion-video': 10.4.0
+      '@videojs/dash-video': 10.4.0
+      '@videojs/google-analytics': 10.4.0
+      '@videojs/google-cast': 10.4.0
+      '@videojs/hlsjs-video': 10.4.0
+      '@videojs/mixcloud-audio': 10.4.0
+      '@videojs/mux-audio': 10.4.0
+      '@videojs/mux-data': 10.4.0
+      '@videojs/mux-video': 10.4.0
+      '@videojs/playerjs-video': 10.4.0
+      '@videojs/shaka-video': 10.4.0
+      '@videojs/soundcloud-audio': 10.4.0
+      '@videojs/spotify-audio': 10.4.0
+      '@videojs/tiktok-video': 10.4.0
+      '@videojs/twitch-video': 10.4.0
+      '@videojs/vimeo-video': 10.4.0
+      '@videojs/wistia-video': 10.4.0
+      '@videojs/youtube-video': 10.4.0
+    peerDependenciesMeta:
+      '@videojs/cloudflare-video':
+        optional: true
+      '@videojs/dailymotion-video':
+        optional: true
+      '@videojs/dash-video':
+        optional: true
+      '@videojs/google-analytics':
+        optional: true
+      '@videojs/google-cast':
+        optional: true
+      '@videojs/hlsjs-video':
+        optional: true
+      '@videojs/mixcloud-audio':
+        optional: true
+      '@videojs/mux-audio':
+        optional: true
+      '@videojs/mux-data':
+        optional: true
+      '@videojs/mux-video':
+        optional: true
+      '@videojs/playerjs-video':
+        optional: true
+      '@videojs/shaka-video':
+        optional: true
+      '@videojs/soundcloud-audio':
+        optional: true
+      '@videojs/spotify-audio':
+        optional: true
+      '@videojs/tiktok-video':
+        optional: true
+      '@videojs/twitch-video':
+        optional: true
+      '@videojs/vimeo-video':
+        optional: true
+      '@videojs/wistia-video':
+        optional: true
+      '@videojs/youtube-video':
+        optional: true
+
+  '@videojs/media@10.4.0':
+    resolution: {integrity: sha512-kW7b4KuqRZ6++LzDbbbMMGKMqYNo1V7Q7m2BRUKVD1Szr33C3klDZ0vwkQOel9sp/HHCi5nIXgYW+VGwNxP8pA==}
+
+  '@videojs/mux-video@10.4.0':
+    resolution: {integrity: sha512-3+yXD47gclc9hynQsoS/SmyPGmp1vNW/4XprwuMNkPG+hKS+/8rvTIc3Wt9Q14tHe+xlbzYqp18rhouLET0h3w==}
+
+  '@videojs/native-hls-video@10.4.0':
+    resolution: {integrity: sha512-Vdheo6YCUNrfzd3o3e9ms8mMYMloLLAYWGJWhQxA/APvJBtunHrs6D8hL+mTLVGYRw5l3NDihpcOGtCMdykLUg==}
+
+  '@videojs/spf@10.4.0':
+    resolution: {integrity: sha512-wRQZ55RqSnjZCtwKv3ufV6DFjbLTuB5hueqWuADEGnyq1nRM1KzobhXATNIRvWFhQ/9ZQ0rEbdcL4Yul2CB92g==}
+
+  '@videojs/store@10.4.0':
+    resolution: {integrity: sha512-YYSihmzsW1AkoQQRbZOIBrPiot1przTwzItvr9WDTnr+eV2qvCixlBvyMW41xTdMDvXFnk2xPi9/hsaqyuJwDQ==}
+    peerDependencies:
+      '@videojs/element': 10.4.0
+      react: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      '@videojs/element':
+        optional: true
+      react:
+        optional: true
+
+  '@videojs/utils@10.4.0':
+    resolution: {integrity: sha512-tTgS2Rf/DJQZ045b4GI7hb04hQkvfI5qfQy7dP9xFCiNXtP5J3ZBGiLzF1msflIOV9T2aJb5aZqMoNbAjT7faA==}
 
   '@vitest/mocker@5.0.3':
     resolution: {integrity: sha512-T8sWAIbkSyAjkwTcaEc3Iu0o9A27X1/kdXrizhZkGuSKScRQtRzclfAMpOTcGdXCsqxeWlpGy3XjqaW8CpLORg==}
@@ -1279,6 +1401,9 @@ packages:
   hast-util-whitespace@3.0.0:
     resolution: {integrity: sha512-88JUN06ipLwsnv+dVn+OIYOvAuvBMy/Qoi6O7mQHxdPXpjy+Cd6xRkWwux7DKO+4sYILtLBRIKgsdpS2gQc7qw==}
 
+  hls.js@1.7.3:
+    resolution: {integrity: sha512-MsPlx6yVW4Qv4C7mEVou4/gk/5cN2dVxOTnrNjPSmyH2f0Ln+/UkG10Ax1PE6OvrmTVPKgQYozTtBaPOuCzq7A==}
+
   html-escaper@3.0.3:
     resolution: {integrity: sha512-RuMffC89BOWQoY0WKGpIhn5gX3iI54O6nRA0yC124NYVtzjmFWBIiFd8M0x+ZdX0P9R4lADg1mgP8C7PxGOWuQ==}
 
@@ -1510,6 +1635,15 @@ packages:
   radix3@1.1.2:
     resolution: {integrity: sha512-b484I/7b8rDEdSDKckSSBA8knMpcdsXudlE/LNL639wFoHKwLbEkQFZHWEYwDC0wa0FKUcCY+GAF73Z7wxNVFA==}
 
+  react-compiler-runtime@1.0.0:
+    resolution: {integrity: sha512-rRfjYv66HlG8896yPUDONgKzG5BxZD1nV9U6rkm+7VCuvQc903C4MjcoZR4zPw53IKSOX9wMQVpA1IAbRtzQ7w==}
+    peerDependencies:
+      react: ^17.0.0 || ^18.0.0 || ^19.0.0 || ^0.0.0-experimental
+
+  react@19.3.1:
+    resolution: {integrity: sha512-QNhWdt7nrgVWWQG58QuGsAR3jv3Hbe4mb4vz7w2csnHavciZJgda1CPNaldF6eVxv90ud3jUXpKlHL69gO38yw==}
+    engines: {node: '>=0.10.0'}
+
   readdirp@5.1.1:
     resolution: {integrity: sha512-Kko+Y5XQ6fM+Ce3dq3m9YGxnacYZYl9cA1wZjaF3Vbry2L3i1qVg8+CAgNPsXRArPMUMCaOR7oa9Nqntc43JKA==}
     engines: {node: '>= 20.19.0'}
@@ -1567,6 +1701,9 @@ packages:
   shiki@4.6.0:
     resolution: {integrity: sha512-imjLsVHgPuWhvpU3P+zOekvMYqnel7QmKsFC4Sn0fCuAvaaalBsxwKEsrU8Ko5BdFnZA6Go/8a0RzahS634UgA==}
     engines: {node: '>=20'}
+
+  signal-polyfill@0.2.2:
+    resolution: {integrity: sha512-p63Y4Er5/eMQ9RHg0M0Y64NlsQKpiu6MDdhBXpyywRuWiPywhJTpKJ1iB5K2hJEbFZ0BnDS7ZkJ+0AfTuL37Rg==}
 
   sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
@@ -1749,6 +1886,9 @@ packages:
 
   vfile@6.0.3:
     resolution: {integrity: sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q==}
+
+  video.js@10.4.0:
+    resolution: {integrity: sha512-AXKpx8SOKYkE4FbAJYwdqAEvEvVILgGpmxpvfrmk3yjGuziMc4QubkwC7eqUHo/uszV2sKF/6kLdQxJUFF1HRw==}
 
   vite@8.3.6:
     resolution: {integrity: sha512-UI7dK29NnS54Fk+mmo7o+jI6U8Fp7hDl+X5Q1k45WH+d4dSlbLVUETGQ+hfkNgvLQGyoElPj837nZyv4MBc0VA==}
@@ -2382,6 +2522,16 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.6.0
 
+  '@lit-labs/ssr-dom-shim@1.6.0': {}
+
+  '@lit/context@1.1.6':
+    dependencies:
+      '@lit/reactive-element': 2.1.2
+
+  '@lit/reactive-element@2.1.2':
+    dependencies:
+      '@lit-labs/ssr-dom-shim': 1.6.0
+
   '@napi-rs/wasm-runtime@1.2.6(@emnapi/core@2.0.0-beta.2)(@emnapi/runtime@2.0.0-beta.2)':
     dependencies:
       '@emnapi/core': 2.0.0-beta.2
@@ -2552,6 +2702,12 @@ snapshots:
 
   '@shikijs/vscode-textmate@10.1.0': {}
 
+  '@svta/cml-error-codes@0.1.2(@svta/cml-utils@1.7.0)':
+    dependencies:
+      '@svta/cml-utils': 1.7.0
+
+  '@svta/cml-utils@1.7.0': {}
+
   '@tybys/wasm-util@0.10.4':
     dependencies:
       tslib: 2.8.1
@@ -2593,6 +2749,79 @@ snapshots:
   '@types/unist@3.0.3': {}
 
   '@ungap/structured-clone@1.4.0': {}
+
+  '@videojs/core@10.4.0(@videojs/element@10.4.0)(react@19.3.1)':
+    dependencies:
+      '@videojs/media': 10.4.0
+      '@videojs/store': 10.4.0(@videojs/element@10.4.0)(react@19.3.1)
+      '@videojs/utils': 10.4.0
+      video.js: 10.4.0
+    transitivePeerDependencies:
+      - '@videojs/element'
+      - react
+
+  '@videojs/element@10.4.0':
+    dependencies:
+      '@lit/context': 1.1.6
+      '@videojs/utils': 10.4.0
+
+  '@videojs/hlsjs-video@10.4.0':
+    dependencies:
+      '@videojs/media': 10.4.0
+      '@videojs/native-hls-video': 10.4.0
+      '@videojs/spf': 10.4.0
+      '@videojs/utils': 10.4.0
+      hls.js: 1.7.3
+
+  '@videojs/html@10.4.0(@videojs/hlsjs-video@10.4.0)(@videojs/mux-video@10.4.0)(react@19.3.1)':
+    dependencies:
+      '@videojs/core': 10.4.0(@videojs/element@10.4.0)(react@19.3.1)
+      '@videojs/element': 10.4.0
+      '@videojs/media': 10.4.0
+      '@videojs/native-hls-video': 10.4.0
+      '@videojs/spf': 10.4.0
+      '@videojs/store': 10.4.0(@videojs/element@10.4.0)(react@19.3.1)
+      '@videojs/utils': 10.4.0
+    optionalDependencies:
+      '@videojs/hlsjs-video': 10.4.0
+      '@videojs/mux-video': 10.4.0
+    transitivePeerDependencies:
+      - react
+
+  '@videojs/media@10.4.0':
+    dependencies:
+      '@videojs/utils': 10.4.0
+
+  '@videojs/mux-video@10.4.0':
+    dependencies:
+      '@videojs/hlsjs-video': 10.4.0
+      '@videojs/media': 10.4.0
+      '@videojs/spf': 10.4.0
+      '@videojs/utils': 10.4.0
+
+  '@videojs/native-hls-video@10.4.0':
+    dependencies:
+      '@videojs/media': 10.4.0
+      '@videojs/spf': 10.4.0
+      '@videojs/utils': 10.4.0
+
+  '@videojs/spf@10.4.0':
+    dependencies:
+      '@svta/cml-error-codes': 0.1.2(@svta/cml-utils@1.7.0)
+      '@svta/cml-utils': 1.7.0
+      '@videojs/media': 10.4.0
+      '@videojs/utils': 10.4.0
+      signal-polyfill: 0.2.2
+
+  '@videojs/store@10.4.0(@videojs/element@10.4.0)(react@19.3.1)':
+    dependencies:
+      '@videojs/utils': 10.4.0
+      react-compiler-runtime: 1.0.0(react@19.3.1)
+    optionalDependencies:
+      '@videojs/element': 10.4.0
+      react: 19.3.1
+
+  '@videojs/utils@10.4.0': {}
 
   '@vitest/mocker@5.0.3(vite@8.3.6(@types/node@24.13.5)(esbuild@0.28.2)(yaml@2.9.1))':
     dependencies:
@@ -2930,6 +3159,8 @@ snapshots:
     dependencies:
       '@types/hast': 3.0.5
 
+  hls.js@1.7.3: {}
+
   html-escaper@3.0.3: {}
 
   html-void-elements@3.0.0: {}
@@ -3114,6 +3345,12 @@ snapshots:
 
   radix3@1.1.2: {}
 
+  react-compiler-runtime@1.0.0(react@19.3.1):
+    dependencies:
+      react: 19.3.1
+
+  react@19.3.1: {}
+
   readdirp@5.1.1: {}
 
   regex-recursion@6.0.2:
@@ -3276,6 +3513,8 @@ snapshots:
       '@shikijs/vscode-textmate': 10.1.0
       '@types/hast': 3.0.5
 
+  signal-polyfill@0.2.2: {}
+
   sisteransi@1.0.5: {}
 
   sitemap@9.0.1:
@@ -3410,6 +3649,8 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
+
+  video.js@10.4.0: {}
 
   vite@8.3.6(@types/node@24.13.5)(esbuild@0.28.2)(yaml@2.9.1):
     dependencies:

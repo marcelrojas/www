@@ -41,18 +41,17 @@ marcelrojas/www
 │   ├── assets/               # Vite-processed assets (Optimized images, SVG icons)
 │   ├── components/           # UI Components (Astro & Svelte)
 │   │   ├── decorators/       # Purely visual components (Grain, Halftone, Clock)
-│   │   └── structure/        # Structural components (Header, Footer, Head, NavBar)
+│   │   └── structure/        # Structural components (Header, Footer, Head, NavBar, SkipLinks)
 │   ├── content/              # Content collections (Markdown / MDX)
-│   │   ├── en/               # 
-│   │   └── es/               # 
+│   │   ├── en/               # English content
+│   │   └── es/               # Spanish content
 │   │   ├── showcase/         # Portfolio and work entries
 │   │   └── weblog/           # Blog articles
 │   ├── data/                 # Pure JSON for static data
 │   ├── layouts/              # Master page templates (Main Layout, BlogPost, Error)
 │   ├── lib/                  # Isolated JS/TS utilities and functions
 │   ├── pages/                # File-based routing (Static pages, RSS, 404)
-│   │   ├── index.astro                  <- marcelrojas.net and www.marcelrojas.net
-│   │   ├── about.astro
+│   │   ├── index.astro                  <- marcelrojas.net and www.marcelrojas.net (About)
 │   │   ├── subdomains/       # 
 │   │   │   ├── links/
 │   │   │   │   ├── index.astro          <- links.marcelrojas.net/
@@ -66,12 +65,11 @@ marcelrojas/www
 │   │   ├── global.css        # Resets and global utilities
 │   │   └── variables.css     # Atomic design tokens (Design System)
 │   └── types/                # TypeScript definitions and global interfaces
-├── AGENTS.md                 # 
 ├── astro.config.mjs          # Main Astro framework configuration
 ├── package.json              # Project dependencies and npm/pnpm scripts
 ├── pnpm-lock.yaml            # Package version lockfile
 ├── pnpm-workspace.yaml       # 
-├── README.md                 # / You are here, btw
+├── README.md                 # /// You are here
 ├── tsconfig.json             # Strict TypeScript configuration
 └── wrangler.jsonc            # Deployment configuration for Cloudflare Workers/Assets
 ```

@@ -107,7 +107,6 @@ const computedPrefetch = (() => {
 <style>
   @layer components {
     :is(a, a[role="button"]).anchor {
-      /* Component-scoped token aliases with safe fallbacks for Variables / Opal DS */
       --_anchor-fg: var(--color-text-primary, var(--label-primary, currentColor));
       --_anchor-fg-muted: var(--color-text-secondary, var(--label-tertiary, currentColor));
       --_anchor-fg-accent: var(--color-text-accent, var(--accent, oklch(0.62 0.19 25)));
