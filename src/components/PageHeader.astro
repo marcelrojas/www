@@ -1,0 +1,36 @@
+---
+const { screen_title } = Astro.props;
+---
+
+<div id="PageHeader">
+  <h1 class="sr-only">{screen_title}</h1>
+</div>
+
+<style>
+  #PageHeader {
+    margin-left: calc(var(--r-sk-sail) + var(--spacing-06));
+    margin-right: calc(var(--r-sk-sair) + var(--spacing-06));
+    padding-inline: 20px;
+    padding-block: 20px;
+    user-select: none;
+
+    & > h1 {
+      --page-header-text-size: var(--font-size);
+      font-size: var(--page-header-text-size);
+      font-weight: var(--font-weight-ultrabold);
+      line-height: var(--font-leading-very-compact);
+      letter-spacing: var(--font-tracking-normal);
+      text-transform: uppercase;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+
+      @media screen and (width <= 480px) {
+        --font-size: var(--font-size-20);
+      }
+
+      @media screen and (width > 480px) {
+        --font-size: var(--font-size-24);
+      }
+    }
+  }
+</style>
