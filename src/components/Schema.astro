@@ -1,55 +1,96 @@
 ---
-import { SITE_TITLE } from '@src/types/consts';
+import {
+  SITE_AUTHOR,
+  SITE_DESCRIPTION,
+  SITE_TITLE,
+  SITE_URL,
+  SOCIAL_CONTRA,
+  SOCIAL_GITHUB,
+  SOCIAL_LINKEDIN,
+  SOCIAL_TWITTER,
+} from '@src/types/consts';
+import { serializeJsonLd } from '@lib/jsonLD';
 
-const siteUrl = "https://marcelrojas.net";
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalURL?: string;
+  lang?: 'en' | 'es';
+}
 
-const schema = JSON.stringify({
-  "@context": "https://schema.org",
-  "@graph": [
+const {
+  title = SITE_TITLE,
+  description = SITE_DESCRIPTION,
+  canonicalURL = SITE_URL,
+  lang = 'en',
+} = Astro.props;
+
+const inLanguage = lang === 'es' ? 'es-VE' : 'en-US';
+const personDescription =
+  lang === 'es'
+    ? 'Ingeniero de Diseño, Desarrollador Full-Stack y de Sistemas, Técnico de Hardware y Redes, Productor de Audio y Administrador en Anzoátegui, Venezuela.'
+    : SITE_DESCRIPTION;
+
+const schemaData = {
+  '@context': 'https://schema.org',
+  '@graph': [
     {
-      "@type": "Person",
-      "@id": `${siteUrl}/#identity`,
-      "name": "Marcel Rojas",
-      "url": siteUrl,
-      "jobTitle": "Full Stack Web Developer & Designer",
-      "description": "Desarrollador web Full Stack y diseñador orientado a la arquitectura JAMstack.",
-      "image": {
-        "@type": "ImageObject",
-        "url": `${siteUrl}/images/profile.jpg`,
-        "width": 1080,
-        "height": 1080
+      '@type': 'Person',
+      '@id': `${SITE_URL}/#identity`,
+      name: SITE_TITLE,
+      alternateName: SITE_AUTHOR,
+      url: SITE_URL,
+      jobTitle: 'Design Engineer, Full-Stack & Systems Developer',
+      description: personDescription,
+      image: {
+        '@type': 'ImageObject',
+        url: `${SITE_URL}/og.png`,
       },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Lechería",
-        "addressRegion": "Anzoátegui",
-        "addressCountry": "VE"
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Lechería',
+        addressRegion: 'Anzoátegui',
+        addressCountry: 'VE',
       },
-      "sameAs": [
-        "https://x.com/whyismarcel",
-        "https://github.com/marcelrojas",
-        "https://www.linkedin.com/in/whyismarcel/",
-        "https://contra.com/marcelrojas",
-        "https://www.behance.net/marcelrojas",
-        "https://dribbble.com/marcelrojas"
-      ]
+      sameAs: [
+        SOCIAL_TWITTER,
+        SOCIAL_GITHUB,
+        SOCIAL_LINKEDIN,
+        SOCIAL_CONTRA,
+      ],
     },
     {
-      "@type": "WebSite",
-      "@id": `${siteUrl}/#website`,
-      "url": siteUrl,
-      "name": SITE_TITLE,
-      "description": "Portafolio y sitio personal de Marcel Rojas",
-      "publisher": {
-        "@id": `${siteUrl}/#identity`
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: SITE_TITLE,
+      description: personDescription,
+      publisher: {
+        '@id': `${SITE_URL}/#identity`,
       },
-      "inLanguage": "es-VE",
-      "copyrightHolder": {
-        "@id": `${siteUrl}/#identity`
-      }
-    }
-  ]
-});
+      inLanguage: ['en-US', 'es-VE'],
+      copyrightHolder: {
+        '@id': `${SITE_URL}/#identity`,
+      },
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${canonicalURL}#webpage`,
+      url: canonicalURL,
+      name: title,
+      description,
+      isPartOf: {
+        '@id': `${SITE_URL}/#website`,
+      },
+      about: {
+        '@id': `${SITE_URL}/#identity`,
+      },
+      inLanguage,
+    },
+  ],
+};
+
+const schemaJson = serializeJsonLd(schemaData);
 ---
 
-<script type="application/ld+json" set:html={schema} />
+<script type="application/ld+json" set:html={schemaJson} />
