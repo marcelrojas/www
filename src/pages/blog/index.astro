@@ -24,7 +24,7 @@ const external = Object.values(featured).map(item => ({
   external: true,
 }));
 
-const timeline = [...posts, ...external].sort((a, b) => b.date - a.date);
+const timeline = [...posts, ...external].sort((a, b) => b.date.valueOf() - a.date.valueOf());
 const byYear = Object.groupBy(timeline, item => item.date.getFullYear());
 
 const {

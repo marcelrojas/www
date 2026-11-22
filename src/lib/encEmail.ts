@@ -1,15 +1,4 @@
-function hexToString(hex) {
-  let str = '';
-  for (let i = 0; i < hex.length; i += 2) {
-    const code = parseInt(hex.substr(i, 2), 16);
-    if (!isNaN(code)) {
-      str += String.fromCharCode(code);
-    }
-  }
-  return str;
-}
-
-function announceToScreenReader(message) {
+function announceToScreenReader(message: string): void {
   let liveRegion = document.getElementById('aria-live-region');
 
   if (!liveRegion) {
@@ -23,71 +12,82 @@ function announceToScreenReader(message) {
 
   liveRegion.textContent = '';
 
-  setTimeout(() => {
-    liveRegion.textContent = message;
+  window.setTimeout(() => {
+    if (liveRegion) {
+      liveRegion.textContent = message;
+    }
   }, 100);
 }
 
-async function copyToClipboard(text) {
+async function copyToClipboard(text: string): Promise<boolean> {
   try {
     await navigator.clipboard.writeText(text);
     announceToScreenReader('Email address copied to clipboard successfully.');
     return true;
-  } catch (err) {
-    console.error('Failed to copy:', err);
-    announceToScreenReader('Failed to copy automatically. Opening email client instead.');
-
+  } catch {
+    announceToScreenReader(
+      'Failed to copy automatically. Opening email client instead.'
+    );
     window.location.href = `mailto:${text}`;
     return false;
   }
 }
 
-function initEncryptedEmail() {
-  const buttons = document.querySelectorAll('.enc-email');
+export function decodeBase64Email(encoded: string): string | null {
+  try {
+    const decoded = atob(encoded.trim());
+    return decoded.includes('@') ? decoded : null;
+  } catch {
+    return null;
+  }
+}
 
-  buttons.forEach(btn => {
+export function initEncryptedEmail(): void {
+  const buttons = document.querySelectorAll<HTMLElement>('.enc-email');
+
+  buttons.forEach((btn) => {
+    if (btn.dataset.encInitialized === 'true') return;
+
     const encoded = btn.getAttribute('data-enc');
     if (!encoded) return;
 
-    let email = '';
-    try {
-      email = atob(encoded);
-    } catch {
-      return;
-    }
+    const email = decodeBase64Email(encoded);
+    if (!email) return;
 
-    btn.addEventListener('click', async (e) => {
-      try {
-        await navigator.clipboard.writeText(email);
-        btn.setAttribute('aria-label', 'Email copiado');
-      } catch {
-        window.location.href = `mailto:${email}`;
+    btn.dataset.encInitialized = 'true';
+
+    btn.addEventListener('click', async (event: MouseEvent) => {
+      event.preventDefault();
+
+      const originalText = btn.textContent ?? '';
+      const copied = await copyToClipboard(email);
+
+      if (copied) {
+        btn.textContent = 'Copied!';
+        btn.setAttribute('aria-label', 'Email copied');
+
+        window.setTimeout(() => {
+          btn.textContent = originalText;
+          btn.setAttribute('aria-label', 'Copy email address');
+        }, 2000);
       }
-
-      e.preventDefault();
-
-      
-
-      const originalText = btn.textContent;
-      btn.textContent = 'Copied!';
-      btn.setAttribute('aria-label', 'Email copied');
-
-      await copyToClipboard(email);
-
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.setAttribute('aria-label', 'Copy email address');
-      }, 2000);
     });
 
-    btn.setAttribute('role', 'button');
-    btn.setAttribute('tabindex', '0');
-    btn.setAttribute('aria-label', 'Copy email address');
+    if (btn.tagName !== 'BUTTON') {
+      btn.setAttribute('role', 'button');
+      btn.setAttribute('tabindex', '0');
+    }
+    if (!btn.getAttribute('aria-label')) {
+      btn.setAttribute('aria-label', 'Copy email address');
+    }
   });
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initEncryptedEmail);
-} else {
-  initEncryptedEmail();
+if (typeof document !== 'undefined') {
+  document.addEventListener('astro:page-load', initEncryptedEmail);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initEncryptedEmail);
+  } else {
+    initEncryptedEmail();
+  }
 }

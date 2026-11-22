@@ -1,16 +1,19 @@
 ---
-interface Props {
+import type { HTMLAttributes } from 'astro/types';
+
+export interface Props extends HTMLAttributes<'button'> {
   id?: string;
-  as?: 'button'| 'input';
+  as?: 'button' | 'input';
   type?: 'button' | 'submit' | 'reset';
-  action?: 'neutral' | 'danger';
+  action?: 'default' | 'neutral' | 'cta' | 'danger';
   size?: 'small' | 'medium' | 'large' | 'full';
-  wide?: 'fit' | 'fill';
+  wide?: 'fit' | 'fill' | 'full';
   class?: string;
   isActive?: boolean;
   disabled?: boolean;
   labelId?: string;
-  [key: string]: any;
+  command?: string;
+  commandfor?: string;
 }
 
 const {
@@ -21,45 +24,62 @@ const {
   size = 'medium',
   wide = 'fit',
   class: userClass,
-  isActive = true,
+  isActive = false,
   disabled = false,
   labelId,
   ...rest
 } = Astro.props;
 
-const Tag = as === 'input' ? 'input' : 'button';
-
-const attrs: Record<string, any> = {
-  ...rest,
-  type: type,
-  disabled: disabled ? true : undefined,
-  'aria-disabled': disabled ? 'true' : undefined,
-  tabindex: disabled ? -1 : undefined,
-};
-
 const classList = [
-  userID,
+  'mr-button',
   'button',
+  `mr-button--${action}`,
   `action-${action}`,
+  `mr-button--${size}`,
   `size-${size}`,
   `wide-${wide}`,
   userClass,
-].filter(Boolean).join(' ');
+];
 ---
 
-<Tag
-  id={userID}
-  class={classList}
-  aria-labelledby={labelId}
-  aria-current={isActive ? "true" : undefined}
-  {...attrs}
->
-  <slot />
-</Tag>
+{as === 'input' ? (
+  <input
+    id={userID}
+    type={type}
+    class:list={classList}
+    aria-labelledby={labelId}
+    aria-current={isActive ? 'true' : undefined}
+    disabled={disabled || undefined}
+    aria-disabled={disabled ? 'true' : undefined}
+    tabindex={disabled ? -1 : undefined}
+    {...rest}
+  />
+) : (
+  <button
+    id={userID}
+    type={type}
+    class:list={classList}
+    aria-labelledby={labelId}
+    aria-current={isActive ? 'true' : undefined}
+    disabled={disabled || undefined}
+    aria-disabled={disabled ? 'true' : undefined}
+    tabindex={disabled ? -1 : undefined}
+    {...rest}
+  >
+    <slot />
+  </button>
+)}
 
 <style is:global>
-  @layer component {
-    :is(button, input:is([type="button"], [type="submit"], [type="reset"])).button {
+  @layer components {
+    :is(button, input:is([type="button"], [type="submit"], [type="reset"])).mr-button {
+      --btn-fg: var(--mr-text-primary);
+      --btn-accent: var(--mr-text-accent);
+      --btn-danger: var(--mr-status-danger);
+      --btn-bg-cta: var(--mr-surface-inverse);
+      --btn-fg-inverse: var(--mr-text-inverse);
+      --btn-focus: var(--mr-focus-ring);
+
       display: inline-flex;
       flex-direction: row;
       align-items: center;
@@ -74,8 +94,15 @@ const classList = [
       will-change: background-color, color, opacity;
       transition: background-color 0.15s linear, color 0.15s linear, opacity 0.15s linear;
 
-      &:active:not(:disabled, [aria-disabled="true"]) {
+      &:focus-visible {
+        outline: 2px solid var(--btn-focus);
+        outline-offset: 2px;
+      }
 
+      &:disabled,
+      &[aria-disabled="true"] {
+        cursor: not-allowed;
+        opacity: 0.5;
       }
 
       &.size-small {
@@ -99,75 +126,52 @@ const classList = [
         font-size: var(--font-size-16);
       }
 
+      &.action-default,
       &.action-neutral {
         background-color: transparent;
-        color: var(--text-primary);
-        fill: var(--text-primary);
+        color: var(--btn-fg);
 
-        &:is(:focus, :focus-visible) {
-          color: var(--brand-red);
-          outline: 2px solid var(--brand-red);
-          outline-offset: -2px;
-        }
-
-        @media (hover: hover) {
-          &:hover:not([aria-current="page"]) {
-            color: var(--brand-red);
+        @media only screen and (hover: hover) {
+          &:hover:not(:disabled, [aria-disabled="true"]) {
+            color: var(--btn-accent);
           }
         }
       }
 
       &.action-cta {
-        background-color: transparent;
-        color: var(--text-primary);
-        fill: var(--text-primary);
+        background-color: var(--_btn-bg-cta);
+        color: var(--btn-fg-inverse);
 
-        &:focus, &:focus-visible {
-          box-shadow: rgba(8, 40, 69, 0.35) 0px 0px 0px 1px inset;
-          outline: rgb(255, 255, 255) solid 2px;
-          outline-offset: -4px;
-        }
-
-        @media (hover: hover) {
-          &:hover:not([aria-current="page"]) {
-            color: var(--);
+        @media only screen and (hover: hover) {
+          &:hover:not(:disabled, [aria-disabled="true"]) {
+            opacity: 0.9;
+            transform: translateY(-1px);
           }
         }
       }
 
       &.action-danger {
         background-color: transparent;
-        color: var(--color-danger);
-        fill: var(--color-danger);
+        color: var(--btn-danger);
 
-        &:focus, &:focus-visible {
-          box-shadow: rgba(8, 40, 69, 0.35) 0px 0px 0px 1px inset;
-          outline: rgb(255, 255, 255) solid 2px;
-          outline-offset: -4px;
-        }
-
-        @media (hover: hover) {
-          &:hover:not([aria-current="page"]) {
-            color: var(--);
+        @media only screen and (hover: hover) {
+          &:hover:not(:disabled, [aria-disabled="true"]) {
+            opacity: 0.82;
           }
         }
       }
 
-      &.wide-full { width: 100%; }
+      &.wide-fill,
+      &.wide-full {
+        inline-size: 100%;
+      }
 
-      @media (hover: hover) {
-        &:hover:not(:disabled, [aria-disabled="true"]) {
-          .action-default & {
-            
-          }
+      @media (prefers-reduced-motion: reduce) {
+        transition: none;
 
-          .action-neutral & {
-            
-          }
-
-          .action-danger & {
-
-          }
+        &:hover,
+        &:active {
+          transform: none;
         }
       }
     }

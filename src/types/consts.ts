@@ -41,7 +41,7 @@ export const SOCIAL_CONTRA = 'https://contra.com/marcelrojas';
 export const SOCIAL_APPLE_MUSIC = 'https://music.apple.com/us/profile/marcel-rojas';
 export const SOCIAL_TIDAL = 'https://tidal.com/@marcelrojas';
 export const SOCIAL_SOUNDCLOUD = 'https://soundcloud.com';
-export const SOCIA_DEEZER = 'https://www.deezer.com/us/profile/314njpjr7ig5q5ry3ai7whnxbpsm';
+export const SOCIAL_DEEZER = 'https://www.deezer.com/us/profile/314njpjr7ig5q5ry3ai7whnxbpsm';
 export const SOCIAL_SPOTIFY = 'https://open.spotify.com/user/314njpjr7ig5q5ry3ai7whnxbpsm';
 export const SOCIAL_BANDCAMP_COLECTION = 'https://bandcamp.com/marcelrojas/';
 export const SOCIAL_BANDCAMP_ARTIST = 'https://marcelrojas.bandcamp.com/';
@@ -60,14 +60,13 @@ export const REFERRAL_AMAZON_AFFILIATE = 'https://amazon.com/marcelrojas';
 export const REFERRAL_OKX = 'https://okx.com/join/58598721';
 export const REFERRAL_BINANCE = 'https://www.binance.com/activity/referral-entry/CPA?ref=CPA_00TB448YHP';
 export const REFERRAL_BYBIT = 'https://www.bybit.com/invite?ref=WGA6A03&medium=referral&utm_campaign=evergreen&share_to=link';
-export const REFERRAL_ = '';
 
 export const COPYRIGHT_NAME = 'Marcel Rojas';
 export const COPYRIGHT_YEAR = new Date().getFullYear();
 
 export const PAGE_TITLE_ABOUT = 'About';
 export const PAGE_TITLE_SHOWCASE = 'Showcase';
-export const PAGE_TITLE_SEVICES = 'Services';
+export const PAGE_TITLE_SERVICES = 'Services';
 export const PAGE_TITLE_RESOURCES = 'Resources';
 export const PAGE_TITLE_COLOPHON = 'Colophon';
 export const PAGE_TITLE_IMPRESSUM = 'Impressum';
