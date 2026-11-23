@@ -14,9 +14,8 @@
   "routes": [
     { "pattern": "marcelrojas.net", "custom_domain": true },
     { "pattern": "www.marcelrojas.net", "custom_domain": true },
-    { "pattern": "media.marcelrojas.net", "custom_domain": true },
     { "pattern": "sound.marcelrojas.net", "custom_domain": true },
-    { "pattern": "cv.marcelrojas.net", "custom_domain": true }
+    { "pattern": "curriculum.marcelrojas.net", "custom_domain": true }
   ],
   "compatibility_flags": [ "nodejs_compat", "global_fetch_strictly_public" ]
 }

@@ -6,7 +6,7 @@ import ArticleFooter from '@components/ArticleFooter.astro';
 import FormattedDate from '@components/FormattedDate.astro';
 import { Image } from 'astro:assets';
 
-type Props = CollectionEntry<'weblog'>['data'];
+type Props = CollectionEntry<'blog'>['data'];
 
 const { title, description, lang, pubDate, updatedDate, heroImage, editions = [] } = Astro.props;
 ---

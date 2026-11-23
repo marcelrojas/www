@@ -4,7 +4,7 @@ import { Image } from 'astro:assets';
 import Layout from '@layouts/Layout.astro';
 import FormattedDate from '@components/FormattedDate.astro';
 
-type Props = CollectionEntry<'showcase'>['data'];
+type Props = CollectionEntry<'portfolio'>['data'];
 
 const { title, description, lang, pubDate, updatedDate, heroImage } = Astro.props;
 ---
