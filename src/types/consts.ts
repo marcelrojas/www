@@ -50,6 +50,7 @@ export const SOCIAL_GOODREADS = 'https://www.goodreads.com/user/show/161191105-m
 export const SOCIAL_KOFi = 'https://ko-fi.com/marcelrojas';
 export const SOCIAL_CREDLY = 'https://www.credly.com/users/marcelrojas';
 
+export const REFERRAL_CONTRA = 'https://on.contra.com/WFCjWm';
 export const REFERRAL_WARP = 'https://app.warp.dev/referral/9NPP8M';
 export const REFERRAL_CAL = 'https://refer.cal.com/marcelrojas';
 export const REFERRAL_TALLY = 'https://tally.cello.so/agmjIvCHioz';
