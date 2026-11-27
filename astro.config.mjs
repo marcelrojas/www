@@ -4,8 +4,6 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import partytown from '@astrojs/partytown';
 
-import svelte from '@astrojs/svelte';
-
 // https://astro.build/config
 export default defineConfig({
   site: 'https://marcelrojas.net',
@@ -43,20 +41,20 @@ export default defineConfig({
   // Optimizaciones de compilación (Vite)
   vite: {
     build: {
-      sourcemap: false, // Menor peso en build final
+      sourcemap: false, // Menor peso en build final y seguridad
       cssCodeSplit: true, // Asegura que el CSS se divida por chunks
       cssMinify: 'lightningcss',
     },
-    css: {
-      transformer: 'lightningcss'
-    },
+   css: {
+     transformer: 'lightningcss',
+   },
   },
 
   devToolbar: {
     enabled: false
   },
 
-  integrations: [mdx(), svelte(), sitemap({
+  integrations: [mdx(), sitemap({
     i18n: {
       defaultLocale: 'en',
       locales: {
@@ -68,5 +66,5 @@ export default defineConfig({
     config: {
       forward: ['dataLayer.push', 'gtag'],
     },
-  })],
+  }),
 });
