@@ -24,7 +24,7 @@ export default defineConfig({
       prefixDefaultLocale: false
     },
     fallback: {
-      es: "en"
+      es: 'en'
     },
   },
 
@@ -45,9 +45,9 @@ export default defineConfig({
       cssCodeSplit: true, // Asegura que el CSS se divida por chunks
       cssMinify: 'lightningcss'
     },
-   css: {
-     transformer: 'lightningcss'
-   },
+    css: {
+      transformer: 'lightningcss'
+    },
   },
 
   devToolbar: {
