@@ -35,7 +35,7 @@ export default defineConfig({
   // Rendimiento: Configuración de Prefetch unificada
   prefetch: {
     defaultStrategy: 'viewport', // Carga enlaces cuando entran en pantalla
-    prefetchAll: false, // Evita cargar todos los enlaces de la página de golpe
+    prefetchAll: false // Evita cargar todos los enlaces de la página de golpe
   },
 
   // Optimizaciones de compilación (Vite)
@@ -43,10 +43,10 @@ export default defineConfig({
     build: {
       sourcemap: false, // Menor peso en build final y seguridad
       cssCodeSplit: true, // Asegura que el CSS se divida por chunks
-      cssMinify: 'lightningcss',
+      cssMinify: 'lightningcss'
     },
    css: {
-     transformer: 'lightningcss',
+     transformer: 'lightningcss'
    },
   },
 
@@ -59,12 +59,12 @@ export default defineConfig({
       defaultLocale: 'en',
       locales: {
         en: 'en-US',
-        es: 'es-VE',
+        es: 'es-VE'
       },
     },
   }), partytown({
     config: {
-      forward: ['dataLayer.push', 'gtag'],
+      forward: ['dataLayer.push', 'gtag']
     },
   }),
 });
